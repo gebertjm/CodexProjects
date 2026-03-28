@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model CharacterDraft {
+  id            String   @id
+  name          String
+  version       Int      @default(1)
+  classId       String
+  speciesId     String
+  backgroundId  String
+  level         Int
+  alignment     String
+  notes         String   @default("")
+  serialized    String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model ContentPack {
+  id          String   @id
+  slug        String   @unique
+  displayName String
+  sourceType  String
+  licenseTag  String
+  manifest    String
+  createdAt   DateTime @default(now())
+}

@@ -1,0 +1,152 @@
+{
+  "generated_at": "2026-03-28T02:35:29.761Z",
+  "report": [
+    {
+      "key": "core_rules",
+      "expected": 21,
+      "actual": 21,
+      "missing_structure": 0,
+      "user_text_complete": 0,
+      "user_text_missing": 21
+    },
+    {
+      "key": "species",
+      "expected": 9,
+      "actual": 9,
+      "missing_structure": 0,
+      "user_text_complete": 0,
+      "user_text_missing": 9
+    },
+    {
+      "key": "subraces",
+      "expected": 10,
+      "actual": 10,
+      "missing_structure": 0,
+      "user_text_complete": 0,
+      "user_text_missing": 10
+    },
+    {
+      "key": "classes",
+      "expected": 12,
+      "actual": 12,
+      "missing_structure": 0,
+      "user_text_complete": 0,
+      "user_text_missing": 12
+    },
+    {
+      "key": "subclasses",
+      "expected": 40,
+      "actual": 40,
+      "missing_structure": 0,
+      "user_text_complete": 0,
+      "user_text_missing": 40
+    },
+    {
+      "key": "backgrounds",
+      "expected": 13,
+      "actual": 13,
+      "missing_structure": 0,
+      "user_text_complete": 0,
+      "user_text_missing": 13
+    },
+    {
+      "key": "feats",
+      "expected": 41,
+      "actual": 41,
+      "missing_structure": 0,
+      "user_text_complete": 0,
+      "user_text_missing": 41
+    },
+    {
+      "key": "weapons",
+      "expected": 37,
+      "actual": 37,
+      "missing_structure": 0,
+      "user_text_complete": 0,
+      "user_text_missing": 37
+    },
+    {
+      "key": "armor",
+      "expected": 13,
+      "actual": 13,
+      "missing_structure": 0,
+      "user_text_complete": 0,
+      "user_text_missing": 13
+    },
+    {
+      "key": "packs",
+      "expected": 7,
+      "actual": 7,
+      "missing_structure": 0,
+      "user_text_complete": 0,
+      "user_text_missing": 7
+    },
+    {
+      "key": "tools",
+      "expected": 39,
+      "actual": 39,
+      "missing_structure": 0,
+      "user_text_complete": 0,
+      "user_text_missing": 39
+    },
+    {
+      "key": "mounts",
+      "expected": 8,
+      "actual": 8,
+      "missing_structure": 0,
+      "user_text_complete": 0,
+      "user_text_missing": 8
+    },
+    {
+      "key": "vehicles",
+      "expected": 11,
+      "actual": 11,
+      "missing_structure": 0,
+      "user_text_complete": 0,
+      "user_text_missing": 11
+    },
+    {
+      "key": "conditions",
+      "expected": 15,
+      "actual": 15,
+      "missing_structure": 0,
+      "user_text_complete": 0,
+      "user_text_missing": 15
+    },
+    {
+      "key": "combat_topics",
+      "expected": 25,
+      "actual": 25,
+      "missing_structure": 0,
+      "user_text_complete": 0,
+      "user_text_missing": 25
+    },
+    {
+      "key": "adventuring_topics",
+      "expected": 18,
+      "actual": 18,
+      "missing_structure": 0,
+      "user_text_complete": 0,
+      "user_text_missing": 18
+    },
+    {
+      "key": "spellcasting_topics",
+      "expected": 16,
+      "actual": 16,
+      "missing_structure": 0,
+      "user_text_complete": 0,
+      "user_text_missing": 16
+    },
+    {
+      "key": "spells",
+      "expected": 361,
+      "actual": 361,
+      "missing_structure": 0,
+      "user_text_complete": 0,
+      "user_text_missing": 361
+    }
+  ],
+  "alerts": [
+    "361 spell placeholders still need user-supplied canonical names and mechanics."
+  ]
+}

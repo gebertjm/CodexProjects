@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ForgeSheet Rules Repository",
+  "type": "object",
+  "required": ["metadata", "species", "classes", "backgrounds", "spells", "items", "languages", "optionalRules"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["gameSystem", "version", "legalNotice"]
+    },
+    "species": { "type": "array" },
+    "classes": { "type": "array" },
+    "backgrounds": { "type": "array" },
+    "spells": { "type": "array" },
+    "items": { "type": "array" },
+    "languages": { "type": "array" },
+    "optionalRules": { "type": "array" }
+  }
+}

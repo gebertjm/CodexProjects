@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.forgesheet-*.log
+.forgesheet-meta.json
+chrome-capture*.png
+tsconfig.tsbuildinfo

@@ -1,0 +1,4031 @@
+{
+  "metadata": {
+    "gameSystem": "D&D 5e-compatible character builder",
+    "version": "0.2.0",
+    "legalNotice": "Only legally safe names, summaries, and structured fields are bundled by default."
+  },
+  "species": [
+    {
+      "id": "dragonborn",
+      "name": "Dragonborn",
+      "lineage": "Dragonborn",
+      "speed": 30,
+      "size": "Medium",
+      "languages": [
+        "Common",
+        "Draconic"
+      ],
+      "abilityBonuses": {
+        "strength": 2,
+        "charisma": 1
+      },
+      "traits": [
+        {
+          "short": "Breath weapon and draconic resistance are owner-completable placeholders.",
+          "legalStatus": "open"
+        }
+      ],
+      "variantFlags": [
+        "phb-draconic-ancestry-choice-pending"
+      ]
+    },
+    {
+      "id": "hill-dwarf",
+      "name": "Hill Dwarf",
+      "lineage": "Dwarf",
+      "speed": 25,
+      "size": "Medium",
+      "languages": [
+        "Common",
+        "Dwarvish"
+      ],
+      "abilityBonuses": {
+        "constitution": 2,
+        "wisdom": 1
+      },
+      "traits": [
+        {
+          "short": "Darkvision, Dwarven Resilience, and Dwarven Toughness.",
+          "legalStatus": "open"
+        }
+      ]
+    },
+    {
+      "id": "mountain-dwarf",
+      "name": "Mountain Dwarf",
+      "lineage": "Dwarf",
+      "speed": 25,
+      "size": "Medium",
+      "languages": [
+        "Common",
+        "Dwarvish"
+      ],
+      "abilityBonuses": {
+        "constitution": 2,
+        "strength": 2
+      },
+      "traits": [
+        {
+          "short": "Darkvision, Dwarven Resilience, and armor training.",
+          "legalStatus": "open"
+        }
+      ]
+    },
+    {
+      "id": "high-elf",
+      "name": "High Elf",
+      "lineage": "Elf",
+      "speed": 30,
+      "size": "Medium",
+      "languages": [
+        "Common",
+        "Elvish"
+      ],
+      "abilityBonuses": {
+        "dexterity": 2,
+        "intelligence": 1
+      },
+      "traits": [
+        {
+          "short": "Darkvision, Keen Senses, Fey Ancestry, Trance, and a cantrip choice.",
+          "legalStatus": "open"
+        }
+      ],
+      "variantFlags": [
+        "species_cantrip_choice_pending_full_spell_ingestion"
+      ]
+    },
+    {
+      "id": "wood-elf",
+      "name": "Wood Elf",
+      "lineage": "Elf",
+      "speed": 35,
+      "size": "Medium",
+      "languages": [
+        "Common",
+        "Elvish"
+      ],
+      "abilityBonuses": {
+        "dexterity": 2,
+        "wisdom": 1
+      },
+      "traits": [
+        {
+          "short": "Darkvision, Keen Senses, Fey Ancestry, Trance, and Mask of the Wild.",
+          "legalStatus": "open"
+        }
+      ]
+    },
+    {
+      "id": "dark-elf",
+      "name": "Dark Elf (Drow)",
+      "lineage": "Elf",
+      "speed": 30,
+      "size": "Medium",
+      "languages": [
+        "Common",
+        "Elvish"
+      ],
+      "abilityBonuses": {
+        "dexterity": 2,
+        "charisma": 1
+      },
+      "traits": [
+        {
+          "short": "Superior darkvision, sunlight sensitivity, and drow magic placeholders.",
+          "legalStatus": "open"
+        }
+      ],
+      "variantFlags": [
+        "species_spell_choice_pending_full_spell_ingestion"
+      ]
+    },
+    {
+      "id": "forest-gnome",
+      "name": "Forest Gnome",
+      "lineage": "Gnome",
+      "speed": 25,
+      "size": "Small",
+      "languages": [
+        "Common",
+        "Gnomish"
+      ],
+      "abilityBonuses": {
+        "intelligence": 2,
+        "dexterity": 1
+      },
+      "traits": [
+        {
+          "short": "Darkvision, Gnome Cunning, and minor illusion or beast-speech placeholders.",
+          "legalStatus": "open"
+        }
+      ]
+    },
+    {
+      "id": "rock-gnome",
+      "name": "Rock Gnome",
+      "lineage": "Gnome",
+      "speed": 25,
+      "size": "Small",
+      "languages": [
+        "Common",
+        "Gnomish"
+      ],
+      "abilityBonuses": {
+        "intelligence": 2,
+        "constitution": 1
+      },
+      "traits": [
+        {
+          "short": "Darkvision, Gnome Cunning, and artificer-style lore hooks.",
+          "legalStatus": "open"
+        }
+      ]
+    },
+    {
+      "id": "half-elf",
+      "name": "Half-Elf",
+      "lineage": "Half-Elf",
+      "speed": 30,
+      "size": "Medium",
+      "languages": [
+        "Common",
+        "Elvish",
+        "Choice"
+      ],
+      "abilityBonuses": {
+        "charisma": 2
+      },
+      "traits": [
+        {
+          "short": "Two floating +1 ability increases, Fey Ancestry, and Skill Versatility placeholders.",
+          "legalStatus": "open"
+        }
+      ],
+      "choices": [
+        {
+          "id": "half-elf-flex",
+          "label": "Flexible ability bonuses",
+          "choose": 2,
+          "options": [
+            {
+              "id": "strength",
+              "label": "Strength",
+              "type": "equipment"
+            },
+            {
+              "id": "dexterity",
+              "label": "Dexterity",
+              "type": "equipment"
+            },
+            {
+              "id": "constitution",
+              "label": "Constitution",
+              "type": "equipment"
+            },
+            {
+              "id": "intelligence",
+              "label": "Intelligence",
+              "type": "equipment"
+            },
+            {
+              "id": "wisdom",
+              "label": "Wisdom",
+              "type": "equipment"
+            },
+            {
+              "id": "charisma",
+              "label": "Charisma",
+              "type": "equipment"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "half-orc",
+      "name": "Half-Orc",
+      "lineage": "Half-Orc",
+      "speed": 30,
+      "size": "Medium",
+      "languages": [
+        "Common",
+        "Orc"
+      ],
+      "abilityBonuses": {
+        "strength": 2,
+        "constitution": 1
+      },
+      "traits": [
+        {
+          "short": "Darkvision, Relentless Endurance, and Savage Attacks.",
+          "legalStatus": "open"
+        }
+      ]
+    },
+    {
+      "id": "lightfoot-halfling",
+      "name": "Lightfoot Halfling",
+      "lineage": "Halfling",
+      "speed": 25,
+      "size": "Small",
+      "languages": [
+        "Common",
+        "Halfling"
+      ],
+      "abilityBonuses": {
+        "dexterity": 2,
+        "charisma": 1
+      },
+      "traits": [
+        {
+          "short": "Lucky, Brave, Halfling Nimbleness, and naturally stealthy play.",
+          "legalStatus": "open"
+        }
+      ]
+    },
+    {
+      "id": "stout-halfling",
+      "name": "Stout Halfling",
+      "lineage": "Halfling",
+      "speed": 25,
+      "size": "Small",
+      "languages": [
+        "Common",
+        "Halfling"
+      ],
+      "abilityBonuses": {
+        "dexterity": 2,
+        "constitution": 1
+      },
+      "traits": [
+        {
+          "short": "Lucky, Brave, Halfling Nimbleness, and stout resilience.",
+          "legalStatus": "open"
+        }
+      ]
+    },
+    {
+      "id": "human",
+      "name": "Human",
+      "lineage": "Human",
+      "speed": 30,
+      "size": "Medium",
+      "languages": [
+        "Common",
+        "Choice"
+      ],
+      "abilityBonuses": {
+        "strength": 1,
+        "dexterity": 1,
+        "constitution": 1,
+        "intelligence": 1,
+        "wisdom": 1,
+        "charisma": 1
+      },
+      "traits": [
+        {
+          "short": "Baseline human versatility with one bonus language.",
+          "legalStatus": "open"
+        }
+      ]
+    },
+    {
+      "id": "variant-human",
+      "name": "Variant Human",
+      "lineage": "Human",
+      "speed": 30,
+      "size": "Medium",
+      "languages": [
+        "Common",
+        "Choice"
+      ],
+      "traits": [
+        {
+          "short": "Flexible ability boosts, one feat, and one bonus skill placeholder.",
+          "legalStatus": "open"
+        }
+      ],
+      "variantFlags": [
+        "variant-human"
+      ],
+      "choices": [
+        {
+          "id": "variant-human-feat",
+          "label": "Bonus feat",
+          "choose": 1,
+          "options": []
+        }
+      ]
+    },
+    {
+      "id": "tiefling",
+      "name": "Tiefling",
+      "lineage": "Tiefling",
+      "speed": 30,
+      "size": "Medium",
+      "languages": [
+        "Common",
+        "Infernal"
+      ],
+      "abilityBonuses": {
+        "intelligence": 1,
+        "charisma": 2
+      },
+      "traits": [
+        {
+          "short": "Darkvision, fire resistance, and infernal legacy placeholders.",
+          "legalStatus": "open"
+        }
+      ],
+      "variantFlags": [
+        "species_spell_choice_pending_full_spell_ingestion"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "barbarian",
+      "name": "Barbarian",
+      "source": "PHB-compatible starter catalog",
+      "hitDie": 12,
+      "subclassLevel": 3,
+      "primaryAbilities": [
+        "strength",
+        "constitution"
+      ],
+      "savingThrows": [
+        "strength",
+        "constitution"
+      ],
+      "skillChoices": {
+        "id": "barbarian-skills",
+        "label": "Barbarian skills",
+        "choose": 2,
+        "options": [
+          {
+            "id": "animalHandling",
+            "label": "Animal Handling",
+            "type": "skill"
+          },
+          {
+            "id": "athletics",
+            "label": "Athletics",
+            "type": "skill"
+          },
+          {
+            "id": "intimidation",
+            "label": "Intimidation",
+            "type": "skill"
+          },
+          {
+            "id": "nature",
+            "label": "Nature",
+            "type": "skill"
+          },
+          {
+            "id": "perception",
+            "label": "Perception",
+            "type": "skill"
+          },
+          {
+            "id": "survival",
+            "label": "Survival",
+            "type": "skill"
+          }
+        ]
+      },
+      "armorProficiencies": [
+        "Light armor",
+        "Medium armor",
+        "Shields"
+      ],
+      "weaponProficiencies": [
+        "Simple weapons",
+        "Martial weapons"
+      ],
+      "toolProficiencies": [],
+      "equipmentOptions": [
+        "greataxe",
+        "handaxe",
+        "explorers-pack"
+      ],
+      "subclasses": [
+        "path-of-the-berserker",
+        "path-of-the-totem-warrior"
+      ],
+      "spellcasting": {
+        "progression": "none",
+        "ability": null,
+        "preparesFromClassList": false
+      },
+      "features": [
+        {
+          "level": 1,
+          "name": "Rage",
+          "text": {
+            "short": "Rage placeholder summary.",
+            "legalStatus": "open"
+          }
+        },
+        {
+          "level": 1,
+          "name": "Unarmored Defense",
+          "text": {
+            "short": "Unarmored Defense placeholder summary.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bard",
+      "name": "Bard",
+      "source": "PHB-compatible starter catalog",
+      "hitDie": 8,
+      "subclassLevel": 3,
+      "primaryAbilities": [
+        "charisma"
+      ],
+      "savingThrows": [
+        "dexterity",
+        "charisma"
+      ],
+      "skillChoices": {
+        "id": "bard-skills",
+        "label": "Bard skills",
+        "choose": 3,
+        "options": [
+          {
+            "id": "acrobatics",
+            "label": "Acrobatics",
+            "type": "skill"
+          },
+          {
+            "id": "animalHandling",
+            "label": "Animal Handling",
+            "type": "skill"
+          },
+          {
+            "id": "arcana",
+            "label": "Arcana",
+            "type": "skill"
+          },
+          {
+            "id": "athletics",
+            "label": "Athletics",
+            "type": "skill"
+          },
+          {
+            "id": "deception",
+            "label": "Deception",
+            "type": "skill"
+          },
+          {
+            "id": "history",
+            "label": "History",
+            "type": "skill"
+          },
+          {
+            "id": "insight",
+            "label": "Insight",
+            "type": "skill"
+          },
+          {
+            "id": "intimidation",
+            "label": "Intimidation",
+            "type": "skill"
+          },
+          {
+            "id": "investigation",
+            "label": "Investigation",
+            "type": "skill"
+          },
+          {
+            "id": "medicine",
+            "label": "Medicine",
+            "type": "skill"
+          },
+          {
+            "id": "nature",
+            "label": "Nature",
+            "type": "skill"
+          },
+          {
+            "id": "perception",
+            "label": "Perception",
+            "type": "skill"
+          },
+          {
+            "id": "performance",
+            "label": "Performance",
+            "type": "skill"
+          },
+          {
+            "id": "persuasion",
+            "label": "Persuasion",
+            "type": "skill"
+          },
+          {
+            "id": "religion",
+            "label": "Religion",
+            "type": "skill"
+          },
+          {
+            "id": "sleightOfHand",
+            "label": "Sleight Of Hand",
+            "type": "skill"
+          },
+          {
+            "id": "stealth",
+            "label": "Stealth",
+            "type": "skill"
+          },
+          {
+            "id": "survival",
+            "label": "Survival",
+            "type": "skill"
+          }
+        ]
+      },
+      "armorProficiencies": [
+        "Light armor"
+      ],
+      "weaponProficiencies": [
+        "Simple weapons",
+        "Hand crossbows",
+        "Longswords",
+        "Rapiers",
+        "Shortswords"
+      ],
+      "toolProficiencies": [
+        "Three musical instruments"
+      ],
+      "equipmentOptions": [
+        "rapier",
+        "lute",
+        "diplomats-pack"
+      ],
+      "subclasses": [
+        "college-of-lore",
+        "college-of-valor"
+      ],
+      "spellcasting": {
+        "progression": "full",
+        "ability": "charisma",
+        "preparesFromClassList": false
+      },
+      "features": [
+        {
+          "level": 1,
+          "name": "Spellcasting",
+          "text": {
+            "short": "Spellcasting placeholder summary.",
+            "legalStatus": "open"
+          }
+        },
+        {
+          "level": 1,
+          "name": "Bardic Inspiration",
+          "text": {
+            "short": "Bardic Inspiration placeholder summary.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cleric",
+      "name": "Cleric",
+      "source": "PHB-compatible starter catalog",
+      "hitDie": 8,
+      "subclassLevel": 1,
+      "primaryAbilities": [
+        "wisdom"
+      ],
+      "savingThrows": [
+        "wisdom",
+        "charisma"
+      ],
+      "skillChoices": {
+        "id": "cleric-skills",
+        "label": "Cleric skills",
+        "choose": 2,
+        "options": [
+          {
+            "id": "history",
+            "label": "History",
+            "type": "skill"
+          },
+          {
+            "id": "insight",
+            "label": "Insight",
+            "type": "skill"
+          },
+          {
+            "id": "medicine",
+            "label": "Medicine",
+            "type": "skill"
+          },
+          {
+            "id": "persuasion",
+            "label": "Persuasion",
+            "type": "skill"
+          },
+          {
+            "id": "religion",
+            "label": "Religion",
+            "type": "skill"
+          }
+        ]
+      },
+      "armorProficiencies": [
+        "Light armor",
+        "Medium armor",
+        "Shields"
+      ],
+      "weaponProficiencies": [
+        "Simple weapons"
+      ],
+      "toolProficiencies": [],
+      "equipmentOptions": [
+        "scale-mail",
+        "mace",
+        "priests-pack"
+      ],
+      "subclasses": [
+        "knowledge-domain",
+        "life-domain",
+        "light-domain",
+        "nature-domain",
+        "tempest-domain",
+        "trickery-domain",
+        "war-domain"
+      ],
+      "spellcasting": {
+        "progression": "full",
+        "ability": "wisdom",
+        "preparesFromClassList": true
+      },
+      "features": [
+        {
+          "level": 1,
+          "name": "Spellcasting",
+          "text": {
+            "short": "Spellcasting placeholder summary.",
+            "legalStatus": "open"
+          }
+        },
+        {
+          "level": 1,
+          "name": "Divine Domain",
+          "text": {
+            "short": "Divine Domain placeholder summary.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "druid",
+      "name": "Druid",
+      "source": "PHB-compatible starter catalog",
+      "hitDie": 8,
+      "subclassLevel": 2,
+      "primaryAbilities": [
+        "wisdom"
+      ],
+      "savingThrows": [
+        "intelligence",
+        "wisdom"
+      ],
+      "skillChoices": {
+        "id": "druid-skills",
+        "label": "Druid skills",
+        "choose": 2,
+        "options": [
+          {
+            "id": "arcana",
+            "label": "Arcana",
+            "type": "skill"
+          },
+          {
+            "id": "animalHandling",
+            "label": "Animal Handling",
+            "type": "skill"
+          },
+          {
+            "id": "insight",
+            "label": "Insight",
+            "type": "skill"
+          },
+          {
+            "id": "medicine",
+            "label": "Medicine",
+            "type": "skill"
+          },
+          {
+            "id": "nature",
+            "label": "Nature",
+            "type": "skill"
+          },
+          {
+            "id": "perception",
+            "label": "Perception",
+            "type": "skill"
+          },
+          {
+            "id": "religion",
+            "label": "Religion",
+            "type": "skill"
+          },
+          {
+            "id": "survival",
+            "label": "Survival",
+            "type": "skill"
+          }
+        ]
+      },
+      "armorProficiencies": [
+        "Light armor",
+        "Medium armor",
+        "Shields"
+      ],
+      "weaponProficiencies": [
+        "Clubs",
+        "Daggers",
+        "Darts",
+        "Javelins",
+        "Maces",
+        "Quarterstaffs",
+        "Scimitars",
+        "Sickles",
+        "Slings",
+        "Spears"
+      ],
+      "toolProficiencies": [
+        "Herbalism kit"
+      ],
+      "equipmentOptions": [
+        "wooden-shield",
+        "scimitar",
+        "explorers-pack"
+      ],
+      "subclasses": [
+        "circle-of-the-land",
+        "circle-of-the-moon"
+      ],
+      "spellcasting": {
+        "progression": "full",
+        "ability": "wisdom",
+        "preparesFromClassList": true
+      },
+      "features": [
+        {
+          "level": 1,
+          "name": "Druidic",
+          "text": {
+            "short": "Druidic placeholder summary.",
+            "legalStatus": "open"
+          }
+        },
+        {
+          "level": 1,
+          "name": "Spellcasting",
+          "text": {
+            "short": "Spellcasting placeholder summary.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fighter",
+      "name": "Fighter",
+      "source": "PHB-compatible starter catalog",
+      "hitDie": 10,
+      "subclassLevel": 3,
+      "primaryAbilities": [
+        "strength",
+        "dexterity"
+      ],
+      "savingThrows": [
+        "strength",
+        "constitution"
+      ],
+      "skillChoices": {
+        "id": "fighter-skills",
+        "label": "Fighter skills",
+        "choose": 2,
+        "options": [
+          {
+            "id": "acrobatics",
+            "label": "Acrobatics",
+            "type": "skill"
+          },
+          {
+            "id": "animalHandling",
+            "label": "Animal Handling",
+            "type": "skill"
+          },
+          {
+            "id": "athletics",
+            "label": "Athletics",
+            "type": "skill"
+          },
+          {
+            "id": "history",
+            "label": "History",
+            "type": "skill"
+          },
+          {
+            "id": "insight",
+            "label": "Insight",
+            "type": "skill"
+          },
+          {
+            "id": "intimidation",
+            "label": "Intimidation",
+            "type": "skill"
+          },
+          {
+            "id": "perception",
+            "label": "Perception",
+            "type": "skill"
+          },
+          {
+            "id": "survival",
+            "label": "Survival",
+            "type": "skill"
+          }
+        ]
+      },
+      "armorProficiencies": [
+        "Light armor",
+        "Medium armor",
+        "Heavy armor",
+        "Shields"
+      ],
+      "weaponProficiencies": [
+        "Simple weapons",
+        "Martial weapons"
+      ],
+      "toolProficiencies": [],
+      "equipmentOptions": [
+        "chain-mail",
+        "longsword",
+        "explorers-pack"
+      ],
+      "subclasses": [
+        "champion",
+        "battle-master",
+        "eldritch-knight"
+      ],
+      "spellcasting": {
+        "progression": "none",
+        "ability": null,
+        "preparesFromClassList": false
+      },
+      "features": [
+        {
+          "level": 1,
+          "name": "Fighting Style",
+          "text": {
+            "short": "Fighting Style placeholder summary.",
+            "legalStatus": "open"
+          }
+        },
+        {
+          "level": 1,
+          "name": "Second Wind",
+          "text": {
+            "short": "Second Wind placeholder summary.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "monk",
+      "name": "Monk",
+      "source": "PHB-compatible starter catalog",
+      "hitDie": 8,
+      "subclassLevel": 3,
+      "primaryAbilities": [
+        "dexterity",
+        "wisdom"
+      ],
+      "savingThrows": [
+        "strength",
+        "dexterity"
+      ],
+      "skillChoices": {
+        "id": "monk-skills",
+        "label": "Monk skills",
+        "choose": 2,
+        "options": [
+          {
+            "id": "acrobatics",
+            "label": "Acrobatics",
+            "type": "skill"
+          },
+          {
+            "id": "athletics",
+            "label": "Athletics",
+            "type": "skill"
+          },
+          {
+            "id": "history",
+            "label": "History",
+            "type": "skill"
+          },
+          {
+            "id": "insight",
+            "label": "Insight",
+            "type": "skill"
+          },
+          {
+            "id": "religion",
+            "label": "Religion",
+            "type": "skill"
+          },
+          {
+            "id": "stealth",
+            "label": "Stealth",
+            "type": "skill"
+          }
+        ]
+      },
+      "armorProficiencies": [],
+      "weaponProficiencies": [
+        "Simple weapons",
+        "Shortswords"
+      ],
+      "toolProficiencies": [
+        "One artisan's tool or one musical instrument"
+      ],
+      "equipmentOptions": [
+        "shortsword",
+        "dungeoneers-pack"
+      ],
+      "subclasses": [
+        "way-of-the-open-hand",
+        "way-of-shadow",
+        "way-of-the-four-elements"
+      ],
+      "spellcasting": {
+        "progression": "none",
+        "ability": null,
+        "preparesFromClassList": false
+      },
+      "features": [
+        {
+          "level": 1,
+          "name": "Unarmored Defense",
+          "text": {
+            "short": "Unarmored Defense placeholder summary.",
+            "legalStatus": "open"
+          }
+        },
+        {
+          "level": 1,
+          "name": "Martial Arts",
+          "text": {
+            "short": "Martial Arts placeholder summary.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "paladin",
+      "name": "Paladin",
+      "source": "PHB-compatible starter catalog",
+      "hitDie": 10,
+      "subclassLevel": 3,
+      "primaryAbilities": [
+        "strength",
+        "charisma"
+      ],
+      "savingThrows": [
+        "wisdom",
+        "charisma"
+      ],
+      "skillChoices": {
+        "id": "paladin-skills",
+        "label": "Paladin skills",
+        "choose": 2,
+        "options": [
+          {
+            "id": "athletics",
+            "label": "Athletics",
+            "type": "skill"
+          },
+          {
+            "id": "insight",
+            "label": "Insight",
+            "type": "skill"
+          },
+          {
+            "id": "intimidation",
+            "label": "Intimidation",
+            "type": "skill"
+          },
+          {
+            "id": "medicine",
+            "label": "Medicine",
+            "type": "skill"
+          },
+          {
+            "id": "persuasion",
+            "label": "Persuasion",
+            "type": "skill"
+          },
+          {
+            "id": "religion",
+            "label": "Religion",
+            "type": "skill"
+          }
+        ]
+      },
+      "armorProficiencies": [
+        "Light armor",
+        "Medium armor",
+        "Heavy armor",
+        "Shields"
+      ],
+      "weaponProficiencies": [
+        "Simple weapons",
+        "Martial weapons"
+      ],
+      "toolProficiencies": [],
+      "equipmentOptions": [
+        "chain-mail",
+        "shield",
+        "priests-pack"
+      ],
+      "subclasses": [
+        "oath-of-devotion",
+        "oath-of-the-ancients",
+        "oath-of-vengeance"
+      ],
+      "spellcasting": {
+        "progression": "half",
+        "ability": "charisma",
+        "preparesFromClassList": true
+      },
+      "features": [
+        {
+          "level": 1,
+          "name": "Divine Sense",
+          "text": {
+            "short": "Divine Sense placeholder summary.",
+            "legalStatus": "open"
+          }
+        },
+        {
+          "level": 1,
+          "name": "Lay on Hands",
+          "text": {
+            "short": "Lay on Hands placeholder summary.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ranger",
+      "name": "Ranger",
+      "source": "PHB-compatible starter catalog",
+      "hitDie": 10,
+      "subclassLevel": 3,
+      "primaryAbilities": [
+        "dexterity",
+        "wisdom"
+      ],
+      "savingThrows": [
+        "strength",
+        "dexterity"
+      ],
+      "skillChoices": {
+        "id": "ranger-skills",
+        "label": "Ranger skills",
+        "choose": 2,
+        "options": [
+          {
+            "id": "animalHandling",
+            "label": "Animal Handling",
+            "type": "skill"
+          },
+          {
+            "id": "athletics",
+            "label": "Athletics",
+            "type": "skill"
+          },
+          {
+            "id": "insight",
+            "label": "Insight",
+            "type": "skill"
+          },
+          {
+            "id": "investigation",
+            "label": "Investigation",
+            "type": "skill"
+          },
+          {
+            "id": "nature",
+            "label": "Nature",
+            "type": "skill"
+          },
+          {
+            "id": "perception",
+            "label": "Perception",
+            "type": "skill"
+          },
+          {
+            "id": "stealth",
+            "label": "Stealth",
+            "type": "skill"
+          },
+          {
+            "id": "survival",
+            "label": "Survival",
+            "type": "skill"
+          }
+        ]
+      },
+      "armorProficiencies": [
+        "Light armor",
+        "Medium armor",
+        "Shields"
+      ],
+      "weaponProficiencies": [
+        "Simple weapons",
+        "Martial weapons"
+      ],
+      "toolProficiencies": [],
+      "equipmentOptions": [
+        "scale-mail",
+        "longbow",
+        "explorers-pack"
+      ],
+      "subclasses": [
+        "hunter",
+        "beast-master"
+      ],
+      "spellcasting": {
+        "progression": "half",
+        "ability": "wisdom",
+        "preparesFromClassList": false
+      },
+      "features": [
+        {
+          "level": 1,
+          "name": "Favored Enemy",
+          "text": {
+            "short": "Favored Enemy placeholder summary.",
+            "legalStatus": "open"
+          }
+        },
+        {
+          "level": 1,
+          "name": "Natural Explorer",
+          "text": {
+            "short": "Natural Explorer placeholder summary.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rogue",
+      "name": "Rogue",
+      "source": "PHB-compatible starter catalog",
+      "hitDie": 8,
+      "subclassLevel": 3,
+      "primaryAbilities": [
+        "dexterity"
+      ],
+      "savingThrows": [
+        "dexterity",
+        "intelligence"
+      ],
+      "skillChoices": {
+        "id": "rogue-skills",
+        "label": "Rogue skills",
+        "choose": 4,
+        "options": [
+          {
+            "id": "acrobatics",
+            "label": "Acrobatics",
+            "type": "skill"
+          },
+          {
+            "id": "athletics",
+            "label": "Athletics",
+            "type": "skill"
+          },
+          {
+            "id": "deception",
+            "label": "Deception",
+            "type": "skill"
+          },
+          {
+            "id": "insight",
+            "label": "Insight",
+            "type": "skill"
+          },
+          {
+            "id": "intimidation",
+            "label": "Intimidation",
+            "type": "skill"
+          },
+          {
+            "id": "investigation",
+            "label": "Investigation",
+            "type": "skill"
+          },
+          {
+            "id": "perception",
+            "label": "Perception",
+            "type": "skill"
+          },
+          {
+            "id": "performance",
+            "label": "Performance",
+            "type": "skill"
+          },
+          {
+            "id": "persuasion",
+            "label": "Persuasion",
+            "type": "skill"
+          },
+          {
+            "id": "sleightOfHand",
+            "label": "Sleight Of Hand",
+            "type": "skill"
+          },
+          {
+            "id": "stealth",
+            "label": "Stealth",
+            "type": "skill"
+          }
+        ]
+      },
+      "armorProficiencies": [
+        "Light armor"
+      ],
+      "weaponProficiencies": [
+        "Simple weapons",
+        "Hand crossbows",
+        "Longswords",
+        "Rapiers",
+        "Shortswords"
+      ],
+      "toolProficiencies": [
+        "Thieves' tools"
+      ],
+      "equipmentOptions": [
+        "rapier",
+        "shortbow",
+        "burglars-pack"
+      ],
+      "subclasses": [
+        "thief",
+        "assassin",
+        "arcane-trickster"
+      ],
+      "spellcasting": {
+        "progression": "none",
+        "ability": null,
+        "preparesFromClassList": false
+      },
+      "features": [
+        {
+          "level": 1,
+          "name": "Expertise",
+          "text": {
+            "short": "Expertise placeholder summary.",
+            "legalStatus": "open"
+          }
+        },
+        {
+          "level": 1,
+          "name": "Sneak Attack",
+          "text": {
+            "short": "Sneak Attack placeholder summary.",
+            "legalStatus": "open"
+          }
+        },
+        {
+          "level": 1,
+          "name": "Thieves' Cant",
+          "text": {
+            "short": "Thieves' Cant placeholder summary.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sorcerer",
+      "name": "Sorcerer",
+      "source": "PHB-compatible starter catalog",
+      "hitDie": 6,
+      "subclassLevel": 1,
+      "primaryAbilities": [
+        "charisma"
+      ],
+      "savingThrows": [
+        "constitution",
+        "charisma"
+      ],
+      "skillChoices": {
+        "id": "sorcerer-skills",
+        "label": "Sorcerer skills",
+        "choose": 2,
+        "options": [
+          {
+            "id": "arcana",
+            "label": "Arcana",
+            "type": "skill"
+          },
+          {
+            "id": "deception",
+            "label": "Deception",
+            "type": "skill"
+          },
+          {
+            "id": "insight",
+            "label": "Insight",
+            "type": "skill"
+          },
+          {
+            "id": "intimidation",
+            "label": "Intimidation",
+            "type": "skill"
+          },
+          {
+            "id": "persuasion",
+            "label": "Persuasion",
+            "type": "skill"
+          },
+          {
+            "id": "religion",
+            "label": "Religion",
+            "type": "skill"
+          }
+        ]
+      },
+      "armorProficiencies": [],
+      "weaponProficiencies": [
+        "Daggers",
+        "Darts",
+        "Slings",
+        "Quarterstaffs",
+        "Light crossbows"
+      ],
+      "toolProficiencies": [],
+      "equipmentOptions": [
+        "light-crossbow",
+        "component-pouch",
+        "dungeoneers-pack"
+      ],
+      "subclasses": [
+        "draconic-bloodline",
+        "wild-magic"
+      ],
+      "spellcasting": {
+        "progression": "full",
+        "ability": "charisma",
+        "preparesFromClassList": false
+      },
+      "features": [
+        {
+          "level": 1,
+          "name": "Spellcasting",
+          "text": {
+            "short": "Spellcasting placeholder summary.",
+            "legalStatus": "open"
+          }
+        },
+        {
+          "level": 1,
+          "name": "Sorcerous Origin",
+          "text": {
+            "short": "Sorcerous Origin placeholder summary.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "warlock",
+      "name": "Warlock",
+      "source": "PHB-compatible starter catalog",
+      "hitDie": 8,
+      "subclassLevel": 1,
+      "primaryAbilities": [
+        "charisma"
+      ],
+      "savingThrows": [
+        "wisdom",
+        "charisma"
+      ],
+      "skillChoices": {
+        "id": "warlock-skills",
+        "label": "Warlock skills",
+        "choose": 2,
+        "options": [
+          {
+            "id": "arcana",
+            "label": "Arcana",
+            "type": "skill"
+          },
+          {
+            "id": "deception",
+            "label": "Deception",
+            "type": "skill"
+          },
+          {
+            "id": "history",
+            "label": "History",
+            "type": "skill"
+          },
+          {
+            "id": "intimidation",
+            "label": "Intimidation",
+            "type": "skill"
+          },
+          {
+            "id": "investigation",
+            "label": "Investigation",
+            "type": "skill"
+          },
+          {
+            "id": "nature",
+            "label": "Nature",
+            "type": "skill"
+          },
+          {
+            "id": "religion",
+            "label": "Religion",
+            "type": "skill"
+          }
+        ]
+      },
+      "armorProficiencies": [
+        "Light armor"
+      ],
+      "weaponProficiencies": [
+        "Simple weapons"
+      ],
+      "toolProficiencies": [],
+      "equipmentOptions": [
+        "light-crossbow",
+        "component-pouch",
+        "scholars-pack"
+      ],
+      "subclasses": [
+        "the-archfey",
+        "the-fiend",
+        "the-great-old-one"
+      ],
+      "spellcasting": {
+        "progression": "full",
+        "ability": "charisma",
+        "preparesFromClassList": false
+      },
+      "features": [
+        {
+          "level": 1,
+          "name": "Otherworldly Patron",
+          "text": {
+            "short": "Otherworldly Patron placeholder summary.",
+            "legalStatus": "open"
+          }
+        },
+        {
+          "level": 1,
+          "name": "Pact Magic",
+          "text": {
+            "short": "Pact Magic placeholder summary.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wizard",
+      "name": "Wizard",
+      "source": "PHB-compatible starter catalog",
+      "hitDie": 6,
+      "subclassLevel": 2,
+      "primaryAbilities": [
+        "intelligence"
+      ],
+      "savingThrows": [
+        "intelligence",
+        "wisdom"
+      ],
+      "skillChoices": {
+        "id": "wizard-skills",
+        "label": "Wizard skills",
+        "choose": 2,
+        "options": [
+          {
+            "id": "arcana",
+            "label": "Arcana",
+            "type": "skill"
+          },
+          {
+            "id": "history",
+            "label": "History",
+            "type": "skill"
+          },
+          {
+            "id": "insight",
+            "label": "Insight",
+            "type": "skill"
+          },
+          {
+            "id": "investigation",
+            "label": "Investigation",
+            "type": "skill"
+          },
+          {
+            "id": "medicine",
+            "label": "Medicine",
+            "type": "skill"
+          },
+          {
+            "id": "religion",
+            "label": "Religion",
+            "type": "skill"
+          }
+        ]
+      },
+      "armorProficiencies": [],
+      "weaponProficiencies": [
+        "Daggers",
+        "Darts",
+        "Slings",
+        "Quarterstaffs",
+        "Light crossbows"
+      ],
+      "toolProficiencies": [],
+      "equipmentOptions": [
+        "quarterstaff",
+        "spellbook",
+        "scholars-pack"
+      ],
+      "subclasses": [
+        "school-of-abjuration",
+        "school-of-conjuration",
+        "school-of-divination",
+        "school-of-enchantment",
+        "school-of-evocation",
+        "school-of-illusion",
+        "school-of-necromancy",
+        "school-of-transmutation"
+      ],
+      "spellcasting": {
+        "progression": "full",
+        "ability": "intelligence",
+        "preparesFromClassList": true
+      },
+      "features": [
+        {
+          "level": 1,
+          "name": "Spellcasting",
+          "text": {
+            "short": "Spellcasting placeholder summary.",
+            "legalStatus": "open"
+          }
+        },
+        {
+          "level": 1,
+          "name": "Arcane Recovery",
+          "text": {
+            "short": "Arcane Recovery placeholder summary.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    }
+  ],
+  "subclasses": [
+    {
+      "id": "path-of-the-berserker",
+      "classId": "barbarian",
+      "name": "Path of the Berserker",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 3,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 3,
+          "name": "Path of the Berserker feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "path-of-the-totem-warrior",
+      "classId": "barbarian",
+      "name": "Path of the Totem Warrior",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 3,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 3,
+          "name": "Path of the Totem Warrior feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "college-of-lore",
+      "classId": "bard",
+      "name": "College of Lore",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 3,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 3,
+          "name": "College of Lore feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "college-of-valor",
+      "classId": "bard",
+      "name": "College of Valor",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 3,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 3,
+          "name": "College of Valor feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "knowledge-domain",
+      "classId": "cleric",
+      "name": "Knowledge Domain",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 1,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 1,
+          "name": "Knowledge Domain feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "life-domain",
+      "classId": "cleric",
+      "name": "Life Domain",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 1,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 1,
+          "name": "Life Domain feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "light-domain",
+      "classId": "cleric",
+      "name": "Light Domain",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 1,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 1,
+          "name": "Light Domain feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nature-domain",
+      "classId": "cleric",
+      "name": "Nature Domain",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 1,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 1,
+          "name": "Nature Domain feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tempest-domain",
+      "classId": "cleric",
+      "name": "Tempest Domain",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 1,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 1,
+          "name": "Tempest Domain feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "trickery-domain",
+      "classId": "cleric",
+      "name": "Trickery Domain",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 1,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 1,
+          "name": "Trickery Domain feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "war-domain",
+      "classId": "cleric",
+      "name": "War Domain",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 1,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 1,
+          "name": "War Domain feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "circle-of-the-land",
+      "classId": "druid",
+      "name": "Circle of the Land",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 2,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 2,
+          "name": "Circle of the Land feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "circle-of-the-moon",
+      "classId": "druid",
+      "name": "Circle of the Moon",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 2,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 2,
+          "name": "Circle of the Moon feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "champion",
+      "classId": "fighter",
+      "name": "Champion",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 3,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 3,
+          "name": "Champion feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "battle-master",
+      "classId": "fighter",
+      "name": "Battle Master",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 3,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 3,
+          "name": "Battle Master feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eldritch-knight",
+      "classId": "fighter",
+      "name": "Eldritch Knight",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 3,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 3,
+          "name": "Eldritch Knight feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "way-of-the-open-hand",
+      "classId": "monk",
+      "name": "Way of the Open Hand",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 3,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 3,
+          "name": "Way of the Open Hand feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "way-of-shadow",
+      "classId": "monk",
+      "name": "Way of Shadow",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 3,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 3,
+          "name": "Way of Shadow feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "way-of-the-four-elements",
+      "classId": "monk",
+      "name": "Way of the Four Elements",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 3,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 3,
+          "name": "Way of the Four Elements feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "oath-of-devotion",
+      "classId": "paladin",
+      "name": "Oath of Devotion",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 3,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 3,
+          "name": "Oath of Devotion feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "oath-of-the-ancients",
+      "classId": "paladin",
+      "name": "Oath of the Ancients",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 3,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 3,
+          "name": "Oath of the Ancients feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "oath-of-vengeance",
+      "classId": "paladin",
+      "name": "Oath of Vengeance",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 3,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 3,
+          "name": "Oath of Vengeance feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hunter",
+      "classId": "ranger",
+      "name": "Hunter",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 3,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 3,
+          "name": "Hunter feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "beast-master",
+      "classId": "ranger",
+      "name": "Beast Master",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 3,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 3,
+          "name": "Beast Master feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "thief",
+      "classId": "rogue",
+      "name": "Thief",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 3,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 3,
+          "name": "Thief feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "assassin",
+      "classId": "rogue",
+      "name": "Assassin",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 3,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 3,
+          "name": "Assassin feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "arcane-trickster",
+      "classId": "rogue",
+      "name": "Arcane Trickster",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 3,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 3,
+          "name": "Arcane Trickster feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "draconic-bloodline",
+      "classId": "sorcerer",
+      "name": "Draconic Bloodline",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 1,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 1,
+          "name": "Draconic Bloodline feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wild-magic",
+      "classId": "sorcerer",
+      "name": "Wild Magic",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 1,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 1,
+          "name": "Wild Magic feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "the-archfey",
+      "classId": "warlock",
+      "name": "The Archfey",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 1,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 1,
+          "name": "The Archfey feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "the-fiend",
+      "classId": "warlock",
+      "name": "The Fiend",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 1,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 1,
+          "name": "The Fiend feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "the-great-old-one",
+      "classId": "warlock",
+      "name": "The Great Old One",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 1,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 1,
+          "name": "The Great Old One feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "school-of-abjuration",
+      "classId": "wizard",
+      "name": "School of Abjuration",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 2,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 2,
+          "name": "School of Abjuration feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "school-of-conjuration",
+      "classId": "wizard",
+      "name": "School of Conjuration",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 2,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 2,
+          "name": "School of Conjuration feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "school-of-divination",
+      "classId": "wizard",
+      "name": "School of Divination",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 2,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 2,
+          "name": "School of Divination feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "school-of-enchantment",
+      "classId": "wizard",
+      "name": "School of Enchantment",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 2,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 2,
+          "name": "School of Enchantment feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "school-of-evocation",
+      "classId": "wizard",
+      "name": "School of Evocation",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 2,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 2,
+          "name": "School of Evocation feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "school-of-illusion",
+      "classId": "wizard",
+      "name": "School of Illusion",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 2,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 2,
+          "name": "School of Illusion feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "school-of-necromancy",
+      "classId": "wizard",
+      "name": "School of Necromancy",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 2,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 2,
+          "name": "School of Necromancy feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "school-of-transmutation",
+      "classId": "wizard",
+      "name": "School of Transmutation",
+      "source": "PHB-compatible starter catalog",
+      "unlockLevel": 2,
+      "text": {
+        "short": "Subclass shell with owner-completable feature text.",
+        "legalStatus": "open"
+      },
+      "features": [
+        {
+          "level": 2,
+          "name": "School of Transmutation feature set",
+          "text": {
+            "short": "Subclass feature placeholders unlock here.",
+            "legalStatus": "open"
+          }
+        }
+      ]
+    }
+  ],
+  "backgrounds": [
+    {
+      "id": "acolyte",
+      "name": "Acolyte",
+      "source": "PHB-compatible starter catalog",
+      "skillProficiencies": [
+        "insight",
+        "religion"
+      ],
+      "toolProficiencies": [],
+      "languages": [
+        "Choice",
+        "Choice"
+      ],
+      "equipment": [
+        "holy-symbol",
+        "prayer-book"
+      ],
+      "trait": {
+        "short": "Faith-community shelter and temple ties.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "charlatan",
+      "name": "Charlatan",
+      "source": "PHB-compatible starter catalog",
+      "skillProficiencies": [
+        "deception",
+        "sleightOfHand"
+      ],
+      "toolProficiencies": [
+        "Disguise kit",
+        "Forgery kit"
+      ],
+      "languages": [],
+      "equipment": [
+        "fine-clothes",
+        "disguise-kit"
+      ],
+      "trait": {
+        "short": "False identity and confidence-game support.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "criminal",
+      "name": "Criminal",
+      "source": "PHB-compatible starter catalog",
+      "skillProficiencies": [
+        "deception",
+        "stealth"
+      ],
+      "toolProficiencies": [
+        "Gaming set",
+        "Thieves' tools"
+      ],
+      "languages": [],
+      "equipment": [
+        "crowbar",
+        "dark-clothes"
+      ],
+      "trait": {
+        "short": "Criminal contact network.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "entertainer",
+      "name": "Entertainer",
+      "source": "PHB-compatible starter catalog",
+      "skillProficiencies": [
+        "acrobatics",
+        "performance"
+      ],
+      "toolProficiencies": [
+        "Disguise kit",
+        "Musical instrument"
+      ],
+      "languages": [],
+      "equipment": [
+        "costume",
+        "musical-instrument"
+      ],
+      "trait": {
+        "short": "By popular demand lifestyle access.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "folk-hero",
+      "name": "Folk Hero",
+      "source": "PHB-compatible starter catalog",
+      "skillProficiencies": [
+        "animalHandling",
+        "survival"
+      ],
+      "toolProficiencies": [
+        "Artisan's tools",
+        "Vehicles (land)"
+      ],
+      "languages": [],
+      "equipment": [
+        "artisan-tools",
+        "shovel"
+      ],
+      "trait": {
+        "short": "Rustic hospitality and local goodwill.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "guild-artisan",
+      "name": "Guild Artisan",
+      "source": "PHB-compatible starter catalog",
+      "skillProficiencies": [
+        "insight",
+        "persuasion"
+      ],
+      "toolProficiencies": [
+        "Artisan's tools"
+      ],
+      "languages": [
+        "Choice"
+      ],
+      "equipment": [
+        "artisan-tools",
+        "letter-of-introduction"
+      ],
+      "trait": {
+        "short": "Guild membership and trade support.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "hermit",
+      "name": "Hermit",
+      "source": "PHB-compatible starter catalog",
+      "skillProficiencies": [
+        "medicine",
+        "religion"
+      ],
+      "toolProficiencies": [
+        "Herbalism kit"
+      ],
+      "languages": [
+        "Choice"
+      ],
+      "equipment": [
+        "scroll-case",
+        "winter-blanket"
+      ],
+      "trait": {
+        "short": "Discovery tied to isolation and study.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "noble",
+      "name": "Noble",
+      "source": "PHB-compatible starter catalog",
+      "skillProficiencies": [
+        "history",
+        "persuasion"
+      ],
+      "toolProficiencies": [
+        "Gaming set"
+      ],
+      "languages": [
+        "Choice"
+      ],
+      "equipment": [
+        "fine-clothes",
+        "signet-ring"
+      ],
+      "trait": {
+        "short": "Position of privilege.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "outlander",
+      "name": "Outlander",
+      "source": "PHB-compatible starter catalog",
+      "skillProficiencies": [
+        "athletics",
+        "survival"
+      ],
+      "toolProficiencies": [
+        "Musical instrument"
+      ],
+      "languages": [
+        "Choice"
+      ],
+      "equipment": [
+        "staff",
+        "hunting-trap"
+      ],
+      "trait": {
+        "short": "Wanderer memory for maps and terrain.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "sage",
+      "name": "Sage",
+      "source": "PHB-compatible starter catalog",
+      "skillProficiencies": [
+        "arcana",
+        "history"
+      ],
+      "toolProficiencies": [],
+      "languages": [
+        "Choice",
+        "Choice"
+      ],
+      "equipment": [
+        "ink-bottle",
+        "quill"
+      ],
+      "trait": {
+        "short": "Researcher access to knowledge paths.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "sailor",
+      "name": "Sailor",
+      "source": "PHB-compatible starter catalog",
+      "skillProficiencies": [
+        "athletics",
+        "perception"
+      ],
+      "toolProficiencies": [
+        "Navigator's tools",
+        "Vehicles (water)"
+      ],
+      "languages": [],
+      "equipment": [
+        "belaying-pin",
+        "silk-rope"
+      ],
+      "trait": {
+        "short": "Ship's passage and seafaring credibility.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "soldier",
+      "name": "Soldier",
+      "source": "PHB-compatible starter catalog",
+      "skillProficiencies": [
+        "athletics",
+        "intimidation"
+      ],
+      "toolProficiencies": [
+        "Gaming set",
+        "Vehicles (land)"
+      ],
+      "languages": [],
+      "equipment": [
+        "insignia",
+        "dice-set"
+      ],
+      "trait": {
+        "short": "Military rank and command familiarity.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "urchin",
+      "name": "Urchin",
+      "source": "PHB-compatible starter catalog",
+      "skillProficiencies": [
+        "sleightOfHand",
+        "stealth"
+      ],
+      "toolProficiencies": [
+        "Disguise kit",
+        "Thieves' tools"
+      ],
+      "languages": [],
+      "equipment": [
+        "small-knife",
+        "map-of-city"
+      ],
+      "trait": {
+        "short": "City secrets and movement through streets.",
+        "legalStatus": "open"
+      }
+    }
+  ],
+  "feats": [
+    {
+      "id": "actor",
+      "name": "Actor",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Actor feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "alert",
+      "name": "Alert",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Alert feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "athlete",
+      "name": "Athlete",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Athlete feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "charger",
+      "name": "Charger",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Charger feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "crossbow-expert",
+      "name": "Crossbow Expert",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Crossbow Expert feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "defensive-duelist",
+      "name": "Defensive Duelist",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Defensive Duelist feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "dual-wielder",
+      "name": "Dual Wielder",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Dual Wielder feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "dungeon-delver",
+      "name": "Dungeon Delver",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Dungeon Delver feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "durable",
+      "name": "Durable",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Durable feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "elemental-adept",
+      "name": "Elemental Adept",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Elemental Adept feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "great-weapon-master",
+      "name": "Great Weapon Master",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Great Weapon Master feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "healer",
+      "name": "Healer",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Healer feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "heavily-armored",
+      "name": "Heavily Armored",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Heavily Armored feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "heavy-armor-master",
+      "name": "Heavy Armor Master",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Heavy Armor Master feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "inspiring-leader",
+      "name": "Inspiring Leader",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Inspiring Leader feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "keen-mind",
+      "name": "Keen Mind",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Keen Mind feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "lightly-armored",
+      "name": "Lightly Armored",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Lightly Armored feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "linguist",
+      "name": "Linguist",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Linguist feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "lucky",
+      "name": "Lucky",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Lucky feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "mage-slayer",
+      "name": "Mage Slayer",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Mage Slayer feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "magic-initiate",
+      "name": "Magic Initiate",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Magic Initiate feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "martial-adept",
+      "name": "Martial Adept",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Martial Adept feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "medium-armor-master",
+      "name": "Medium Armor Master",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Medium Armor Master feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "mobile",
+      "name": "Mobile",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Mobile feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "moderately-armored",
+      "name": "Moderately Armored",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Moderately Armored feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "mounted-combatant",
+      "name": "Mounted Combatant",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Mounted Combatant feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "observant",
+      "name": "Observant",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Observant feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "polearm-master",
+      "name": "Polearm Master",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Polearm Master feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "resilient",
+      "name": "Resilient",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Resilient feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "ritual-caster",
+      "name": "Ritual Caster",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Ritual Caster feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "savage-attacker",
+      "name": "Savage Attacker",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Savage Attacker feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "sentinel",
+      "name": "Sentinel",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Sentinel feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "sharpshooter",
+      "name": "Sharpshooter",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Sharpshooter feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "shield-master",
+      "name": "Shield Master",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Shield Master feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "skilled",
+      "name": "Skilled",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Skilled feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "skulker",
+      "name": "Skulker",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Skulker feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "spell-sniper",
+      "name": "Spell Sniper",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Spell Sniper feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "tavern-brawler",
+      "name": "Tavern Brawler",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Tavern Brawler feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "tough",
+      "name": "Tough",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Tough feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "war-caster",
+      "name": "War Caster",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "War Caster feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    },
+    {
+      "id": "weapon-master",
+      "name": "Weapon Master",
+      "source": "PHB-compatible starter catalog",
+      "summary": {
+        "short": "Weapon Master feat placeholder with owner-supplied mechanics.",
+        "legalStatus": "open"
+      }
+    }
+  ],
+  "spells": [
+    {
+      "id": "fire-bolt",
+      "name": "Fire Bolt",
+      "level": 0,
+      "school": "Evocation",
+      "classes": [
+        "wizard",
+        "sorcerer"
+      ],
+      "text": {
+        "short": "Ranged fire cantrip placeholder.",
+        "legalStatus": "open"
+      },
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "light",
+      "name": "Light",
+      "level": 0,
+      "school": "Evocation",
+      "classes": [
+        "bard",
+        "cleric",
+        "wizard",
+        "sorcerer"
+      ],
+      "text": {
+        "short": "Creates bright light on an object.",
+        "legalStatus": "open"
+      },
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "guidance",
+      "name": "Guidance",
+      "level": 0,
+      "school": "Divination",
+      "classes": [
+        "cleric",
+        "druid"
+      ],
+      "text": {
+        "short": "Adds a small bonus to one ability check.",
+        "legalStatus": "open"
+      },
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "cure-wounds",
+      "name": "Cure Wounds",
+      "level": 1,
+      "school": "Evocation",
+      "classes": [
+        "bard",
+        "cleric",
+        "druid",
+        "paladin",
+        "ranger"
+      ],
+      "text": {
+        "short": "Restorative touch placeholder.",
+        "legalStatus": "open"
+      },
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "bless",
+      "name": "Bless",
+      "level": 1,
+      "school": "Enchantment",
+      "classes": [
+        "cleric",
+        "paladin"
+      ],
+      "text": {
+        "short": "Bolsters attacks and saving throws.",
+        "legalStatus": "open"
+      },
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "magic-missile",
+      "name": "Magic Missile",
+      "level": 1,
+      "school": "Evocation",
+      "classes": [
+        "wizard",
+        "sorcerer"
+      ],
+      "text": {
+        "short": "Creates force darts that hit automatically.",
+        "legalStatus": "open"
+      },
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "mage-armor",
+      "name": "Mage Armor",
+      "level": 1,
+      "school": "Abjuration",
+      "classes": [
+        "wizard",
+        "sorcerer"
+      ],
+      "text": {
+        "short": "Sets a protective AC formula.",
+        "legalStatus": "open"
+      },
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "hex",
+      "name": "Hex",
+      "level": 1,
+      "school": "Enchantment",
+      "classes": [
+        "warlock"
+      ],
+      "text": {
+        "short": "Marks a target for extra curse damage.",
+        "legalStatus": "open"
+      },
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "eldritch-blast",
+      "name": "Eldritch Blast",
+      "level": 0,
+      "school": "Evocation",
+      "classes": [
+        "warlock"
+      ],
+      "text": {
+        "short": "Signature force cantrip placeholder.",
+        "legalStatus": "open"
+      },
+      "source": "PHB-compatible starter catalog"
+    }
+  ],
+  "items": [
+    {
+      "id": "padded",
+      "name": "Padded",
+      "kind": "armor",
+      "armorClass": 11,
+      "armorDexCap": null,
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "leather",
+      "name": "Leather",
+      "kind": "armor",
+      "armorClass": 11,
+      "armorDexCap": null,
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "studded-leather",
+      "name": "Studded Leather",
+      "kind": "armor",
+      "armorClass": 12,
+      "armorDexCap": null,
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "hide",
+      "name": "Hide",
+      "kind": "armor",
+      "armorClass": 12,
+      "armorDexCap": 2,
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "chain-shirt",
+      "name": "Chain Shirt",
+      "kind": "armor",
+      "armorClass": 13,
+      "armorDexCap": 2,
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "scale-mail",
+      "name": "Scale Mail",
+      "kind": "armor",
+      "armorClass": 14,
+      "armorDexCap": 2,
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "breastplate",
+      "name": "Breastplate",
+      "kind": "armor",
+      "armorClass": 14,
+      "armorDexCap": 2,
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "half-plate",
+      "name": "Half Plate",
+      "kind": "armor",
+      "armorClass": 15,
+      "armorDexCap": 2,
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "ring-mail",
+      "name": "Ring Mail",
+      "kind": "armor",
+      "armorClass": 14,
+      "armorDexCap": 0,
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "chain-mail",
+      "name": "Chain Mail",
+      "kind": "armor",
+      "armorClass": 16,
+      "armorDexCap": 0,
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "splint",
+      "name": "Splint",
+      "kind": "armor",
+      "armorClass": 17,
+      "armorDexCap": 0,
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "plate",
+      "name": "Plate",
+      "kind": "armor",
+      "armorClass": 18,
+      "armorDexCap": 0,
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "shield",
+      "name": "Shield",
+      "kind": "armor",
+      "armorClass": 2,
+      "armorDexCap": 0,
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "club",
+      "name": "Club",
+      "kind": "weapon",
+      "damage": "1d4 bludgeoning",
+      "properties": [],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "dagger",
+      "name": "Dagger",
+      "kind": "weapon",
+      "damage": "1d4 piercing",
+      "properties": [
+        "Finesse",
+        "Light",
+        "Thrown (20/60)"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "greatclub",
+      "name": "Greatclub",
+      "kind": "weapon",
+      "damage": "1d8 bludgeoning",
+      "properties": [
+        "Two-Handed"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "handaxe",
+      "name": "Handaxe",
+      "kind": "weapon",
+      "damage": "1d6 slashing",
+      "properties": [
+        "Light",
+        "Thrown (20/60)"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "javelin",
+      "name": "Javelin",
+      "kind": "weapon",
+      "damage": "1d6 piercing",
+      "properties": [
+        "Thrown (30/120)"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "light-hammer",
+      "name": "Light Hammer",
+      "kind": "weapon",
+      "damage": "1d4 bludgeoning",
+      "properties": [
+        "Light",
+        "Thrown (20/60)"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "mace",
+      "name": "Mace",
+      "kind": "weapon",
+      "damage": "1d6 bludgeoning",
+      "properties": [],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "quarterstaff",
+      "name": "Quarterstaff",
+      "kind": "weapon",
+      "damage": "1d6 bludgeoning",
+      "properties": [
+        "Versatile (1d8)"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "sickle",
+      "name": "Sickle",
+      "kind": "weapon",
+      "damage": "1d4 slashing",
+      "properties": [
+        "Light"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "spear",
+      "name": "Spear",
+      "kind": "weapon",
+      "damage": "1d6 piercing",
+      "properties": [
+        "Thrown (20/60)",
+        "Versatile (1d8)"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "light-crossbow",
+      "name": "Light Crossbow",
+      "kind": "weapon",
+      "damage": "1d8 piercing",
+      "properties": [
+        "Ammunition (80/320)",
+        "Loading",
+        "Two-Handed"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "dart",
+      "name": "Dart",
+      "kind": "weapon",
+      "damage": "1d4 piercing",
+      "properties": [
+        "Finesse",
+        "Thrown (20/60)"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "shortbow",
+      "name": "Shortbow",
+      "kind": "weapon",
+      "damage": "1d6 piercing",
+      "properties": [
+        "Ammunition (80/320)",
+        "Two-Handed"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "sling",
+      "name": "Sling",
+      "kind": "weapon",
+      "damage": "1d4 bludgeoning",
+      "properties": [
+        "Ammunition (30/120)"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "battleaxe",
+      "name": "Battleaxe",
+      "kind": "weapon",
+      "damage": "1d8 slashing",
+      "properties": [
+        "Versatile (1d10)"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "flail",
+      "name": "Flail",
+      "kind": "weapon",
+      "damage": "1d8 bludgeoning",
+      "properties": [],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "glaive",
+      "name": "Glaive",
+      "kind": "weapon",
+      "damage": "1d10 slashing",
+      "properties": [
+        "Heavy",
+        "Reach",
+        "Two-Handed"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "greataxe",
+      "name": "Greataxe",
+      "kind": "weapon",
+      "damage": "1d12 slashing",
+      "properties": [
+        "Heavy",
+        "Two-Handed"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "greatsword",
+      "name": "Greatsword",
+      "kind": "weapon",
+      "damage": "2d6 slashing",
+      "properties": [
+        "Heavy",
+        "Two-Handed"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "halberd",
+      "name": "Halberd",
+      "kind": "weapon",
+      "damage": "1d10 slashing",
+      "properties": [
+        "Heavy",
+        "Reach",
+        "Two-Handed"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "lance",
+      "name": "Lance",
+      "kind": "weapon",
+      "damage": "1d12 piercing",
+      "properties": [
+        "Reach",
+        "Special"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "longsword",
+      "name": "Longsword",
+      "kind": "weapon",
+      "damage": "1d8 slashing",
+      "properties": [
+        "Versatile (1d10)"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "maul",
+      "name": "Maul",
+      "kind": "weapon",
+      "damage": "2d6 bludgeoning",
+      "properties": [
+        "Heavy",
+        "Two-Handed"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "morningstar",
+      "name": "Morningstar",
+      "kind": "weapon",
+      "damage": "1d8 piercing",
+      "properties": [],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "pike",
+      "name": "Pike",
+      "kind": "weapon",
+      "damage": "1d10 piercing",
+      "properties": [
+        "Heavy",
+        "Reach",
+        "Two-Handed"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "rapier",
+      "name": "Rapier",
+      "kind": "weapon",
+      "damage": "1d8 piercing",
+      "properties": [
+        "Finesse"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "scimitar",
+      "name": "Scimitar",
+      "kind": "weapon",
+      "damage": "1d6 slashing",
+      "properties": [
+        "Finesse",
+        "Light"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "shortsword",
+      "name": "Shortsword",
+      "kind": "weapon",
+      "damage": "1d6 piercing",
+      "properties": [
+        "Finesse",
+        "Light"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "trident",
+      "name": "Trident",
+      "kind": "weapon",
+      "damage": "1d6 piercing",
+      "properties": [
+        "Thrown (20/60)",
+        "Versatile (1d8)"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "war-pick",
+      "name": "War Pick",
+      "kind": "weapon",
+      "damage": "1d8 piercing",
+      "properties": [],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "warhammer",
+      "name": "Warhammer",
+      "kind": "weapon",
+      "damage": "1d8 bludgeoning",
+      "properties": [
+        "Versatile (1d10)"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "whip",
+      "name": "Whip",
+      "kind": "weapon",
+      "damage": "1d4 slashing",
+      "properties": [
+        "Finesse",
+        "Reach"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "blowgun",
+      "name": "Blowgun",
+      "kind": "weapon",
+      "damage": "1 piercing",
+      "properties": [
+        "Ammunition (25/100)",
+        "Loading"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "hand-crossbow",
+      "name": "Hand Crossbow",
+      "kind": "weapon",
+      "damage": "1d6 piercing",
+      "properties": [
+        "Ammunition (30/120)",
+        "Light",
+        "Loading"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "heavy-crossbow",
+      "name": "Heavy Crossbow",
+      "kind": "weapon",
+      "damage": "1d10 piercing",
+      "properties": [
+        "Ammunition (100/400)",
+        "Heavy",
+        "Loading",
+        "Two-Handed"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "longbow",
+      "name": "Longbow",
+      "kind": "weapon",
+      "damage": "1d8 piercing",
+      "properties": [
+        "Ammunition (150/600)",
+        "Heavy",
+        "Two-Handed"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "net",
+      "name": "Net",
+      "kind": "weapon",
+      "damage": "0",
+      "properties": [
+        "Special",
+        "Thrown (5/15)"
+      ],
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "burglar's-pack",
+      "name": "Burglar's Pack",
+      "kind": "pack",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "diplomat's-pack",
+      "name": "Diplomat's Pack",
+      "kind": "pack",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "dungeoneer's-pack",
+      "name": "Dungeoneer's Pack",
+      "kind": "pack",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "entertainer's-pack",
+      "name": "Entertainer's Pack",
+      "kind": "pack",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "explorer's-pack",
+      "name": "Explorer's Pack",
+      "kind": "pack",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "priest's-pack",
+      "name": "Priest's Pack",
+      "kind": "pack",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "scholar's-pack",
+      "name": "Scholar's Pack",
+      "kind": "pack",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "spellbook",
+      "name": "Spellbook",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "holy-symbol",
+      "name": "Holy Symbol",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "prayer-book",
+      "name": "Prayer Book",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "insignia",
+      "name": "Insignia",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "dice-set",
+      "name": "Dice Set",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "ink-bottle",
+      "name": "Ink Bottle",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "quill",
+      "name": "Quill",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "fine-clothes",
+      "name": "Fine Clothes",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "disguise-kit",
+      "name": "Disguise Kit",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "crowbar",
+      "name": "Crowbar",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "dark-clothes",
+      "name": "Dark Clothes",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "musical-instrument",
+      "name": "Musical Instrument",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "artisan-tools",
+      "name": "Artisan Tools",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "shovel",
+      "name": "Shovel",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "letter-of-introduction",
+      "name": "Letter Of Introduction",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "scroll-case",
+      "name": "Scroll Case",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "winter-blanket",
+      "name": "Winter Blanket",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "signet-ring",
+      "name": "Signet Ring",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "staff",
+      "name": "Staff",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "hunting-trap",
+      "name": "Hunting Trap",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "belaying-pin",
+      "name": "Belaying Pin",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "silk-rope",
+      "name": "Silk Rope",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "small-knife",
+      "name": "Small Knife",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "map-of-city",
+      "name": "Map Of City",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "component-pouch",
+      "name": "Component Pouch",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    },
+    {
+      "id": "wooden-shield",
+      "name": "Wooden Shield",
+      "kind": "gear",
+      "source": "PHB-compatible starter catalog"
+    }
+  ],
+  "languages": [
+    "Common",
+    "Dwarvish",
+    "Elvish",
+    "Giant",
+    "Gnomish",
+    "Goblin",
+    "Halfling",
+    "Orc",
+    "Draconic",
+    "Infernal",
+    "Celestial",
+    "Sylvan",
+    "Undercommon",
+    "Primordial"
+  ],
+  "optionalRules": [
+    {
+      "id": "variant-human",
+      "label": "Variant human feat and skill",
+      "description": "Adds the variant human option with a feat placeholder and bonus skill hook."
+    },
+    {
+      "id": "feats",
+      "label": "Feat selection shell",
+      "description": "Exposes legal-safe feat choices without bundling proprietary feature prose."
+    },
+    {
+      "id": "multiclass-shell",
+      "label": "Multiclass architecture shell",
+      "description": "Repository and computation layers are ready for future multi-class composition."
+    }
+  ]
+}

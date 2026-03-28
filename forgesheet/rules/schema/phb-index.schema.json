@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PHB Complete Engine Index",
+  "type": "object",
+  "required": ["metadata", "sections", "entities"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["engine", "edition", "expected_counts"]
+    },
+    "sections": {
+      "type": "array"
+    },
+    "entities": {
+      "type": "array"
+    }
+  }
+}

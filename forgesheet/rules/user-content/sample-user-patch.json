@@ -1,0 +1,23 @@
+{
+  "kind": "phb_complete_user_patch",
+  "entity_type": "feature",
+  "patches": [
+    {
+      "id": "fighter-feature-1-fighting-style",
+      "user_supplied_text": "",
+      "notes": "Enter owned book text or your own structured summary here.",
+      "verbatim_reference": "PHB chapter Classes, Fighter section",
+      "mechanical_effects": [
+        {
+          "type": "choice",
+          "target": "fighting-style",
+          "value": true,
+          "duration": null,
+          "condition": null,
+          "scaling": null,
+          "notes": "User may replace this placeholder with owned content."
+        }
+      ]
+    }
+  ]
+}

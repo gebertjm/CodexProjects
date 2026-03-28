@@ -1,0 +1,133 @@
+{
+  "generated_at": "2026-03-28T02:35:27.634Z",
+  "counts": {
+    "core_rules": 21,
+    "species": 9,
+    "subraces": 10,
+    "classes": 12,
+    "subclasses": 40,
+    "backgrounds": 13,
+    "feats": 41,
+    "weapons": 37,
+    "armor": 13,
+    "packs": 7,
+    "tools": 39,
+    "mounts": 8,
+    "vehicles": 11,
+    "conditions": 15,
+    "combat_topics": 25,
+    "adventuring_topics": 18,
+    "spellcasting_topics": 16,
+    "spells": 361
+  },
+  "checks": [
+    {
+      "id": "check-core_rules",
+      "label": "core_rules",
+      "expected": 21,
+      "status": "indexed"
+    },
+    {
+      "id": "check-species",
+      "label": "species",
+      "expected": 9,
+      "status": "indexed"
+    },
+    {
+      "id": "check-subraces",
+      "label": "subraces",
+      "expected": 10,
+      "status": "indexed"
+    },
+    {
+      "id": "check-classes",
+      "label": "classes",
+      "expected": 12,
+      "status": "indexed"
+    },
+    {
+      "id": "check-subclasses",
+      "label": "subclasses",
+      "expected": 40,
+      "status": "indexed"
+    },
+    {
+      "id": "check-backgrounds",
+      "label": "backgrounds",
+      "expected": 13,
+      "status": "indexed"
+    },
+    {
+      "id": "check-feats",
+      "label": "feats",
+      "expected": 41,
+      "status": "indexed"
+    },
+    {
+      "id": "check-weapons",
+      "label": "weapons",
+      "expected": 37,
+      "status": "indexed"
+    },
+    {
+      "id": "check-armor",
+      "label": "armor",
+      "expected": 13,
+      "status": "indexed"
+    },
+    {
+      "id": "check-packs",
+      "label": "packs",
+      "expected": 7,
+      "status": "indexed"
+    },
+    {
+      "id": "check-tools",
+      "label": "tools",
+      "expected": 39,
+      "status": "indexed"
+    },
+    {
+      "id": "check-mounts",
+      "label": "mounts",
+      "expected": 8,
+      "status": "indexed"
+    },
+    {
+      "id": "check-vehicles",
+      "label": "vehicles",
+      "expected": 11,
+      "status": "indexed"
+    },
+    {
+      "id": "check-conditions",
+      "label": "conditions",
+      "expected": 15,
+      "status": "indexed"
+    },
+    {
+      "id": "check-combat_topics",
+      "label": "combat_topics",
+      "expected": 25,
+      "status": "indexed"
+    },
+    {
+      "id": "check-adventuring_topics",
+      "label": "adventuring_topics",
+      "expected": 18,
+      "status": "indexed"
+    },
+    {
+      "id": "check-spellcasting_topics",
+      "label": "spellcasting_topics",
+      "expected": 16,
+      "status": "indexed"
+    },
+    {
+      "id": "check-spells",
+      "label": "spells",
+      "expected": 361,
+      "status": "indexed"
+    }
+  ]
+}

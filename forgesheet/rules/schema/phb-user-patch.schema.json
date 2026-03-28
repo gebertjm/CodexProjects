@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PHB Complete Engine User Patch",
+  "type": "object",
+  "required": ["kind", "entity_type", "patches"],
+  "properties": {
+    "kind": {
+      "const": "phb_complete_user_patch"
+    },
+    "entity_type": {
+      "type": "string"
+    },
+    "patches": {
+      "type": "array"
+    }
+  }
+}

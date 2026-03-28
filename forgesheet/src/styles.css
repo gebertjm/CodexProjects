@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Aptos, "Segoe UI", sans-serif;
+  color: #f5efdf;
+  background: #111318;
+  line-height: 1.5;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #111318;
+  color: #f5efdf;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.font-display {
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+}
+
+.panel {
+  @apply rounded-3xl border border-white/10 bg-forge-coal/95 bg-grain shadow-panel;
+}
+
+.panel-soft {
+  @apply rounded-3xl border border-white/10 bg-[#262a33] shadow-panel;
+}
+
+.text-gradient {
+  color: #f5efdf;
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.safe-theme,
+.safe-theme * {
+  filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  animation: none !important;
+  transition: none !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+.safe-theme .panel,
+.safe-theme .panel-soft {
+  background-color: #20242c !important;
+  background-image: none !important;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28) !important;
+}
+
+.safe-theme svg,
+.safe-theme img,
+.safe-theme canvas {
+  filter: none !important;
+}
+
+.safe-theme [class*="bg-white/[0.03]"],
+.safe-theme [class*="bg-white/[0.04]"],
+.safe-theme [class*="bg-white/[0.06]"],
+.safe-theme [class*="bg-white/10"],
+.safe-theme [class*="bg-white/65"],
+.safe-theme [class*="bg-white/70"],
+.safe-theme [class*="bg-white/75"],
+.safe-theme [class*="bg-black/10"],
+.safe-theme [class*="bg-black/15"],
+.safe-theme [class*="bg-black/20"] {
+  background-color: #20242c !important;
+}
+
+.safe-theme [class*="bg-forge-ember/10"],
+.safe-theme [class*="bg-forge-ember/20"] {
+  background-color: #3a2a20 !important;
+}
+
+.safe-theme [class*="text-white/45"],
+.safe-theme [class*="text-white/55"],
+.safe-theme [class*="text-white/60"],
+.safe-theme [class*="text-white/65"],
+.safe-theme [class*="text-white/70"],
+.safe-theme [class*="text-white/75"] {
+  color: #d5d8df !important;
+}
+
+.safe-theme [class*="hover:bg-white/10"],
+.safe-theme [class*="hover:bg-white/[0.06]"] {
+  background-color: #2a2f38 !important;
+}
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-panel {
+    box-shadow: none !important;
+    border: 1px solid #d0d0d0 !important;
+    background: white !important;
+    color: black !important;
+  }
+}
