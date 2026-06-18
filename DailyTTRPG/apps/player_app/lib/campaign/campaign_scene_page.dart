@@ -1026,15 +1026,18 @@ class _LatestSceneResult extends StatelessWidget {
           ],
           if (supporting.isNotEmpty || entry.safeMechanics.isNotEmpty) ...[
             const SizedBox(height: 8),
-            ExpansionTile(
-              tilePadding: EdgeInsets.zero,
-              childrenPadding: EdgeInsets.zero,
-              title: const Text('Result details'),
-              children: [
-                for (final text in supporting) _BulletText(text),
-                for (final text in entry.safeMechanics)
-                  _BulletText('Mechanic: $text'),
-              ],
+            Material(
+              type: MaterialType.transparency,
+              child: ExpansionTile(
+                tilePadding: EdgeInsets.zero,
+                childrenPadding: EdgeInsets.zero,
+                title: const Text('Result details'),
+                children: [
+                  for (final text in supporting) _BulletText(text),
+                  for (final text in entry.safeMechanics)
+                    _BulletText('Mechanic: $text'),
+                ],
+              ),
             ),
           ],
         ],

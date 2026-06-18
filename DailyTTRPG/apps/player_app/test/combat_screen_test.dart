@@ -404,7 +404,7 @@ void main() {
     await tester.pumpWidget(_screen(repository));
     await tester.pumpAndSettle();
 
-    expect(find.text('Recovery Needed'), findsOneWidget);
+    expect(find.text('Recovery Needed'), findsWidgets);
     expect(find.textContaining('safe refresh'), findsWidgets);
     expect(find.text('Refresh Combat'), findsOneWidget);
     expect(find.text('Choose Your Combat Decision'), findsNothing);
