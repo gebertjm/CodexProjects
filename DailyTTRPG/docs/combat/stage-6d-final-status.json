@@ -1,0 +1,167 @@
+{
+  "stage": "6D.19",
+  "title": "Final Regression Gate and Status",
+  "status": "NOT COMPLETE - VERIFICATION BLOCKED",
+  "generated_date": "2026-06-18",
+  "repository_context": {
+    "local_checkout": "C:/Users/Joshu/CodexProjects/CodexProjects-publish/DailyTTRPG",
+    "github_repository": "gebertjm/CodexProjects",
+    "branch": "codex/import-daily-ttrpg",
+    "base_import_commit": "ed5c37d95ac3c0a3d0225f67358dd72417f394d9",
+    "notes": "Stage 6D.19 artifacts were added after the initial GitHub import commit."
+  },
+  "source_of_truth": {
+    "adopted_master_specification": "docs/combat/STAGE_6D_0_EXISTING_COMBAT_SYSTEM_AUDIT_AND_MVP_SPECIFICATION.md",
+    "formal_definition_of_done": "Stage 6D.19 prompt acceptance criteria converted into docs/combat/stage-6d-requirement-traceability.json",
+    "implementation_reports": [
+      "docs/combat/STAGE_6D_1_COMBAT_ADAPTER_CONTRACT_AND_ARCHITECTURE.md",
+      "docs/combat/STAGE_6D_2_LEGACY_COMBAT_ENGINE_VERIFICATION.md",
+      "docs/combat/STAGE_6D_3_AUTHORITATIVE_ROLL_AND_RULES_RESOLUTION_FOUNDATION.md",
+      "docs/combat/STAGE_6D_4_ACTION_EFFECT_RESOURCE_FRAMEWORK.md",
+      "docs/combat/STAGE_6D_5_CONDITIONS_CONCENTRATION_ZERO_HP_RULES.md",
+      "docs/combat/STAGE_6D_6_POSITIONING_MOVEMENT_ZONES_COVER_REACH_SIZE.md",
+      "docs/combat/STAGE_6D_7_INCREMENTAL_PLAYER_TURN_PREVIEW_SUBMIT_CONSISTENCY.md",
+      "docs/combat/STAGE_6D_8_REACTIONS_AND_INTERRUPT_ORCHESTRATION.md",
+      "docs/combat/STAGE_6D_9_AUTOMATIC_TURNS_AND_DETERMINISTIC_TACTICAL_PROFILES.md",
+      "docs/combat/STAGE_6D_10_MULTI_TARGET_AREA_VISIBILITY_FACTION_DYNAMICS.md",
+      "docs/combat/STAGE_6D_11_COMBAT_FOCUS.md",
+      "docs/combat/STAGE_6D_12_PERSISTENCE_IDEMPOTENCY_REPLAY_RECOVERY.md",
+      "docs/combat/STAGE_6D_13_CANONICAL_RUSK_ENCOUNTER_INTEGRATION.md",
+      "docs/combat/STAGE_6D_14_ENCOUNTER_RESOLUTION_AFTERMATH_REWARDS.md",
+      "docs/combat/STAGE_6D_15_GM_DEV_TRACE_VISIBILITY_INSPECTOR.md",
+      "docs/combat/STAGE_6D_16_FLUTTER_COMBAT_INTERFACE.md",
+      "docs/combat/STAGE_6D_17_SYNTHETIC_COMBAT_FIXTURE_SUITES.md",
+      "docs/combat/STAGE_6D_18_RUSK_END_TO_END_ACCEPTANCE_SUITE.md"
+    ]
+  },
+  "substage_status_matrix": [
+    { "stage": "6D.1", "title": "Combat Adapter Contract and Architecture", "status": "verified complete" },
+    { "stage": "6D.2", "title": "Legacy Combat Engine Verification", "status": "verified complete" },
+    { "stage": "6D.3", "title": "Authoritative Roll and Rules Resolution Foundation", "status": "verified complete" },
+    { "stage": "6D.4", "title": "Action, Effect, and Resource Framework", "status": "verified complete" },
+    { "stage": "6D.5", "title": "Conditions, Concentration, and Zero-Hit-Point Rules", "status": "verified complete" },
+    { "stage": "6D.6", "title": "Positioning, Movement, Zones, Cover, Reach, and Size", "status": "verified complete" },
+    { "stage": "6D.7", "title": "Incremental Player Turn and Preview/Submit Consistency", "status": "verified complete" },
+    { "stage": "6D.8", "title": "Reactions and Interrupt Orchestration", "status": "verified complete" },
+    { "stage": "6D.9", "title": "Automatic Turns and Deterministic Tactical Profiles", "status": "verified complete" },
+    { "stage": "6D.10", "title": "Multi-Target, Area, Visibility, and Faction Dynamics", "status": "verified complete" },
+    { "stage": "6D.11", "title": "Combat Focus", "status": "verified complete" },
+    { "stage": "6D.12", "title": "Persistence, Idempotency, Replay, and Recovery", "status": "verified complete" },
+    { "stage": "6D.13", "title": "Canonical Rusk Encounter Integration", "status": "verified complete" },
+    { "stage": "6D.14", "title": "Encounter Resolution, Aftermath, and Rewards", "status": "verified complete" },
+    { "stage": "6D.15", "title": "GM/Dev Trace and Visibility Inspector", "status": "verified complete" },
+    { "stage": "6D.16", "title": "Flutter Combat Interface", "status": "implemented but verification blocked" },
+    { "stage": "6D.17", "title": "Synthetic Combat Fixture Suites", "status": "verified complete" },
+    { "stage": "6D.18", "title": "Rusk End-to-End Acceptance Suite", "status": "implemented but verification blocked" }
+  ],
+  "blockers": [
+    {
+      "id": "6D19-BLOCKER-001",
+      "severity": "stage blocker",
+      "category": "Flutter verification",
+      "summary": "Flutter and Dart tooling are unavailable on PATH, so required Flutter tests, analyzer, formatter, and web build could not execute.",
+      "required_to_close": "Install Flutter/Dart, configure the player app, run flutter test, flutter analyze, dart format checks, and npm run build:player."
+    },
+    {
+      "id": "6D19-BLOCKER-002",
+      "severity": "stage blocker",
+      "category": "DB/content verification",
+      "summary": "DB-backed Greyvale content validation, vertical-slice acceptance, and full backend web tests could not execute without a usable local/Neon DB connection.",
+      "required_to_close": "Provide test DB env/secrets or a local test database, then rerun content validation, Greyvale vertical-slice acceptance, and the full backend suite."
+    },
+    {
+      "id": "6D19-BLOCKER-003",
+      "severity": "stage blocker",
+      "category": "Hosting build verification",
+      "summary": "Static hosting validation failed because generated Flutter web output is absent and could not be rebuilt in this environment.",
+      "required_to_close": "Run npm run build:player with Firebase/API build env vars, then rerun npm run build."
+    },
+    {
+      "id": "6D19-BLOCKER-004",
+      "severity": "stage blocker",
+      "category": "Dependency security verification",
+      "summary": "npm audit --audit-level=high failed with high-severity advisories.",
+      "required_to_close": "Assess and update dependencies or document an approved exception through the project security process, then rerun npm audit."
+    }
+  ],
+  "command_results": [
+    {
+      "command": "npm --prefix backend install",
+      "result": "passed",
+      "evidence": "Installed uncommitted backend dependencies in the GitHub-backed checkout so imported source could be validated."
+    },
+    {
+      "command": "npm --prefix backend run test:stage:6d",
+      "result": "passed",
+      "totals": { "tests": 204, "passed": 204, "failed": 0, "skipped": 0 },
+      "evidence": "Passed after harmless dummy DB env values were supplied for import-time env validation in mocked Stage 6D.2 tests."
+    },
+    {
+      "command": "npm --prefix backend run test:stage:6d:fixtures",
+      "result": "passed",
+      "totals": { "tests": 10, "passed": 10, "failed": 0, "skipped": 0 },
+      "evidence": "Synthetic fixture suite passed."
+    },
+    {
+      "command": "npm --prefix backend run test:stage:6d:rusk-acceptance",
+      "result": "passed",
+      "totals": { "tests": 10, "passed": 10, "failed": 0, "skipped": 0 },
+      "evidence": "Canonical Rusk backend/service-boundary acceptance suite passed."
+    },
+    {
+      "command": "npm --prefix backend run test:stage:6c",
+      "result": "environment blocked",
+      "evidence": "Interaction-core segment passed 135/135; Greyvale vertical-slice content validation failed before acceptance with CLI error under dummy local DB env."
+    },
+    {
+      "command": "npm --prefix backend run --silent cli -- validate-content --path ../content/worlds/greyvale",
+      "result": "environment blocked",
+      "evidence": "Content validation could not complete without a usable local/Neon DB connection in the imported checkout."
+    },
+    {
+      "command": "npm --prefix backend test",
+      "result": "environment blocked",
+      "evidence": "Full backend suite reached DB-backed tests and failed with ECONNREFUSED against dummy local DB settings."
+    },
+    {
+      "command": "npm run build",
+      "result": "environment blocked",
+      "evidence": "Static hosting validation requires generated frontend/play/index.html; generated Flutter web output is not committed."
+    },
+    {
+      "command": "npm run build:player",
+      "result": "environment blocked",
+      "evidence": "Missing Flutter web build environment variables and Flutter tooling in this shell."
+    },
+    {
+      "command": "flutter test",
+      "result": "environment blocked",
+      "evidence": "flutter executable is not available on PATH."
+    },
+    {
+      "command": "flutter analyze",
+      "result": "environment blocked",
+      "evidence": "flutter executable is not available on PATH."
+    },
+    {
+      "command": "node --check backend/src/engine/combat/canonicalRuskAcceptanceSuite.js; node --check backend/src/engine/combat/canonicalRuskEncounter.js; node --check backend/src/engine/combat/playerTurnRuntime.js",
+      "result": "passed",
+      "evidence": "Syntax checks completed with no output."
+    },
+    {
+      "command": "npm --prefix backend audit --audit-level=high",
+      "result": "failed",
+      "evidence": "Reported 13 advisories, including 3 high-severity advisories in transitive dependencies."
+    }
+  ],
+  "final_readiness": {
+    "stage_6d_may_close": false,
+    "ready_for_stage_6e": false,
+    "required_before_rerun": [
+      "Install Flutter/Dart and configure Firebase/API build variables.",
+      "Provide a reachable test DB or Neon-backed test environment.",
+      "Resolve or formally approve npm audit high-severity advisories.",
+      "Rerun all final-gate commands and regenerate this status."
+    ]
+  }
+}

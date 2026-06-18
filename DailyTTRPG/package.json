@@ -12,6 +12,7 @@
     "test:greyvale-vertical-slice": "npm --prefix backend run test:greyvale-vertical-slice",
     "test:stage:6c": "npm --prefix backend run test:stage:6c",
     "test:stage:6d": "npm --prefix backend run test:stage:6d",
+    "test:stage:6d:final": "npm --prefix backend run test:stage:6d:final",
     "serve:hosting": "npx firebase-tools emulators:start --only hosting",
     "firebase:login": "npx firebase-tools login",
     "firebase:projects": "npx firebase-tools projects:list",

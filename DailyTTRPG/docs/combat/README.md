@@ -23,6 +23,7 @@ Current plans:
 - [Stage 6D.16 Flutter Combat Interface](STAGE_6D_16_FLUTTER_COMBAT_INTERFACE.md)
 - [Stage 6D.17 Synthetic Combat Fixture Suites](STAGE_6D_17_SYNTHETIC_COMBAT_FIXTURE_SUITES.md)
 - [Stage 6D.18 Rusk End-to-End Acceptance Suite](STAGE_6D_18_RUSK_END_TO_END_ACCEPTANCE_SUITE.md)
+- [Stage 6D.19 Final Regression Gate And Status](STAGE_6D_19_FINAL_REGRESSION_GATE_AND_STATUS.md)
 
 Stage 6D should bring the existing combat work forward through the Stage 6C beat-resolution architecture. It should start with a narrow, deterministic, web-first Combat MVP for the Greyvale Rusk boundary while preserving authored content, player-safe projections, GM/dev traceability, and future room for richer rules.
 
