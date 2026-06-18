@@ -1,0 +1,97 @@
+{
+  "fixture_id": "greyvale_elin_memory_dialogue",
+  "description": "Named regression paths for the Greyvale Elin Harrow Dialogue Focus/Commit fixture.",
+  "paths": [
+    {
+      "name": "happy_path",
+      "mode": "happy_path",
+      "expected_final_status": "exited",
+      "expected_transition": {
+        "target_type": "exploration",
+        "target_id": "grey_road_inn_common_room"
+      },
+      "coverage": [
+        "conversation_surface",
+        "no_check_clarifying_question",
+        "no_check_committed_social_move",
+        "transcript",
+        "completed_record",
+        "authored_summary"
+      ]
+    },
+    {
+      "name": "failure_path",
+      "mode": "failure_path",
+      "expected_final_status": "exited",
+      "coverage": [
+        "checked_clarifying_question_failure",
+        "checked_committed_social_move_failure",
+        "relationship_scene_pressure_write",
+        "persistent_trust_decrement"
+      ]
+    },
+    {
+      "name": "fallback_path",
+      "mode": "fallback_path",
+      "expected_final_status": "active",
+      "coverage": [
+        "generic_fallback_preview",
+        "generic_fallback_submit",
+        "fallback_exhaustion",
+        "revise_prompt"
+      ]
+    },
+    {
+      "name": "minimal_interaction_path",
+      "mode": "minimal_interaction_path",
+      "expected_final_status": "exited",
+      "coverage": [
+        "entry",
+        "free_exit",
+        "completed_record"
+      ]
+    },
+    {
+      "name": "max_clarifying_question_path",
+      "mode": "max_clarifying_question_path",
+      "expected_final_status": "exited",
+      "coverage": [
+        "clarifying_question_order",
+        "clarifying_unlock",
+        "checked_clarifying_question",
+        "reopen_persistence"
+      ]
+    },
+    {
+      "name": "relationship_state_edge_case",
+      "mode": "relationship_state_edge_case",
+      "expected_final_status": "exited",
+      "coverage": [
+        "persistent_npc_state",
+        "scene_local_posture",
+        "relationship_audit",
+        "player_safe_relationship_visibility"
+      ]
+    },
+    {
+      "name": "exit_transition_path",
+      "mode": "exit_transition_path",
+      "expected_final_status": "exited",
+      "expected_transition": {
+        "target_type": null,
+        "target_id": null
+      },
+      "coverage": [
+        "authored_exit",
+        "explicit_transition_requirement",
+        "finalization"
+      ]
+    }
+  ],
+  "manual_qa_notes": [
+    "Load the scene through the dialogue runtime registry or test harness.",
+    "Ask the sash Clarifying Question before committing to see the roadward knot unlock.",
+    "Submit a shallow 'what do you remember first' action to confirm overlap warning.",
+    "Run fallback twice to confirm the second attempt produces a revise prompt."
+  ]
+}

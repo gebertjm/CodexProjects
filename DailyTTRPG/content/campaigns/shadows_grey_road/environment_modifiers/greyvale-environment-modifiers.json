@@ -1,0 +1,72 @@
+[
+  {
+    "id": "heavy_rain_survival_tracking",
+    "environment_id": "heavy_rain",
+    "check_type": "skill",
+    "skill": "survival",
+    "context": "tracking",
+    "modifier": -2,
+    "reason": "Heavy rain distorts tracks and washes smaller signs into the mud.",
+    "narrative_hint": "Rain has softened the road into dark mud, blurring wagon ruts and washing smaller tracks into the ditch."
+  },
+  {
+    "id": "rain_perception_hearing_outdoors",
+    "environment_id": "rain",
+    "check_type": "skill",
+    "skill": "perception",
+    "context": "hearing_outdoors",
+    "modifier": -2,
+    "reason": "Rain muffles distant sounds beyond the immediate scene.",
+    "narrative_hint": "The steady rain makes distant movement harder to separate from the weather."
+  },
+  {
+    "id": "fog_perception_distance",
+    "environment_id": "fog",
+    "check_type": "skill",
+    "skill": "perception",
+    "context": "distance",
+    "modifier": -2,
+    "reason": "Fog obscures detail beyond short range.",
+    "narrative_hint": "Fog narrows the road to what stands close enough to loom."
+  },
+  {
+    "id": "dark_perception_sight",
+    "environment_id": "dark",
+    "check_type": "skill",
+    "skill": "perception",
+    "context": "sight",
+    "modifier": -2,
+    "reason": "Darkness makes visual detail harder to read without a strong light source.",
+    "narrative_hint": "The dark leaves edges uncertain and hides detail past the nearest light."
+  },
+  {
+    "id": "hollow_presence_insight_pressure",
+    "environment_id": "subterranean_hollow_pressure",
+    "check_type": "skill",
+    "skill": "insight",
+    "context": "resisting_suggestion",
+    "modifier": -2,
+    "reason": "The hollow nudges thought toward simple answers and away from costly certainty.",
+    "narrative_hint": "The pressure makes the easiest conclusion feel warmer than the truest one."
+  },
+  {
+    "id": "shrine_ruins_investigation_disturbed_camp",
+    "environment_id": "disturbed_shrine_camp",
+    "check_type": "skill",
+    "skill": "investigation",
+    "context": "reading_shrine_markings",
+    "modifier": 1,
+    "reason": "The repeated handling around the shrine leaves enough physical evidence for a careful investigator.",
+    "narrative_hint": "The marks have been touched too often to look accidental."
+  },
+  {
+    "id": "old_forest_path_survival_layered_tracks",
+    "environment_id": "old_forest_path_tracks",
+    "check_type": "skill",
+    "skill": "survival",
+    "context": "tracking",
+    "modifier": 1,
+    "reason": "Repeated traffic has made the shrineward pattern easier to find once the character commits to tracking it.",
+    "narrative_hint": "The ground keeps correcting the trail toward the shrine."
+  }
+]

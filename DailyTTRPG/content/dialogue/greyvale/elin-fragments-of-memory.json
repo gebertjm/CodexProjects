@@ -1,0 +1,179 @@
+{
+  "slug": "elin-fragments-of-memory",
+  "scene_slug": "elin-memory-fragments",
+  "npc_template_slug": "elin-harrow",
+  "name": "Elin's Fragments",
+  "text": {
+    "short": "Speak gently with the survivor.",
+    "summary": "Elin Harrow can recall the clearest early sign that the attackers were not acting normally, if she is treated with patience.",
+    "full": "Elin Harrow sits rigid with exhaustion, as if every question risks tipping her back into the moment she survived."
+  },
+  "trigger_type": "player",
+  "trigger_event": "npc_talk",
+  "sort_order": 1,
+  "availability_conditions": {},
+  "is_repeatable": true,
+  "is_active": true,
+  "nodes": [
+    {
+      "slug": "elin-greeting",
+      "title": "A Frayed Memory",
+      "speaker_type": "npc",
+      "speaker_npc_template_slug": "elin-harrow",
+      "text": {
+        "full": "I should remember it better than I do. I keep reaching for it, and it slips sideways.",
+        "short": "Elin admits her memory won't stay still."
+      },
+      "sort_order": 1,
+      "is_entry_node": true,
+      "is_terminal": false,
+      "availability_conditions": {},
+      "entry_effects": {
+        "session_flags": {
+          "met_elin_harrow": true
+        }
+      },
+      "options": [
+        {
+          "slug": "ask-gently",
+          "label": "Ask her gently what she remembers",
+          "sort_order": 1,
+          "availability_conditions": {},
+          "check_mode": "none",
+          "outcomes": [
+            {
+              "slug": "elin-remembers",
+              "next_node_slug": "elin-memory",
+              "label": "Elin remembers the pause",
+              "sort_order": 1,
+              "conditions": {},
+              "effects": {
+                "character_flags": {
+                  "clue_survivor_memory_fragment": true,
+                  "elin_treated_gently": true
+                },
+                "knowledge_entries": [
+                  {
+                    "knowledge_type": "lore",
+                    "knowledge_key": "clue_survivor_memory_fragment",
+                    "title": "Survivor Memory Fragment",
+                    "summary": "Elin remembered the attackers pausing like they were listening to something none of the victims could hear.",
+                    "metadata_json": {
+                      "clue_id": "survivor_memory_fragment",
+                      "clue_tier": "reinforcing"
+                    }
+                  }
+                ],
+                "objectives": [
+                  {
+                    "quest_key": "shadows_grey_road",
+                    "objective_key": "gather-local-insight",
+                    "status": "completed",
+                    "progress_count": 2
+                  },
+                  {
+                    "quest_key": "shadows_grey_road",
+                    "objective_key": "follow-the-leads",
+                    "status": "active",
+                    "progress_count": 0
+                  }
+                ],
+                "source_knowledge_title": "Elin remembered the attackers listening",
+                "source_knowledge_summary": "Elin said the attackers paused together as if hearing instructions from somewhere else."
+              },
+              "result_text": "Her breathing steadies just enough for one memory to return whole.",
+              "is_terminal": false,
+              "is_active": true
+            }
+          ]
+        },
+        {
+          "slug": "push-her-hard",
+          "label": "Push her to remember more quickly",
+          "sort_order": 2,
+          "availability_conditions": {},
+          "check_mode": "none",
+          "outcomes": [
+            {
+              "slug": "elin-shuts-down",
+              "next_node_slug": "elin-farewell",
+              "label": "Elin withdraws from you",
+              "sort_order": 1,
+              "conditions": {},
+              "effects": {
+                "character_flags": {
+                  "elin_shut_down": true
+                },
+                "npc_states": [
+                  {
+                    "npc_key": "elin-harrow",
+                    "disposition": "hostile",
+                    "notes": "Elin recoiled after being pushed too hard."
+                  }
+                ],
+                "source_knowledge_title": "You pushed Elin too hard",
+                "source_knowledge_summary": "Elin shut down when pressed before she was ready."
+              },
+              "result_text": "Her face hardens with panic, and whatever memory was close vanishes again.",
+              "is_terminal": false,
+              "is_active": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "elin-memory",
+      "title": "The Shared Pause",
+      "speaker_type": "npc",
+      "speaker_npc_template_slug": "elin-harrow",
+      "text": {
+        "full": "They stopped all at once. Not because of us. Because of... something. Like they'd all heard the same whisper.",
+        "short": "Elin remembers the attackers pausing together."
+      },
+      "sort_order": 2,
+      "is_entry_node": false,
+      "is_terminal": false,
+      "availability_conditions": {},
+      "entry_effects": {},
+      "options": [
+        {
+          "slug": "thank-elin",
+          "label": "Thank her and let her rest",
+          "sort_order": 1,
+          "availability_conditions": {},
+          "check_mode": "none",
+          "outcomes": [
+            {
+              "slug": "elin-rests",
+              "next_node_slug": "elin-farewell",
+              "label": "Let the conversation end softly",
+              "sort_order": 1,
+              "conditions": {},
+              "effects": {},
+              "result_text": "You leave her with the comfort of not being treated like evidence.",
+              "is_terminal": false,
+              "is_active": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "elin-farewell",
+      "title": "The Memory Settles",
+      "speaker_type": "npc",
+      "speaker_npc_template_slug": "elin-harrow",
+      "text": {
+        "full": "That's all I can hold onto. If you go back out there... don't listen if something listens back.",
+        "short": "Elin warns you not to trust what answers from the road."
+      },
+      "sort_order": 3,
+      "is_entry_node": false,
+      "is_terminal": true,
+      "availability_conditions": {},
+      "entry_effects": {},
+      "options": []
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "dunmere-village",
+    "region_slug": "greyvale-lowlands",
+    "template_slug": "dunmere-village-template",
+    "name": "Dunmere",
+    "description": "A wary farming village where missing travelers have become everyone's business.",
+    "is_active": true
+  },
+  {
+    "slug": "grey-road-inn",
+    "region_slug": "greyvale-lowlands",
+    "template_slug": "grey-road-inn-template",
+    "name": "The Grey Road Inn",
+    "description": "A modest roadside inn where survivors, rumors, and silence all gather together.",
+    "is_active": true
+  },
+  {
+    "slug": "broken-caravan-site",
+    "region_slug": "greyvale-lowlands",
+    "template_slug": "broken-caravan-site-template",
+    "name": "Broken Caravan",
+    "description": "A fresh incident site where the first signs of the road's wrongness can be read.",
+    "is_active": true
+  },
+  {
+    "slug": "old-forest-path",
+    "region_slug": "greyvale-lowlands",
+    "template_slug": "old-forest-path-template",
+    "name": "Old Forest Path",
+    "description": "A hunter's trail now carrying more traffic than anyone admits.",
+    "is_active": true
+  },
+  {
+    "slug": "shrine-ruins",
+    "region_slug": "greyvale-lowlands",
+    "template_slug": "shrine-ruins-template",
+    "name": "Collapsed Shrine",
+    "description": "A ruined roadside shrine occupied by dangerous people and touched by something worse.",
+    "is_active": true
+  },
+  {
+    "slug": "subterranean-hollow",
+    "region_slug": "greyvale-lowlands",
+    "template_slug": "subterranean-hollow-template",
+    "name": "Subterranean Hollow",
+    "description": "A hidden chamber beneath the shrine where the deeper truth of the Grey Road can finally be confronted.",
+    "is_active": true
+  }
+]

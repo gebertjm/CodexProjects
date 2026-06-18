@@ -1,0 +1,12 @@
+{
+  "world_instance_id": "greyvale-world-001",
+  "entity_key": "elin-harrow",
+  "status": "scene_locked",
+  "state_json": {
+    "scene_lock_id": "elin-memory-fragments",
+    "current_location_id": "grey-road-inn",
+    "current_scene_id": "elin-memory-fragments",
+    "activity_override": "trying to remember",
+    "override_reason": "active dialogue scene"
+  }
+}

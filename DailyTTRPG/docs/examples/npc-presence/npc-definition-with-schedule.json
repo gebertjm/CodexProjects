@@ -1,0 +1,33 @@
+{
+  "slug": "npc_innkeeper_tomas",
+  "name": "Tomas Rell",
+  "npc_type": "humanoid",
+  "disposition": "friendly",
+  "role": "informant",
+  "true_name": "Tomas Rell",
+  "public_role_label": "the innkeeper",
+  "unknown_label": "the innkeeper",
+  "aliases": ["tomas", "innkeeper", "barkeep"],
+  "default_location_id": "grey-road-inn",
+  "default_scene_id": "grey-road-inn",
+  "default_visibility": "visible",
+  "default_availability": "available",
+  "default_actions": ["observe", "talk"],
+  "identity": {
+    "reveal_policy": "role_until_known",
+    "knowledge_id_for_true_name": "knows_tomas_name",
+    "publicly_known": false
+  },
+  "schedule": [
+    {
+      "time_block": "evening",
+      "location_id": "grey-road-inn",
+      "scene_id": "grey-road-inn",
+      "activity": "serving travelers",
+      "activity_text": "The innkeeper moves between tables, keeping one eye on the door.",
+      "availability": "available",
+      "visibility": "visible",
+      "priority": 1
+    }
+  ]
+}

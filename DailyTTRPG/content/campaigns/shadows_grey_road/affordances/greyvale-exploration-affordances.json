@@ -1,0 +1,745 @@
+[
+  {
+    "affordance_id": "caravan_wreck",
+    "scene_slug": "broken-caravan-site",
+    "label": "broken caravan",
+    "narration": {
+      "default": "The wagon itself draws the eye: cracked frame, torn canvas, and damage that looks too deliberate to blame on a bad road.",
+      "return_visit": "The broken caravan remains the clearest sign that this was no ordinary roadside accident."
+    },
+    "aliases": [
+      "caravan",
+      "wagon",
+      "wreck",
+      "cart"
+    ],
+    "tags": [
+      "object",
+      "investigatable",
+      "searchable",
+      "free_focus_target"
+    ],
+    "available_actions": [
+      {
+        "verb": "observe",
+        "interaction_id": "inspect-broken-caravan",
+        "repeat_policy": "once"
+      },
+      {
+        "verb": "investigate",
+        "interaction_id": "inspect-broken-caravan",
+        "repeat_policy": "once"
+      }
+    ],
+    "initial_state": "available",
+    "reveals": [
+      "caravan_irregularity"
+    ],
+    "adds_affordances": [
+      "strange_tracks"
+    ],
+    "surface_focus_commit": {
+      "can_appear_in_scene_reference": true,
+      "target_chip_enabled": true
+    }
+  },
+  {
+    "affordance_id": "scattered_cargo",
+    "scene_slug": "broken-caravan-site",
+    "label": "scattered cargo",
+    "narration": {
+      "default": "Crates and bundles lie spilled near the wheels, some split open, some dragged just far enough to raise questions."
+    },
+    "aliases": [
+      "cargo",
+      "crates",
+      "supplies",
+      "goods"
+    ],
+    "tags": [
+      "object",
+      "container",
+      "searchable",
+      "free_focus_target"
+    ],
+    "available_actions": [
+      {
+        "verb": "search",
+        "interaction_id": "inspect-broken-caravan",
+        "repeat_policy": "repeat_with_new_context"
+      }
+    ],
+    "initial_state": "available",
+    "surface_focus_commit": {
+      "can_appear_in_scene_reference": true,
+      "target_chip_enabled": true
+    }
+  },
+  {
+    "affordance_id": "missing_travelers_signs",
+    "scene_slug": "broken-caravan-site",
+    "label": "signs of missing travelers",
+    "narration": {
+      "default": "Small signs of the missing travelers remain in the mud and debris, easy to overlook if you rush the scene."
+    },
+    "aliases": [
+      "survivors",
+      "bodies",
+      "belongings",
+      "blood"
+    ],
+    "tags": [
+      "clue",
+      "searchable",
+      "free_focus_target"
+    ],
+    "available_actions": [
+      {
+        "verb": "search",
+        "interaction_id": "check-for-survivors",
+        "repeat_policy": "once"
+      }
+    ],
+    "initial_state": "available",
+    "surface_focus_commit": {
+      "can_appear_in_scene_reference": true,
+      "target_chip_enabled": true
+    }
+  },
+  {
+    "affordance_id": "strange_tracks",
+    "scene_slug": "broken-caravan-site",
+    "label": "fresh tracks leaving the road",
+    "narration": {
+      "default": "Fresh tracks cut away from the road toward the trees, sharper and deeper than the softer caravan ruts."
+    },
+    "aliases": [
+      "tracks",
+      "trail",
+      "footprints",
+      "mud"
+    ],
+    "tags": [
+      "trail",
+      "clue",
+      "trackable",
+      "free_focus_target"
+    ],
+    "available_actions": [
+      {
+        "verb": "track",
+        "interaction_id": "examine-roadside-tracks",
+        "repeat_policy": "once"
+      },
+      {
+        "verb": "investigate",
+        "interaction_id": "examine-roadside-tracks",
+        "repeat_policy": "once"
+      }
+    ],
+    "initial_state": "hidden",
+    "reveals": [
+      "strange_tracks_leave_road"
+    ],
+    "surface_focus_commit": {
+      "can_appear_in_scene_reference": true,
+      "target_chip_enabled": true
+    }
+  },
+  {
+    "affordance_id": "road_to_inn",
+    "scene_slug": "broken-caravan-site",
+    "label": "road toward the inn",
+    "narration": {
+      "default": "The Grey Road continues toward Dunmere and the promise of witnesses, shelter, and rumors."
+    },
+    "aliases": [
+      "road",
+      "inn",
+      "dunmere",
+      "path"
+    ],
+    "tags": [
+      "exit",
+      "place"
+    ],
+    "available_actions": [
+      {
+        "verb": "move",
+        "transition_id": "leave-broken-caravan-for-inn",
+        "repeat_policy": "repeatable"
+      }
+    ],
+    "initial_state": "available",
+    "surface_focus_commit": {
+      "can_appear_in_scene_reference": true,
+      "target_chip_enabled": true
+    }
+  },
+  {
+    "affordance_id": "roadside_mud",
+    "scene_slug": "broken-caravan-site",
+    "label": "roadside mud",
+    "narration": {
+      "default": "The mud beside the road is churned by wagon ruts, boot marks, and a narrower line of movement toward the trees."
+    },
+    "aliases": [
+      "mud",
+      "tracks",
+      "footprints",
+      "roadside mud"
+    ],
+    "tags": [
+      "clue",
+      "trail",
+      "free_focus_target"
+    ],
+    "available_actions": [
+      {
+        "verb": "track",
+        "interaction_id": "examine-roadside-tracks",
+        "repeat_policy": "repeat_with_new_context"
+      }
+    ],
+    "initial_state": "available",
+    "surface_focus_commit": {
+      "can_appear_in_scene_reference": true,
+      "target_chip_enabled": true
+    }
+  },
+  {
+    "affordance_id": "inn_common_room",
+    "scene_slug": "grey-road-inn",
+    "label": "common room",
+    "narration": {
+      "default": "The common room is warm, smoky, and watchful, with every table listening for road news."
+    },
+    "aliases": [
+      "room",
+      "common room",
+      "inn room"
+    ],
+    "tags": [
+      "place",
+      "social",
+      "free_focus_target"
+    ],
+    "available_actions": [
+      {
+        "verb": "observe",
+        "repeat_policy": "repeatable"
+      }
+    ],
+    "initial_state": "available",
+    "surface_focus_commit": {
+      "can_appear_in_scene_reference": true,
+      "target_chip_enabled": true
+    }
+  },
+  {
+    "affordance_id": "woman_near_hearth",
+    "scene_slug": "grey-road-inn",
+    "label": "woman near the hearth",
+    "narration": {
+      "default": "A shaken woman sits near the hearth, gripping a torn caravan sash like proof she survived."
+    },
+    "aliases": [
+      "woman",
+      "survivor",
+      "woman by the hearth",
+      "shaken woman"
+    ],
+    "metadata": {
+      "npc_id": "elin-harrow"
+    },
+    "tags": [
+      "npc_visible",
+      "social",
+      "free_focus_target"
+    ],
+    "available_actions": [
+      {
+        "verb": "talk",
+        "repeat_policy": "once",
+        "transition_id": "speak-with-elin"
+      }
+    ],
+    "initial_state": "available",
+    "surface_focus_commit": {
+      "can_appear_in_scene_reference": true,
+      "target_chip_enabled": true
+    }
+  },
+  {
+    "affordance_id": "the_innkeeper",
+    "scene_slug": "grey-road-inn",
+    "label": "the innkeeper",
+    "narration": {
+      "default": "The innkeeper keeps the room served and the road watched."
+    },
+    "aliases": [
+      "innkeeper",
+      "barkeep",
+      "tomas"
+    ],
+    "metadata": {
+      "npc_id": "tomas-rell"
+    },
+    "tags": [
+      "npc_visible",
+      "social",
+      "free_focus_target"
+    ],
+    "available_actions": [
+      {
+        "verb": "observe",
+        "repeat_policy": "repeatable"
+      }
+    ],
+    "initial_state": "available",
+    "surface_focus_commit": {
+      "can_appear_in_scene_reference": true,
+      "target_chip_enabled": true
+    }
+  },
+  {
+    "affordance_id": "low_voiced_travelers",
+    "scene_slug": "grey-road-inn",
+    "label": "low-voiced travelers",
+    "narration": {
+      "default": "Travelers keep their voices low and their attention split between their cups and the doors."
+    },
+    "aliases": [
+      "travelers",
+      "patrons",
+      "locals"
+    ],
+    "tags": [
+      "npc_group",
+      "rumor",
+      "free_focus_target"
+    ],
+    "available_actions": [
+      {
+        "verb": "observe",
+        "repeat_policy": "repeatable"
+      }
+    ],
+    "initial_state": "available",
+    "surface_focus_commit": {
+      "can_appear_in_scene_reference": true,
+      "target_chip_enabled": true
+    }
+  },
+  {
+    "affordance_id": "notice_board",
+    "scene_slug": "dunmere-village",
+    "label": "notice board",
+    "narration": {
+      "default": "The village notice board is crowded with warnings, missing-person scraps, and crossed-out road advice."
+    },
+    "aliases": [
+      "notices",
+      "board",
+      "warnings"
+    ],
+    "tags": [
+      "object",
+      "clue",
+      "free_focus_target"
+    ],
+    "available_actions": [
+      {
+        "verb": "observe",
+        "repeat_policy": "repeatable"
+      }
+    ],
+    "initial_state": "available",
+    "surface_focus_commit": {
+      "can_appear_in_scene_reference": true,
+      "target_chip_enabled": true
+    }
+  },
+  {
+    "affordance_id": "wellside_murmurs",
+    "scene_slug": "dunmere-village",
+    "label": "wellside murmurs",
+    "narration": {
+      "default": "Villagers near the well trade short fragments of fear whenever they think no one new is listening."
+    },
+    "aliases": [
+      "murmurs",
+      "villagers",
+      "well"
+    ],
+    "tags": [
+      "social",
+      "rumor",
+      "free_focus_target"
+    ],
+    "available_actions": [
+      {
+        "verb": "observe",
+        "repeat_policy": "repeatable"
+      }
+    ],
+    "initial_state": "available",
+    "surface_focus_commit": {
+      "can_appear_in_scene_reference": true,
+      "target_chip_enabled": true
+    }
+  },
+  {
+    "affordance_id": "old_path_signs",
+    "scene_slug": "dunmere-village",
+    "label": "old path signs",
+    "narration": {
+      "default": "Fresh mud at the village edge points toward the forest path despite how little anyone wants to name it."
+    },
+    "aliases": [
+      "old path",
+      "forest path",
+      "tracks"
+    ],
+    "tags": [
+      "trail",
+      "clue",
+      "free_focus_target"
+    ],
+    "available_actions": [
+      {
+        "verb": "observe",
+        "repeat_policy": "repeatable"
+      }
+    ],
+    "initial_state": "available",
+    "surface_focus_commit": {
+      "can_appear_in_scene_reference": true,
+      "target_chip_enabled": true
+    }
+  },
+  {
+    "affordance_id": "layered_tracks",
+    "scene_slug": "old-forest-path",
+    "label": "layered tracks",
+    "narration": {
+      "default": "The forest path holds overlapping marks from hunters, hurried travelers, and people repeatedly drawn toward the shrine."
+    },
+    "aliases": [
+      "tracks",
+      "trail",
+      "footprints"
+    ],
+    "tags": [
+      "trail",
+      "clue",
+      "free_focus_target"
+    ],
+    "available_actions": [
+      {
+        "verb": "track",
+        "interaction_id": "track-the-old-path",
+        "repeat_policy": "repeat_with_new_context"
+      }
+    ],
+    "initial_state": "available",
+    "surface_focus_commit": {
+      "can_appear_in_scene_reference": true,
+      "target_chip_enabled": true
+    }
+  },
+  {
+    "affordance_id": "broken_undergrowth",
+    "scene_slug": "old-forest-path",
+    "label": "broken undergrowth",
+    "narration": {
+      "default": "Fern stems and young branches are bent where someone left the path in haste or uncertainty."
+    },
+    "aliases": [
+      "undergrowth",
+      "broken branches",
+      "ferns"
+    ],
+    "tags": [
+      "environment",
+      "clue",
+      "free_focus_target"
+    ],
+    "available_actions": [
+      {
+        "verb": "observe",
+        "repeat_policy": "repeatable"
+      }
+    ],
+    "initial_state": "available",
+    "surface_focus_commit": {
+      "can_appear_in_scene_reference": true,
+      "target_chip_enabled": true
+    }
+  },
+  {
+    "affordance_id": "watcher_signs",
+    "scene_slug": "old-forest-path",
+    "label": "watcher signs",
+    "narration": {
+      "default": "A few details in the brush suggest someone may have waited with a clear view of the trail."
+    },
+    "aliases": [
+      "watcher",
+      "ambush sign",
+      "moss"
+    ],
+    "tags": [
+      "hidden_clue",
+      "free_focus_target"
+    ],
+    "available_actions": [
+      {
+        "verb": "observe",
+        "repeat_policy": "repeatable"
+      }
+    ],
+    "initial_state": "available",
+    "surface_focus_commit": {
+      "can_appear_in_scene_reference": true,
+      "target_chip_enabled": true
+    }
+  },
+  {
+    "affordance_id": "camp_layout",
+    "scene_slug": "shrine-ruins",
+    "label": "camp layout",
+    "narration": {
+      "default": "The shrine camp is arranged for quick rising and quicker flight, not comfort."
+    },
+    "aliases": [
+      "camp",
+      "bedrolls",
+      "firepit"
+    ],
+    "tags": [
+      "place",
+      "clue",
+      "free_focus_target"
+    ],
+    "available_actions": [
+      {
+        "verb": "observe",
+        "repeat_policy": "repeatable"
+      }
+    ],
+    "initial_state": "available",
+    "surface_focus_commit": {
+      "can_appear_in_scene_reference": true,
+      "target_chip_enabled": true
+    }
+  },
+  {
+    "affordance_id": "shrine_markings",
+    "scene_slug": "shrine-ruins",
+    "label": "shrine markings",
+    "narration": {
+      "default": "Scratches and hand-worn marks scar the shrine stones in repeated patterns."
+    },
+    "aliases": [
+      "marks",
+      "symbols",
+      "stonework"
+    ],
+    "tags": [
+      "clue",
+      "object",
+      "free_focus_target"
+    ],
+    "available_actions": [
+      {
+        "verb": "investigate",
+        "interaction_id": "inspect-shrine-markings",
+        "repeat_policy": "repeat_with_new_context"
+      }
+    ],
+    "initial_state": "available",
+    "surface_focus_commit": {
+      "can_appear_in_scene_reference": true,
+      "target_chip_enabled": true
+    }
+  },
+  {
+    "affordance_id": "hidden_descent_signs",
+    "scene_slug": "shrine-ruins",
+    "label": "broken floor seams",
+    "narration": {
+      "default": "Leaves and ash gather around seams in the shrine floor that do not look entirely natural."
+    },
+    "aliases": [
+      "floor",
+      "seams",
+      "descent",
+      "stairs"
+    ],
+    "tags": [
+      "hidden_path",
+      "clue",
+      "free_focus_target"
+    ],
+    "available_actions": [
+      {
+        "verb": "observe",
+        "repeat_policy": "repeatable"
+      }
+    ],
+    "initial_state": "available",
+    "surface_focus_commit": {
+      "can_appear_in_scene_reference": true,
+      "target_chip_enabled": true
+    }
+  },
+  {
+    "affordance_id": "bandit_supplies",
+    "scene_slug": "shrine-ruins",
+    "label": "bandit supplies",
+    "narration": {
+      "default": "Weapons, food, and bedrolls lie too close together, as if the camp expected interruption at any moment."
+    },
+    "aliases": [
+      "supplies",
+      "bedrolls",
+      "weapons"
+    ],
+    "tags": [
+      "object",
+      "camp",
+      "free_focus_target"
+    ],
+    "available_actions": [
+      {
+        "verb": "observe",
+        "repeat_policy": "repeatable"
+      }
+    ],
+    "initial_state": "available",
+    "surface_focus_commit": {
+      "can_appear_in_scene_reference": true,
+      "target_chip_enabled": true
+    }
+  },
+  {
+    "affordance_id": "anchor_stone",
+    "scene_slug": "subterranean-hollow",
+    "label": "anchor stone",
+    "narration": {
+      "default": "A dark-veined stone rises from the hollow floor where the shrine foundation should end."
+    },
+    "aliases": [
+      "anchor",
+      "stone",
+      "obelisk"
+    ],
+    "tags": [
+      "object",
+      "clue",
+      "supernatural",
+      "free_focus_target"
+    ],
+    "available_actions": [
+      {
+        "verb": "investigate",
+        "interaction_id": "trace-the-anchor",
+        "repeat_policy": "repeat_with_new_context"
+      }
+    ],
+    "initial_state": "available",
+    "surface_focus_commit": {
+      "can_appear_in_scene_reference": true,
+      "target_chip_enabled": true
+    }
+  },
+  {
+    "affordance_id": "mental_pressure",
+    "scene_slug": "subterranean-hollow",
+    "label": "pressure in your thoughts",
+    "narration": {
+      "default": "The hollow presses on attention and certainty more than breath."
+    },
+    "aliases": [
+      "pressure",
+      "presence",
+      "thoughts"
+    ],
+    "tags": [
+      "hazard",
+      "supernatural",
+      "free_focus_target"
+    ],
+    "available_actions": [
+      {
+        "verb": "wait",
+        "interaction_id": "steady-the-mind",
+        "repeat_policy": "repeat_with_new_context"
+      }
+    ],
+    "initial_state": "available",
+    "surface_focus_commit": {
+      "can_appear_in_scene_reference": true,
+      "target_chip_enabled": true
+    }
+  },
+  {
+    "affordance_id": "floor_grooves",
+    "scene_slug": "subterranean-hollow",
+    "label": "floor grooves",
+    "narration": {
+      "default": "Shallow grooves around the anchor show repeated tracing by uncertain hands."
+    },
+    "aliases": [
+      "grooves",
+      "floor marks",
+      "scratches"
+    ],
+    "tags": [
+      "clue",
+      "object",
+      "free_focus_target"
+    ],
+    "available_actions": [
+      {
+        "verb": "observe",
+        "repeat_policy": "repeatable"
+      }
+    ],
+    "initial_state": "available",
+    "surface_focus_commit": {
+      "can_appear_in_scene_reference": true,
+      "target_chip_enabled": true
+    }
+  },
+  {
+    "affordance_id": "exit_airflow",
+    "scene_slug": "subterranean-hollow",
+    "label": "faint airflow",
+    "narration": {
+      "default": "A cold thread of air moves back toward the shrine stairs."
+    },
+    "aliases": [
+      "airflow",
+      "draft",
+      "stairs"
+    ],
+    "tags": [
+      "environment",
+      "path",
+      "free_focus_target"
+    ],
+    "available_actions": [
+      {
+        "verb": "observe",
+        "repeat_policy": "repeatable"
+      }
+    ],
+    "initial_state": "available",
+    "surface_focus_commit": {
+      "can_appear_in_scene_reference": true,
+      "target_chip_enabled": true
+    }
+  }
+]

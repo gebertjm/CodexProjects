@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "dunmere-village-template",
+    "region_template_slug": "greyvale-lowlands-template",
+    "name": "Dunmere",
+    "description": "A small farming village where trade has slowed and caution now colors every conversation."
+  },
+  {
+    "slug": "grey-road-inn-template",
+    "region_template_slug": "greyvale-lowlands-template",
+    "name": "The Grey Road Inn",
+    "description": "A roadside inn where travelers once rested freely, and now linger only long enough to trade rumors."
+  },
+  {
+    "slug": "broken-caravan-site-template",
+    "region_template_slug": "greyvale-lowlands-template",
+    "name": "Broken Caravan",
+    "description": "A half-burned caravan abandoned by the road, with signs of violence that do not fully make sense."
+  },
+  {
+    "slug": "old-forest-path-template",
+    "region_template_slug": "greyvale-lowlands-template",
+    "name": "Old Forest Path",
+    "description": "A narrow trail used by hunters and woodcutters, now marked by uneasy traffic."
+  },
+  {
+    "slug": "shrine-ruins-template",
+    "region_template_slug": "greyvale-lowlands-template",
+    "name": "Collapsed Shrine",
+    "description": "An old roadside shrine disturbed by recent occupation and the sense that something deeper has woken beneath it."
+  },
+  {
+    "slug": "subterranean-hollow-template",
+    "region_template_slug": "greyvale-lowlands-template",
+    "name": "Subterranean Hollow",
+    "description": "A hidden chamber beneath the ruined shrine where the silence itself feels hostile."
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "slug": "ashford-crossroads",
+  "location_slug": "ashford-crossing",
+  "template_slug": "crossroads-template",
+  "name": "Ashford Crossroads",
+  "text": {
+    "short": "A road crossing where red motes drift against the wind.",
+    "summary": "Ashford Crossroads is the first place locals noticed the ember-sign.",
+    "full": "Two roads cross beside a scorched mile marker. Red motes drift through the ditch in slow, deliberate arcs.",
+    "entry": "You arrive at Ashford Crossroads as the wind drops to a hush.",
+    "sms": "Ashford Crossroads. Red motes drift in the ditch.",
+    "recap": "You visited Ashford Crossroads."
+  },
+  "is_starting_scene": true,
+  "entry_conditions": {},
+  "is_active": true
+}

@@ -1,0 +1,1663 @@
+[
+  {
+    "slug": "broken-caravan-site",
+    "location_slug": "broken-caravan-site",
+    "template_slug": "broken-caravan-site-template",
+    "name": "The Broken Caravan",
+    "text": {
+      "short": "A damaged caravan lies abandoned beside the road.",
+      "summary": "The aftermath of a roadside attack sits in unnerving silence, with evidence too careful and too chaotic at once.",
+      "full": "The caravan is damaged, half-burned, and quiet in the way recent violence should never be quiet. Cargo remains, tracks leave, and the whole scene seems to have been interrupted before it could become the story it was meant to tell.",
+      "entry": "You come upon a broken caravan beside the Grey Road. The danger is gone for the moment, but the wreck still feels unstable, as if the road has not finished with it.",
+      "sms": "A caravan leans broken in the mud. No voices answer the wind. Cargo lies scattered, but strangely not stripped clean.",
+      "recap": "You found the aftermath of a recent attack along the Grey Road and saw the first signs that the violence did not behave like simple robbery."
+    },
+    "narration": {
+      "version": 2,
+      "voice": "second_person_present",
+      "base": [
+        "You stand where the Grey Road bends sharply toward the trees. A broken caravan lies half in the roadside mud, its torn canvas hanging from the wagon ribs and snapping whenever the wind finds it.",
+        "The wagon cannot move as it is. The rear axle is split, the mud around it is churned by too many urgent feet, and the cargo scattered near the wheels has not been stripped the way hungry bandits would strip it.",
+        "The scene feels less like a finished attack than a thought abandoned midway through. The wreckage, the remaining goods, and the marks leading off the road each seem to hold a different piece of the same unease."
+      ],
+      "return_visit": [
+        "The broken caravan is still where you left it, settled deeper into the roadside mud and the same unfinished silence.",
+        "You return to the bend in the Grey Road, where the wrecked caravan waits like an account no one has managed to close."
+      ],
+      "sensory": [
+        "The air smells of wet canvas, churned mud, and old smoke.",
+        "Wind moves through the torn canvas with a dry, restless snap.",
+        "Mist clings low to the roadside, softening the trees into dark shapes."
+      ],
+      "environment_variants": [
+        {
+          "when": {
+            "weather": [
+              "rain",
+              "drizzle",
+              "storm",
+              "heavy_rain"
+            ]
+          },
+          "text": "Rain darkens the torn canvas and softens the smaller tracks before the road can give up all of its answers."
+        },
+        {
+          "when": {
+            "time_of_day": [
+              "evening",
+              "night"
+            ]
+          },
+          "text": "The fading light leaves the wagon ribs stark against the treeline, like black fingers hooked into the road."
+        }
+      ],
+      "opportunity_variants": {
+        "subtle": [
+          "The split axle, the untouched cargo, and the mud near the ditch each hold a different kind of silence.",
+          "The clearest details are not hidden, exactly; they are just waiting for someone to care about the order in which they happened."
+        ],
+        "soft_explicit": [
+          "The wreck, the cargo, and the roadside mud each hold a different piece of the attack.",
+          "The road offers its clearest answers in damage, tracks, and what the attackers left untouched."
+        ]
+      },
+      "composition_notes": {
+        "default_opportunity_style": "subtle_only",
+        "avoid_phrases": [
+          "Would you like to",
+          "You can",
+          "Possible actions include",
+          "there are several places to begin"
+        ]
+      }
+    },
+    "interaction_model": "surface_focus_commit",
+    "automatic_observations": [
+      {
+        "interaction_id": "observe_caravan_disabled",
+        "resolution_mode": "automatic_observation",
+        "priority": 90,
+        "narration": "The wagon cannot move as it is; the rear axle is split and the roadside mud is churned around the break."
+      },
+      {
+        "interaction_id": "observe_cargo_not_stripped",
+        "resolution_mode": "automatic_observation",
+        "priority": 80,
+        "narration": "Enough cargo remains scattered near the wheels to make simple robbery feel like an incomplete answer."
+      },
+      {
+        "interaction_id": "observe_no_living_travelers",
+        "resolution_mode": "automatic_observation",
+        "priority": 70,
+        "narration": "No living traveler answers from the wreck, and the quiet feels too clean for the amount of panic the mud records."
+      }
+    ],
+    "passive_discoveries": [
+      {
+        "interaction_id": "notice_deep_tracks",
+        "target_id": "roadside_mud",
+        "resolution_mode": "passive_discovery",
+        "priority": 90,
+        "requires_check": true,
+        "check": {
+          "mode": "passive",
+          "skill": "perception",
+          "dc": 13,
+          "visibility": "success_only"
+        },
+        "on_success": {
+          "narration": "Your Passive Perception catches what the mud nearly hides: one set of tracks presses deeper than the others, as if someone carried a heavy load away from the road.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "heavy_load_carried_toward_trees",
+              "knowledge_type": "clue",
+              "title": "Deep tracks leave the road",
+              "summary": "One set of tracks near the caravan is deeper than the others, as if someone carried a heavy load away from the road."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": null
+        }
+      },
+      {
+        "interaction_id": "notice_attack_not_looting",
+        "target_id": "scattered_cargo",
+        "resolution_mode": "passive_discovery",
+        "priority": 70,
+        "requires_check": true,
+        "check": {
+          "mode": "passive",
+          "skill": "investigation",
+          "dc": 14,
+          "visibility": "success_only"
+        },
+        "on_success": {
+          "narration": "Your Investigation training keeps returning to the same problem: the most portable valuables are not all gone, and the attackers seem to have stopped caring about loot before the work was finished.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "attackers_not_primarily_looting",
+              "knowledge_type": "clue",
+              "title": "Loot was not the main purpose",
+              "summary": "The caravan attack left enough portable goods behind to suggest the attackers wanted something other than simple robbery."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": null
+        }
+      }
+    ],
+    "free_focus": [
+      {
+        "interaction_id": "focus_broken_axle",
+        "target_id": "caravan_wreck",
+        "label": "broken axle",
+        "resolution_mode": "free_focus",
+        "priority": 100,
+        "requires_check": true,
+        "check": {
+          "mode": "standard",
+          "skill": "investigation",
+          "dc": 13,
+          "visibility": "visible"
+        },
+        "on_success": {
+          "narration": "The split is too clean for a bad rut or rotten wood. Someone struck or wedged the axle before the panic scattered the cargo, disabling the wagon at exactly the part of the road where the trees press closest.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "caravan_axle_was_sabotaged",
+              "knowledge_type": "clue",
+              "title": "The axle was sabotaged",
+              "summary": "The caravan axle looks deliberately split, not merely damaged by the road."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": "The damage is messy up close. The obvious part remains: the wagon cannot move without repairs, and the rear axle is where the trouble began.",
+          "knowledge_grants": []
+        },
+        "committed_followup": {
+          "enabled": true,
+          "check_resolution": "advantage",
+          "beat_action_type": "investigate"
+        }
+      },
+      {
+        "interaction_id": "focus_scattered_cargo",
+        "target_id": "scattered_cargo",
+        "label": "scattered cargo",
+        "resolution_mode": "free_focus",
+        "priority": 80,
+        "result": {
+          "narration": "Most of the cargo is ordinary trade goods: damp cloth, cracked pottery, lamp oil, a few sacks of grain gone dark with mud. The strange part is how much was left behind. Whoever broke the caravan did not behave like someone with time and appetite enough to loot it clean."
+        },
+        "committed_followup": {
+          "enabled": true,
+          "check_resolution": "take_20",
+          "beat_action_type": "investigate"
+        }
+      },
+      {
+        "interaction_id": "focus_roadside_mud",
+        "target_id": "roadside_mud",
+        "label": "roadside mud",
+        "resolution_mode": "free_focus",
+        "priority": 90,
+        "requires_check": true,
+        "check": {
+          "mode": "standard",
+          "skill": "survival",
+          "dc": 14,
+          "visibility": "visible"
+        },
+        "on_success": {
+          "narration": "The mud holds two stories at once: the broad confusion of frightened travelers and a narrower line of purposeful movement toward the trees. One track pattern presses deeper, as if someone carried weight or dragged someone who could not keep pace.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "strange_tracks_leave_road",
+              "knowledge_type": "clue",
+              "title": "Fresh tracks leave the road",
+              "summary": "Fresh tracks pull away from the broken caravan and leave the Grey Road."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": "The mud is too churned to read cleanly. The obvious part remains: movement left the road in more than one direction, and some of it went toward the trees.",
+          "knowledge_grants": []
+        },
+        "committed_followup": {
+          "enabled": true,
+          "check_resolution": "advantage",
+          "beat_action_type": "track"
+        },
+        "expires_when": [
+          {
+            "state": "weather.rain_intensity",
+            "operator": "gte",
+            "value": "heavy",
+            "expired_label": "washed away",
+            "expired_text": "Heavy rain has softened the clearest tracks into the ditch."
+          }
+        ]
+      },
+      {
+        "interaction_id": "focus_missing_travelers_signs",
+        "target_id": "missing_travelers_signs",
+        "label": "signs of missing travelers",
+        "resolution_mode": "free_focus",
+        "priority": 70,
+        "requires_check": true,
+        "check": {
+          "mode": "standard",
+          "skill": "perception",
+          "dc": 12,
+          "visibility": "visible"
+        },
+        "on_success": {
+          "narration": "There should be more finality here. The belongings, blood, and boot marks suggest more people were present than the aftermath can account for, but not everyone who was here fell beside the wagon.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "not_all_travelers_fell_at_wreck",
+              "knowledge_type": "clue",
+              "title": "Not everyone fell at the wreck",
+              "summary": "The attack site suggests some caravan travelers left the road after the wagon was disabled."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": "The wreck is abandoned, and no one answers from the mud or canvas. Beyond that, the scene is too confused to count cleanly.",
+          "knowledge_grants": []
+        },
+        "committed_followup": {
+          "enabled": true,
+          "check_resolution": "standard",
+          "beat_action_type": "investigate"
+        }
+      }
+    ],
+    "beat_actions": [
+      {
+        "interaction_id": "inspect-broken-caravan",
+        "target_id": "caravan_wreck",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "investigate",
+        "consequence_level": "meaningful"
+      },
+      {
+        "interaction_id": "examine-roadside-tracks",
+        "target_id": "roadside_mud",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "track",
+        "consequence_level": "meaningful"
+      },
+      {
+        "interaction_id": "check-for-survivors",
+        "target_id": "missing_travelers_signs",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "investigate",
+        "consequence_level": "meaningful"
+      },
+      {
+        "interaction_id": "leave-broken-caravan-for-inn",
+        "target_id": "road_to_inn",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "travel",
+        "consequence_level": "meaningful"
+      }
+    ],
+    "is_starting_scene": true,
+    "entry_conditions": {},
+    "is_active": true
+  },
+  {
+    "slug": "grey-road-inn",
+    "location_slug": "grey-road-inn",
+    "template_slug": "grey-road-inn-template",
+    "name": "The Grey Road Inn",
+    "text": {
+      "short": "The inn is quieter than it should be.",
+      "summary": "Travelers and locals share the same room, but not the same certainty.",
+      "full": "The Grey Road Inn is subdued. Conversations are low, glances are quick, and even the warm light feels cautious. Fear has not emptied the road yet, but it has changed how people use it.",
+      "entry": "You enter the Grey Road Inn and feel the room listening before it speaks.",
+      "sms": "Rain taps the inn windows. The innkeeper polishes the same cup too long. Near the hearth, a woman grips a torn caravan sash.",
+      "recap": "You reached the Grey Road Inn and found uneasy travelers, wary locals, and a survivor bound to the caravan attack."
+    },
+    "interaction_model": "surface_focus_commit",
+    "automatic_observations": [
+      {
+        "interaction_id": "observe_inn_listening",
+        "resolution_mode": "automatic_observation",
+        "priority": 90,
+        "narration": "Conversations dip whenever the door opens, and several faces turn away a moment too late."
+      },
+      {
+        "interaction_id": "observe_woman_with_sash",
+        "resolution_mode": "automatic_observation",
+        "priority": 85,
+        "narration": "A shaken woman near the hearth keeps both hands around a torn caravan sash."
+      },
+      {
+        "interaction_id": "observe_innkeeper_watches_road",
+        "resolution_mode": "automatic_observation",
+        "priority": 75,
+        "narration": "The innkeeper watches the road-facing windows more often than a calm host would need to."
+      }
+    ],
+    "passive_discoveries": [
+      {
+        "interaction_id": "notice_innkeeper_watches_door",
+        "target_id": "the_innkeeper",
+        "resolution_mode": "passive_discovery",
+        "priority": 80,
+        "requires_check": true,
+        "check": {
+          "mode": "passive",
+          "skill": "insight",
+          "dc": 12,
+          "visibility": "success_only"
+        },
+        "on_success": {
+          "narration": "Your Passive Insight catches the innkeeper's rhythm: he watches the door more than the room, as if expecting trouble to arrive from outside."
+        },
+        "on_failure": {
+          "narration": null
+        }
+      },
+      {
+        "interaction_id": "notice_survivor_avoids_bandits",
+        "target_id": "woman_near_hearth",
+        "resolution_mode": "passive_discovery",
+        "priority": 75,
+        "requires_check": true,
+        "check": {
+          "mode": "passive",
+          "skill": "insight",
+          "dc": 14,
+          "visibility": "success_only"
+        },
+        "on_success": {
+          "narration": "Your Passive Insight catches what the woman avoids: she flinches at the word bandits, but not as if it explains what frightened her most.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "survivor_fears_more_than_bandits",
+              "knowledge_type": "clue",
+              "title": "The survivor fears more than bandits",
+              "summary": "The shaken survivor reacts as though bandits are not the whole explanation for what happened on the road."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": null
+        }
+      }
+    ],
+    "free_focus": [
+      {
+        "interaction_id": "focus_inn_common_room",
+        "target_id": "inn_common_room",
+        "label": "common room",
+        "resolution_mode": "free_focus",
+        "priority": 70,
+        "result": {
+          "narration": "The room is warm enough, but not relaxed. Cups sit half-finished, chairs stay angled toward exits, and no one seems eager to be the first to speak plainly."
+        }
+      },
+      {
+        "interaction_id": "focus_woman_near_hearth",
+        "target_id": "woman_near_hearth",
+        "label": "woman near the hearth",
+        "resolution_mode": "free_focus",
+        "priority": 95,
+        "requires_check": true,
+        "check": {
+          "mode": "standard",
+          "skill": "insight",
+          "dc": 12,
+          "visibility": "visible"
+        },
+        "on_success": {
+          "narration": "She flinches at sharp sounds and keeps rubbing one thumb over a torn caravan sash. Whatever happened on the road is still close enough to make the room feel unsafe to her.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "woman_near_hearth_survived_road_attack",
+              "knowledge_type": "clue",
+              "title": "The woman near the hearth survived the road attack",
+              "summary": "The shaken woman by the hearth appears directly connected to the caravan attack."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": "She is plainly shaken, but the room's noise and her guarded posture make it hard to read more than that.",
+          "knowledge_grants": []
+        },
+        "committed_followup": {
+          "enabled": true,
+          "check_resolution": "standard",
+          "beat_action_type": "social"
+        }
+      },
+      {
+        "interaction_id": "focus_innkeeper_habits",
+        "target_id": "the_innkeeper",
+        "label": "innkeeper's habits",
+        "resolution_mode": "free_focus",
+        "priority": 85,
+        "requires_check": true,
+        "check": {
+          "mode": "standard",
+          "skill": "insight",
+          "dc": 13,
+          "visibility": "visible"
+        },
+        "on_success": {
+          "narration": "The innkeeper's caution is not theatrical. He knows enough to be frightened by patterns, not rumors, and he keeps measuring each road report against the next one.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "innkeeper_tracks_road_patterns",
+              "knowledge_type": "clue",
+              "title": "The innkeeper tracks the road's patterns",
+              "summary": "The innkeeper has been comparing road reports and may know more than common rumor."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": "The innkeeper is worried and trying not to show it. That much is plain even if the reason remains tucked behind his practiced calm.",
+          "knowledge_grants": []
+        },
+        "committed_followup": {
+          "enabled": true,
+          "check_resolution": "standard",
+          "beat_action_type": "social"
+        }
+      },
+      {
+        "interaction_id": "focus_low_voiced_travelers",
+        "target_id": "low_voiced_travelers",
+        "label": "low-voiced travelers",
+        "resolution_mode": "free_focus",
+        "priority": 60,
+        "requires_check": true,
+        "check": {
+          "mode": "standard",
+          "skill": "perception",
+          "dc": 13,
+          "visibility": "visible"
+        },
+        "on_success": {
+          "narration": "Their whispers circle the same fragments: road trouble, missing people, and someone insisting the old shrine should be left out of it.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "travelers_mention_old_shrine",
+              "knowledge_type": "clue",
+              "title": "Travelers mention the old shrine",
+              "summary": "Travelers at the inn connect the road trouble to the old shrine, though not openly."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": "They are talking about the road in low voices, but the words blur together whenever anyone notices you listening.",
+          "knowledge_grants": []
+        }
+      }
+    ],
+    "beat_actions": [
+      {
+        "interaction_id": "speak-with-elin",
+        "target_id": "woman_near_hearth",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "social",
+        "consequence_level": "meaningful"
+      },
+      {
+        "interaction_id": "question-the-innkeeper",
+        "target_id": "the_innkeeper",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "social",
+        "consequence_level": "meaningful"
+      },
+      {
+        "interaction_id": "listen-to-travelers",
+        "target_id": "low_voiced_travelers",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "investigate",
+        "consequence_level": "meaningful"
+      },
+      {
+        "interaction_id": "continue-to-dunmere",
+        "target_id": "dunmere",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "travel",
+        "consequence_level": "meaningful"
+      }
+    ],
+    "entry_conditions": {},
+    "is_active": true,
+    "narration": {
+      "version": 2,
+      "voice": "second_person_present",
+      "base": [
+        "Warmth meets you at the door, but welcome does not. The Grey Road Inn holds its voices low, as if every table is waiting to see whether the next word will make the room safer or worse.",
+        "The innkeeper moves with practiced calm behind the bar, though his attention keeps returning to the road-facing windows. Near the hearth, a shaken woman grips a torn caravan sash in both hands.",
+        "Travelers sit in small knots beneath the smoke-dark rafters. Their cups are half-finished, their chairs angled toward exits, and their silences have begun to feel organized."
+      ],
+      "return_visit": [
+        "The Grey Road Inn has not grown louder since you last stood here. If anything, the room has learned to make its quiet more careful.",
+        "You return to the inn's low firelight and find the same watchful hush waiting under every conversation."
+      ],
+      "sensory": [
+        "Rain ticks against the panes whenever the common room falls quiet.",
+        "The hearth smells of peat smoke, spilled ale, and damp wool.",
+        "Floorboards complain beneath every late arrival."
+      ],
+      "environment_variants": [],
+      "opportunity_variants": {
+        "subtle": [
+          "The woman near the hearth, the innkeeper's watchful habits, and the travelers' low voices all pull against the room's fragile calm.",
+          "Every account here seems to stop just before the part that matters."
+        ],
+        "soft_explicit": [
+          "The room gives you three quiet pressures: the shaken woman, the watchful innkeeper, and travelers who know more than they say.",
+          "The hearth, the low voices, and the guarded glances all point back toward the road."
+        ]
+      },
+      "composition_notes": {
+        "default_opportunity_style": "subtle_only",
+        "avoid_phrases": [
+          "Would you like to",
+          "You can",
+          "Possible actions include",
+          "there are several places to begin"
+        ]
+      }
+    }
+  },
+  {
+    "slug": "elin-memory-fragments",
+    "location_slug": "grey-road-inn",
+    "template_slug": "elin-memory-fragments-template",
+    "name": "Fragments of Memory",
+    "text": {
+      "short": "A survivor sits apart from the common room, visibly shaken.",
+      "summary": "Away from the inn's noise, a survivor tries and fails to remember clearly.",
+      "full": "A shaken traveler sits alone, hands tight around a cup gone cold. The more gently you ask, the more obvious it becomes that memory itself is the thing she no longer trusts.",
+      "entry": "You step away from the common room and into the quieter corner where the survivor is trying not to shake.",
+      "sms": "A survivor sits alone, struggling to describe what happened.",
+      "recap": "You spoke with a survivor whose memory carried the clearest early sign that something was wrong."
+    },
+    "entry_conditions": {},
+    "is_active": true,
+    "narration": {
+      "version": 2,
+      "voice": "second_person_present",
+      "base": [
+        "Away from the common room, the survivor sits with a cup gone cold between her hands. She looks less like someone refusing to answer than someone afraid the answer will change if she reaches for it.",
+        "The noise of the inn thins here. Every word has more room to land, and that seems to frighten her almost as much as the memory itself."
+      ],
+      "return_visit": [
+        "The quiet corner waits with the same cold cup, the same ash-colored light, and the same memory that refuses to settle."
+      ],
+      "sensory": [
+        "The hearth crackles faintly behind you.",
+        "Cold tea and smoke hang in the air.",
+        "Her breath catches whenever the common room laughs too sharply."
+      ],
+      "environment_variants": [],
+      "opportunity_variants": {
+        "subtle": [
+          "Her hands, the torn sash, and the gaps in her account each carry a different pressure."
+        ],
+        "soft_explicit": [
+          "Her torn sash, guarded answers, and unfinished memories all press toward the same missing moment.",
+          "The truth here sits in what she remembers, what she avoids, and what the sash survived."
+        ]
+      },
+      "composition_notes": {
+        "default_opportunity_style": "subtle_only",
+        "avoid_phrases": [
+          "Would you like to",
+          "You can",
+          "Possible actions include",
+          "there are several places to begin"
+        ]
+      }
+    }
+  },
+  {
+    "slug": "dunmere-village",
+    "location_slug": "dunmere-village",
+    "template_slug": "dunmere-village-template",
+    "name": "Dunmere",
+    "text": {
+      "short": "The village is tense and watchful.",
+      "summary": "Dunmere feels like a place bracing for news it already expects to hate.",
+      "full": "Doors open only partway in Dunmere. Fear travels faster than trade here now, and grief has made patience harder to find than bread.",
+      "entry": "You arrive in Dunmere and immediately feel how badly the village wants answers it can trust.",
+      "sms": "Dunmere: fear, grief, and too many people deciding what the truth ought to be before it is known.",
+      "recap": "You reached Dunmere and found a village strained by fear, impatience, and rumor."
+    },
+    "entry_conditions": {},
+    "is_active": true,
+    "narration": {
+      "version": 2,
+      "voice": "second_person_present",
+      "base": [
+        "Dunmere gathers around you in half-open doors, curtained windows, and faces that look away only after being seen. The village is too small for fear to stay private.",
+        "A notice board near the square has been crowded with old trade postings, missing-person scraps, and warnings written in three different hands. Near the well, villagers trade short sentences that end whenever a stranger comes close.",
+        "This is not panic yet. It is worse in some ways: a place trying to decide what kind of certainty will hurt least."
+      ],
+      "return_visit": [
+        "Dunmere still watches from its half-open doors, measuring every new answer against the fear that has already settled in.",
+        "You return to the village square, where every rumor seems to have grown sharper in your absence."
+      ],
+      "sensory": [
+        "Smoke from cookfires lies low between the cottages.",
+        "A dog barks once and is quickly hushed.",
+        "The mud near the well is marked by many feet and very little lingering."
+      ],
+      "environment_variants": [],
+      "opportunity_variants": {
+        "subtle": [
+          "The notice board, the wellside murmurs, and the guarded houses each hold a different version of the village's fear.",
+          "The road out of Dunmere keeps drawing the eye toward the old forest path."
+        ],
+        "soft_explicit": [
+          "The notice board, wellside talk, and guarded houses each show how fear has settled into Dunmere.",
+          "The village keeps turning your attention from rumor toward the old forest path."
+        ]
+      },
+      "composition_notes": {
+        "default_opportunity_style": "subtle_only",
+        "avoid_phrases": [
+          "Would you like to",
+          "You can",
+          "Possible actions include",
+          "there are several places to begin"
+        ]
+      }
+    },
+    "interaction_model": "surface_focus_commit",
+    "automatic_observations": [
+      {
+        "interaction_id": "observe_village_on_edge",
+        "resolution_mode": "automatic_observation",
+        "priority": 90,
+        "narration": "Doors open only partway, and conversations stop before you are close enough to hear their shape."
+      },
+      {
+        "interaction_id": "observe_notice_board",
+        "resolution_mode": "automatic_observation",
+        "priority": 75,
+        "narration": "The village notice board is crowded with travel warnings, missing-person scraps, and names written with different levels of hope."
+      },
+      {
+        "interaction_id": "observe_old_path_reference",
+        "resolution_mode": "automatic_observation",
+        "priority": 65,
+        "narration": "More than one mud-smeared boot track near the square points toward the old forest path despite how little anyone seems to want to mention it."
+      }
+    ],
+    "passive_discoveries": [
+      {
+        "interaction_id": "notice_village_wants_simple_answer",
+        "target_id": "village_square",
+        "resolution_mode": "passive_discovery",
+        "priority": 80,
+        "requires_check": true,
+        "check": {
+          "mode": "passive",
+          "skill": "insight",
+          "dc": 13,
+          "visibility": "success_only"
+        },
+        "on_success": {
+          "narration": "Your Passive Insight catches the danger under the village's fear: Dunmere wants an answer badly enough that a simple wrong one might be welcomed too quickly.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "dunmere_wants_simple_answer",
+              "knowledge_type": "clue",
+              "title": "Dunmere wants a simple answer",
+              "summary": "Fear in Dunmere is making people ready to accept a clean explanation before the truth is known."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": null
+        }
+      },
+      {
+        "interaction_id": "notice_hunter_path_knowledge",
+        "target_id": "old_path_rumors",
+        "resolution_mode": "passive_discovery",
+        "priority": 70,
+        "requires_check": true,
+        "check": {
+          "mode": "passive",
+          "skill": "perception",
+          "dc": 14,
+          "visibility": "success_only"
+        },
+        "on_success": {
+          "narration": "Your Passive Perception catches a repeated name under the murmurs: Garren Holt, a hunter people accuse precisely because he knows the old paths better than most.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "garren_knows_old_paths",
+              "knowledge_type": "clue",
+              "title": "Garren knows the old paths",
+              "summary": "A reclusive hunter named Garren Holt is repeatedly tied to knowledge of the old forest path."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": null
+        }
+      }
+    ],
+    "free_focus": [
+      {
+        "interaction_id": "focus_village_notice_board",
+        "target_id": "notice_board",
+        "label": "notice board",
+        "resolution_mode": "free_focus",
+        "priority": 90,
+        "result": {
+          "narration": "The notices do not agree with each other. Some blame bandits, some warn travelers to avoid the Grey Road entirely, and one older scrap mentions the old shrine only to have the line crossed out hard enough to tear the paper."
+        },
+        "committed_followup": {
+          "enabled": true,
+          "check_resolution": "take_20",
+          "beat_action_type": "investigate"
+        },
+        "unlocks": {
+          "beat_action_targets": [
+            "old_forest_path"
+          ]
+        }
+      },
+      {
+        "interaction_id": "focus_wellside_murmurs",
+        "target_id": "wellside_murmurs",
+        "label": "wellside murmurs",
+        "resolution_mode": "free_focus",
+        "priority": 80,
+        "requires_check": true,
+        "check": {
+          "mode": "standard",
+          "skill": "perception",
+          "dc": 12,
+          "visibility": "visible"
+        },
+        "on_success": {
+          "narration": "The villagers are not only afraid of more attacks. They are afraid of being wrong about whom to blame, and that fear keeps turning back toward the hunter who uses the old path.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "village_blames_hunter_and_road",
+              "knowledge_type": "clue",
+              "title": "The village blames the hunter and the road",
+              "summary": "Dunmere's fear keeps circling back to Garren Holt, the old path, and the road attacks."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": "The murmurs tangle together: missing people, road warnings, bandits, the hunter, the shrine. The fear is clear even when the details are not.",
+          "knowledge_grants": []
+        }
+      },
+      {
+        "interaction_id": "focus_old_path_signs",
+        "target_id": "old_path_signs",
+        "label": "old path signs",
+        "resolution_mode": "free_focus",
+        "priority": 70,
+        "requires_check": true,
+        "check": {
+          "mode": "standard",
+          "skill": "survival",
+          "dc": 12,
+          "visibility": "visible"
+        },
+        "on_success": {
+          "narration": "Fresh boot marks at the village edge join older hunter tracks before turning into the trees. The old path is still being used, no matter how much Dunmere pretends otherwise.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "old_path_still_used",
+              "knowledge_type": "clue",
+              "title": "The old path is still used",
+              "summary": "The forest path beyond Dunmere is still seeing traffic despite local unease."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": "The village edge is busy enough to confuse the tracks, but the old path is clearly not abandoned.",
+          "knowledge_grants": []
+        },
+        "committed_followup": {
+          "enabled": true,
+          "check_resolution": "advantage",
+          "beat_action_type": "track"
+        }
+      }
+    ],
+    "beat_actions": [
+      {
+        "interaction_id": "follow-the-old-path",
+        "target_id": "old_forest_path",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "travel",
+        "consequence_level": "meaningful"
+      },
+      {
+        "interaction_id": "question-villagers",
+        "target_id": "wellside_murmurs",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "social",
+        "consequence_level": "meaningful"
+      },
+      {
+        "interaction_id": "study-village-notices",
+        "target_id": "notice_board",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "investigate",
+        "consequence_level": "meaningful"
+      },
+      {
+        "interaction_id": "return-to-inn",
+        "target_id": "grey_road_inn",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "travel",
+        "consequence_level": "meaningful"
+      }
+    ]
+  },
+  {
+    "slug": "old-forest-path",
+    "location_slug": "old-forest-path",
+    "template_slug": "old-forest-path-template",
+    "name": "Signs of Movement",
+    "text": {
+      "short": "The path is quiet, but the ground says otherwise.",
+      "summary": "Repeated movement has worn the old path into a trail of half-explained decisions.",
+      "full": "The old forest path has the stillness of a place people are trying not to notice. Tracks break formation, loop back, and turn toward the shrine more often than chance should allow.",
+      "entry": "The forest path is empty when you reach it, but the ground gives up the truth faster than the trees do.",
+      "sms": "Old Forest Path: too many tracks, too little order, and signs the shrine keeps drawing people back.",
+      "recap": "You investigated the old forest path and found signs of repeated, unstable movement toward the shrine."
+    },
+    "entry_conditions": {},
+    "is_active": true,
+    "narration": {
+      "version": 2,
+      "voice": "second_person_present",
+      "base": [
+        "The old forest path begins as a hunter's trail and quickly becomes something more troubled. Ferns lean broken along the edges, and the damp earth keeps more crossings than the village was willing to admit.",
+        "The path does not feel busy in the ordinary way. It feels returned to, abandoned, and found again by people who could not agree on where they meant to go.",
+        "Between the trees, the direction toward the ruined shrine is not marked by a signpost. It is marked by repetition."
+      ],
+      "return_visit": [
+        "The old forest path remains quiet, but the ground still remembers more movement than the trees confess.",
+        "You return to the path and find the same uneasy braid of tracks turning through the undergrowth."
+      ],
+      "sensory": [
+        "Wet leaves cling to your boots.",
+        "Branches creak overhead without much wind.",
+        "The forest swallows distant sound until each nearby snap seems too loud."
+      ],
+      "environment_variants": [],
+      "opportunity_variants": {
+        "subtle": [
+          "Broken undergrowth, layered tracks, and the repeated bend toward the shrine give the path its own argument.",
+          "Some marks look like travel. Others look like hesitation."
+        ],
+        "soft_explicit": [
+          "Layered tracks, broken undergrowth, and the bend toward the shrine each mark the path in a different way.",
+          "The trail has enough signs to follow, but not enough calm to trust them blindly."
+        ]
+      },
+      "composition_notes": {
+        "default_opportunity_style": "subtle_only",
+        "avoid_phrases": [
+          "Would you like to",
+          "You can",
+          "Possible actions include",
+          "there are several places to begin"
+        ]
+      }
+    },
+    "interaction_model": "surface_focus_commit",
+    "automatic_observations": [
+      {
+        "interaction_id": "observe_path_heavily_used",
+        "resolution_mode": "automatic_observation",
+        "priority": 90,
+        "narration": "The old path has seen recent use; the mud holds more crossings than a forgotten trail should."
+      },
+      {
+        "interaction_id": "observe_tracks_break_pattern",
+        "resolution_mode": "automatic_observation",
+        "priority": 80,
+        "narration": "Several sets of tracks break formation and loop back before continuing, as if their owners lost certainty mid-step."
+      },
+      {
+        "interaction_id": "observe_shrine_direction",
+        "resolution_mode": "automatic_observation",
+        "priority": 70,
+        "narration": "The clearest repeated movement bends deeper into the trees, toward where the old shrine would stand."
+      }
+    ],
+    "passive_discoveries": [
+      {
+        "interaction_id": "notice_watcher_sign",
+        "target_id": "watcher_signs",
+        "resolution_mode": "passive_discovery",
+        "priority": 85,
+        "requires_check": true,
+        "check": {
+          "mode": "passive",
+          "skill": "perception",
+          "dc": 14,
+          "visibility": "success_only"
+        },
+        "on_success": {
+          "narration": "Your Passive Perception catches a detail that does not belong to travelers: a snapped twig at shoulder height and a scuffed patch where someone stood still long enough to watch the path.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "forest_path_watched",
+              "knowledge_type": "clue",
+              "title": "Someone watched the forest path",
+              "summary": "Signs along the old path suggest someone has been watching movement through the trees."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": null
+        }
+      },
+      {
+        "interaction_id": "notice_tracks_not_disciplined",
+        "target_id": "layered_tracks",
+        "resolution_mode": "passive_discovery",
+        "priority": 75,
+        "requires_check": true,
+        "check": {
+          "mode": "passive",
+          "skill": "survival",
+          "dc": 13,
+          "visibility": "success_only"
+        },
+        "on_success": {
+          "narration": "Your Survival training reads the disorder in the tracks: this is not a disciplined patrol route. The movement keeps breaking and reforming around the same pull toward the shrine.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "tracks_converge_on_shrine",
+              "knowledge_type": "clue",
+              "title": "Tracks converge on the shrine",
+              "summary": "The movement along the old forest path repeatedly bends toward the ruined shrine."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": null
+        }
+      }
+    ],
+    "free_focus": [
+      {
+        "interaction_id": "focus_layered_tracks",
+        "target_id": "layered_tracks",
+        "label": "layered tracks",
+        "resolution_mode": "free_focus",
+        "priority": 95,
+        "requires_check": true,
+        "check": {
+          "mode": "standard",
+          "skill": "survival",
+          "dc": 12,
+          "visibility": "visible"
+        },
+        "on_success": {
+          "narration": "The tracks overlap in three distinct rhythms: ordinary village traffic, hurried movement from the road, and a newer line that keeps correcting itself toward the shrine. The pattern is too repeated to be accident.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "tracks_converge_on_shrine",
+              "knowledge_type": "clue",
+              "title": "Tracks converge on the shrine",
+              "summary": "The movement along the old forest path repeatedly bends toward the ruined shrine."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": "The ground shows repeated travel, but the overlapping marks blur the timing. The obvious part remains: people have been using this path recently.",
+          "knowledge_grants": []
+        },
+        "committed_followup": {
+          "enabled": true,
+          "check_resolution": "advantage",
+          "beat_action_type": "track"
+        },
+        "unlocks": {
+          "beat_action_targets": [
+            "shrine_ruins"
+          ]
+        }
+      },
+      {
+        "interaction_id": "focus_broken_undergrowth",
+        "target_id": "broken_undergrowth",
+        "label": "broken undergrowth",
+        "resolution_mode": "free_focus",
+        "priority": 75,
+        "result": {
+          "narration": "Sap still beads on some broken stems. People moved through here recently and not all of them stayed on the path; someone either tried to avoid being followed or was too uncertain to keep to open ground."
+        }
+      },
+      {
+        "interaction_id": "focus_watcher_signs",
+        "target_id": "watcher_signs",
+        "label": "watcher signs",
+        "resolution_mode": "free_focus",
+        "priority": 80,
+        "requires_check": true,
+        "check": {
+          "mode": "standard",
+          "skill": "perception",
+          "dc": 14,
+          "visibility": "visible"
+        },
+        "on_success": {
+          "narration": "A patch of compressed moss sits behind a screen of young ash branches. Someone waited here with a clear view of the path, close enough to withdraw before travelers reached the bend.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "forest_path_watched",
+              "knowledge_type": "clue",
+              "title": "Someone watched the forest path",
+              "summary": "Signs along the old path suggest someone has been watching movement through the trees."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": "The trees crowd close enough to hide a watcher, but you find no clear proof that someone stood here.",
+          "knowledge_grants": []
+        },
+        "committed_followup": {
+          "enabled": true,
+          "check_resolution": "standard",
+          "beat_action_type": "investigate"
+        }
+      }
+    ],
+    "beat_actions": [
+      {
+        "interaction_id": "track-the-old-path",
+        "target_id": "layered_tracks",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "track",
+        "consequence_level": "meaningful"
+      },
+      {
+        "interaction_id": "follow-the-tracks-to-the-shrine",
+        "target_id": "shrine_ruins",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "travel",
+        "consequence_level": "meaningful"
+      },
+      {
+        "interaction_id": "search-for-watchers",
+        "target_id": "watcher_signs",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "investigate",
+        "consequence_level": "meaningful"
+      },
+      {
+        "interaction_id": "return-to-dunmere",
+        "target_id": "dunmere",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "travel",
+        "consequence_level": "meaningful"
+      }
+    ]
+  },
+  {
+    "slug": "shrine-ruins",
+    "location_slug": "shrine-ruins",
+    "template_slug": "shrine-ruins-template",
+    "name": "The Gathering Point",
+    "text": {
+      "short": "The ruined shrine has become a tense, unstable camp.",
+      "summary": "This is where the road's surface violence finally points toward something deeper.",
+      "full": "The ruined shrine bears all the signs of rough occupation, but none of the coherence that should come with it. The camp feels lived in by people whose attention is always being pulled elsewhere.",
+      "entry": "You reach the ruined shrine and feel at once that the bandits here are dangerous, but not entirely self-directed.",
+      "sms": "Shrine Ruins: armed people, unstable nerves, and a place that feels wrong even before anyone speaks.",
+      "recap": "You reached the shrine ruins, where the surface threat and the deeper wrongness of the Grey Road finally met."
+    },
+    "entry_conditions": {},
+    "is_active": true,
+    "narration": {
+      "version": 2,
+      "voice": "second_person_present",
+      "base": [
+        "The ruined shrine crouches in a hollow of trees, its old stones crowded now by bedrolls, cold fire pits, and the careless signs of people who never meant to make a home here.",
+        "The camp is occupied in the way a wound is occupied by infection. Weapons lie near reach, supplies are stacked without order, and every path through the ruins seems chosen for quick escape rather than comfort.",
+        "The shrine itself feels older than the fear around it. Scratches and hand-worn marks cover the broken stone where too many fingers have returned to the same places."
+      ],
+      "return_visit": [
+        "The ruined shrine waits under the trees, less a camp than a pressure point the forest has failed to close around.",
+        "You return to the shrine ruins and find the disturbed stones and rough camp still arguing with each other in silence."
+      ],
+      "sensory": [
+        "Ash and damp leaves sour the air.",
+        "Rope creaks softly where a tarp has been tied to a leaning shrine pillar.",
+        "The stones hold cold even where the campfire smoke has blackened them."
+      ],
+      "environment_variants": [],
+      "opportunity_variants": {
+        "subtle": [
+          "The camp layout, the shrine markings, and the deeper seams in the broken floor each point to a different layer of danger.",
+          "The bandits have left ordinary signs everywhere, but the shrine keeps drawing attention back to its oldest stones."
+        ],
+        "soft_explicit": [
+          "The camp, the markings, and the broken floor each expose a different layer of the shrine.",
+          "The bandit signs explain the surface; the old stones suggest something beneath it."
+        ]
+      },
+      "composition_notes": {
+        "default_opportunity_style": "subtle_only",
+        "avoid_phrases": [
+          "Would you like to",
+          "You can",
+          "Possible actions include",
+          "there are several places to begin"
+        ]
+      }
+    },
+    "interaction_model": "surface_focus_commit",
+    "automatic_observations": [
+      {
+        "interaction_id": "observe_shrine_occupied",
+        "resolution_mode": "automatic_observation",
+        "priority": 90,
+        "narration": "Bedrolls, scraps, and a cold fire pit show that the ruined shrine has been used as a rough camp."
+      },
+      {
+        "interaction_id": "observe_camp_unstable",
+        "resolution_mode": "automatic_observation",
+        "priority": 80,
+        "narration": "The camp is poorly ordered; supplies and weapons sit close to hand, but nothing suggests calm routine."
+      },
+      {
+        "interaction_id": "observe_marked_stones",
+        "resolution_mode": "automatic_observation",
+        "priority": 75,
+        "narration": "Several shrine stones bear repeated scratches and hand-worn marks that do not look like ordinary vandalism."
+      }
+    ],
+    "passive_discoveries": [
+      {
+        "interaction_id": "notice_bandits_under_pressure",
+        "target_id": "camp_layout",
+        "resolution_mode": "passive_discovery",
+        "priority": 80,
+        "requires_check": true,
+        "check": {
+          "mode": "passive",
+          "skill": "insight",
+          "dc": 13,
+          "visibility": "success_only"
+        },
+        "on_success": {
+          "narration": "Your Passive Insight reads the camp's unease before any person says a word: whoever stayed here was armed and dangerous, but not settled in their own decisions.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "bandits_not_fully_self_directed",
+              "knowledge_type": "clue",
+              "title": "The bandits were not fully settled",
+              "summary": "The shrine camp suggests dangerous people under a pressure they did not fully control."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": null
+        }
+      },
+      {
+        "interaction_id": "recognize_old_shrine_marks",
+        "target_id": "shrine_markings",
+        "resolution_mode": "passive_discovery",
+        "priority": 75,
+        "requires_check": true,
+        "check": {
+          "mode": "passive",
+          "skill": "history",
+          "dc": 14,
+          "visibility": "success_only"
+        },
+        "on_success": {
+          "narration": "Your History training gives the oldest stonework a name: this was once a roadside mercy shrine, a place meant to calm travelers before the lowland roads turned lonely.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "shrine_was_mercy_marker",
+              "knowledge_type": "lore",
+              "title": "The shrine was a mercy marker",
+              "summary": "The ruined shrine was once a roadside mercy shrine meant to steady travelers on lonely roads."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": null
+        }
+      }
+    ],
+    "free_focus": [
+      {
+        "interaction_id": "focus_camp_layout",
+        "target_id": "camp_layout",
+        "label": "camp layout",
+        "resolution_mode": "free_focus",
+        "priority": 80,
+        "result": {
+          "narration": "The bedrolls are placed for quick rising, not rest. Food stores sit near weapons, and more than one trail leaves the camp as if someone kept changing where they expected danger to come from."
+        }
+      },
+      {
+        "interaction_id": "focus_shrine_markings",
+        "target_id": "shrine_markings",
+        "label": "shrine markings",
+        "resolution_mode": "free_focus",
+        "priority": 95,
+        "requires_check": true,
+        "check": {
+          "mode": "standard",
+          "skill": "investigation",
+          "dc": 11,
+          "visibility": "visible"
+        },
+        "on_success": {
+          "narration": "The marks are not random scratches. Some are repeated, traced, and worried deeper by anxious hands. The bandits were not merely occupying the shrine; someone kept returning to the same pieces of stone as if trying to make sense of them or obey them.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "clue_unusual_markings",
+              "knowledge_type": "clue",
+              "title": "Unusual shrine markings",
+              "summary": "The signs around the shrine suggest repeated contact with something the bandits did not fully control."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": "The shrine is clearly disturbed, but the pattern refuses to settle into a clean explanation. The obvious part remains: the camp paid too much attention to these stones.",
+          "knowledge_grants": []
+        },
+        "committed_followup": {
+          "enabled": true,
+          "check_resolution": "advantage",
+          "beat_action_type": "investigate"
+        },
+        "unlocks": {
+          "beat_action_targets": [
+            "subterranean_descent"
+          ]
+        }
+      },
+      {
+        "interaction_id": "focus_hidden_descent_signs",
+        "target_id": "hidden_descent_signs",
+        "label": "broken floor seams",
+        "resolution_mode": "free_focus",
+        "priority": 85,
+        "requires_check": true,
+        "check": {
+          "mode": "standard",
+          "skill": "perception",
+          "dc": 14,
+          "visibility": "visible"
+        },
+        "on_success": {
+          "narration": "Beneath a drift of leaves and ash, the floor stones do not sit flush. A narrow seam curves beneath the shrine's collapsed center, too deliberate to be ordinary settling.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "shrine_depth_unlocked",
+              "knowledge_type": "clue",
+              "title": "A way beneath the shrine",
+              "summary": "The ruined shrine contains signs of a hidden descent below the surface stones."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": "The broken floor is uneven and dangerous underfoot, but you cannot tell whether the gaps are structural damage or something more deliberate.",
+          "knowledge_grants": []
+        },
+        "committed_followup": {
+          "enabled": true,
+          "check_resolution": "standard",
+          "beat_action_type": "investigate"
+        },
+        "unlocks": {
+          "beat_action_targets": [
+            "subterranean_hollow"
+          ]
+        }
+      },
+      {
+        "interaction_id": "focus_bandit_supplies",
+        "target_id": "bandit_supplies",
+        "label": "bandit supplies",
+        "resolution_mode": "free_focus",
+        "priority": 65,
+        "result": {
+          "narration": "The supplies are practical but badly managed: dried meat left open, arrows bundled by mismatched hands, torn blankets stiff with old rain. These are not soldiers' stores. They are the belongings of people sleeping badly under pressure."
+        }
+      }
+    ],
+    "beat_actions": [
+      {
+        "interaction_id": "inspect-shrine-markings",
+        "target_id": "shrine_markings",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "investigate",
+        "consequence_level": "meaningful"
+      },
+      {
+        "interaction_id": "confront-rusk",
+        "target_id": "rusk_bandit",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "risk",
+        "consequence_level": "meaningful"
+      },
+      {
+        "interaction_id": "search-for-descent",
+        "target_id": "hidden_descent_signs",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "investigate",
+        "consequence_level": "meaningful"
+      },
+      {
+        "interaction_id": "descend-beneath-the-shrine",
+        "target_id": "subterranean_hollow",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "travel",
+        "consequence_level": "meaningful"
+      },
+      {
+        "interaction_id": "withdraw-from-the-shrine",
+        "target_id": "old_forest_path",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "travel",
+        "consequence_level": "meaningful"
+      }
+    ]
+  },
+  {
+    "slug": "subterranean-hollow",
+    "location_slug": "subterranean-hollow",
+    "template_slug": "subterranean-hollow-template",
+    "name": "The Truth Below",
+    "text": {
+      "short": "The chamber beneath the shrine feels wrong in a way thought can barely hold.",
+      "summary": "Beneath the shrine, the pattern behind the violence can finally be seen clearly enough to answer.",
+      "full": "Below the shrine lies a chamber where thought feels crowded and silence feels intentional. This is not a camp, not a lair, and not a simple haunting. It is an influence with a foothold.",
+      "entry": "You descend beneath the ruined shrine and feel the world narrow to a single wrongness pressing gently against your thoughts.",
+      "sms": "Subterranean Hollow: the deeper truth waits below the shrine, and it knows you are here.",
+      "recap": "You reached the hidden chamber beneath the shrine and confronted the deeper influence shaping the violence."
+    },
+    "entry_conditions": {},
+    "is_active": true,
+    "narration": {
+      "version": 2,
+      "voice": "second_person_present",
+      "base": [
+        "The chamber beneath the shrine is not large, but it makes distance feel unreliable. Stone ribs curve overhead, damp roots thread through the cracks, and the air seems to wait half a breath before letting sound move.",
+        "At the center of the hollow, an old anchor of stone and dark mineral rises from the floor where shrine foundations should have ended. Marks around it have been touched, retraced, and damaged by hands that did not understand what they were obeying.",
+        "Nothing speaks aloud. Still, your thoughts feel crowded by the suggestion that certainty would be easier if you stopped looking too closely."
+      ],
+      "return_visit": [
+        "The hollow below the shrine remains close and waiting, its silence no less deliberate for having been heard before.",
+        "You return beneath the shrine, where every sound still seems to arrive after the chamber has considered whether to allow it."
+      ],
+      "sensory": [
+        "Water drops somewhere beyond the lantern light.",
+        "The air tastes of mineral damp and old ash.",
+        "Roots move slightly overhead, though no breeze reaches this far down."
+      ],
+      "environment_variants": [],
+      "opportunity_variants": {
+        "subtle": [
+          "The anchor stone, the pressure in your thoughts, and the old marks around the floor make the hollow feel less discovered than confronted.",
+          "The chamber offers no simple enemy shape, only signs of influence gathered around a place too deliberate to be natural."
+        ],
+        "soft_explicit": [
+          "The anchor stone, the floor grooves, and the pressure in your thoughts all make the hollow feel deliberately shaped.",
+          "The chamber leaves its choices in stone, air, and the force pressing against your mind."
+        ]
+      },
+      "composition_notes": {
+        "default_opportunity_style": "subtle_only",
+        "avoid_phrases": [
+          "Would you like to",
+          "You can",
+          "Possible actions include",
+          "there are several places to begin"
+        ]
+      }
+    },
+    "interaction_model": "surface_focus_commit",
+    "automatic_observations": [
+      {
+        "interaction_id": "observe_anchor_stone",
+        "resolution_mode": "automatic_observation",
+        "priority": 90,
+        "narration": "A dark-veined anchor stone rises from the chamber floor where the shrine's foundation should have ended."
+      },
+      {
+        "interaction_id": "observe_thought_pressure",
+        "resolution_mode": "automatic_observation",
+        "priority": 85,
+        "narration": "The air feels crowded in a way that presses against attention rather than breath."
+      },
+      {
+        "interaction_id": "observe_repeated_floor_marks",
+        "resolution_mode": "automatic_observation",
+        "priority": 75,
+        "narration": "Marks around the anchor have been retraced often enough to wear shallow grooves into the stone."
+      }
+    ],
+    "passive_discoveries": [
+      {
+        "interaction_id": "notice_pressure_not_voice",
+        "target_id": "mental_pressure",
+        "resolution_mode": "passive_discovery",
+        "priority": 85,
+        "requires_check": true,
+        "check": {
+          "mode": "passive",
+          "skill": "insight",
+          "dc": 14,
+          "visibility": "success_only"
+        },
+        "on_success": {
+          "narration": "Your Passive Insight catches the shape of the pressure: it is not a voice giving orders, but a repeated nudge away from firm decisions and toward easier conclusions.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "presence_bends_attention",
+              "knowledge_type": "clue",
+              "title": "The presence bends attention",
+              "summary": "The hidden influence beneath the shrine does not command directly; it bends attention, hesitation, and certainty."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": null
+        }
+      },
+      {
+        "interaction_id": "recognize_anchor_function",
+        "target_id": "anchor_stone",
+        "resolution_mode": "passive_discovery",
+        "priority": 75,
+        "requires_check": true,
+        "check": {
+          "mode": "passive",
+          "skill": "arcana",
+          "dc": 15,
+          "visibility": "success_only"
+        },
+        "on_success": {
+          "narration": "Your Arcana training recognizes the anchor's purpose in fragments: not a portal, not a prison, but a foothold that lets influence travel upward through fear, repetition, and suggestion.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "anchor_spreads_influence",
+              "knowledge_type": "clue",
+              "title": "The anchor spreads influence",
+              "summary": "The hollow's anchor lets the hidden influence travel upward through fear and repeated suggestion."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": null
+        }
+      }
+    ],
+    "free_focus": [
+      {
+        "interaction_id": "focus_anchor_stone",
+        "target_id": "anchor_stone",
+        "label": "anchor stone",
+        "resolution_mode": "free_focus",
+        "priority": 95,
+        "requires_check": true,
+        "check": {
+          "mode": "standard",
+          "skill": "arcana",
+          "dc": 14,
+          "visibility": "visible"
+        },
+        "on_success": {
+          "narration": "The stone is not merely old; it has been used. The dark veins form a pattern that catches repeated attention and sends it back altered, like a thought returned with someone else's weight added to it.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "anchor_spreads_influence",
+              "knowledge_type": "clue",
+              "title": "The anchor spreads influence",
+              "summary": "The hollow's anchor lets the hidden influence travel upward through fear and repeated suggestion."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": "The anchor stone is wrong in a way you can feel more easily than explain. The obvious part remains: the hollow gathers around it.",
+          "knowledge_grants": []
+        },
+        "committed_followup": {
+          "enabled": true,
+          "check_resolution": "advantage",
+          "beat_action_type": "investigate"
+        }
+      },
+      {
+        "interaction_id": "focus_mental_pressure",
+        "target_id": "mental_pressure",
+        "label": "pressure in your thoughts",
+        "resolution_mode": "free_focus",
+        "priority": 90,
+        "requires_check": true,
+        "check": {
+          "mode": "standard",
+          "skill": "insight",
+          "dc": 14,
+          "visibility": "visible"
+        },
+        "on_success": {
+          "narration": "The pressure is most dangerous when it offers relief. It nudges toward simple answers, quick blame, and the comfort of stopping just before the truth becomes costly.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "presence_encourages_false_certainty",
+              "knowledge_type": "clue",
+              "title": "The presence encourages false certainty",
+              "summary": "The hidden influence pushes people toward simple answers and premature certainty."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": "The pressure is real, but slippery. You can tell it wants your attention to move away from something, though not yet what.",
+          "knowledge_grants": []
+        },
+        "committed_followup": {
+          "enabled": true,
+          "check_resolution": "standard",
+          "beat_action_type": "prepare"
+        }
+      },
+      {
+        "interaction_id": "focus_floor_grooves",
+        "target_id": "floor_grooves",
+        "label": "floor grooves",
+        "resolution_mode": "free_focus",
+        "priority": 75,
+        "result": {
+          "narration": "The grooves around the anchor are shallow and uneven, made by repeated hands rather than tools. Someone, or several someones, traced the same marks many times without understanding why."
+        }
+      },
+      {
+        "interaction_id": "focus_exit_airflow",
+        "target_id": "exit_airflow",
+        "label": "faint airflow",
+        "resolution_mode": "free_focus",
+        "priority": 60,
+        "requires_check": true,
+        "check": {
+          "mode": "standard",
+          "skill": "perception",
+          "dc": 12,
+          "visibility": "visible"
+        },
+        "on_success": {
+          "narration": "A faint thread of air moves back toward the shrine stairs. Whatever the hollow is, its reach is not sealed down here; the chamber breathes into the ruins above.",
+          "knowledge_grants": [
+            {
+              "knowledge_id": "hollow_reaches_shrine_above",
+              "knowledge_type": "clue",
+              "title": "The hollow reaches the shrine above",
+              "summary": "The hollow is connected to the shrine above by more than stairs; its influence moves upward."
+            }
+          ]
+        },
+        "on_failure": {
+          "narration": "The air shifts in small, cold eddies, but you cannot separate natural draft from the hollow's unease.",
+          "knowledge_grants": []
+        }
+      }
+    ],
+    "beat_actions": [
+      {
+        "interaction_id": "sense-the-presence",
+        "target_id": "mental_pressure",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "investigate",
+        "consequence_level": "meaningful"
+      },
+      {
+        "interaction_id": "trace-the-anchor",
+        "target_id": "anchor_stone",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "investigate",
+        "consequence_level": "meaningful"
+      },
+      {
+        "interaction_id": "steady-the-mind",
+        "target_id": "mental_pressure",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "prepare",
+        "consequence_level": "meaningful"
+      },
+      {
+        "interaction_id": "resolve-the-hollow",
+        "target_id": "anchor_stone",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "risk",
+        "consequence_level": "meaningful"
+      },
+      {
+        "interaction_id": "climb-back-to-the-ruins",
+        "target_id": "shrine_ruins",
+        "resolution_mode": "beat_action",
+        "beat_action_type": "travel",
+        "consequence_level": "meaningful"
+      }
+    ]
+  }
+]

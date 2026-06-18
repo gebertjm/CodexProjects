@@ -1,0 +1,35 @@
+{
+  "required_alignment_abbreviations": ["NG"],
+  "required_campaign_types": ["solo", "party"],
+  "required_campaign_flags": {
+    "village_gate_open": true
+  },
+  "forbidden_campaign_flags": {
+    "village_burned": true
+  },
+  "required_character_flags": {
+    "met_mayor": true
+  },
+  "forbidden_character_flags": {
+    "angered_guard": true
+  },
+  "required_quest_states": [
+    {
+      "quest_key": "first-embers",
+      "statuses": ["active"]
+    }
+  ],
+  "required_objective_states": [
+    {
+      "quest_key": "first-embers",
+      "objective_key": "inspect-ember-sign",
+      "statuses": ["completed"]
+    }
+  ],
+  "required_knowledge": [
+    {
+      "knowledge_type": "lore",
+      "knowledge_key": "ember-sign-rune-pattern"
+    }
+  ]
+}

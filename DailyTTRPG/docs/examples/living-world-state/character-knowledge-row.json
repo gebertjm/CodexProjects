@@ -1,0 +1,10 @@
+{
+  "character_id": "123",
+  "world_instance_id": "greyvale-world-001",
+  "campaign_instance_id": "456",
+  "knowledge_id": "caravan_irregularity",
+  "status": "known",
+  "confidence": "observed",
+  "source_event_id": "789",
+  "known_at": "2026-05-05T18:00:00.000Z"
+}

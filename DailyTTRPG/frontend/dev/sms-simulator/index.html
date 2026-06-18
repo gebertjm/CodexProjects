@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DailyTTRPG SMS Simulator</title>
+    <meta
+      name="description"
+      content="Developer SMS simulator for testing DailyTTRPG's shared SMS gameplay pipeline."
+    />
+    <link rel="stylesheet" href="/dev/sms-simulator/sms-simulator.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <p class="eyebrow">Developer test tool</p>
+        <h1>DailyTTRPG SMS Simulator</h1>
+        <p>
+          A browser transport for the same inbound, runtime, action-window, template, and outbound
+          pipeline future Twilio SMS will use.
+        </p>
+      </header>
+
+      <section class="notice" id="accessNotice" hidden></section>
+
+      <section class="panel setup-panel">
+        <div>
+          <h2>Simulator Session</h2>
+          <p>Create or select a fake SMS phone. Multiple sessions can share a campaign for party tests.</p>
+        </div>
+
+        <form id="sessionForm" class="session-form">
+          <label>
+            Simulated phone
+            <input name="phone_number" value="+15550000001" autocomplete="off" />
+          </label>
+          <label>
+            Session label
+            <input name="user_id" value="sms_simulator_user_1" autocomplete="off" />
+          </label>
+          <label>
+            Active SMS character (advanced resume only)
+            <input name="active_sms_character_id" value="" autocomplete="off" />
+          </label>
+          <label>
+            Character name
+            <input name="active_sms_character_name" value="Adventurer" autocomplete="off" />
+          </label>
+          <label>
+            Campaign (advanced resume only)
+            <input name="campaign_id" value="" autocomplete="off" />
+          </label>
+          <label>
+            Character status
+            <select name="character_status">
+              <option value="active">active</option>
+              <option value="dead">dead</option>
+            </select>
+          </label>
+          <label class="checkbox-row">
+            <input name="verified" type="checkbox" checked />
+            Verified SMS test user
+          </label>
+          <label class="checkbox-row">
+            <input name="new_onboarding_phone" type="checkbox" checked />
+            Real new-phone onboarding test (recommended)
+          </label>
+          <label>
+            Dev token, if required
+            <input id="devToken" autocomplete="off" placeholder="Only needed when protected" />
+          </label>
+          <button type="submit">Create Session</button>
+        </form>
+
+        <div class="session-tabs" id="sessionTabs"></div>
+      </section>
+
+      <section class="sim-grid">
+        <section class="panel conversation-panel">
+          <div class="conversation-heading">
+            <div>
+              <h2>Message Thread</h2>
+              <p id="activeSessionSummary">No active session yet.</p>
+            </div>
+            <button type="button" id="refreshButton">Refresh</button>
+          </div>
+
+          <ol class="message-thread" id="messageThread" aria-live="polite"></ol>
+
+          <form id="messageForm" class="message-form">
+            <input
+              id="messageInput"
+              name="message"
+              placeholder="Reply 1, 2, STATUS, LEVEL, HELP, or a short action"
+              autocomplete="off"
+            />
+            <button type="submit">Send</button>
+          </form>
+        </section>
+
+        <aside class="panel controls-panel">
+          <h2>Developer Controls</h2>
+          <div class="primary-control">
+            <button type="button" data-control="advance-next-beat" data-primary-control="true">
+              Advance to Next Beat
+            </button>
+            <p>
+              Closes the current beat, applies missing defaults, resolves through the shared SMS
+              pipeline, and shows the next SMS output immediately.
+            </p>
+          </div>
+
+          <details class="advanced-controls">
+            <summary>Advanced beat controls</summary>
+            <p class="advanced-note">
+              Advanced controls may leave the simulator in an intermediate state. Use Advance to
+              Next Beat for normal testing.
+            </p>
+          <div class="control-stack">
+            <button type="button" data-control="seed-prompt">Refresh Real Runtime Prompt</button>
+            <button type="button" data-control="seed-default-content">Validate Default Content</button>
+            <button type="button" data-control="advance-window">Send Window Reminder</button>
+            <button type="button" data-control="close-window">Close Window Only</button>
+            <button type="button" data-control="resolve-threshold">Apply Defaults / Resolve Threshold</button>
+            <button type="button" data-control="catchup">Trigger Catch-Up</button>
+            <button type="button" data-control="combat-prompt">Trigger Combat Prompt</button>
+            <button type="button" data-control="combat-resolve">Resolve Combat Beat</button>
+            <button type="button" data-control="level-available">Trigger Level-Up Prompt</button>
+            <button type="button" data-control="level-hp-roll">Show HP Roll Result</button>
+            <button type="button" data-control="level-spell-choice">Show Spell Choices</button>
+            <button type="button" data-control="level-complete">Complete Level-Up</button>
+            <button type="button" data-control="verify-persistence">Verify Persistence</button>
+            <button type="button" data-control="reset-test-user" class="danger">Reset Test User + Session</button>
+            <button type="button" data-control="reset-session" class="danger">Reset Session</button>
+          </div>
+          </details>
+
+          <button type="button" id="debugToggle" class="secondary">Show Debug</button>
+          <pre id="debugPanel" class="debug-panel" hidden></pre>
+        </aside>
+      </section>
+    </main>
+
+    <script type="module" src="/dev/sms-simulator/sms-simulator.js"></script>
+  </body>
+</html>

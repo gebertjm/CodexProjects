@@ -1,0 +1,436 @@
+[
+  {
+    "encounter_id": "broken-caravan-site",
+    "name": "The Broken Caravan",
+    "campaign_slug": "shadows_grey_road",
+    "scene_slug": "broken-caravan-site",
+    "encounter_type": "tutorial",
+    "difficulty_intent": "tutorial",
+    "scaling_enabled": false,
+    "story_fixed_by_default": true,
+    "allowed_scaling_methods": [],
+    "disallowed_scaling_methods": [
+      "enemy_count",
+      "stat_tweak",
+      "large_stat_scaling"
+    ],
+    "party_size_range": {
+      "min": 1,
+      "max": 4
+    },
+    "level_range": {
+      "min": 1,
+      "max": 3
+    },
+    "async_beat_target": {
+      "min": 2,
+      "max": 3
+    },
+    "base_variant": "investigation-only",
+    "variants": [
+      {
+        "variant_id": "investigation-only",
+        "party_size_range": {
+          "min": 1,
+          "max": 4
+        },
+        "level_range": {
+          "min": 1,
+          "max": 3
+        },
+        "enemies": [
+          {
+            "entity_slug": "rusk-bandit",
+            "entity_type": "npc_template",
+            "count": 1,
+            "min_count": 0,
+            "max_count": 1,
+            "base_power": 0,
+            "action_economy_weight": 0,
+            "scalable": false,
+            "notes": "Reference-only antagonist footprint; no combat starts at the caravan."
+          }
+        ],
+        "notes": "Tutorial investigation sequence with no active combatant."
+      }
+    ],
+    "resolution_paths": [
+      "investigation",
+      "avoidance"
+    ],
+    "reward_value": {
+      "xp": 20,
+      "grant_on_resolution": true,
+      "equivalent_across_paths": true
+    },
+    "fail_forward": true,
+    "metadata": {
+      "player_facing_debug": "No combat. Establishes danger and awards clue progress.",
+      "surface_focus_commit_notes": "Exploration-first scenes should use Automatic Observation, Passive Discovery, Free Focus, and committed Beat Actions. Combat/dialogue-specific behavior remains deferred unless this encounter explicitly requires it.",
+      "free_focus_examples": [
+        "broken axle",
+        "scattered cargo",
+        "roadside mud",
+        "signs of missing travelers"
+      ]
+    },
+    "is_active": true
+  },
+  {
+    "encounter_id": "forest-path-tension",
+    "name": "Tension on the Old Forest Path",
+    "campaign_slug": "shadows_grey_road",
+    "scene_slug": "old-forest-path",
+    "encounter_type": "minor",
+    "difficulty_intent": "easy",
+    "scaling_enabled": true,
+    "story_fixed_by_default": false,
+    "allowed_scaling_methods": [
+      "variant_selection",
+      "enemy_count"
+    ],
+    "disallowed_scaling_methods": [
+      "stat_tweak",
+      "large_stat_scaling"
+    ],
+    "party_size_range": {
+      "min": 1,
+      "max": 4
+    },
+    "level_range": {
+      "min": 1,
+      "max": 3
+    },
+    "async_beat_target": {
+      "min": 2,
+      "max": 4
+    },
+    "base_variant": "solo-warning-signs",
+    "variants": [
+      {
+        "variant_id": "solo-warning-signs",
+        "party_size_range": {
+          "min": 1,
+          "max": 1
+        },
+        "level_range": {
+          "min": 1,
+          "max": 3
+        },
+        "enemies": [
+          {
+            "entity_slug": "bandit-lackey",
+            "entity_type": "npc_template",
+            "count": 1,
+            "min_count": 0,
+            "max_count": 1,
+            "base_power": 0.5,
+            "action_economy_weight": 0.5,
+            "scalable": false
+          }
+        ],
+        "notes": "A solo character can avoid, shadow, or scare off the watcher."
+      },
+      {
+        "variant_id": "small-party-watchers",
+        "party_size_range": {
+          "min": 2,
+          "max": 3
+        },
+        "level_range": {
+          "min": 1,
+          "max": 3
+        },
+        "enemies": [
+          {
+            "entity_slug": "bandit-lackey",
+            "entity_type": "npc_template",
+            "count": 1,
+            "min_count": 0,
+            "max_count": 1,
+            "base_power": 0.5,
+            "action_economy_weight": 0.75,
+            "scalable": true
+          }
+        ]
+      },
+      {
+        "variant_id": "full-party-watchers",
+        "party_size_range": {
+          "min": 4,
+          "max": 4
+        },
+        "level_range": {
+          "min": 1,
+          "max": 3
+        },
+        "enemies": [
+          {
+            "entity_slug": "bandit-lackey",
+            "entity_type": "npc_template",
+            "count": 2,
+            "min_count": 1,
+            "max_count": 2,
+            "base_power": 0.5,
+            "action_economy_weight": 0.75,
+            "scalable": true
+          }
+        ]
+      }
+    ],
+    "resolution_paths": [
+      "combat",
+      "intimidation",
+      "stealth",
+      "avoidance",
+      "fail_forward"
+    ],
+    "reward_value": {
+      "xp": 50,
+      "grant_on_resolution": true,
+      "equivalent_across_paths": true
+    },
+    "fail_forward": true,
+    "metadata": {
+      "solo_guidance": "Avoidance, stealth, or intimidation remains valid and pays the same encounter value.",
+      "surface_focus_commit_notes": "Exploration-first scenes should use Automatic Observation, Passive Discovery, Free Focus, and committed Beat Actions. Combat/dialogue-specific behavior remains deferred unless this encounter explicitly requires it.",
+      "free_focus_examples": [
+        "layered tracks",
+        "broken undergrowth",
+        "watcher signs"
+      ]
+    },
+    "is_active": true
+  },
+  {
+    "encounter_id": "shrine-rusk-confrontation",
+    "name": "Rusk at the Shrine",
+    "campaign_slug": "shadows_grey_road",
+    "scene_slug": "shrine-ruins",
+    "encounter_type": "story",
+    "difficulty_intent": "hard",
+    "scaling_enabled": true,
+    "story_fixed_by_default": true,
+    "explicit_story_scaling": true,
+    "allowed_scaling_methods": [
+      "variant_selection",
+      "enemy_count"
+    ],
+    "disallowed_scaling_methods": [
+      "stat_tweak",
+      "large_stat_scaling"
+    ],
+    "party_size_range": {
+      "min": 1,
+      "max": 4
+    },
+    "level_range": {
+      "min": 1,
+      "max": 3
+    },
+    "async_beat_target": {
+      "min": 4,
+      "max": 6
+    },
+    "base_variant": "solo",
+    "variants": [
+      {
+        "variant_id": "solo",
+        "party_size_range": {
+          "min": 1,
+          "max": 1
+        },
+        "level_range": {
+          "min": 1,
+          "max": 3
+        },
+        "enemies": [
+          {
+            "entity_slug": "rusk-bandit",
+            "entity_type": "npc_template",
+            "count": 1,
+            "min_count": 1,
+            "max_count": 1,
+            "base_power": 1.4,
+            "action_economy_weight": 1,
+            "scalable": false
+          }
+        ],
+        "notes": "Solo version avoids action-economy overload and keeps interrogation/escape viable."
+      },
+      {
+        "variant_id": "small-party",
+        "party_size_range": {
+          "min": 2,
+          "max": 3
+        },
+        "level_range": {
+          "min": 1,
+          "max": 3
+        },
+        "enemies": [
+          {
+            "entity_slug": "rusk-bandit",
+            "entity_type": "npc_template",
+            "count": 1,
+            "min_count": 1,
+            "max_count": 1,
+            "base_power": 1.4,
+            "action_economy_weight": 1,
+            "scalable": false
+          },
+          {
+            "entity_slug": "bandit-lackey",
+            "entity_type": "npc_template",
+            "count": 1,
+            "min_count": 0,
+            "max_count": 1,
+            "base_power": 0.5,
+            "action_economy_weight": 0.75,
+            "scalable": true
+          }
+        ]
+      },
+      {
+        "variant_id": "full-party",
+        "party_size_range": {
+          "min": 4,
+          "max": 4
+        },
+        "level_range": {
+          "min": 1,
+          "max": 3
+        },
+        "enemies": [
+          {
+            "entity_slug": "rusk-bandit",
+            "entity_type": "npc_template",
+            "count": 1,
+            "min_count": 1,
+            "max_count": 1,
+            "base_power": 1.4,
+            "action_economy_weight": 1,
+            "scalable": false
+          },
+          {
+            "entity_slug": "bandit-lackey",
+            "entity_type": "npc_template",
+            "count": 2,
+            "min_count": 1,
+            "max_count": 2,
+            "base_power": 0.5,
+            "action_economy_weight": 0.75,
+            "scalable": true
+          }
+        ],
+        "notes": "The story remains about Rusk; lackeys only add bounded party pressure."
+      }
+    ],
+    "resolution_paths": [
+      "combat",
+      "intimidation",
+      "negotiation",
+      "escape",
+      "fail_forward"
+    ],
+    "reward_value": {
+      "xp": 150,
+      "grant_on_resolution": true,
+      "equivalent_across_paths": true
+    },
+    "fail_forward": true,
+    "metadata": {
+      "story_intent": "Rusk is a valid surface threat but not the full answer.",
+      "solo_guidance": "Do not add lackeys for solo play.",
+      "debug_expected_outcome": "Combat, intimidation, or negotiated information should all resolve the encounter value.",
+      "surface_focus_commit_notes": "Exploration-first scenes should use Automatic Observation, Passive Discovery, Free Focus, and committed Beat Actions. Combat/dialogue-specific behavior remains deferred unless this encounter explicitly requires it.",
+      "free_focus_examples": [
+        "camp layout",
+        "shrine markings",
+        "broken floor seams",
+        "bandit supplies"
+      ]
+    },
+    "is_active": true
+  },
+  {
+    "encounter_id": "subterranean-hollow-presence",
+    "name": "The Truth Below",
+    "campaign_slug": "shadows_grey_road",
+    "scene_slug": "subterranean-hollow",
+    "encounter_type": "final",
+    "difficulty_intent": "story",
+    "scaling_enabled": false,
+    "story_fixed_by_default": true,
+    "allowed_scaling_methods": [],
+    "disallowed_scaling_methods": [
+      "enemy_count",
+      "stat_tweak",
+      "large_stat_scaling"
+    ],
+    "party_size_range": {
+      "min": 1,
+      "max": 4
+    },
+    "level_range": {
+      "min": 1,
+      "max": 3
+    },
+    "async_beat_target": {
+      "min": 4,
+      "max": 6
+    },
+    "base_variant": "presence-story",
+    "variants": [
+      {
+        "variant_id": "presence-story",
+        "party_size_range": {
+          "min": 1,
+          "max": 4
+        },
+        "level_range": {
+          "min": 1,
+          "max": 3
+        },
+        "enemies": [
+          {
+            "entity_slug": "whispering-presence",
+            "entity_type": "npc_template",
+            "count": 1,
+            "min_count": 1,
+            "max_count": 1,
+            "base_power": 1.2,
+            "action_economy_weight": 0.5,
+            "scalable": false,
+            "notes": "The final pressure is narrative and effect-driven, not ordinary stat scaling."
+          }
+        ],
+        "notes": "Final confrontation is resolved by understanding, resistance, communication, disruption, or fail-forward outcome."
+      }
+    ],
+    "resolution_paths": [
+      "communication",
+      "disruption",
+      "investigation",
+      "fail_forward"
+    ],
+    "reward_value": {
+      "xp": 200,
+      "grant_on_resolution": true,
+      "equivalent_across_paths": true
+    },
+    "fail_forward": true,
+    "metadata": {
+      "story_intent": "Do not turn the hidden presence into a hit-point race.",
+      "world_consequence_anchor": "Ending logic from Stage 5G determines regional propagation.",
+      "surface_focus_commit_notes": "Exploration-first scenes should use Automatic Observation, Passive Discovery, Free Focus, and committed Beat Actions. Combat/dialogue-specific behavior remains deferred unless this encounter explicitly requires it.",
+      "free_focus_examples": [
+        "anchor stone",
+        "pressure in your thoughts",
+        "floor grooves",
+        "faint airflow"
+      ]
+    },
+    "is_active": true
+  }
+]

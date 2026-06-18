@@ -1,0 +1,10 @@
+{
+  "id": "heavy_rain_survival_tracking",
+  "environment_id": "heavy_rain",
+  "check_type": "skill",
+  "skill": "survival",
+  "context": "tracking",
+  "modifier": -2,
+  "reason": "Heavy rain distorts tracks and washes smaller signs into the mud.",
+  "narrative_hint": "Rain has softened the road into dark mud, blurring wagon ruts and washing smaller tracks into the ditch."
+}

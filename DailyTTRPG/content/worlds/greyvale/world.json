@@ -1,0 +1,13 @@
+{
+  "slug": "greyvale",
+  "name": "Greyvale",
+  "description": "A rural lowland world of farm roads, scattered settlements, and old shrines where ordinary danger is beginning to give way to something subtler and more ominous.",
+  "theme_tags": [
+    "rural_fantasy",
+    "grounded",
+    "ominous",
+    "investigation",
+    "shared_world_ready"
+  ],
+  "status": "active"
+}

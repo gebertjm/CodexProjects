@@ -1,0 +1,10 @@
+{
+  "time_block": "evening",
+  "location_id": "grey-road-inn",
+  "scene_id": "grey-road-inn",
+  "activity": "serving travelers",
+  "activity_text": "The innkeeper moves between tables, keeping one eye on the door.",
+  "availability": "available",
+  "visibility": "visible",
+  "priority": 1
+}

@@ -1,0 +1,43 @@
+{
+  "campaign_flags": {
+    "old_kiln_road_unlocked": true
+  },
+  "character_flags": {
+    "ember_sign_inspected": true
+  },
+  "quests": [
+    {
+      "quest_key": "first-embers",
+      "status": "active"
+    }
+  ],
+  "objectives": [
+    {
+      "quest_key": "first-embers",
+      "objective_key": "inspect-ember-sign",
+      "status": "completed",
+      "progress_count": 1
+    }
+  ],
+  "rewards": [
+    {
+      "reward_type": "xp",
+      "value": {
+        "amount": 25
+      },
+      "metadata_json": {
+        "reason": "Completed a clue interaction"
+      }
+    }
+  ],
+  "knowledge_entries": [
+    {
+      "knowledge_type": "lore",
+      "knowledge_key": "ember-sign-rune-pattern",
+      "title": "The ember-sign is patterned",
+      "summary": "The red motes form a deliberate rune-like pattern."
+    }
+  ],
+  "source_knowledge_title": "Ember-sign inspected",
+  "source_knowledge_summary": "You learned the red motes form a real pattern."
+}

@@ -1,0 +1,14 @@
+{
+  "weather": "rain",
+  "time_of_day": "evening",
+  "season": "autumn",
+  "light_level": "firelit",
+  "temperature_band": "cool",
+  "precipitation": "rain",
+  "wind": "light",
+  "visibility": "dim",
+  "terrain_or_biome": "lowlands",
+  "location_environment": "inn",
+  "mood_or_tone": "uneasy",
+  "day_count": 3
+}

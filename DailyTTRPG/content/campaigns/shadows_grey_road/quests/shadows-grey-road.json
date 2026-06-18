@@ -1,0 +1,138 @@
+{
+  "slug": "shadows_grey_road",
+  "name": "Shadows on the Grey Road",
+  "text": {
+    "short": "Travelers are vanishing along the Grey Road, and the cause is not yet clear.",
+    "summary": "Investigate the disappearances along the Grey Road and decide how deeply to confront what lies behind them.",
+    "full": "Travelers are vanishing or being attacked along the Grey Road near Dunmere. Bandits are part of the problem, but the pattern keeps failing to stay ordinary for long.",
+    "recap": "You investigated the disappearances and violence surrounding the Grey Road."
+  },
+  "availability_conditions": {
+    "required_campaign_types": [
+      "questline"
+    ]
+  },
+  "discovery_summary": "The Grey Road is unsafe, and Dunmere needs answers before fear hardens into the wrong kind of certainty.",
+  "is_active": true,
+  "objectives": [
+    {
+      "slug": "witness-the-aftermath",
+      "title": "Witness the Aftermath",
+      "text": {
+        "short": "Examine the broken caravan on the road.",
+        "summary": "Study the recent caravan attack and determine what kind of violence happened there.",
+        "full": "Examine the broken caravan closely enough to separate obvious violence from the details that make the scene wrong: the axle, the cargo, the missing travelers, and the tracks leaving the road."
+      },
+      "sort_order": 1,
+      "activation_conditions": {},
+      "completion_conditions": {
+        "required_character_flags": {
+          "clue_caravan_irregularity": true
+        }
+      },
+      "failure_conditions": {},
+      "progress_target": 1,
+      "hard_gate": false
+    },
+    {
+      "slug": "gather-local-insight",
+      "title": "Gather Local Insight",
+      "text": {
+        "short": "Speak with travelers and villagers about the attacks.",
+        "summary": "Talk to the people most affected by the road and compare their accounts.",
+        "full": "Speak with the innkeeper, the survivor, and the villagers of Dunmere to understand how the attacks differ from ordinary bandit violence."
+      },
+      "sort_order": 2,
+      "activation_conditions": {
+        "required_objective_states": [
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "witness-the-aftermath",
+            "statuses": [
+              "completed"
+            ]
+          }
+        ]
+      },
+      "completion_conditions": {},
+      "failure_conditions": {},
+      "progress_target": 2,
+      "hard_gate": false
+    },
+    {
+      "slug": "follow-the-leads",
+      "title": "Follow the Leads",
+      "text": {
+        "short": "Track the suspicious movement beyond Dunmere.",
+        "summary": "Use the local leads to locate the source of the road's instability.",
+        "full": "Use the local leads and physical evidence to follow the movement beyond Dunmere, through the old forest path, and toward the ruined shrine where the attacks seem to gather."
+      },
+      "sort_order": 3,
+      "activation_conditions": {
+        "required_objective_states": [
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "gather-local-insight",
+            "statuses": [
+              "completed"
+            ]
+          }
+        ]
+      },
+      "completion_conditions": {},
+      "failure_conditions": {},
+      "progress_target": 1,
+      "hard_gate": false
+    },
+    {
+      "slug": "uncover-the-truth",
+      "title": "Uncover the Truth",
+      "text": {
+        "short": "Determine what is actually shaping the violence.",
+        "summary": "Separate the surface threat from the deeper cause beneath it.",
+        "full": "Study the shrine and what lies beneath it until the difference between surface bandit violence and the deeper influence becomes impossible to ignore."
+      },
+      "sort_order": 4,
+      "activation_conditions": {
+        "required_objective_states": [
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "follow-the-leads",
+            "statuses": [
+              "completed"
+            ]
+          }
+        ]
+      },
+      "completion_conditions": {},
+      "failure_conditions": {},
+      "progress_target": 1,
+      "hard_gate": false
+    },
+    {
+      "slug": "resolve-the-threat",
+      "title": "Resolve the Threat",
+      "text": {
+        "short": "Confront the source of the danger.",
+        "summary": "Resolve the danger at the shrine and whatever lies beneath it.",
+        "full": "Decide how to resolve the threat shaping the Grey Road, knowing the immediate answer and the true answer may not be the same."
+      },
+      "sort_order": 5,
+      "activation_conditions": {
+        "required_objective_states": [
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "uncover-the-truth",
+            "statuses": [
+              "completed"
+            ]
+          }
+        ]
+      },
+      "completion_conditions": {},
+      "failure_conditions": {},
+      "progress_target": 1,
+      "hard_gate": false
+    }
+  ]
+}

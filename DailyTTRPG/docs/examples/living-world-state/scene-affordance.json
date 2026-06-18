@@ -1,0 +1,17 @@
+{
+  "affordance_id": "caravan_wreck",
+  "scene_slug": "broken-caravan-site",
+  "label": "broken caravan",
+  "aliases": ["caravan", "wagon", "wreck", "cart"],
+  "tags": ["object", "investigatable", "searchable"],
+  "available_actions": [
+    {
+      "verb": "investigate",
+      "interaction_id": "inspect-broken-caravan",
+      "repeat_policy": "once"
+    }
+  ],
+  "initial_state": "available",
+  "reveals": ["caravan_irregularity"],
+  "adds_affordances": ["strange_tracks"]
+}

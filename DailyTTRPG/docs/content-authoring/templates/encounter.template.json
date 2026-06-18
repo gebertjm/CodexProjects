@@ -1,0 +1,76 @@
+{
+  "encounter_id": "shrine-rusk-confrontation",
+  "name": "Rusk at the Shrine",
+  "campaign_slug": "shadows_grey_road",
+  "scene_slug": "shrine-ruins",
+  "encounter_type": "story",
+  "difficulty_intent": "hard",
+  "scaling_enabled": true,
+  "story_fixed_by_default": true,
+  "explicit_story_scaling": true,
+  "allowed_scaling_methods": ["variant_selection", "enemy_count"],
+  "disallowed_scaling_methods": ["stat_tweak", "large_stat_scaling"],
+  "party_size_range": { "min": 1, "max": 4 },
+  "level_range": { "min": 1, "max": 3 },
+  "async_beat_target": { "min": 4, "max": 6 },
+  "base_variant": "solo",
+  "variants": [
+    {
+      "variant_id": "solo",
+      "party_size_range": { "min": 1, "max": 1 },
+      "level_range": { "min": 1, "max": 3 },
+      "enemies": [
+        {
+          "entity_slug": "rusk-bandit",
+          "entity_type": "npc_template",
+          "count": 1,
+          "min_count": 1,
+          "max_count": 1,
+          "base_power": 1.4,
+          "action_economy_weight": 1,
+          "scalable": false
+        }
+      ],
+      "notes": "Solo version avoids action economy overload."
+    },
+    {
+      "variant_id": "full-party",
+      "party_size_range": { "min": 4, "max": 4 },
+      "level_range": { "min": 1, "max": 3 },
+      "enemies": [
+        {
+          "entity_slug": "rusk-bandit",
+          "entity_type": "npc_template",
+          "count": 1,
+          "min_count": 1,
+          "max_count": 1,
+          "base_power": 1.4,
+          "action_economy_weight": 1,
+          "scalable": false
+        },
+        {
+          "entity_slug": "bandit-lackey",
+          "entity_type": "npc_template",
+          "count": 2,
+          "min_count": 1,
+          "max_count": 2,
+          "base_power": 0.5,
+          "action_economy_weight": 0.75,
+          "scalable": true
+        }
+      ]
+    }
+  ],
+  "resolution_paths": ["combat", "intimidation", "negotiation", "escape", "fail_forward"],
+  "reward_value": {
+    "xp": 150,
+    "grant_on_resolution": true,
+    "equivalent_across_paths": true
+  },
+  "fail_forward": true,
+  "metadata": {
+    "story_intent": "Scaling may add pressure, but Rusk remains the narrative center.",
+    "solo_guidance": "Do not add lackeys for solo play."
+  },
+  "is_active": true
+}

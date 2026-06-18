@@ -1,0 +1,46 @@
+{
+  "slug": "inspect-ember-sign",
+  "scene_slug": "ashford-crossroads",
+  "npc_template_slug": "mara-voss",
+  "label": "Inspect the ember-sign",
+  "text": {
+    "short": "Study the red motes in the weeds.",
+    "summary": "Inspect the ember-sign near Ashford Crossroads.",
+    "full": "Study the red motes drifting through the roadside weeds and look for a repeating mark.",
+    "success": "You spot a faint rune pattern in the drifting cinders.",
+    "failure": "The motes scatter before you can make sense of them."
+  },
+  "interaction_type": "skill_check",
+  "skill_slug": "investigation",
+  "difficulty_class": 12,
+  "sort_order": 1,
+  "is_repeatable": true,
+  "availability_conditions": {},
+  "success_effects": {
+    "character_flags": {
+      "ember_sign_inspected": true
+    },
+    "objectives": [
+      {
+        "quest_key": "first-embers",
+        "objective_key": "inspect-ember-sign",
+        "status": "completed",
+        "progress_count": 1
+      }
+    ],
+    "rewards": [
+      {
+        "reward_type": "xp",
+        "value": {
+          "amount": 25
+        }
+      }
+    ]
+  },
+  "failure_effects": {
+    "character_flags": {
+      "ember_sign_uncertain": true
+    }
+  },
+  "is_active": true
+}

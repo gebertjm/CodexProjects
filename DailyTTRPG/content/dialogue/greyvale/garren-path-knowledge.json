@@ -1,0 +1,213 @@
+{
+  "slug": "garren-path-knowledge",
+  "scene_slug": "dunmere-village",
+  "npc_template_slug": "garren-holt",
+  "name": "Garren and the Old Paths",
+  "text": {
+    "short": "Try to get real trail knowledge from Garren Holt.",
+    "summary": "Garren Holt knows the shrine paths have grown busier and stranger, but he only shares that with someone who does not treat him as the obvious villain.",
+    "full": "Garren Holt speaks like a man who has spent too long being watched by frightened people who want him to be easier to understand than he is."
+  },
+  "trigger_type": "player",
+  "trigger_event": "npc_talk",
+  "sort_order": 3,
+  "availability_conditions": {},
+  "is_repeatable": true,
+  "is_active": true,
+  "nodes": [
+    {
+      "slug": "garren-greeting",
+      "title": "A Warning Without Warmth",
+      "speaker_type": "npc",
+      "speaker_npc_template_slug": "garren-holt",
+      "text": {
+        "full": "Stay off the old paths if you value your skin. They have been busier than they have any right to be.",
+        "short": "Garren warns you away from the old paths."
+      },
+      "sort_order": 1,
+      "is_entry_node": true,
+      "is_terminal": false,
+      "availability_conditions": {},
+      "entry_effects": {
+        "session_flags": {
+          "met_garren_holt": true
+        }
+      },
+      "options": [
+        {
+          "slug": "ask-what-he-saw",
+          "label": "Ask what he actually saw",
+          "sort_order": 1,
+          "availability_conditions": {},
+          "check_mode": "none",
+          "outcomes": [
+            {
+              "slug": "garren-opens-a-crack",
+              "next_node_slug": "garren-partial",
+              "label": "Garren gives a little ground",
+              "sort_order": 1,
+              "conditions": {},
+              "effects": {
+                "character_flags": {
+                  "garren_respected": true
+                }
+              },
+              "result_text": "He studies you for a moment, then decides you may be worth answering.",
+              "is_terminal": false,
+              "is_active": true
+            }
+          ]
+        },
+        {
+          "slug": "accuse-him-outright",
+          "label": "Accuse him of hiding more than everyone else",
+          "sort_order": 2,
+          "availability_conditions": {},
+          "check_mode": "none",
+          "outcomes": [
+            {
+              "slug": "garren-turns-cold",
+              "next_node_slug": "garren-defensive",
+              "label": "Garren shuts down",
+              "sort_order": 1,
+              "conditions": {},
+              "effects": {
+                "character_flags": {
+                  "garren_accused": true
+                },
+                "npc_states": [
+                  {
+                    "npc_key": "garren-holt",
+                    "disposition": "hostile",
+                    "notes": "Garren shut down after being accused without evidence."
+                  }
+                ]
+              },
+              "result_text": "Whatever he was willing to say disappears behind anger.",
+              "is_terminal": false,
+              "is_active": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "garren-partial",
+      "title": "The Shrine Is Not Empty",
+      "speaker_type": "npc",
+      "speaker_npc_template_slug": "garren-holt",
+      "text": {
+        "full": "The shrine's had more feet around it than it should. Not just hiding there. Drawn there. That's the part I don't like.",
+        "short": "Garren says the shrine is drawing people in."
+      },
+      "sort_order": 2,
+      "is_entry_node": false,
+      "is_terminal": false,
+      "availability_conditions": {},
+      "entry_effects": {},
+      "options": [
+        {
+          "slug": "ask-for-everything",
+          "label": "Ask him for the whole trail",
+          "sort_order": 1,
+          "availability_conditions": {
+            "required_character_flags": {
+              "garren_respected": true
+            }
+          },
+          "check_mode": "none",
+          "outcomes": [
+            {
+              "slug": "garren-gives-the-shrine",
+              "next_node_slug": "garren-farewell",
+              "label": "Garren names the route",
+              "sort_order": 1,
+              "conditions": {},
+              "effects": {
+                "character_flags": {
+                  "clue_garren_observation": true,
+                  "shrine_path_known": true,
+                  "understanding_medium": true
+                },
+                "knowledge_entries": [
+                  {
+                    "knowledge_type": "lore",
+                    "knowledge_key": "clue_garren_observation",
+                    "title": "Garren's Observation",
+                    "summary": "Garren saw the traffic near the shrine increase before the attacks worsened, as if people were being drawn there.",
+                    "metadata_json": {
+                      "clue_id": "garren_observation",
+                      "clue_tier": "reinforcing"
+                    }
+                  }
+                ],
+                "objectives": [
+                  {
+                    "quest_key": "shadows_grey_road",
+                    "objective_key": "gather-local-insight",
+                    "status": "completed",
+                    "progress_count": 2
+                  },
+                  {
+                    "quest_key": "shadows_grey_road",
+                    "objective_key": "follow-the-leads",
+                    "status": "active",
+                    "progress_count": 0
+                  }
+                ],
+                "rewards": [
+                  {
+                    "reward_type": "scene_unlock",
+                    "value": {
+                      "scene_key": "shrine-ruins"
+                    },
+                    "metadata_json": {
+                      "reason": "Garren described the path that leads toward the shrine."
+                    }
+                  }
+                ],
+                "source_knowledge_title": "Garren confirmed the shrine path",
+                "source_knowledge_summary": "Garren said movement near the shrine changed before the road attacks intensified."
+              },
+              "result_text": "He finally gives you the part he never wanted the village turning into gossip.",
+              "is_terminal": false,
+              "is_active": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "garren-defensive",
+      "title": "Nothing More for You",
+      "speaker_type": "npc",
+      "speaker_npc_template_slug": "garren-holt",
+      "text": {
+        "full": "Then keep your suspicions. The paths won't care if they kill the wrong certainty first.",
+        "short": "Garren refuses to help further."
+      },
+      "sort_order": 3,
+      "is_entry_node": false,
+      "is_terminal": true,
+      "availability_conditions": {},
+      "entry_effects": {},
+      "options": []
+    },
+    {
+      "slug": "garren-farewell",
+      "title": "A Direction, Not Comfort",
+      "speaker_type": "npc",
+      "speaker_npc_template_slug": "garren-holt",
+      "text": {
+        "full": "Take the old path and keep your head. If the shrine feels wrong before you see anyone, trust that first.",
+        "short": "Garren gives you the path and no false reassurance."
+      },
+      "sort_order": 4,
+      "is_entry_node": false,
+      "is_terminal": true,
+      "availability_conditions": {},
+      "entry_effects": {},
+      "options": []
+    }
+  ]
+}

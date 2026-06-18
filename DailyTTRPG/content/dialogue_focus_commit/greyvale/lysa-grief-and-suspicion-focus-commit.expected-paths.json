@@ -1,0 +1,80 @@
+{
+  "fixture_id": "greyvale_lysa_grief_suspicion_dialogue",
+  "description": "Named regression paths for the Greyvale Lysa Fen Dialogue Focus/Commit conversion fixture.",
+  "paths": [
+    {
+      "name": "happy_path",
+      "mode": "happy_path",
+      "expected_final_status": "exited",
+      "coverage": [
+        "conversation_surface",
+        "lysa_suspicion_clue",
+        "no_check_clarifying_question",
+        "no_check_committed_social_move",
+        "authored_summary",
+        "completed_record"
+      ]
+    },
+    {
+      "name": "refusal_or_failure_path",
+      "mode": "failure_path",
+      "expected_final_status": "exited",
+      "coverage": [
+        "checked_clarifying_question_failure",
+        "checked_committed_social_move_failure",
+        "suspicion_hardens",
+        "hostility_write"
+      ]
+    },
+    {
+      "name": "fallback_path",
+      "mode": "fallback_path",
+      "expected_final_status": "active",
+      "coverage": [
+        "generic_fallback_submit",
+        "fallback_exhaustion",
+        "revise_prompt",
+        "no_major_clue_from_fallback",
+        "no_transition_from_fallback"
+      ]
+    },
+    {
+      "name": "minimal_exit_path",
+      "mode": "minimal_interaction_path",
+      "expected_final_status": "exited",
+      "coverage": [
+        "entry",
+        "free_exit",
+        "completed_record"
+      ]
+    },
+    {
+      "name": "relationship_state_path",
+      "mode": "relationship_state_edge_case",
+      "expected_final_status": "exited",
+      "coverage": [
+        "persistent_npc_state",
+        "scene_local_grief_suspicion",
+        "player_safe_relationship_visibility"
+      ]
+    },
+    {
+      "name": "max_clarifying_question_path",
+      "mode": "max_clarifying_question_path",
+      "expected_final_status": "exited",
+      "coverage": [
+        "clarifying_question_order",
+        "checked_clarifying_question",
+        "partial_suspicion_framing",
+        "reopen_persistence"
+      ]
+    }
+  ],
+  "manual_qa_notes": [
+    "Load the Lysa scene through the dialogue runtime registry or path harness.",
+    "Ask why she thinks people are hiding the truth to confirm Lysa's Suspicion maps to village_blames_hunter_and_road.",
+    "Resolve a checked move to confirm suspicion remains pressure rather than proof.",
+    "Run fallback twice to confirm the second attempt produces a revise prompt.",
+    "Exit to Dunmere village and confirm no major scene unlock is introduced."
+  ]
+}

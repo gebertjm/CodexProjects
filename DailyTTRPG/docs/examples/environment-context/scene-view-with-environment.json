@@ -1,0 +1,33 @@
+{
+  "state": "active",
+  "character_id": "303",
+  "world_instance_id": "101",
+  "campaign_instance_id": "202",
+  "scene": {
+    "scene_id": "404",
+    "key": "grey-road-inn",
+    "title": "The Grey Road Inn",
+    "description": "Rain taps steadily against the inn windows. Evening has drawn travelers close to the hearth, but conversation still keeps its distance. You enter the Grey Road Inn and feel the room listening before it speaks."
+  },
+  "environment": {
+    "weather": "rain",
+    "time_of_day": "evening",
+    "season": "autumn",
+    "visibility": "dim",
+    "light_level": "firelit",
+    "location_environment": "inn",
+    "mood_or_tone": "quiet"
+  },
+  "mechanical_details": {
+    "environment_modifiers": [
+      {
+        "modifier_key": "rain_perception_hearing_outdoors",
+        "check_type": "skill",
+        "skill": "perception",
+        "context": "hearing_outdoors",
+        "modifier": -2,
+        "reason": "Rain muffles distant sounds beyond the immediate scene."
+      }
+    ]
+  }
+}

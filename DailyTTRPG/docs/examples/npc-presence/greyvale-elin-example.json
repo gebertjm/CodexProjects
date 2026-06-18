@@ -1,0 +1,13 @@
+{
+  "slug": "elin-harrow",
+  "true_name": "Elin Harrow",
+  "unknown_label": "a shaken woman",
+  "aliases": ["elin", "elira", "shaken woman", "survivor"],
+  "identity": {
+    "reveal_policy": "unknown_until_known",
+    "knowledge_id_for_true_name": "knows_elin_name"
+  },
+  "metadata": {
+    "relevance": "survivor of the caravan attack"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "DailyTTRPG",
+  "short_name": "DailyTTRPG",
+  "start_url": "/play/",
+  "display": "standalone",
+  "background_color": "#f3efe4",
+  "theme_color": "#2d332f",
+  "description": "Persistent tabletop adventures in your browser.",
+  "orientation": "portrait-primary",
+  "icons": []
+}

@@ -1,0 +1,6 @@
+{
+  "target_type": "affordance",
+  "target_id": "strange_tracks",
+  "field": "state",
+  "value": "available"
+}

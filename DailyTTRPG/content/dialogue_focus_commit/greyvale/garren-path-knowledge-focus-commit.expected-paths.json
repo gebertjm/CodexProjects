@@ -1,0 +1,112 @@
+{
+  "fixture_id": "greyvale_garren_path_knowledge_dialogue",
+  "description": "Named regression paths for the Greyvale Garren Holt Dialogue Focus/Commit conversion fixture.",
+  "paths": [
+    {
+      "name": "happy_path",
+      "mode": "happy_path",
+      "expected_final_status": "exited",
+      "coverage": [
+        "conversation_surface",
+        "garren_observation_clue",
+        "no_check_clarifying_question",
+        "checked_committed_social_move_success",
+        "old_path_route_knowledge",
+        "authored_summary",
+        "completed_record"
+      ]
+    },
+    {
+      "name": "refusal_or_failure_path",
+      "mode": "failure_path",
+      "expected_final_status": "exited",
+      "coverage": [
+        "checked_clarifying_question_failure",
+        "checked_committed_social_move_failure",
+        "accusation_or_refusal",
+        "hostility_write",
+        "no_permanent_campaign_dead_end"
+      ]
+    },
+    {
+      "name": "fallback_path",
+      "mode": "fallback_path",
+      "expected_final_status": "active",
+      "coverage": [
+        "generic_fallback_submit",
+        "fallback_exhaustion",
+        "revise_prompt",
+        "no_major_clue_from_fallback",
+        "no_transition_from_fallback"
+      ]
+    },
+    {
+      "name": "minimal_exit_path",
+      "mode": "minimal_interaction_path",
+      "expected_final_status": "exited",
+      "coverage": [
+        "entry",
+        "free_exit",
+        "completed_record"
+      ]
+    },
+    {
+      "name": "relationship_state_path",
+      "mode": "relationship_state_edge_case",
+      "expected_final_status": "exited",
+      "steps": [
+        {
+          "id": "enter",
+          "type": "enter_dialogue"
+        },
+        {
+          "id": "respectful_witness_move",
+          "type": "submit_committed_social_move",
+          "move_id": "move_show_respect_for_caution",
+          "submitted_text": "I show respect for Garren's caution."
+        },
+        {
+          "id": "exit",
+          "type": "resolve_exit",
+          "exit_id": "exit_garren_end_conversation"
+        }
+      ],
+      "coverage": [
+        "persistent_npc_state",
+        "scene_local_guardedness",
+        "authored_relationship_gated_move_metadata",
+        "player_safe_relationship_visibility"
+      ]
+    },
+    {
+      "name": "transition_path",
+      "mode": "exit_transition_path",
+      "expected_final_status": "exited",
+      "coverage": [
+        "old_path_transition",
+        "shrine_path_known_flag",
+        "shrine_ruins_scene_unlock_reward",
+        "safe_route_lead"
+      ]
+    },
+    {
+      "name": "max_clarifying_question_path",
+      "mode": "max_clarifying_question_path",
+      "expected_final_status": "exited",
+      "coverage": [
+        "clarifying_question_order",
+        "checked_clarifying_question",
+        "old_path_context",
+        "reopen_persistence"
+      ]
+    }
+  ],
+  "manual_qa_notes": [
+    "Load the Garren scene through the dialogue runtime registry or path harness.",
+    "Ask what Garren actually saw to confirm Garren's Observation maps to tracks_converge_on_shrine.",
+    "Resolve a respectful route move to confirm shrine_path_known is preserved without a direct shrine jump.",
+    "Accuse Garren to confirm help closes down without creating a permanent campaign dead end.",
+    "Run fallback twice to confirm the second attempt produces a revise prompt.",
+    "Exit through the old path lead and confirm the transition targets old-forest-path."
+  ]
+}

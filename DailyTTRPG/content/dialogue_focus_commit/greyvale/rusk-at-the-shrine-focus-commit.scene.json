@@ -1,0 +1,970 @@
+{
+  "id": "greyvale_rusk_at_the_shrine_dialogue",
+  "slug": "greyvale-rusk-at-the-shrine-dialogue",
+  "title": "Rusk at the Shrine",
+  "interaction_domain": "dialogue_focus_commit",
+  "scene_type": "dialogue",
+  "soft_target_max": 3,
+  "participants": [
+    {
+      "participant_id": "npc:rusk_bandit",
+      "npc_key": "rusk-bandit",
+      "unknown_label": "the unstable bandit",
+      "known_label": "Rusk",
+      "relationship_defaults": {
+        "hostility": 1,
+        "respect": 0
+      },
+      "scene_posture_defaults": {
+        "instability": 1,
+        "control": 0,
+        "pressure": 1,
+        "focus": 0,
+        "fracture": 1
+      }
+    }
+  ],
+  "entry_behavior": {
+    "mode": "resume_or_start",
+    "opening_surface_id": "surface_rusk_shrine_confrontation",
+    "entry_source": "shrine-ruins"
+  },
+  "conversation_surface": {
+    "surface_id": "surface_rusk_shrine_confrontation",
+    "paragraphs": [
+      {
+        "kind": "opening",
+        "text": "Rusk stands among the broken shrine stones with a blade already loose in his hand. The camp behind him looks lived in badly: bedrolls too close to weapons, ash scattered by nervous boots, supplies abandoned mid-use.",
+        "source_visibility": "player_visible"
+      },
+      {
+        "kind": "posture",
+        "text": "He turns before you speak, then looks past your shoulder as if someone else answered first. \"You do not hear it,\" he says. \"Does not matter. It heard you already.\"",
+        "source_visibility": "player_visible"
+      },
+      {
+        "kind": "danger",
+        "text": "This is not a calm conversation waiting to happen. Rusk is dangerous now, and every pause feels like it might become violence.",
+        "source_visibility": "player_visible"
+      }
+    ]
+  },
+  "passive_social_insight": [
+    {
+      "insight_id": "insight_rusk_anger_not_fully_self_directed",
+      "label": "Rusk's anger is not fully self-directed",
+      "target_id": "npc:rusk_bandit",
+      "requires_check": true,
+      "check": {
+        "mode": "passive",
+        "ability": "wisdom",
+        "skill": "insight",
+        "dc": 14,
+        "visibility": "narrative_only"
+      },
+      "on_success": {
+        "text": "Rusk's anger is real, but it does not move like ordinary anger. He reacts to pauses, stone-sounds, and empty air as if the shrine keeps making violence feel easier.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "focus",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The player reads Rusk's anger as partly shaped by shrine pressure."
+          }
+        ]
+      },
+      "on_failure": {
+        "text": null
+      }
+    }
+  ],
+  "relationship_state_definitions": [
+    {
+      "field": "hostility",
+      "scope": "persistent_npc_state",
+      "type": "ladder",
+      "values": [-2, -1, 0, 1, 2],
+      "default": 1,
+      "allowed_write_scopes": ["persistent_npc_state"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "player_perceived",
+      "labels": {
+        "-2": "contained",
+        "-1": "wary",
+        "0": "armed",
+        "1": "hostile",
+        "2": "violent"
+      }
+    },
+    {
+      "field": "respect",
+      "scope": "persistent_npc_state",
+      "type": "ladder",
+      "values": [-2, -1, 0, 1, 2],
+      "default": 0,
+      "allowed_write_scopes": ["persistent_npc_state"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "player_perceived",
+      "labels": {
+        "-2": "contemptuous",
+        "-1": "dismissive",
+        "0": "unmoved",
+        "1": "briefly listening",
+        "2": "shaken into attention"
+      }
+    },
+    {
+      "field": "instability",
+      "scope": "dialogue_scene_state",
+      "type": "number",
+      "default": 1,
+      "allowed_write_scopes": ["dialogue_scene_state", "dialogue_local", "temporary"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "gm_only"
+    },
+    {
+      "field": "control",
+      "scope": "dialogue_scene_state",
+      "type": "number",
+      "default": 0,
+      "allowed_write_scopes": ["dialogue_scene_state", "dialogue_local", "temporary"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "gm_only"
+    },
+    {
+      "field": "pressure",
+      "scope": "dialogue_scene_state",
+      "type": "number",
+      "default": 1,
+      "allowed_write_scopes": ["dialogue_scene_state", "dialogue_local", "temporary"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "gm_only"
+    },
+    {
+      "field": "focus",
+      "scope": "dialogue_scene_state",
+      "type": "number",
+      "default": 0,
+      "allowed_write_scopes": ["dialogue_scene_state", "dialogue_local", "temporary"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "gm_only"
+    },
+    {
+      "field": "fracture",
+      "scope": "dialogue_scene_state",
+      "type": "number",
+      "default": 1,
+      "allowed_write_scopes": ["dialogue_scene_state", "dialogue_local", "temporary"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "gm_only"
+    }
+  ],
+  "clarifying_questions": [
+    {
+      "question_id": "clarify_rusk_what_he_hears",
+      "label": "What do you hear?",
+      "aliases": ["what do you hear", "what is he hearing", "what does the shrine say"],
+      "keywords": ["hear", "listening", "sound"],
+      "target_id": "npc:rusk_bandit",
+      "requires_check": false,
+      "result": {
+        "text": "\"Not words,\" Rusk snaps, then flinches like he has been corrected. \"More like the world getting simpler. Hit first. Stop thinking. Make the road quiet.\"",
+        "summary": "Rusk admits the shrine pressure made violence feel simpler and easier.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "bandits_not_fully_self_directed",
+            "title": "Bandit Instability",
+            "summary": "Rusk admits the shrine made violent choices feel simpler, suggesting the bandits were under pressure they did not fully control.",
+            "metadata_json": {
+              "legacy_clue_key": "clue_bandit_instability",
+              "clue_id": "bandit_instability",
+              "legacy_flag": "clue_bandit_instability"
+            }
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "focus",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Naming what Rusk hears opens a narrow unstable focus."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "instability",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Describing the shrine pressure agitates Rusk."
+          }
+        ]
+      },
+      "emit_canonical_event": true
+    },
+    {
+      "question_id": "clarify_rusk_when_shrine_changed",
+      "label": "When did the shrine change you?",
+      "aliases": ["when did it change", "when did the shrine change", "when did this start"],
+      "keywords": ["when", "changed", "start"],
+      "target_id": "npc:rusk_bandit",
+      "requires_check": false,
+      "result": {
+        "text": "\"It did not change me,\" Rusk says too quickly. His jaw works. \"It just made things obvious. First the road. Then the camp. Then anyone who would not stop looking.\"",
+        "summary": "Rusk denies being changed, but his answer ties his worsening violence to the shrine and road.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "fracture",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The question makes Rusk contradict himself."
+          }
+        ]
+      },
+      "canonical": false
+    },
+    {
+      "question_id": "clarify_rusk_who_else_hears",
+      "label": "Who else hears it?",
+      "aliases": ["who else hears", "others hear it", "did the bandits hear"],
+      "keywords": ["who", "else", "bandits"],
+      "target_id": "npc:rusk_bandit",
+      "requires_check": false,
+      "result": {
+        "text": "\"Some pretended not to,\" he says. \"Some got brave. Some got quiet. Brave and quiet end the same if you stand here long enough.\"",
+        "summary": "Rusk suggests others in the shrine camp also changed under pressure, but he gives no clean list of names.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "pressure",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Asking about other listeners raises confrontation pressure."
+          }
+        ]
+      },
+      "canonical": false
+    },
+    {
+      "question_id": "clarify_rusk_it_heard_you",
+      "label": "What do you mean, it heard us?",
+      "aliases": ["it heard us", "what heard us", "what do you mean heard"],
+      "keywords": ["heard", "us", "mean"],
+      "target_id": "npc:rusk_bandit",
+      "requires_check": false,
+      "result": {
+        "text": "Rusk smiles without warmth. \"You came asking questions at stones that remember being useful. That is enough. Things below and things above do not stay polite just because you need them named.\"",
+        "summary": "Rusk hints that the shrine pressure reaches beyond the surface, without naming its source.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "pressure",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The deeper implication increases immediate danger."
+          }
+        ]
+      },
+      "canonical": false
+    },
+    {
+      "question_id": "clarify_read_rusk_control_fracture",
+      "label": "Read the gap between anger and influence",
+      "aliases": ["read Rusk", "is he controlled", "anger or influence"],
+      "keywords": ["read", "control", "influence"],
+      "target_id": "npc:rusk_bandit",
+      "requires_check": true,
+      "check": {
+        "mode": "standard",
+        "ability": "wisdom",
+        "skill": "insight",
+        "dc": 14,
+        "visibility": "visible"
+      },
+      "on_success": {
+        "text": "Rusk is not a puppet. That may be worse. The shrine pressure gave his anger a path of least resistance, and now he keeps mistaking that ease for truth.",
+        "summary": "Rusk remains responsible and dangerous, but the shrine pressure is shaping his choices.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "bandits_not_fully_self_directed",
+            "title": "Bandit Instability",
+            "summary": "Rusk is dangerous in his own right, but the shrine pressure helped shape his violence.",
+            "metadata_json": {
+              "legacy_clue_key": "clue_bandit_instability",
+              "clue_id": "bandit_instability",
+              "legacy_flag": "clue_bandit_instability"
+            }
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "control",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The player identifies a brief gap where Rusk can still answer."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "focus",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "A successful read gives the player a narrow opening."
+          }
+        ]
+      },
+      "on_failure": {
+        "text": "Rusk's anger and the shrine's pressure blur together. Whatever is happening to him, the blade in his hand is still his.",
+        "summary": "The difference between Rusk's anger and shrine influence remains unclear.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "instability",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "A failed read leaves the danger less predictable."
+          }
+        ]
+      },
+      "retry_policy": {
+        "immediate_retry": false
+      }
+    }
+  ],
+  "committed_social_moves": [
+    {
+      "move_id": "move_keep_rusk_talking",
+      "label": "Keep Rusk talking",
+      "aliases": ["keep him talking", "slow him down", "keep Rusk talking"],
+      "social_move_type": "persuade",
+      "social_tags": ["delay", "dangerous"],
+      "tone": "controlled",
+      "target_id": "npc:rusk_bandit",
+      "consumes_dialogue_beat": true,
+      "requires_check": true,
+      "check": {
+        "mode": "standard",
+        "ability": "charisma",
+        "skill": "persuasion",
+        "dc": 14,
+        "visibility": "visible"
+      },
+      "preview": {
+        "text": "You spend the dialogue beat trying to keep Rusk speaking instead of striking. Violence may still follow."
+      },
+      "on_success": {
+        "npc_response": "For one breath Rusk listens to you instead of the ruin. \"At first it just made things simple,\" he says. \"Then it started making them feel inevitable. That is worse.\"",
+        "result_summary": "Rusk reveals that the shrine pressure made violence feel inevitable.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "bandits_not_fully_self_directed",
+            "title": "Bandit Instability",
+            "summary": "Rusk says the shrine pressure made violent choices feel inevitable.",
+            "metadata_json": {
+              "legacy_clue_key": "clue_bandit_instability",
+              "clue_id": "bandit_instability",
+              "legacy_flag": "clue_bandit_instability"
+            }
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "respect",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player holds Rusk's attention without pretending he is safe.",
+            "summary": "Rusk listens for a dangerous moment longer than expected."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "control",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Keeping him talking creates a brief control gap."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "focus",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Rusk focuses enough to name the pressure."
+          }
+        ]
+      },
+      "on_failure": {
+        "npc_response": "\"No,\" Rusk says, and his grip tightens. \"Words are how it gets closer.\"",
+        "result_summary": "Rusk rejects the attempt to slow him down and moves closer to violence.",
+        "character_flags": ["combat_pending", "shrine_confrontation_ready"],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "hostility",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The failed delay makes Rusk more dangerous.",
+            "summary": "Rusk's hostility sharpens toward violence."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "pressure",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Failure raises combat pressure."
+          }
+        ],
+        "metadata_json": {
+          "combat_handoff_status": "combat_pending",
+          "encounter_id": "shrine-rusk-confrontation"
+        }
+      }
+    },
+    {
+      "move_id": "move_push_rusk_to_name_source",
+      "label": "Push him to name the source",
+      "aliases": ["name the source", "what is under the shrine", "push him toward the source"],
+      "social_move_type": "press",
+      "social_tags": ["deeper-source", "risky", "gated"],
+      "tone": "urgent",
+      "target_id": "npc:rusk_bandit",
+      "consumes_dialogue_beat": true,
+      "requires_check": true,
+      "availability": {
+        "player_locked_text": "Rusk is too unstable to push toward the deeper source until you create a narrow opening.",
+        "relationship_reads": [
+          {
+            "scope": "dialogue_scene_state",
+            "target_id": "npc:rusk_bandit",
+            "field": "focus",
+            "operator": ">=",
+            "value": 1,
+            "player_facing": false
+          }
+        ]
+      },
+      "check": {
+        "mode": "standard",
+        "ability": "wisdom",
+        "skill": "insight",
+        "dc": 15,
+        "visibility": "visible"
+      },
+      "preview": {
+        "text": "You spend the dialogue beat pushing Rusk to point toward what the shrine is feeding from. This risks snapping the conversation into violence."
+      },
+      "assistance": [
+        {
+          "source": "opened_focus",
+          "text": "A prior opening makes it possible to press him without losing the thread immediately."
+        }
+      ],
+      "on_success": {
+        "npc_response": "Rusk's laugh breaks halfway through. \"Below,\" he says, hating the word as soon as it leaves him. \"Not the stones. Not just them. Something below keeps making the easy thought louder.\"",
+        "result_summary": "Rusk exposes that the shrine's surface is not the end of the influence.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "shrine_depth_unlocked",
+            "title": "A way beneath the shrine",
+            "summary": "Rusk's instability points toward something below the shrine, not only the surface stones.",
+            "metadata_json": {
+              "legacy_flag": "shrine_depth_unlocked",
+              "legacy_reward_type": "scene_unlock"
+            }
+          },
+          {
+            "knowledge_id": "hollow_reaches_shrine_above",
+            "title": "The hollow reaches the shrine above",
+            "summary": "Rusk's words suggest that the hollow below the shrine is connected to the pressure above.",
+            "metadata_json": {
+              "legacy_flag": "understanding_high",
+              "clue_tier": "partial_deeper_source"
+            }
+          }
+        ],
+        "character_flags": [
+          "shrine_depth_unlocked",
+          "understanding_high",
+          "combat_pending",
+          "shrine_confrontation_ready"
+        ],
+        "objective_updates": [
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "uncover-the-truth",
+            "status": "completed",
+            "progress_count": 1
+          },
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "resolve-the-threat",
+            "status": "active",
+            "progress_count": 0
+          }
+        ],
+        "rewards": [
+          {
+            "reward_type": "scene_unlock",
+            "scene_slug": "subterranean-hollow",
+            "metadata_json": {
+              "legacy_reward_type": "scene_unlock",
+              "requires_existing_transition": "descend-beneath-the-shrine",
+              "required_character_flags": ["surface_threat_resolved", "shrine_depth_unlocked"],
+              "combat_handoff_status": "combat_pending"
+            }
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "fracture",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Naming below the shrine breaks Rusk's control further."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "pressure",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The deeper-source clue pushes the scene toward confrontation."
+          }
+        ],
+        "metadata_json": {
+          "legacy_next_node": "rusk-fight",
+          "combat_handoff_status": "combat_pending",
+          "encounter_id": "shrine-rusk-confrontation",
+          "hollow_transition_status": "future_supported_until_surface_threat_resolved"
+        }
+      },
+      "on_failure": {
+        "npc_response": "Rusk's eyes go hard. \"You do not get to ask what is below while standing in front of me.\"",
+        "result_summary": "Pushing too hard collapses the conversation toward confrontation.",
+        "character_flags": ["combat_pending", "shrine_confrontation_ready"],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "hostility",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The deeper pressure lands as threat.",
+            "summary": "Rusk closes the distance with open hostility."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "instability",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The failed deeper-source push destabilizes Rusk."
+          }
+        ],
+        "metadata_json": {
+          "combat_handoff_status": "combat_pending",
+          "encounter_id": "shrine-rusk-confrontation"
+        }
+      }
+    },
+    {
+      "move_id": "move_challenge_rusk_control",
+      "label": "Challenge his control",
+      "aliases": ["challenge control", "you are not in control", "challenge Rusk"],
+      "social_move_type": "intimidate",
+      "social_tags": ["risky", "combat-pressure"],
+      "tone": "hard",
+      "target_id": "npc:rusk_bandit",
+      "consumes_dialogue_beat": true,
+      "requires_check": true,
+      "check": {
+        "mode": "standard",
+        "ability": "charisma",
+        "skill": "intimidation",
+        "dc": 14,
+        "visibility": "visible"
+      },
+      "preview": {
+        "text": "You spend the dialogue beat challenging Rusk's control. This may force the confrontation faster."
+      },
+      "on_success": {
+        "npc_response": "\"Control?\" Rusk spits. \"I had control before this place taught everyone how good stopping feels.\"",
+        "result_summary": "Rusk reveals the shrine made violent certainty feel rewarding.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "bandits_not_fully_self_directed",
+            "title": "Bandit Instability",
+            "summary": "Rusk's control is fraying under shrine pressure, and he has mistaken that pressure for certainty.",
+            "metadata_json": {
+              "legacy_clue_key": "clue_bandit_instability",
+              "clue_id": "bandit_instability"
+            }
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "respect",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "A direct challenge briefly forces Rusk to answer instead of attack.",
+            "summary": "Rusk registers the challenge, even as the threat remains."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "control",
+            "operation": "decrement",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The challenge weakens Rusk's self-control."
+          }
+        ]
+      },
+      "on_failure": {
+        "npc_response": "\"Then stop me,\" Rusk says, and the words are already becoming motion.",
+        "result_summary": "The challenge fails and drives the scene into combat-ready confrontation.",
+        "character_flags": [
+          "rusk_confronted_directly",
+          "combat_pending",
+          "shrine_confrontation_ready"
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "hostility",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The hard challenge turns into immediate threat.",
+            "summary": "Rusk is ready to make the next answer violent."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "pressure",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Combat pressure rises sharply."
+          }
+        ],
+        "metadata_json": {
+          "combat_handoff_status": "combat_pending",
+          "encounter_id": "shrine-rusk-confrontation"
+        }
+      }
+    },
+    {
+      "move_id": "move_offer_way_to_stop_listening",
+      "label": "Offer him a way to stop listening",
+      "aliases": ["stop listening", "you can stop", "offer a way out"],
+      "social_move_type": "persuade",
+      "social_tags": ["stabilizing", "dangerous"],
+      "tone": "steady",
+      "target_id": "npc:rusk_bandit",
+      "consumes_dialogue_beat": true,
+      "requires_check": true,
+      "check": {
+        "mode": "standard",
+        "ability": "charisma",
+        "skill": "persuasion",
+        "dc": 15,
+        "visibility": "visible"
+      },
+      "preview": {
+        "text": "You spend the dialogue beat offering Rusk a way to stop listening. It may buy clarity, not safety."
+      },
+      "on_success": {
+        "npc_response": "For a moment Rusk looks exhausted instead of furious. \"Stopping is not the same as being free,\" he says. \"But it is quieter.\"",
+        "result_summary": "Rusk briefly steadies, confirming that the influence can be resisted but not ended here.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "bandits_not_fully_self_directed",
+            "title": "Bandit Instability",
+            "summary": "Rusk can briefly resist the pressure, proving the shrine influence is not simple obedience.",
+            "metadata_json": {
+              "legacy_clue_key": "clue_bandit_instability",
+              "clue_id": "bandit_instability"
+            }
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "control",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Rusk briefly steadies under a nonviolent offer."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "instability",
+            "operation": "decrement",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The offer buys a small pause before combat pressure returns."
+          }
+        ]
+      },
+      "on_failure": {
+        "npc_response": "\"You think stopping is mercy?\" Rusk says. \"Stopping is what it wants from everyone.\"",
+        "result_summary": "The offer twists into another reason for Rusk to escalate.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "fracture",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The offer catches on the shrine pressure and fractures the conversation."
+          },
+          {
+            "scope": "persistent_npc_state",
+            "field": "hostility",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The failed offer sounds like another kind of control to Rusk.",
+            "summary": "Rusk treats the offer as threat rather than help."
+          }
+        ]
+      }
+    },
+    {
+      "move_id": "move_end_this_now",
+      "label": "End this now",
+      "aliases": ["end this now", "fight him", "stop Rusk"],
+      "social_move_type": "challenge",
+      "social_tags": ["combat-pending", "hard-ending"],
+      "tone": "decisive",
+      "target_id": "npc:rusk_bandit",
+      "consumes_dialogue_beat": true,
+      "requires_check": false,
+      "preview": {
+        "text": "You spend the dialogue beat ending the conversation and forcing the shrine confrontation."
+      },
+      "no_check_result": {
+        "text": "Rusk bares his teeth like he has been waiting for the conversation to run out of room. The shrine stones hold the silence for one heartbeat too long.",
+        "summary": "The player ends the conversation and forces a combat-ready shrine confrontation.",
+        "character_flags": [
+          "rusk_confronted_directly",
+          "combat_pending",
+          "shrine_confrontation_ready"
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "hostility",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player forces the confrontation.",
+            "summary": "Rusk is openly ready for violence."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "pressure",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The conversation is being pushed into combat-ready state."
+          }
+        ],
+        "metadata_json": {
+          "legacy_next_node": "rusk-fight",
+          "combat_handoff_status": "combat_pending",
+          "encounter_id": "shrine-rusk-confrontation"
+        }
+      }
+    }
+  ],
+  "generic_fallback": {
+    "enabled": true,
+    "usage_limit": 1,
+    "allowed_social_move_types": ["ask", "listen", "challenge"],
+    "excluded_social_move_types": ["bypass_combat", "skip_confrontation", "direct_hollow_unlock"],
+    "result_scope_constraints": {
+      "may_grant_major_clue": false,
+      "may_transition": false,
+      "may_write_relationship_state": false
+    },
+    "success_behavior": {
+      "text": "Rusk gives only a broken edge of an answer: the shrine makes violent choices feel easier, and easy choices are how people get lost.",
+      "summary": "The unauthored exchange stays limited to shrine pressure and immediate danger."
+    },
+    "failure_behavior": {
+      "text": "The question lands badly. Rusk's attention slides away from you and back toward the stones, and the pause feels sharper than speech.",
+      "summary": "The constrained fallback attempt does not produce a useful clue."
+    },
+    "failed_fallback_consumes_slot": true
+  },
+  "dialogue_exits": [
+    {
+      "exit_id": "exit_rusk_back_away",
+      "label": "Back away from the confrontation",
+      "exit_type": "transition",
+      "behavior": {
+        "text": "You back away from the shrine before the moment breaks. Rusk remains armed, unstable, and too close to violence."
+      },
+      "transition": {
+        "target_type": "exploration",
+        "target_id": "shrine-ruins"
+      },
+      "metadata_json": {
+        "canonical_transition": "withdraw-from-the-shrine",
+        "combat_handoff_status": "not_triggered"
+      }
+    },
+    {
+      "exit_id": "exit_rusk_combat_pending",
+      "label": "Let the confrontation break",
+      "exit_type": "risky",
+      "behavior": {
+        "text": "The conversation has run out of room. If you want the shrine quiet, you will have to face what Rusk has become."
+      },
+      "transition": {
+        "target_type": "exploration",
+        "target_id": "shrine-ruins"
+      },
+      "metadata_json": {
+        "combat_handoff_status": "combat_pending",
+        "encounter_id": "shrine-rusk-confrontation",
+        "combat_ready_flag": "shrine_confrontation_ready",
+        "runtime_note": "Dialogue runtime currently returns an exploration transition plus authored combat-pending metadata rather than starting combat directly."
+      }
+    },
+    {
+      "exit_id": "exit_continue_at_shrine_ruins",
+      "label": "Keep investigating the shrine ruins",
+      "exit_type": "transition",
+      "behavior": {
+        "text": "Rusk's words leave the shrine feeling less like the end of the road and more like the surface of something below."
+      },
+      "transition": {
+        "target_type": "exploration",
+        "target_id": "shrine-ruins"
+      },
+      "metadata_json": {
+        "canonical_transition": "descend-beneath-the-shrine",
+        "hollow_transition_status": "future_supported_until_surface_threat_resolved",
+        "required_character_flags": ["surface_threat_resolved", "shrine_depth_unlocked"]
+      }
+    }
+  ],
+  "summary_behavior": {
+    "mode": "deterministic_authored",
+    "player_summary_template": "Rusk at the shrine revealed that the violence around him had been made easier and louder by pressure from the ruins. The conversation could expose a partial lead beneath the shrine, but it could not make Rusk safe or end the surface threat by words alone.",
+    "sources": [
+      {
+        "source_id": "surface_rusk_shrine_confrontation",
+        "visibility": "player_visible"
+      },
+      {
+        "source_id": "clarify_rusk_what_he_hears",
+        "visibility": "character_known"
+      },
+      {
+        "source_id": "move_push_rusk_to_name_source",
+        "visibility": "character_known"
+      }
+    ]
+  },
+  "npc_profile_recap": {
+    "enabled": true,
+    "player_facing": true,
+    "visibility": "player_visible",
+    "apply_timing": "on_dialogue_finalization",
+    "text": "Rusk is the shrine's surface threat: unstable, armed, and influenced by pressure he does not fully understand."
+  },
+  "dialogue_search_index": {
+    "player_facing": true,
+    "visibility": "player",
+    "topics": [
+      "Rusk",
+      "shrine ruins",
+      "Bandit Instability",
+      "shrine pressure",
+      "hollow lead",
+      "shrine confrontation"
+    ]
+  },
+  "completed_dialogue_record": {
+    "record_id": "completed_greyvale_rusk_at_the_shrine_template",
+    "template": true,
+    "player_facing_sources": [
+      {
+        "source_id": "surface_rusk_shrine_confrontation",
+        "visibility": "player_visible"
+      },
+      {
+        "source_id": "clarify_rusk_what_he_hears",
+        "visibility": "character_known"
+      },
+      {
+        "source_id": "move_keep_rusk_talking",
+        "visibility": "character_known"
+      }
+    ],
+    "summary_sources": [
+      {
+        "source_id": "summary_behavior",
+        "visibility": "player_visible"
+      }
+    ]
+  },
+  "transcript_turns": [
+    {
+      "turn_id": "turn_surface_rusk_shrine_confrontation",
+      "turn_type": "conversation_surface",
+      "visibility": "player_visible",
+      "player_facing": true
+    },
+    {
+      "turn_id": "turn_rusk_summary_template",
+      "turn_type": "system_summary",
+      "visibility": "player_visible",
+      "player_facing": true
+    }
+  ],
+  "validation_metadata": {
+    "profile": "playtest_ready",
+    "fixture_id": "greyvale_rusk_at_the_shrine_dialogue",
+    "named_paths": [
+      "happy_path",
+      "refusal_or_failure_path",
+      "fallback_path",
+      "minimal_exit_path",
+      "instability_state_path",
+      "combat_transition_path",
+      "deeper_source_transition_path",
+      "max_clarifying_question_path"
+    ]
+  },
+  "debug_metadata": {
+    "owner": "dialogue-build-12-5",
+    "purpose": "Greyvale Rusk at the Shrine Dialogue Focus/Commit conversion fixture",
+    "notes": [
+      "Converted from legacy node/option dialogue without replacing the legacy file.",
+      "Legacy Bandit Instability maps to canonical knowledge id bandits_not_fully_self_directed.",
+      "Legacy shrine_depth_unlocked and understanding_high are preserved on the deeper-source success branch.",
+      "Combat handoff is represented as combat_pending metadata for shrine-rusk-confrontation because the dialogue runtime does not directly start combat.",
+      "The hollow lead preserves the existing descend-beneath-the-shrine transition gate and does not bypass surface_threat_resolved."
+    ]
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "slug": "rusk-at-the-shrine",
+  "scene_slug": "shrine-ruins",
+  "npc_template_slug": "rusk-bandit",
+  "name": "Rusk at the Shrine",
+  "text": {
+    "short": "Confront Rusk before steel settles the question.",
+    "summary": "Rusk is a real threat, but if he talks at all he reveals how unstable the shrine has made him.",
+    "full": "Rusk does not look like a man in control of his own temper, much less anyone else's. The shrine has sharpened him and hollowed him at the same time."
+  },
+  "trigger_type": "player",
+  "trigger_event": "npc_talk",
+  "sort_order": 1,
+  "availability_conditions": {},
+  "is_repeatable": true,
+  "is_active": true,
+  "nodes": [
+    {
+      "slug": "rusk-greeting",
+      "title": "A Man Half-Listening Elsewhere",
+      "speaker_type": "npc",
+      "speaker_npc_template_slug": "rusk-bandit",
+      "text": {
+        "full": "You don't hear it, do you? Doesn't matter. It heard you already.",
+        "short": "Rusk speaks like he is answering two conversations at once."
+      },
+      "sort_order": 1,
+      "is_entry_node": true,
+      "is_terminal": false,
+      "availability_conditions": {},
+      "entry_effects": {
+        "session_flags": {
+          "met_rusk_at_shrine": true
+        }
+      },
+      "options": [
+        {
+          "slug": "ask-what-he-hears",
+          "label": "Ask what he means",
+          "sort_order": 1,
+          "availability_conditions": {},
+          "check_mode": "none",
+          "outcomes": [
+            {
+              "slug": "rusk-reveals-instability",
+              "next_node_slug": "rusk-instability",
+              "label": "Rusk admits the shrine changed him",
+              "sort_order": 1,
+              "conditions": {},
+              "effects": {
+                "character_flags": {
+                  "clue_bandit_instability": true
+                },
+                "knowledge_entries": [
+                  {
+                    "knowledge_type": "lore",
+                    "knowledge_key": "clue_bandit_instability",
+                    "title": "Bandit Instability",
+                    "summary": "Rusk admits the shrine made the attacks easier and louder inside his head, proving he was not fully in control.",
+                    "metadata_json": {
+                      "clue_id": "bandit_instability",
+                      "clue_tier": "deep"
+                    }
+                  }
+                ],
+                "source_knowledge_title": "Rusk revealed he was being sharpened by something deeper",
+                "source_knowledge_summary": "Rusk said the shrine made the violence feel easier before it made it impossible to ignore."
+              },
+              "result_text": "For a moment his anger loses ground to exhaustion.",
+              "is_terminal": false,
+              "is_active": true
+            }
+          ]
+        },
+        {
+          "slug": "end-this-now",
+          "label": "Tell him this ends now",
+          "sort_order": 2,
+          "availability_conditions": {},
+          "check_mode": "none",
+          "outcomes": [
+            {
+              "slug": "rusk-braces-for-fight",
+              "next_node_slug": "rusk-fight",
+              "label": "The confrontation hardens into combat",
+              "sort_order": 1,
+              "conditions": {},
+              "effects": {
+                "character_flags": {
+                  "rusk_confronted_directly": true
+                }
+              },
+              "result_text": "Rusk's hand tightens on his blade before either of you moves first.",
+              "is_terminal": false,
+              "is_active": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "rusk-instability",
+      "title": "The Voice Beneath the Camp",
+      "speaker_type": "npc",
+      "speaker_npc_template_slug": "rusk-bandit",
+      "text": {
+        "full": "At first it just made things simple. Then it started making them feel inevitable. That's worse.",
+        "short": "Rusk says the shrine made violence feel inevitable."
+      },
+      "sort_order": 2,
+      "is_entry_node": false,
+      "is_terminal": false,
+      "availability_conditions": {},
+      "entry_effects": {},
+      "options": [
+        {
+          "slug": "push-him-toward-the-source",
+          "label": "Push him to name where it comes from",
+          "sort_order": 1,
+          "availability_conditions": {},
+          "check_mode": "none",
+          "outcomes": [
+            {
+              "slug": "rusk-exposes-the-depth",
+              "next_node_slug": "rusk-fight",
+              "label": "Rusk gives away the hollow below",
+              "sort_order": 1,
+              "conditions": {},
+              "effects": {
+                "character_flags": {
+                  "shrine_depth_unlocked": true,
+                  "understanding_high": true
+                },
+                "objectives": [
+                  {
+                    "quest_key": "shadows_grey_road",
+                    "objective_key": "uncover-the-truth",
+                    "status": "completed",
+                    "progress_count": 1
+                  },
+                  {
+                    "quest_key": "shadows_grey_road",
+                    "objective_key": "resolve-the-threat",
+                    "status": "active",
+                    "progress_count": 0
+                  }
+                ],
+                "rewards": [
+                  {
+                    "reward_type": "scene_unlock",
+                    "value": {
+                      "scene_key": "subterranean-hollow"
+                    },
+                    "metadata_json": {
+                      "reason": "Rusk's instability exposed the deeper hollow beneath the shrine."
+                    }
+                  }
+                ],
+                "source_knowledge_title": "Rusk exposed a deeper source beneath the shrine",
+                "source_knowledge_summary": "Rusk's answers confirmed there is something below the shrine influencing the violence."
+              },
+              "result_text": "He flinches toward the stones as if his own body betrayed the answer first.",
+              "is_terminal": false,
+              "is_active": true
+            }
+          ]
+        },
+        {
+          "slug": "enough-words",
+          "label": "Cut the conversation short",
+          "sort_order": 2,
+          "availability_conditions": {},
+          "check_mode": "none",
+          "outcomes": [
+            {
+              "slug": "rusk-breaks-the-moment",
+              "next_node_slug": "rusk-fight",
+              "label": "The moment collapses into violence",
+              "sort_order": 1,
+              "conditions": {},
+              "effects": {},
+              "result_text": "Whatever clarity was possible breaks under strain.",
+              "is_terminal": false,
+              "is_active": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "rusk-fight",
+      "title": "The Last Calm Before Steel",
+      "speaker_type": "system",
+      "text": {
+        "full": "The conversation has run out of room. If you want the shrine quiet, you will have to make it so.",
+        "short": "The confrontation is ready to turn into combat."
+      },
+      "sort_order": 3,
+      "is_entry_node": false,
+      "is_terminal": true,
+      "availability_conditions": {},
+      "entry_effects": {},
+      "options": []
+    }
+  ]
+}

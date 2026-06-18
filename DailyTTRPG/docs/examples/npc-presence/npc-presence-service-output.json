@@ -1,0 +1,14 @@
+{
+  "npc_id": "tomas-rell",
+  "display_name": "the innkeeper",
+  "true_name_known": false,
+  "presence": "present",
+  "location_id": "grey-road-inn",
+  "scene_id": "grey-road-inn",
+  "activity": "serving travelers",
+  "activity_text": "The innkeeper moves between tables, keeping one eye on the door.",
+  "availability": "available",
+  "visibility": "visible",
+  "available_actions": ["observe", "talk"],
+  "state_source": "schedule"
+}

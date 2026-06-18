@@ -1,0 +1,658 @@
+[
+  {
+    "slug": "inspect-broken-caravan",
+    "scene_slug": "broken-caravan-site",
+    "label": "Inspect the broken caravan",
+    "text": {
+      "short": "Study the wreckage and what was left behind.",
+      "summary": "Commit time to the caravan itself, reading damage, cargo, and the order of panic for what simple observation cannot settle.",
+      "full": "You work through the wreck deliberately: axle, canvas, wheel ruts, cargo, and the spaces where the story should connect but does not.",
+      "success": "The wreckage shows violence, but not coherent looting. Some goods were left untouched, and the struggle broke in strange ways.",
+      "failure": "You confirm the caravan was attacked, but the finer pattern stays frustratingly unclear."
+    },
+    "interaction_type": "skill_check",
+    "skill_slug": "investigation",
+    "verb": "investigate",
+    "target_affordance_id": "caravan_wreck",
+    "difficulty_class": 10,
+    "sort_order": 1,
+    "is_repeatable": true,
+    "availability_conditions": {},
+    "success_effects": {
+      "character_flags": {
+        "clue_caravan_irregularity": true
+      },
+      "knowledge_entries": [
+        {
+          "knowledge_type": "lore",
+          "knowledge_key": "clue_caravan_irregularity",
+          "title": "Caravan Irregularity",
+          "summary": "The caravan attack was violent, but not cleanly organized. Some attackers seem to have hesitated or broken formation.",
+          "metadata_json": {
+            "clue_id": "caravan_irregularity",
+            "clue_tier": "core"
+          }
+        }
+      ],
+      "objectives": [
+        {
+          "quest_key": "shadows_grey_road",
+          "objective_key": "witness-the-aftermath",
+          "status": "completed",
+          "progress_count": 1
+        },
+        {
+          "quest_key": "shadows_grey_road",
+          "objective_key": "gather-local-insight",
+          "status": "active",
+          "progress_count": 0
+        }
+      ],
+      "xp": 20,
+      "reward_reason": "Understood the first irregularity at the caravan site.",
+      "source_knowledge_title": "The caravan scene was wrong",
+      "source_knowledge_summary": "The caravan attack looked like bandit violence warped by something less predictable."
+    },
+    "failure_effects": {
+      "character_flags": {
+        "caravan_scene_unsettling": true
+      }
+    },
+    "result_bands": [
+      {
+        "band": "failure",
+        "max_total": 9,
+        "text": "The wreck is chaotic: broken wood, churned mud, scattered cargo. Violence happened here, but the reason stays hidden.",
+        "knowledge_grants": [],
+        "state_changes": []
+      },
+      {
+        "band": "success",
+        "min_total": 10,
+        "max_total": 16,
+        "text": "The wreck tells an uneven story. Cargo remains untouched, and one wheel appears cracked by force from outside.",
+        "knowledge_grants": [
+          "caravan_irregularity"
+        ],
+        "state_changes": [
+          {
+            "target_type": "affordance",
+            "target_id": "caravan_wreck",
+            "field": "state",
+            "value": "resolved"
+          },
+          {
+            "target_type": "affordance",
+            "target_id": "strange_tracks",
+            "field": "state",
+            "value": "available"
+          },
+          {
+            "target_type": "scene",
+            "target_id": "broken-caravan-site",
+            "field": "caravan_investigated",
+            "value": true
+          }
+        ]
+      },
+      {
+        "band": "great_success",
+        "min_total": 17,
+        "text": "The scene aligns too neatly: untouched cargo, a cracked wheel, and too few bodies. The attack was staged to look like simple robbery.",
+        "knowledge_grants": [
+          "caravan_irregularity",
+          "attack_staged",
+          "strange_tracks_leave_road"
+        ],
+        "state_changes": [
+          {
+            "target_type": "affordance",
+            "target_id": "caravan_wreck",
+            "field": "state",
+            "value": "resolved"
+          },
+          {
+            "target_type": "affordance",
+            "target_id": "strange_tracks",
+            "field": "state",
+            "value": "available"
+          },
+          {
+            "target_type": "scene",
+            "target_id": "broken-caravan-site",
+            "field": "caravan_investigated",
+            "value": true
+          }
+        ]
+      }
+    ],
+    "is_active": true,
+    "resolution_mode": "beat_action",
+    "beat_action_type": "investigate",
+    "consequence_level": "meaningful",
+    "free_focus_overlap_policy": {
+      "warn_if_matching_free_focus_unviewed": true,
+      "default_choice": "offer_closer_look",
+      "committed_followup_default": "advantage"
+    }
+  },
+  {
+    "slug": "examine-roadside-tracks",
+    "scene_slug": "broken-caravan-site",
+    "label": "Examine the roadside tracks",
+    "text": {
+      "short": "Read the tracks around the caravan.",
+      "summary": "Commit to separating the overlapping tracks and following the movement that left the road.",
+      "full": "You take the time the mud demands, comparing depth, stride, direction, and the places where panic breaks into purpose.",
+      "success": "Several track lines break apart abruptly, as if the attackers lost their nerve or attention at the same moment.",
+      "failure": "Too many feet crossed the ground here for you to separate the sequence cleanly."
+    },
+    "interaction_type": "skill_check",
+    "skill_slug": "survival",
+    "verb": "track",
+    "target_affordance_id": "strange_tracks",
+    "difficulty_class": 11,
+    "sort_order": 2,
+    "is_repeatable": true,
+    "availability_conditions": {},
+    "success_effects": {
+      "character_flags": {
+        "clue_caravan_irregularity": true,
+        "understanding_low": true
+      },
+      "knowledge_entries": [
+        {
+          "knowledge_type": "lore",
+          "knowledge_key": "clue_track_scatter",
+          "title": "Tracks Scattered Without Reason",
+          "summary": "The attackers seem to have scattered and regrouped without any ordinary tactical reason.",
+          "metadata_json": {
+            "clue_id": "caravan_irregularity",
+            "clue_tier": "reinforcing"
+          }
+        }
+      ],
+      "source_knowledge_title": "The tracks made no tactical sense",
+      "source_knowledge_summary": "The people at the caravan moved as if something kept breaking their focus."
+    },
+    "failure_effects": {},
+    "result_bands": [
+      {
+        "band": "failure",
+        "max_total": 10,
+        "text": "Too many feet crossed the ground here for you to separate the sequence cleanly.",
+        "knowledge_grants": [],
+        "state_changes": []
+      },
+      {
+        "band": "success",
+        "min_total": 11,
+        "text": "Several track lines break apart abruptly, as if the attackers lost their nerve or attention at the same moment.",
+        "knowledge_grants": [
+          "strange_tracks_leave_road"
+        ],
+        "state_changes": [
+          {
+            "target_type": "affordance",
+            "target_id": "strange_tracks",
+            "field": "state",
+            "value": "resolved"
+          }
+        ]
+      }
+    ],
+    "is_active": true,
+    "resolution_mode": "beat_action",
+    "beat_action_type": "track",
+    "consequence_level": "meaningful",
+    "free_focus_overlap_policy": {
+      "warn_if_matching_free_focus_unviewed": true,
+      "default_choice": "offer_closer_look",
+      "committed_followup_default": "advantage"
+    }
+  },
+  {
+    "slug": "check-for-survivors",
+    "scene_slug": "broken-caravan-site",
+    "label": "Check for survivors",
+    "text": {
+      "short": "Search the site for survivors or missing people.",
+      "summary": "Commit to a careful search of the wreck and roadside for signs of who remained, who fled, and who was taken.",
+      "full": "You move through the wreck slowly enough not to mistake absence for safety.",
+      "success": "No one remains alive at the scene, but the blood and scattered belongings suggest more people were here than the aftermath accounts for.",
+      "failure": "You confirm the place has been abandoned, but not much more."
+    },
+    "interaction_type": "skill_check",
+    "skill_slug": "perception",
+    "verb": "search",
+    "target_affordance_id": "missing_travelers_signs",
+    "difficulty_class": 8,
+    "sort_order": 3,
+    "is_repeatable": true,
+    "availability_conditions": {},
+    "success_effects": {
+      "knowledge_entries": [
+        {
+          "knowledge_type": "lore",
+          "knowledge_key": "clue_missing_bodies",
+          "title": "The bodies do not match the blood",
+          "summary": "The attack site suggests more people were present than the aftermath can account for.",
+          "metadata_json": {
+            "clue_id": "missing_bodies",
+            "clue_tier": "reinforcing"
+          }
+        }
+      ]
+    },
+    "failure_effects": {},
+    "result_bands": [
+      {
+        "band": "failure",
+        "max_total": 7,
+        "text": "You confirm the place has been abandoned, but not much more.",
+        "knowledge_grants": [],
+        "state_changes": []
+      },
+      {
+        "band": "success",
+        "min_total": 8,
+        "text": "No one remains alive at the scene, but the blood and scattered belongings suggest more people were here than the aftermath accounts for.",
+        "knowledge_grants": [
+          "caravan_irregularity"
+        ],
+        "state_changes": [
+          {
+            "target_type": "affordance",
+            "target_id": "missing_travelers_signs",
+            "field": "state",
+            "value": "resolved"
+          },
+          {
+            "target_type": "affordance",
+            "target_id": "strange_tracks",
+            "field": "state",
+            "value": "available"
+          }
+        ]
+      }
+    ],
+    "is_active": true,
+    "resolution_mode": "beat_action",
+    "beat_action_type": "investigate",
+    "consequence_level": "meaningful",
+    "free_focus_overlap_policy": {
+      "warn_if_matching_free_focus_unviewed": true,
+      "default_choice": "offer_closer_look",
+      "committed_followup_default": "advantage"
+    }
+  },
+  {
+    "slug": "track-the-old-path",
+    "scene_slug": "old-forest-path",
+    "label": "Track the old path",
+    "text": {
+      "short": "Read the movement patterns along the forest path.",
+      "summary": "Commit to following the layered movement through the trees until the path's repeated direction becomes clear.",
+      "full": "You slow down and let the ground speak in sequence: old hunter traffic, newer fear, and the repeated correction toward the shrine.",
+      "success": "The movement patterns do not behave like a disciplined camp or a simple ambush trail. They keep converging on the shrine.",
+      "failure": "You find signs of repeated travel, but the larger pattern stays muddy."
+    },
+    "interaction_type": "skill_check",
+    "skill_slug": "survival",
+    "difficulty_class": 12,
+    "sort_order": 1,
+    "is_repeatable": true,
+    "availability_conditions": {},
+    "success_effects": {
+      "character_flags": {
+        "clue_shrine_activity": true,
+        "shrine_path_known": true,
+        "understanding_medium": true
+      },
+      "knowledge_entries": [
+        {
+          "knowledge_type": "lore",
+          "knowledge_key": "clue_shrine_activity",
+          "title": "Shrine Activity",
+          "summary": "The unstable movement along the forest path keeps bending toward the ruined shrine.",
+          "metadata_json": {
+            "clue_id": "shrine_activity",
+            "clue_tier": "core"
+          }
+        }
+      ],
+      "objectives": [
+        {
+          "quest_key": "shadows_grey_road",
+          "objective_key": "follow-the-leads",
+          "status": "completed",
+          "progress_count": 1
+        },
+        {
+          "quest_key": "shadows_grey_road",
+          "objective_key": "uncover-the-truth",
+          "status": "active",
+          "progress_count": 0
+        }
+      ],
+      "rewards": [
+        {
+          "reward_type": "scene_unlock",
+          "value": {
+            "scene_key": "shrine-ruins"
+          },
+          "metadata_json": {
+            "reason": "Followed the leads to the ruined shrine."
+          }
+        }
+      ],
+      "source_knowledge_title": "The trail leads to the shrine",
+      "source_knowledge_summary": "The old path confirms that the shrine is where the road's instability is gathering."
+    },
+    "failure_effects": {},
+    "is_active": true,
+    "resolution_mode": "beat_action",
+    "beat_action_type": "track",
+    "consequence_level": "meaningful",
+    "target_affordance_id": "layered_tracks",
+    "free_focus_overlap_policy": {
+      "warn_if_matching_free_focus_unviewed": true,
+      "default_choice": "offer_closer_look",
+      "committed_followup_default": "advantage"
+    },
+    "result_bands": [
+      {
+        "band": "failure",
+        "max_total": 10,
+        "text": "You find signs of repeated travel, but the larger pattern stays muddy.",
+        "knowledge_grants": [],
+        "state_changes": []
+      },
+      {
+        "band": "success",
+        "min_total": 11,
+        "text": "The movement patterns do not behave like a disciplined camp or a simple ambush trail. They keep converging on the shrine.",
+        "knowledge_grants": [],
+        "state_changes": []
+      }
+    ]
+  },
+  {
+    "slug": "inspect-shrine-markings",
+    "scene_slug": "shrine-ruins",
+    "label": "Inspect the shrine markings",
+    "text": {
+      "short": "Study the marks cut into the shrine stone.",
+      "summary": "Commit to understanding whether the shrine is merely occupied or being used by something stranger.",
+      "full": "You give the disturbed stone your full attention, tracing repetition, pressure, and the difference between vandalism and compulsion.",
+      "success": "The shrine bears marks that do not fit opportunistic bandits. Something has been traced, repeated, and worried over here.",
+      "failure": "The shrine is clearly disturbed, but not yet in a way you can cleanly explain."
+    },
+    "interaction_type": "skill_check",
+    "skill_slug": "investigation",
+    "difficulty_class": 11,
+    "sort_order": 1,
+    "is_repeatable": true,
+    "availability_conditions": {},
+    "success_effects": {
+      "character_flags": {
+        "clue_unusual_markings": true,
+        "shrine_depth_unlocked": true,
+        "understanding_high": true
+      },
+      "knowledge_entries": [
+        {
+          "knowledge_type": "lore",
+          "knowledge_key": "clue_unusual_markings",
+          "title": "Unusual Shrine Markings",
+          "summary": "The signs around the shrine suggest repeated contact with something the bandits did not fully control.",
+          "metadata_json": {
+            "clue_id": "unusual_markings",
+            "clue_tier": "reinforcing"
+          }
+        }
+      ],
+      "objectives": [
+        {
+          "quest_key": "shadows_grey_road",
+          "objective_key": "uncover-the-truth",
+          "status": "completed",
+          "progress_count": 1
+        },
+        {
+          "quest_key": "shadows_grey_road",
+          "objective_key": "resolve-the-threat",
+          "status": "active",
+          "progress_count": 0
+        }
+      ],
+      "rewards": [
+        {
+          "reward_type": "scene_unlock",
+          "value": {
+            "scene_key": "subterranean-hollow"
+          },
+          "metadata_json": {
+            "reason": "Discovered the deeper route beneath the shrine."
+          }
+        }
+      ],
+      "source_knowledge_title": "The shrine was not only a bandit camp",
+      "source_knowledge_summary": "The shrine markings suggest the people here were responding to something beneath them."
+    },
+    "failure_effects": {},
+    "is_active": true,
+    "resolution_mode": "beat_action",
+    "beat_action_type": "investigate",
+    "consequence_level": "meaningful",
+    "target_affordance_id": "shrine_markings",
+    "free_focus_overlap_policy": {
+      "warn_if_matching_free_focus_unviewed": true,
+      "default_choice": "offer_closer_look",
+      "committed_followup_default": "advantage"
+    },
+    "result_bands": [
+      {
+        "band": "failure",
+        "max_total": 10,
+        "text": "The shrine is clearly disturbed, but not yet in a way you can cleanly explain.",
+        "knowledge_grants": [],
+        "state_changes": []
+      },
+      {
+        "band": "success",
+        "min_total": 11,
+        "text": "The shrine bears marks that do not fit opportunistic bandits. Something has been traced, repeated, and worried over here.",
+        "knowledge_grants": [],
+        "state_changes": []
+      }
+    ]
+  },
+  {
+    "slug": "sense-the-presence",
+    "scene_slug": "subterranean-hollow",
+    "label": "Sense the presence below",
+    "text": {
+      "short": "Read the pressure beneath the shrine.",
+      "summary": "Commit to understanding the hollow's influence without letting it choose your conclusion for you.",
+      "full": "You hold your thoughts steady and study the pressure by how it tries to move you.",
+      "success": "The influence is real. It does not speak, but it bends attention and choice in anyone who lingers near it.",
+      "failure": "The pressure catches at your thoughts before you can isolate it cleanly."
+    },
+    "interaction_type": "skill_check",
+    "skill_slug": "insight",
+    "difficulty_class": 12,
+    "sort_order": 1,
+    "is_repeatable": true,
+    "availability_conditions": {},
+    "success_effects": {
+      "character_flags": {
+        "clue_subterranean_signs": true,
+        "understanding_full": true
+      },
+      "knowledge_entries": [
+        {
+          "knowledge_type": "lore",
+          "knowledge_key": "clue_subterranean_signs",
+          "title": "Subterranean Signs",
+          "summary": "A hidden influence beneath the shrine has been shaping confusion, coordination, and instability around the road.",
+          "metadata_json": {
+            "clue_id": "subterranean_signs",
+            "clue_tier": "deep"
+          }
+        }
+      ],
+      "source_knowledge_title": "The truth below the shrine",
+      "source_knowledge_summary": "The violence on the road was being sharpened by a hidden influence beneath the shrine."
+    },
+    "failure_effects": {
+      "character_flags": {
+        "hollow_pressure_unsteady": true
+      }
+    },
+    "is_active": true,
+    "resolution_mode": "beat_action",
+    "beat_action_type": "investigate",
+    "consequence_level": "meaningful",
+    "target_affordance_id": "mental_pressure",
+    "free_focus_overlap_policy": {
+      "warn_if_matching_free_focus_unviewed": true,
+      "default_choice": "offer_closer_look",
+      "committed_followup_default": "advantage"
+    },
+    "result_bands": [
+      {
+        "band": "failure",
+        "max_total": 10,
+        "text": "The pressure catches at your thoughts before you can isolate it cleanly.",
+        "knowledge_grants": [],
+        "state_changes": []
+      },
+      {
+        "band": "success",
+        "min_total": 11,
+        "text": "The influence is real. It does not speak, but it bends attention and choice in anyone who lingers near it.",
+        "knowledge_grants": [],
+        "state_changes": []
+      }
+    ]
+  },
+  {
+    "slug": "steady-the-mind",
+    "scene_slug": "subterranean-hollow",
+    "label": "Steady your mind",
+    "text": {
+      "short": "Brace yourself against the hollow's pressure.",
+      "summary": "Commit to resisting suggestion and preparing yourself before answering the influence.",
+      "full": "You make your attention deliberate: breath, memory, purpose, and the refusal to accept the easiest answer only because it is easy.",
+      "success": "Your thoughts stop slipping long enough for the chamber to feel dangerous instead of incomprehensible.",
+      "failure": "The pressure keeps fraying your certainty before it can become understanding."
+    },
+    "interaction_type": "skill_check",
+    "skill_slug": "insight",
+    "difficulty_class": 13,
+    "sort_order": 2,
+    "is_repeatable": true,
+    "availability_conditions": {},
+    "success_effects": {
+      "character_flags": {
+        "mind_steadied_in_hollow": true
+      },
+      "xp": 15,
+      "reward_reason": "Held firm against the hollow's influence."
+    },
+    "failure_effects": {
+      "character_flags": {
+        "mind_unsteady_in_hollow": true
+      }
+    },
+    "is_active": true,
+    "resolution_mode": "beat_action",
+    "beat_action_type": "prepare",
+    "consequence_level": "meaningful",
+    "target_affordance_id": "mental_pressure",
+    "free_focus_overlap_policy": {
+      "warn_if_matching_free_focus_unviewed": true,
+      "default_choice": "offer_closer_look",
+      "committed_followup_default": "advantage"
+    },
+    "result_bands": [
+      {
+        "band": "failure",
+        "max_total": 10,
+        "text": "The pressure keeps fraying your certainty before it can become understanding.",
+        "knowledge_grants": [],
+        "state_changes": []
+      },
+      {
+        "band": "success",
+        "min_total": 11,
+        "text": "Your thoughts stop slipping long enough for the chamber to feel dangerous instead of incomprehensible.",
+        "knowledge_grants": [],
+        "state_changes": []
+      }
+    ]
+  },
+  {
+    "slug": "trace-the-anchor",
+    "scene_slug": "subterranean-hollow",
+    "label": "Trace the anchor of the influence",
+    "text": {
+      "short": "Study the anchor stone's function.",
+      "summary": "Commit to finding how the hollow reaches the road above and what might disrupt it.",
+      "full": "You work around the anchor stone carefully, following grooves, mineral veins, old scratches, and the pressure that gathers where they meet.",
+      "success": "You identify the part of the chamber that carries the influence most strongly, enough to imagine breaking or disrupting it.",
+      "failure": "You find only fragments and repeated signs, not the anchor itself."
+    },
+    "interaction_type": "skill_check",
+    "skill_slug": "investigation",
+    "difficulty_class": 13,
+    "sort_order": 3,
+    "is_repeatable": true,
+    "availability_conditions": {},
+    "success_effects": {
+      "character_flags": {
+        "hollow_anchor_found": true
+      },
+      "knowledge_entries": [
+        {
+          "knowledge_type": "lore",
+          "knowledge_key": "hollow_anchor_found",
+          "title": "The hollow has an anchor point",
+          "summary": "The influence beneath the shrine is not abstract alone. It has a place or pattern through which it can be disrupted.",
+          "metadata_json": {
+            "clue_id": "hollow_anchor_found",
+            "clue_tier": "deep"
+          }
+        }
+      ]
+    },
+    "failure_effects": {},
+    "is_active": true,
+    "resolution_mode": "beat_action",
+    "beat_action_type": "investigate",
+    "consequence_level": "meaningful",
+    "target_affordance_id": "anchor_stone",
+    "free_focus_overlap_policy": {
+      "warn_if_matching_free_focus_unviewed": true,
+      "default_choice": "offer_closer_look",
+      "committed_followup_default": "advantage"
+    },
+    "result_bands": [
+      {
+        "band": "failure",
+        "max_total": 10,
+        "text": "You find only fragments and repeated signs, not the anchor itself.",
+        "knowledge_grants": [],
+        "state_changes": []
+      },
+      {
+        "band": "success",
+        "min_total": 11,
+        "text": "You identify the part of the chamber that carries the influence most strongly, enough to imagine breaking or disrupting it.",
+        "knowledge_grants": [],
+        "state_changes": []
+      }
+    ]
+  }
+]

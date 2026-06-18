@@ -1,0 +1,29 @@
+[
+  {
+    "id": "broken_caravan_fog_morning_weather_001",
+    "slot": "weather_overlay",
+    "text": "Fog hangs low over the broken caravan, turning the Grey Road into a pale ribbon of mud.",
+    "valid_weather": ["fog"],
+    "valid_time_of_day": ["dawn", "morning"],
+    "valid_location_tags": ["broken_caravan_site", "road", "lowlands"],
+    "valid_scene_tags": ["broken_caravan_site"],
+    "valid_location_environment": ["road", "exterior"],
+    "tone_or_mood": ["uneasy", "watchful", "somber"],
+    "priority": 20,
+    "weight": 2,
+    "reuse_cooldown": 4
+  },
+  {
+    "id": "grey_road_inn_quiet_night_mood_001",
+    "slot": "location_mood",
+    "text": "At this hour, every lowered voice seems to carry farther than it should.",
+    "valid_time_of_day": ["night", "late_night"],
+    "valid_location_tags": ["grey_road_inn", "inn", "interior"],
+    "valid_scene_tags": ["grey_road_inn"],
+    "valid_location_environment": ["inn", "interior"],
+    "tone_or_mood": ["quiet", "watchful", "uneasy"],
+    "priority": 18,
+    "weight": 1,
+    "reuse_cooldown": 5
+  }
+]

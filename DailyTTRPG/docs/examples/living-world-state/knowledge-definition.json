@@ -1,0 +1,8 @@
+{
+  "knowledge_id": "caravan_irregularity",
+  "type": "clue",
+  "public_label": "The caravan attack seems unusual",
+  "canonical_text": "The caravan was damaged, but much of the cargo was left behind.",
+  "hidden_until_discovered": true,
+  "tags": ["caravan", "mystery", "grey_road"]
+}

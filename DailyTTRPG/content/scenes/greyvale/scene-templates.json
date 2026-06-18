@@ -1,0 +1,72 @@
+[
+  {
+    "slug": "broken-caravan-site-template",
+    "location_template_slug": "broken-caravan-site-template",
+    "name": "The Broken Caravan",
+    "text": {
+      "summary": "A damaged caravan lies abandoned beside the Grey Road.",
+      "full": "A roadside attack site where the obvious violence does not explain the untouched cargo, split axle, and tracks leaving the road.",
+      "entry": "You come upon a broken caravan beside the Grey Road. The danger is gone for the moment, but the scene still feels unfinished."
+    }
+  },
+  {
+    "slug": "grey-road-inn-template",
+    "location_template_slug": "grey-road-inn-template",
+    "name": "The Grey Road Inn",
+    "text": {
+      "summary": "The inn is quieter than it should be.",
+      "full": "A roadside inn where survivors, rumors, and watchful silence gather under one low roof.",
+      "entry": "You reach the inn and immediately feel how carefully people are listening to the room."
+    }
+  },
+  {
+    "slug": "elin-memory-fragments-template",
+    "location_template_slug": "grey-road-inn-template",
+    "name": "Fragments of Memory",
+    "text": {
+      "summary": "A shaken survivor sits away from the common room, trying not to remember.",
+      "full": "A survivor sits apart from the others, visibly exhausted and struggling to keep her thoughts in order.",
+      "entry": "Away from the common room, the survivor keeps her eyes fixed on nothing at all."
+    }
+  },
+  {
+    "slug": "dunmere-village-template",
+    "location_template_slug": "dunmere-village-template",
+    "name": "Dunmere",
+    "text": {
+      "summary": "The village is tense, watchful, and ready to believe the worst.",
+      "full": "A small farming village where fear has made every rumor useful and every answer dangerous.",
+      "entry": "You step into Dunmere and feel the village measuring you against its fear."
+    }
+  },
+  {
+    "slug": "old-forest-path-template",
+    "location_template_slug": "old-forest-path-template",
+    "name": "Signs of Movement",
+    "text": {
+      "summary": "The path is quiet, but the ground records repeated movement.",
+      "full": "A hunter's trail where layered tracks, broken undergrowth, and signs of watching point toward the ruined shrine.",
+      "entry": "The path is empty, but the ground gives up more than the trees do."
+    }
+  },
+  {
+    "slug": "shrine-ruins-template",
+    "location_template_slug": "shrine-ruins-template",
+    "name": "The Gathering Point",
+    "text": {
+      "summary": "The ruined shrine has become a tense, unstable camp.",
+      "full": "A disturbed roadside shrine where rough occupation and older markings reveal that the surface threat is not the whole truth.",
+      "entry": "The ruined shrine feels occupied, but not governed. Even the camp looks half-argued into place."
+    }
+  },
+  {
+    "slug": "subterranean-hollow-template",
+    "location_template_slug": "subterranean-hollow-template",
+    "name": "The Truth Below",
+    "text": {
+      "summary": "The chamber beneath the shrine feels wrong in a way language cannot quite hold.",
+      "full": "A hidden chamber where the Grey Road's violence resolves into a pressure on thought, certainty, and choice.",
+      "entry": "Below the shrine, the silence presses close enough to feel deliberate."
+    }
+  }
+]

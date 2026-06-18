@@ -1,0 +1,45 @@
+{
+  "knowledge_definitions": [
+    {
+      "knowledge_id": "caravan_irregularity",
+      "type": "clue",
+      "public_label": "The caravan attack seems unusual",
+      "canonical_text": "The caravan was damaged, but much of the cargo was left behind.",
+      "hidden_until_discovered": true
+    }
+  ],
+  "affordances": [
+    {
+      "affordance_id": "caravan_wreck",
+      "scene_slug": "broken-caravan-site",
+      "label": "broken caravan",
+      "available_actions": [
+        {
+          "verb": "investigate",
+          "interaction_id": "inspect-broken-caravan",
+          "repeat_policy": "once"
+        }
+      ],
+      "initial_state": "available"
+    }
+  ],
+  "interaction": {
+    "slug": "inspect-broken-caravan",
+    "result_bands": [
+      {
+        "band": "success",
+        "min_total": 10,
+        "text": "Cargo remains untouched, and the attack does not read like simple robbery.",
+        "knowledge_grants": ["caravan_irregularity"],
+        "state_changes": [
+          {
+            "target_type": "affordance",
+            "target_id": "caravan_wreck",
+            "field": "state",
+            "value": "resolved"
+          }
+        ]
+      }
+    ]
+  }
+}

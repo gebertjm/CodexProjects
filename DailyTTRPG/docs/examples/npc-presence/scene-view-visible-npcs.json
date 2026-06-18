@@ -1,0 +1,22 @@
+{
+  "visible_npcs": [
+    {
+      "npc_id": "tomas-rell",
+      "display_name": "the innkeeper",
+      "true_name_known": false,
+      "activity": "serving travelers",
+      "availability": "available",
+      "actions": ["observe", "talk"],
+      "state_source": "schedule"
+    },
+    {
+      "npc_id": "grey-road-travelers",
+      "display_name": "travelers",
+      "true_name_known": false,
+      "activity": "speaking in guarded murmurs",
+      "availability": "available",
+      "actions": ["observe", "talk"],
+      "state_source": "schedule"
+    }
+  ]
+}

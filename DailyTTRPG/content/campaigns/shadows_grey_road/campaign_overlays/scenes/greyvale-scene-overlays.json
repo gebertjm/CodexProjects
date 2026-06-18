@@ -1,0 +1,24 @@
+[
+  {
+    "campaign_slug": "shadows_grey_road",
+    "scene_slug": "shrine-ruins",
+    "is_discovered": false,
+    "is_available": false,
+    "overlay": {
+      "availability_note": "The shrine scene is hidden until the forest lead is followed.",
+      "surface_focus_commit_note": "Keep hidden until discovered; do not expose locked locations/scenes through Free Focus, Passive Discovery, target chips, or Scene Reference before conditions are met."
+    },
+    "notes": "Surface threat scene remains locked early."
+  },
+  {
+    "campaign_slug": "shadows_grey_road",
+    "scene_slug": "subterranean-hollow",
+    "is_discovered": false,
+    "is_available": false,
+    "overlay": {
+      "availability_note": "The hollow is revealed only after the shrine's deeper signs are understood and the surface threat is resolved.",
+      "surface_focus_commit_note": "Keep hidden until discovered; do not expose locked locations/scenes through Free Focus, Passive Discovery, target chips, or Scene Reference before conditions are met."
+    },
+    "notes": "Final confrontation scene starts hidden."
+  }
+]

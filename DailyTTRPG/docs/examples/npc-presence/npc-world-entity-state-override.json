@@ -1,0 +1,12 @@
+{
+  "world_instance_id": "greyvale-world-001",
+  "entity_key": "tomas-rell",
+  "status": "active",
+  "location_id": "dunmere-village",
+  "state_json": {
+    "current_location_id": "dunmere-village",
+    "current_scene_id": "dunmere-village",
+    "activity_override": "speaking with village leaders",
+    "override_reason": "called away after a caravan report"
+  }
+}

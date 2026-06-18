@@ -1,0 +1,497 @@
+[
+  {
+    "id": "broken_caravan_fog_morning_weather_001",
+    "slot": "weather_overlay",
+    "text": "Fog hangs low over the broken caravan, turning the Grey Road into a pale ribbon of mud.",
+    "tags": [
+      "fog",
+      "road",
+      "caravan",
+      "morning",
+      "lowlands"
+    ],
+    "valid_weather": [
+      "fog"
+    ],
+    "valid_time_of_day": [
+      "dawn",
+      "morning"
+    ],
+    "valid_location_tags": [
+      "broken_caravan_site",
+      "road",
+      "lowlands"
+    ],
+    "valid_scene_tags": [
+      "broken_caravan_site"
+    ],
+    "valid_location_environment": [
+      "road",
+      "exterior"
+    ],
+    "tone_or_mood": [
+      "uneasy",
+      "watchful",
+      "somber"
+    ],
+    "priority": 20,
+    "weight": 2,
+    "reuse_cooldown": 4
+  },
+  {
+    "id": "broken_caravan_rain_evening_weather_001",
+    "slot": "weather_overlay",
+    "text": "Rain darkens the wagon's splintered boards and gathers in the ruts around the wheels.",
+    "tags": [
+      "rain",
+      "road",
+      "caravan",
+      "evening"
+    ],
+    "valid_weather": [
+      "rain",
+      "heavy_rain"
+    ],
+    "valid_time_of_day": [
+      "evening",
+      "night"
+    ],
+    "valid_location_tags": [
+      "broken_caravan_site",
+      "road",
+      "lowlands"
+    ],
+    "valid_scene_tags": [
+      "broken_caravan_site"
+    ],
+    "valid_location_environment": [
+      "road",
+      "exterior"
+    ],
+    "tone_or_mood": [
+      "uneasy",
+      "somber",
+      "tense"
+    ],
+    "priority": 20,
+    "weight": 2,
+    "reuse_cooldown": 4
+  },
+  {
+    "id": "broken_caravan_mud_tracks_pressure_001",
+    "slot": "state_change_overlay",
+    "text": "The wet ground keeps some marks sharp and washes others into the ditch, making the scene feel half-preserved and half-erased.",
+    "tags": [
+      "rain",
+      "tracks",
+      "mud",
+      "tracking"
+    ],
+    "valid_weather": [
+      "rain",
+      "heavy_rain"
+    ],
+    "valid_location_tags": [
+      "broken_caravan_site",
+      "road"
+    ],
+    "valid_scene_tags": [
+      "broken_caravan_site"
+    ],
+    "valid_location_environment": [
+      "road",
+      "exterior"
+    ],
+    "priority": 12,
+    "weight": 1,
+    "reuse_cooldown": 6
+  },
+  {
+    "id": "broken_caravan_irregularity_known_001",
+    "slot": "character_knowledge_overlay",
+    "text": "Now that you have noticed the untouched cargo, the wreck feels less like robbery and more like a message staged in haste.",
+    "tags": [
+      "caravan",
+      "known_clue",
+      "irregularity"
+    ],
+    "valid_location_tags": [
+      "broken_caravan_site"
+    ],
+    "valid_scene_tags": [
+      "broken_caravan_site"
+    ],
+    "requires_known_facts": [
+      "caravan_irregularity"
+    ],
+    "priority": 30,
+    "weight": 1,
+    "reuse_cooldown": 8
+  },
+  {
+    "id": "grey_road_inn_rain_evening_weather_001",
+    "slot": "weather_overlay",
+    "text": "Rain taps steadily against the inn windows.",
+    "tags": [
+      "rain",
+      "inn",
+      "interior",
+      "evening",
+      "quiet"
+    ],
+    "valid_weather": [
+      "rain",
+      "heavy_rain"
+    ],
+    "valid_time_of_day": [
+      "evening",
+      "night"
+    ],
+    "valid_location_tags": [
+      "grey_road_inn",
+      "inn",
+      "interior"
+    ],
+    "valid_scene_tags": [
+      "grey_road_inn"
+    ],
+    "valid_location_environment": [
+      "inn",
+      "interior"
+    ],
+    "tone_or_mood": [
+      "uneasy",
+      "quiet",
+      "tense"
+    ],
+    "priority": 25,
+    "weight": 2,
+    "reuse_cooldown": 3
+  },
+  {
+    "id": "grey_road_inn_rain_evening_weather_002",
+    "slot": "weather_overlay",
+    "text": "Rain beads on the small panes and turns the road beyond them into a black smear.",
+    "tags": [
+      "rain",
+      "inn",
+      "interior",
+      "evening"
+    ],
+    "valid_weather": [
+      "rain",
+      "heavy_rain"
+    ],
+    "valid_time_of_day": [
+      "evening",
+      "night"
+    ],
+    "valid_location_tags": [
+      "grey_road_inn",
+      "inn",
+      "interior"
+    ],
+    "valid_scene_tags": [
+      "grey_road_inn"
+    ],
+    "valid_location_environment": [
+      "inn",
+      "interior"
+    ],
+    "tone_or_mood": [
+      "uneasy",
+      "quiet",
+      "watchful"
+    ],
+    "priority": 24,
+    "weight": 1,
+    "reuse_cooldown": 3
+  },
+  {
+    "id": "grey_road_inn_evening_time_001",
+    "slot": "time_overlay",
+    "text": "Evening has drawn travelers close to the hearth, but conversation still keeps its distance.",
+    "tags": [
+      "evening",
+      "inn",
+      "hearth",
+      "travelers"
+    ],
+    "valid_time_of_day": [
+      "evening",
+      "night"
+    ],
+    "valid_location_tags": [
+      "grey_road_inn",
+      "inn",
+      "interior"
+    ],
+    "valid_scene_tags": [
+      "grey_road_inn"
+    ],
+    "valid_location_environment": [
+      "inn",
+      "interior"
+    ],
+    "tone_or_mood": [
+      "uneasy",
+      "quiet",
+      "tense"
+    ],
+    "priority": 18,
+    "weight": 1,
+    "reuse_cooldown": 5
+  },
+  {
+    "id": "grey_road_inn_quiet_night_mood_001",
+    "slot": "location_mood",
+    "text": "At this hour, every lowered voice seems to carry farther than it should.",
+    "tags": [
+      "night",
+      "inn",
+      "quiet",
+      "watchful"
+    ],
+    "valid_time_of_day": [
+      "night",
+      "late_night"
+    ],
+    "valid_location_tags": [
+      "grey_road_inn",
+      "inn",
+      "interior"
+    ],
+    "valid_scene_tags": [
+      "grey_road_inn"
+    ],
+    "valid_location_environment": [
+      "inn",
+      "interior"
+    ],
+    "tone_or_mood": [
+      "quiet",
+      "watchful",
+      "uneasy"
+    ],
+    "priority": 18,
+    "weight": 1,
+    "reuse_cooldown": 5
+  },
+  {
+    "id": "greyvale_autumn_season_001",
+    "slot": "season_overlay",
+    "text": "Autumn has left the lowlands damp, brown-edged, and slow to give up warmth.",
+    "tags": [
+      "autumn",
+      "lowlands",
+      "cool"
+    ],
+    "valid_season": [
+      "autumn"
+    ],
+    "valid_location_tags": [
+      "greyvale_lowlands",
+      "lowlands",
+      "road",
+      "inn"
+    ],
+    "priority": 5,
+    "weight": 1,
+    "reuse_cooldown": 10
+  },
+  {
+    "id": "greyvale_cloudy_afternoon_light_001",
+    "slot": "light_overlay",
+    "text": "Cloud cover flattens the afternoon light, muting color along the road.",
+    "tags": [
+      "cloudy",
+      "afternoon",
+      "dim"
+    ],
+    "valid_weather": [
+      "cloudy"
+    ],
+    "valid_time_of_day": [
+      "afternoon"
+    ],
+    "valid_location_tags": [
+      "greyvale_lowlands",
+      "road",
+      "broken_caravan_site"
+    ],
+    "valid_location_environment": [
+      "road",
+      "exterior"
+    ],
+    "priority": 10,
+    "weight": 1,
+    "reuse_cooldown": 6
+  },
+  {
+    "id": "greyvale_wind_road_sound_001",
+    "slot": "sound_overlay",
+    "text": "Wind slides through the roadside grass in uneven breaths.",
+    "tags": [
+      "wind",
+      "road",
+      "sound"
+    ],
+    "valid_weather": [
+      "wind",
+      "cloudy",
+      "clear"
+    ],
+    "valid_location_tags": [
+      "greyvale_lowlands",
+      "road",
+      "broken_caravan_site"
+    ],
+    "valid_location_environment": [
+      "road",
+      "exterior"
+    ],
+    "tone_or_mood": [
+      "uneasy",
+      "watchful",
+      "somber"
+    ],
+    "priority": 8,
+    "weight": 1,
+    "reuse_cooldown": 5
+  },
+  {
+    "id": "dunmere_square_fear_001",
+    "slot": "location_mood",
+    "text": "Dunmere keeps its fear in small gestures: a curtain falling shut, a door closing too softly, a name not quite spoken.",
+    "tags": [
+      "dunmere",
+      "fear",
+      "village"
+    ],
+    "valid_location_tags": [
+      "dunmere_village"
+    ],
+    "valid_scene_tags": [
+      "dunmere_village"
+    ],
+    "valid_location_environment": [
+      "village"
+    ],
+    "tone_or_mood": [
+      "uneasy",
+      "watchful",
+      "mysterious"
+    ],
+    "priority": 24,
+    "weight": 1,
+    "reuse_cooldown": 5
+  },
+  {
+    "id": "old_forest_path_tracks_001",
+    "slot": "state_change_overlay",
+    "text": "The trail keeps old marks and fresh ones together, as if the forest refuses to decide which warnings matter most.",
+    "tags": [
+      "forest",
+      "tracks",
+      "path"
+    ],
+    "valid_location_tags": [
+      "old_forest_path"
+    ],
+    "valid_scene_tags": [
+      "old_forest_path"
+    ],
+    "valid_location_environment": [
+      "forest"
+    ],
+    "tone_or_mood": [
+      "uneasy",
+      "watchful",
+      "mysterious"
+    ],
+    "priority": 24,
+    "weight": 1,
+    "reuse_cooldown": 5
+  },
+  {
+    "id": "shrine_ruins_marked_stone_001",
+    "slot": "state_change_overlay",
+    "text": "The shrine stones hold repeated scratches where too many anxious hands returned to the same marks.",
+    "tags": [
+      "shrine",
+      "markings",
+      "stone"
+    ],
+    "valid_location_tags": [
+      "shrine_ruins"
+    ],
+    "valid_scene_tags": [
+      "shrine_ruins"
+    ],
+    "valid_location_environment": [
+      "ruin"
+    ],
+    "tone_or_mood": [
+      "uneasy",
+      "watchful",
+      "mysterious"
+    ],
+    "priority": 25,
+    "weight": 1,
+    "reuse_cooldown": 5
+  },
+  {
+    "id": "hollow_thought_pressure_001",
+    "slot": "location_mood",
+    "text": "The hollow does not echo so much as hesitate, letting each sound return with a fraction of doubt attached.",
+    "tags": [
+      "hollow",
+      "presence",
+      "thought_pressure"
+    ],
+    "valid_location_tags": [
+      "subterranean_hollow"
+    ],
+    "valid_scene_tags": [
+      "subterranean_hollow"
+    ],
+    "valid_location_environment": [
+      "cave"
+    ],
+    "tone_or_mood": [
+      "uneasy",
+      "watchful",
+      "mysterious"
+    ],
+    "priority": 28,
+    "weight": 1,
+    "reuse_cooldown": 5
+  },
+  {
+    "id": "grey_road_inn_watchful_room_001",
+    "slot": "location_mood",
+    "text": "Every lowered voice in the inn seems to leave enough room for the road outside to answer.",
+    "tags": [
+      "inn",
+      "travelers",
+      "fear"
+    ],
+    "valid_location_tags": [
+      "grey_road_inn"
+    ],
+    "valid_scene_tags": [
+      "grey_road_inn"
+    ],
+    "valid_location_environment": [
+      "inn"
+    ],
+    "tone_or_mood": [
+      "uneasy",
+      "watchful",
+      "mysterious"
+    ],
+    "priority": 22,
+    "weight": 1,
+    "reuse_cooldown": 5
+  }
+]

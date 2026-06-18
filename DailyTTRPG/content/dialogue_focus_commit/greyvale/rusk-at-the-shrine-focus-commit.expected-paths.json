@@ -1,0 +1,229 @@
+{
+  "fixture_id": "greyvale_rusk_at_the_shrine_dialogue",
+  "description": "Named regression paths for the Greyvale Rusk at the Shrine Dialogue Focus/Commit conversion fixture.",
+  "paths": [
+    {
+      "name": "happy_path",
+      "mode": "happy_path",
+      "expected_final_status": "exited",
+      "steps": [
+        {
+          "id": "enter",
+          "type": "enter_dialogue"
+        },
+        {
+          "id": "ask_what_he_hears",
+          "type": "ask_clarifying_question",
+          "question_id": "clarify_rusk_what_he_hears"
+        },
+        {
+          "id": "keep_talking",
+          "type": "submit_committed_social_move",
+          "move_id": "move_keep_rusk_talking",
+          "submitted_text": "I keep Rusk talking while he is still listening.",
+          "forced_outcome": "success"
+        },
+        {
+          "id": "exit",
+          "type": "resolve_exit",
+          "exit_id": "exit_rusk_combat_pending"
+        }
+      ],
+      "coverage": [
+        "conversation_surface",
+        "bandit_instability_clue",
+        "checked_committed_social_move_success",
+        "combat_pending_handoff",
+        "authored_summary",
+        "completed_record"
+      ]
+    },
+    {
+      "name": "refusal_or_failure_path",
+      "mode": "failure_path",
+      "expected_final_status": "exited",
+      "steps": [
+        {
+          "id": "enter",
+          "type": "enter_dialogue"
+        },
+        {
+          "id": "failed_read",
+          "type": "ask_clarifying_question",
+          "question_id": "clarify_read_rusk_control_fracture",
+          "forced_outcome": "failure"
+        },
+        {
+          "id": "failed_challenge",
+          "type": "submit_committed_social_move",
+          "move_id": "move_challenge_rusk_control",
+          "submitted_text": "I challenge Rusk's control before he can gather himself.",
+          "forced_outcome": "failure"
+        },
+        {
+          "id": "exit",
+          "type": "resolve_exit",
+          "exit_id": "exit_rusk_combat_pending"
+        }
+      ],
+      "coverage": [
+        "checked_clarifying_question_failure",
+        "checked_committed_social_move_failure",
+        "hostility_write",
+        "combat_pending_handoff",
+        "no_campaign_dead_end"
+      ]
+    },
+    {
+      "name": "fallback_path",
+      "mode": "fallback_path",
+      "expected_final_status": "active",
+      "coverage": [
+        "generic_fallback_submit",
+        "fallback_exhaustion",
+        "revise_prompt",
+        "no_major_clue_from_fallback",
+        "no_transition_from_fallback"
+      ]
+    },
+    {
+      "name": "minimal_exit_path",
+      "mode": "minimal_interaction_path",
+      "expected_final_status": "exited",
+      "steps": [
+        {
+          "id": "enter",
+          "type": "enter_dialogue"
+        },
+        {
+          "id": "exit",
+          "type": "resolve_exit",
+          "exit_id": "exit_rusk_back_away"
+        }
+      ],
+      "coverage": [
+        "entry",
+        "back_away_exit",
+        "completed_record"
+      ]
+    },
+    {
+      "name": "instability_state_path",
+      "mode": "relationship_state_edge_case",
+      "expected_final_status": "exited",
+      "steps": [
+        {
+          "id": "enter",
+          "type": "enter_dialogue"
+        },
+        {
+          "id": "read_fracture",
+          "type": "ask_clarifying_question",
+          "question_id": "clarify_read_rusk_control_fracture",
+          "forced_outcome": "success"
+        },
+        {
+          "id": "offer_stop_listening",
+          "type": "submit_committed_social_move",
+          "move_id": "move_offer_way_to_stop_listening",
+          "submitted_text": "I offer Rusk a way to stop listening.",
+          "forced_outcome": "success"
+        },
+        {
+          "id": "exit",
+          "type": "resolve_exit",
+          "exit_id": "exit_rusk_combat_pending"
+        }
+      ],
+      "coverage": [
+        "scene_local_instability_state",
+        "control_write",
+        "player_safe_antagonist_visibility",
+        "combat_pressure_remains"
+      ]
+    },
+    {
+      "name": "combat_transition_path",
+      "mode": "exit_transition_path",
+      "expected_final_status": "exited",
+      "steps": [
+        {
+          "id": "enter",
+          "type": "enter_dialogue"
+        },
+        {
+          "id": "end_this_now",
+          "type": "submit_committed_social_move",
+          "move_id": "move_end_this_now",
+          "submitted_text": "I end this now and force the confrontation."
+        },
+        {
+          "id": "exit",
+          "type": "resolve_exit",
+          "exit_id": "exit_rusk_combat_pending"
+        }
+      ],
+      "coverage": [
+        "rusk_confronted_directly_flag",
+        "combat_pending_handoff",
+        "shrine_rusk_confrontation_metadata",
+        "safe_player_combat_warning"
+      ]
+    },
+    {
+      "name": "deeper_source_transition_path",
+      "mode": "happy_path",
+      "expected_final_status": "exited",
+      "steps": [
+        {
+          "id": "enter",
+          "type": "enter_dialogue"
+        },
+        {
+          "id": "open_focus",
+          "type": "ask_clarifying_question",
+          "question_id": "clarify_rusk_what_he_hears"
+        },
+        {
+          "id": "name_source",
+          "type": "submit_committed_social_move",
+          "move_id": "move_push_rusk_to_name_source",
+          "submitted_text": "I push Rusk to name what is below the shrine.",
+          "forced_outcome": "success"
+        },
+        {
+          "id": "exit",
+          "type": "resolve_exit",
+          "exit_id": "exit_continue_at_shrine_ruins"
+        }
+      ],
+      "coverage": [
+        "shrine_depth_unlocked",
+        "hollow_reaches_shrine_above",
+        "objective_uncover_truth_completed",
+        "resolve_threat_active",
+        "hollow_transition_future_supported_until_surface_threat_resolved"
+      ]
+    },
+    {
+      "name": "max_clarifying_question_path",
+      "mode": "max_clarifying_question_path",
+      "expected_final_status": "exited",
+      "coverage": [
+        "clarifying_question_order",
+        "checked_clarifying_question",
+        "shrine_pressure_context",
+        "reopen_persistence"
+      ]
+    }
+  ],
+  "manual_qa_notes": [
+    "Load the Rusk scene through the dialogue runtime registry or path harness.",
+    "Ask what Rusk hears to confirm Bandit Instability maps to bandits_not_fully_self_directed.",
+    "Push him to name the source only after an opening is created to confirm the relationship/state gate.",
+    "Resolve the deeper-source path to confirm shrine_depth_unlocked and hollow_reaches_shrine_above are granted without bypassing surface_threat_resolved.",
+    "Choose End this now to confirm combat_pending metadata references shrine-rusk-confrontation.",
+    "Run fallback twice to confirm the second attempt produces a revise prompt.",
+    "Exit through the combat-pending handoff and confirm player-facing output remains safe."
+  ]
+}

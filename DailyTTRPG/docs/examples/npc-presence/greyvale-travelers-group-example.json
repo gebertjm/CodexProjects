@@ -1,0 +1,21 @@
+{
+  "slug": "grey-road-travelers",
+  "name": "Grey Road Travelers",
+  "npc_type": "group",
+  "public_role_label": "travelers",
+  "unknown_label": "travelers",
+  "default_location_id": "grey-road-inn",
+  "default_scene_id": "grey-road-inn",
+  "default_actions": ["observe", "talk"],
+  "schedule": [
+    {
+      "time_block": "evening",
+      "location_id": "grey-road-inn",
+      "scene_id": "grey-road-inn",
+      "activity": "speaking in guarded murmurs",
+      "activity_text": "Travelers gather in small knots, their conversations dropping whenever the road outside creaks.",
+      "availability": "available",
+      "visibility": "visible"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "slug": "tomas-rell",
+  "true_name": "Tomas Rell",
+  "public_role_label": "the innkeeper",
+  "unknown_label": "the innkeeper",
+  "identity": {
+    "reveal_policy": "role_until_known",
+    "knowledge_id_for_true_name": "knows_tomas_name"
+  },
+  "evening_presence": {
+    "scene_id": "grey-road-inn",
+    "activity": "serving travelers",
+    "actions": ["observe", "talk"]
+  },
+  "night_presence": {
+    "location_id": "grey-road-inn",
+    "visibility": "not_visible",
+    "availability": "limited"
+  }
+}

@@ -1,0 +1,811 @@
+{
+  "id": "greyvale_lysa_grief_suspicion_dialogue",
+  "slug": "greyvale-lysa-grief-suspicion-dialogue",
+  "title": "Lysa Fen's Suspicion",
+  "interaction_domain": "dialogue_focus_commit",
+  "scene_type": "dialogue",
+  "soft_target_max": 2,
+  "participants": [
+    {
+      "participant_id": "npc:lysa_fen",
+      "npc_key": "lysa-fen",
+      "unknown_label": "a grieving villager",
+      "known_label": "Lysa Fen",
+      "relationship_defaults": {
+        "trust": 0,
+        "respect": 0,
+        "hostility": 0
+      },
+      "scene_posture_defaults": {
+        "grief": 1,
+        "suspicion": 1,
+        "pressure": 0,
+        "openness": 0
+      }
+    }
+  ],
+  "entry_behavior": {
+    "mode": "resume_or_start",
+    "opening_surface_id": "surface_lysa_grief_suspicion",
+    "entry_source": "dunmere-village"
+  },
+  "conversation_surface": {
+    "surface_id": "surface_lysa_grief_suspicion",
+    "paragraphs": [
+      {
+        "kind": "opening",
+        "text": "Lysa Fen watches every answer in Dunmere as if it might finally stop being polite and start being honest. Her grief has sharpened past patience.",
+        "source_visibility": "player_visible"
+      },
+      {
+        "kind": "posture",
+        "text": "She does not trust easy talk of bandits or bad luck. Somewhere beneath the anger is a person terrified that her missing brother is already becoming a story people are tired of hearing.",
+        "source_visibility": "player_visible"
+      },
+      {
+        "kind": "tension",
+        "text": "Lysa's suspicion is not proof, but neither is it empty. The useful part will have to be separated carefully from the hurt carrying it.",
+        "source_visibility": "player_visible"
+      }
+    ]
+  },
+  "passive_social_insight": [
+    {
+      "insight_id": "insight_lysa_grief_shapes_certainty",
+      "label": "Lysa's certainty is grief-shaped",
+      "target_id": "npc:lysa_fen",
+      "requires_check": true,
+      "check": {
+        "mode": "passive",
+        "ability": "wisdom",
+        "skill": "insight",
+        "dc": 13,
+        "visibility": "narrative_only"
+      },
+      "on_success": {
+        "text": "Lysa's suspicion is grief looking for a shape, but your read catches something useful under it: she has noticed how quickly Dunmere reaches for the easiest explanation.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "openness",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The player can distinguish useful pressure from confirmed proof."
+          }
+        ]
+      },
+      "on_failure": {
+        "text": null
+      }
+    }
+  ],
+  "relationship_state_definitions": [
+    {
+      "field": "trust",
+      "scope": "persistent_npc_state",
+      "type": "ladder",
+      "values": [-2, -1, 0, 1, 2],
+      "default": 0,
+      "allowed_write_scopes": ["persistent_npc_state"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "player_perceived",
+      "labels": {
+        "-2": "closed",
+        "-1": "guarded",
+        "0": "uncertain",
+        "1": "trusting",
+        "2": "confiding"
+      }
+    },
+    {
+      "field": "respect",
+      "scope": "persistent_npc_state",
+      "type": "ladder",
+      "values": [-2, -1, 0, 1, 2],
+      "default": 0,
+      "allowed_write_scopes": ["persistent_npc_state"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "player_perceived",
+      "labels": {
+        "-2": "dismissive",
+        "-1": "wounded",
+        "0": "uncertain",
+        "1": "heard",
+        "2": "respected"
+      }
+    },
+    {
+      "field": "hostility",
+      "scope": "persistent_npc_state",
+      "type": "ladder",
+      "values": [-2, -1, 0, 1, 2],
+      "default": 0,
+      "allowed_write_scopes": ["persistent_npc_state"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "player_perceived",
+      "labels": {
+        "-2": "softened",
+        "-1": "wary",
+        "0": "neutral",
+        "1": "accusatory",
+        "2": "hostile"
+      }
+    },
+    {
+      "field": "grief",
+      "scope": "dialogue_scene_state",
+      "type": "number",
+      "default": 1,
+      "allowed_write_scopes": ["dialogue_scene_state", "dialogue_local", "temporary"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "gm_only"
+    },
+    {
+      "field": "suspicion",
+      "scope": "dialogue_scene_state",
+      "type": "number",
+      "default": 1,
+      "allowed_write_scopes": ["dialogue_scene_state", "dialogue_local", "temporary"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "gm_only"
+    },
+    {
+      "field": "pressure",
+      "scope": "dialogue_scene_state",
+      "type": "number",
+      "default": 0,
+      "allowed_write_scopes": ["dialogue_scene_state", "dialogue_local", "temporary"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "gm_only"
+    },
+    {
+      "field": "openness",
+      "scope": "dialogue_scene_state",
+      "type": "number",
+      "default": 0,
+      "allowed_write_scopes": ["dialogue_scene_state", "dialogue_local", "temporary"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "gm_only"
+    }
+  ],
+  "clarifying_questions": [
+    {
+      "question_id": "clarify_lysa_who_is_missing",
+      "label": "Who is missing?",
+      "aliases": ["who is missing", "your brother", "missing person"],
+      "keywords": ["missing", "brother", "person"],
+      "target_id": "npc:lysa_fen",
+      "requires_check": false,
+      "result": {
+        "text": "\"My brother,\" Lysa says, and the words come out like they have edges. \"And if people say his name softly enough, they think that means they cared.\"",
+        "summary": "Lysa's grief centers on her missing brother and the fear that Dunmere will let him become routine.",
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "trust",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player asks about the missing person before treating the grief as evidence.",
+            "summary": "Lysa seems a little more willing to speak plainly."
+          }
+        ]
+      },
+      "canonical": false
+    },
+    {
+      "question_id": "clarify_lysa_hidden_truth",
+      "label": "Why do you think people are hiding the truth?",
+      "aliases": ["hiding truth", "concealing truth", "why hiding"],
+      "keywords": ["hiding", "truth", "conceal"],
+      "target_id": "npc:lysa_fen",
+      "requires_check": false,
+      "result": {
+        "text": "\"Because they say bandits too quickly,\" Lysa says. \"Not because they know. Because the word is easier to carry than not knowing.\"",
+        "summary": "Lysa believes Dunmere is simplifying fear into an easy answer too quickly.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "village_blames_hunter_and_road",
+            "title": "Lysa's Suspicion",
+            "summary": "Lysa is convinced that fear is making people simplify, hide, or misdirect the truth around Dunmere.",
+            "metadata_json": {
+              "legacy_clue_key": "clue_lysa_suspicion",
+              "clue_id": "lysa_suspicion",
+              "clue_tier": "misleading"
+            }
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "suspicion",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Lysa names the shape of her suspicion."
+          }
+        ]
+      },
+      "emit_canonical_event": true
+    },
+    {
+      "question_id": "clarify_lysa_who_suspects",
+      "label": "Who do you suspect?",
+      "aliases": ["who do you suspect", "who is hiding it", "suspect"],
+      "keywords": ["suspect", "who", "hiding"],
+      "target_id": "npc:lysa_fen",
+      "requires_check": false,
+      "result": {
+        "text": "\"Anyone who benefits from everyone looking away,\" she says. \"Anyone who says road trouble when they mean stop asking.\"",
+        "summary": "Lysa cannot prove a culprit; her accusation remains broad and grief-driven.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "pressure",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Naming suspicion without proof raises pressure."
+          }
+        ]
+      },
+      "canonical": false
+    },
+    {
+      "question_id": "clarify_lysa_detail_not_fit",
+      "label": "What detail does not fit?",
+      "aliases": ["detail does not fit", "what does not fit", "wrong detail"],
+      "keywords": ["detail", "fit", "wrong"],
+      "target_id": "npc:lysa_fen",
+      "requires_check": false,
+      "result": {
+        "text": "\"People are relieved when the answer is cruel but simple,\" Lysa says. \"That is the detail. They are relieved.\"",
+        "summary": "Lysa notices how quickly Dunmere settles for simple explanations even when they do not comfort anyone.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "dunmere_wants_simple_answer",
+            "title": "Dunmere wants a simple answer",
+            "summary": "Fear in Dunmere is making people ready to accept a clean explanation before the truth is known."
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "openness",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "A specific question turns suspicion into usable social context."
+          }
+        ]
+      },
+      "emit_canonical_event": true
+    },
+    {
+      "question_id": "clarify_read_lysa_grief_from_evidence",
+      "label": "Separate grief from evidence gently",
+      "aliases": ["separate grief", "read Lysa", "what is evidence"],
+      "keywords": ["grief", "evidence", "insight"],
+      "target_id": "npc:lysa_fen",
+      "requires_check": true,
+      "check": {
+        "mode": "standard",
+        "ability": "wisdom",
+        "skill": "insight",
+        "dc": 13,
+        "visibility": "visible"
+      },
+      "on_success": {
+        "text": "The accusation is too wide, but not empty. Lysa is right that the village is reaching for relief before truth. She is wrong to call relief proof.",
+        "summary": "Lysa's suspicion is useful pressure, not confirmed truth.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "village_blames_hunter_and_road",
+            "title": "Lysa's Suspicion",
+            "summary": "Lysa's suspicion points to Dunmere simplifying fear, but it does not confirm who is responsible.",
+            "metadata_json": {
+              "legacy_clue_key": "clue_lysa_suspicion",
+              "clue_id": "lysa_suspicion",
+              "clue_tier": "misleading"
+            }
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "respect",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player takes her grief seriously without treating it as proof.",
+            "summary": "Lysa hears the care in your caution."
+          }
+        ]
+      },
+      "on_failure": {
+        "text": "Her grief and certainty are too tightly wound to separate cleanly. Push either one too hard and the other cuts deeper.",
+        "summary": "Lysa's grief and suspicion remain tangled.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "pressure",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The attempted separation feels like scrutiny."
+          }
+        ]
+      },
+      "retry_policy": {
+        "immediate_retry": false
+      }
+    }
+  ],
+  "committed_social_moves": [
+    {
+      "move_id": "move_take_lysa_fear_seriously",
+      "label": "Take her fear seriously",
+      "aliases": ["take her seriously", "believe her fear", "listen to Lysa"],
+      "social_move_type": "comfort",
+      "social_tags": ["gentle", "grief"],
+      "tone": "steady",
+      "target_id": "npc:lysa_fen",
+      "consumes_dialogue_beat": true,
+      "requires_check": false,
+      "preview": {
+        "text": "You spend the dialogue beat treating Lysa's fear as real before asking what it proves."
+      },
+      "no_check_result": {
+        "text": "Some of the tension leaves Lysa's shoulders, though not her voice. \"Then do not let them make him small enough to forget.\"",
+        "summary": "Lysa softens when her grief is treated as real.",
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "trust",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player takes Lysa's fear seriously.",
+            "summary": "Lysa trusts you a little more with her grief."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "openness",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Taking grief seriously opens the conversation."
+          }
+        ]
+      }
+    },
+    {
+      "move_id": "move_ground_lysa_suspicion",
+      "label": "Separate grief from evidence gently",
+      "aliases": ["separate grief", "ground suspicion", "gently challenge grief"],
+      "social_move_type": "persuade",
+      "social_tags": ["careful", "misleading-suspicion"],
+      "tone": "gentle",
+      "target_id": "npc:lysa_fen",
+      "consumes_dialogue_beat": true,
+      "requires_check": true,
+      "check": {
+        "mode": "standard",
+        "ability": "charisma",
+        "skill": "persuasion",
+        "dc": 13,
+        "visibility": "visible"
+      },
+      "preview": {
+        "text": "You spend the dialogue beat helping Lysa name what she noticed without confirming every accusation."
+      },
+      "on_success": {
+        "npc_response": "\"I know grief makes liars of people too,\" Lysa says. \"But I also know when everyone is glad for an answer that asks nothing more of them.\"",
+        "result_summary": "Lysa lets the suspicion become a useful warning rather than confirmed proof.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "village_blames_hunter_and_road",
+            "title": "Lysa's Suspicion",
+            "summary": "Lysa believes fear is making Dunmere simplify, hide, or misdirect the truth, but her suspicion remains unproven.",
+            "metadata_json": {
+              "legacy_clue_key": "clue_lysa_suspicion",
+              "clue_id": "lysa_suspicion",
+              "clue_tier": "misleading"
+            }
+          }
+        ],
+        "objective_updates": [
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "gather-local-insight",
+            "status": "completed",
+            "progress_count": 2
+          },
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "follow-the-leads",
+            "status": "active",
+            "progress_count": 0
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "respect",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player validates grief while separating it from proof.",
+            "summary": "Lysa respects the care in your caution."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "suspicion",
+            "operation": "decrement",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The suspicion becomes more focused and less consuming."
+          }
+        ]
+      },
+      "on_failure": {
+        "npc_response": "\"You sound like them,\" Lysa says. \"Careful words. Soft hands. Nothing that brings anyone back.\"",
+        "result_summary": "Lysa hears the caution as dismissal and hardens.",
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "hostility",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The attempt to separate grief from proof felt dismissive.",
+            "summary": "Lysa becomes sharper and less willing to trust your caution."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "suspicion",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Failed grounding worsens Lysa's suspicion."
+          }
+        ]
+      }
+    },
+    {
+      "move_id": "move_ask_detail_cannot_let_go",
+      "label": "Ask for the detail she cannot let go",
+      "aliases": ["detail she cannot let go", "ask for detail", "specific detail"],
+      "social_move_type": "ask",
+      "social_tags": ["specific", "evidence"],
+      "tone": "careful",
+      "target_id": "npc:lysa_fen",
+      "consumes_dialogue_beat": true,
+      "requires_check": true,
+      "check": {
+        "mode": "standard",
+        "ability": "wisdom",
+        "skill": "insight",
+        "dc": 12,
+        "visibility": "visible"
+      },
+      "preview": {
+        "text": "You spend the dialogue beat asking Lysa to move from accusation to the detail that keeps catching."
+      },
+      "on_success": {
+        "npc_response": "\"How fast they made it ordinary,\" she says. \"Before anyone knew enough, they were already relieved to have a word for it.\"",
+        "result_summary": "Lysa identifies the village's quick relief at a simple answer as the detail that does not fit.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "dunmere_wants_simple_answer",
+            "title": "Dunmere wants a simple answer",
+            "summary": "Fear in Dunmere is making people ready to accept a clean explanation before the truth is known."
+          },
+          {
+            "knowledge_id": "village_blames_hunter_and_road",
+            "title": "Lysa's Suspicion",
+            "summary": "Lysa's suspicion centers on how quickly Dunmere simplifies fear, not on confirmed proof of a culprit.",
+            "metadata_json": {
+              "legacy_clue_key": "clue_lysa_suspicion",
+              "clue_id": "lysa_suspicion",
+              "clue_tier": "misleading"
+            }
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "trust",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player asks for a specific detail instead of dismissing the accusation.",
+            "summary": "Lysa trusts you enough to give the useful shape of her suspicion."
+          }
+        ]
+      },
+      "on_failure": {
+        "npc_response": "\"The detail is that he is gone,\" Lysa says. \"If that is not enough for you, maybe nothing I say will be.\"",
+        "result_summary": "Lysa cannot separate the useful detail from grief under pressure.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "grief",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The request touches grief before evidence can be separated."
+          }
+        ]
+      }
+    },
+    {
+      "move_id": "move_challenge_lysa_accusation",
+      "label": "Challenge her accusation carefully",
+      "aliases": ["challenge accusation", "not proof", "push back"],
+      "social_move_type": "challenge",
+      "social_tags": ["risky", "grounding"],
+      "tone": "careful",
+      "target_id": "npc:lysa_fen",
+      "consumes_dialogue_beat": true,
+      "requires_check": true,
+      "check": {
+        "mode": "standard",
+        "ability": "charisma",
+        "skill": "persuasion",
+        "dc": 14,
+        "visibility": "visible"
+      },
+      "preview": {
+        "text": "You spend the dialogue beat challenging Lysa's accusation without dismissing the grief behind it."
+      },
+      "on_success": {
+        "npc_response": "Lysa swallows the first answer hard enough to hurt. \"Then do not call it proof. Call it the thing no one wants to look at.\"",
+        "result_summary": "Lysa accepts that her suspicion is not proof while keeping the pressure alive.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "village_blames_hunter_and_road",
+            "title": "Lysa's Suspicion",
+            "summary": "Lysa's suspicion should be treated as pressure and social context, not confirmed truth.",
+            "metadata_json": {
+              "legacy_clue_key": "clue_lysa_suspicion",
+              "clue_id": "lysa_suspicion",
+              "clue_tier": "misleading"
+            }
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "respect",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player challenges the accusation without dismissing Lysa.",
+            "summary": "Lysa respects the honesty, even if it hurts."
+          }
+        ]
+      },
+      "on_failure": {
+        "npc_response": "\"Careful,\" she says. \"People use careful when they want grief to be quieter.\"",
+        "result_summary": "Lysa hears the challenge as dismissal and withdraws into suspicion.",
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "hostility",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The challenge landed as dismissal.",
+            "summary": "Lysa becomes more accusatory toward you."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "pressure",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The exchange becomes socially sharper."
+          }
+        ]
+      }
+    },
+    {
+      "move_id": "move_promise_keep_looking",
+      "label": "Promise to keep looking without confirming every suspicion",
+      "aliases": ["promise keep looking", "keep looking", "not confirm suspicion"],
+      "social_move_type": "reassure",
+      "social_tags": ["steady", "objective"],
+      "tone": "steady",
+      "target_id": "npc:lysa_fen",
+      "consumes_dialogue_beat": true,
+      "requires_check": false,
+      "preview": {
+        "text": "You spend the dialogue beat promising to keep looking while refusing to turn suspicion into proof."
+      },
+      "no_check_result": {
+        "text": "\"Then keep looking,\" Lysa says. \"Not until people are comfortable. Until they are honest.\"",
+        "summary": "Lysa accepts a promise to keep investigating without demanding that every suspicion be confirmed.",
+        "objective_updates": [
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "follow-the-leads",
+            "status": "active",
+            "progress_count": 0
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "trust",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player promises persistence without false confirmation.",
+            "summary": "Lysa seems willing to let you carry the question forward."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "openness",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "A grounded promise keeps the scene open."
+          }
+        ]
+      }
+    }
+  ],
+  "generic_fallback": {
+    "enabled": true,
+    "usage_limit": 1,
+    "allowed_social_move_types": ["ask", "listen", "reassure", "comfort"],
+    "excluded_social_move_types": ["force_confession", "unauthored_transition", "name_culprit"],
+    "result_scope_constraints": {
+      "may_grant_major_clue": false,
+      "may_transition": false,
+      "may_write_relationship_state": false
+    },
+    "success_behavior": {
+      "text": "Lysa answers from grief rather than certainty, giving you feeling and pressure but no new proof.",
+      "summary": "The unauthored exchange stays limited to grief and social context."
+    },
+    "failure_behavior": {
+      "text": "The question cannot find a safe shape. Lysa looks away before anger can become another accusation.",
+      "summary": "The constrained fallback attempt does not produce useful new ground."
+    },
+    "failed_fallback_consumes_slot": true
+  },
+  "dialogue_exits": [
+    {
+      "exit_id": "exit_lysa_step_back",
+      "label": "Let Lysa step back",
+      "exit_type": "free",
+      "behavior": {
+        "text": "You leave Lysa with her grief and the hard work of not letting it become the only answer."
+      }
+    },
+    {
+      "exit_id": "exit_return_to_dunmere_village",
+      "label": "Return to Dunmere village",
+      "exit_type": "transition",
+      "behavior": {
+        "text": "Dunmere's fear feels louder after Lysa gives it a human face."
+      },
+      "transition": {
+        "target_type": "exploration",
+        "target_id": "dunmere-village"
+      }
+    },
+    {
+      "exit_id": "exit_continue_gathering_local_insight",
+      "label": "Continue gathering local insight",
+      "exit_type": "transition",
+      "behavior": {
+        "text": "Lysa gives you no proof, only another reason not to accept the easiest story too quickly."
+      },
+      "transition": {
+        "target_type": "exploration",
+        "target_id": "dunmere-village"
+      }
+    }
+  ],
+  "summary_behavior": {
+    "mode": "deterministic_authored",
+    "player_summary_template": "Lysa Fen tied Dunmere's fear to missing-person grief and warned that people may be simplifying or hiding the truth, though her suspicion remains pressure rather than proof.",
+    "sources": [
+      {
+        "source_id": "surface_lysa_grief_suspicion",
+        "visibility": "player_visible"
+      },
+      {
+        "source_id": "clarify_lysa_hidden_truth",
+        "visibility": "character_known"
+      },
+      {
+        "source_id": "move_ground_lysa_suspicion",
+        "visibility": "character_known"
+      }
+    ]
+  },
+  "npc_profile_recap": {
+    "enabled": true,
+    "player_facing": true,
+    "visibility": "player_visible",
+    "apply_timing": "on_dialogue_finalization",
+    "text": "Lysa Fen is a grieving Dunmere villager whose suspicion points to social pressure and concealment without proving a culprit."
+  },
+  "dialogue_search_index": {
+    "player_facing": true,
+    "visibility": "player",
+    "topics": [
+      "Lysa Fen",
+      "Dunmere",
+      "missing person",
+      "Lysa's Suspicion",
+      "grief",
+      "bandits",
+      "village fear"
+    ]
+  },
+  "completed_dialogue_record": {
+    "record_id": "completed_greyvale_lysa_grief_suspicion_template",
+    "template": true,
+    "player_facing_sources": [
+      {
+        "source_id": "surface_lysa_grief_suspicion",
+        "visibility": "player_visible"
+      },
+      {
+        "source_id": "clarify_lysa_hidden_truth",
+        "visibility": "character_known"
+      },
+      {
+        "source_id": "move_ground_lysa_suspicion",
+        "visibility": "character_known"
+      }
+    ],
+    "summary_sources": [
+      {
+        "source_id": "summary_behavior",
+        "visibility": "player_visible"
+      }
+    ]
+  },
+  "transcript_turns": [
+    {
+      "turn_id": "turn_surface_lysa_suspicion",
+      "turn_type": "conversation_surface",
+      "visibility": "player_visible",
+      "player_facing": true
+    },
+    {
+      "turn_id": "turn_lysa_summary_template",
+      "turn_type": "system_summary",
+      "visibility": "player_visible",
+      "player_facing": true
+    }
+  ],
+  "validation_metadata": {
+    "profile": "playtest_ready",
+    "fixture_id": "greyvale_lysa_grief_suspicion_dialogue",
+    "named_paths": [
+      "happy_path",
+      "refusal_or_failure_path",
+      "fallback_path",
+      "minimal_exit_path",
+      "relationship_state_path",
+      "max_clarifying_question_path"
+    ]
+  },
+  "debug_metadata": {
+    "owner": "dialogue-build-12-3",
+    "purpose": "Greyvale Lysa Fen Dialogue Focus/Commit conversion fixture",
+    "notes": [
+      "Converted from legacy node/option dialogue without replacing the legacy file.",
+      "Legacy Lysa's Suspicion maps to canonical knowledge id village_blames_hunter_and_road.",
+      "The suspicion remains emotionally meaningful and misleading rather than confirmed truth."
+    ]
+  }
+}

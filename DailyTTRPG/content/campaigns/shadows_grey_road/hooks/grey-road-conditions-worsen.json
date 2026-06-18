@@ -1,0 +1,58 @@
+{
+  "slug": "grey-road-conditions-worsen",
+  "hook_point": "time_beat",
+  "scope_type": "world",
+  "scope_key": "grey-road-escalation-warning",
+  "label": "Delay worsens conditions",
+  "text": {
+    "short": "Delay starts to sharpen the road's danger.",
+    "summary": "A second time beat after the urgency report records that conditions are worsening even before the final resolution.",
+    "full": "By the time a second pause settles over the investigation, the pattern around the road has shifted from troubling to worsening. Rain, fear, and rumor begin erasing the easy pieces first.",
+    "sms": "Delay sharpens the road's danger.",
+    "recap": "Another time beat worsened conditions around the Grey Road."
+  },
+  "conditions": {
+    "required_campaign_flags": {
+      "grey_road_urgency_reported": true
+    },
+    "forbidden_campaign_flags": {
+      "grey_road_conditions_worsened": true
+    },
+    "forbidden_character_flags": {
+      "grey_road_campaign_resolved": true
+    }
+  },
+  "effects": {
+    "campaign_flags": {
+      "grey_road_conditions_worsened": true
+    },
+    "campaign_flag_categories": {
+      "grey_road_conditions_worsened": "time_pressure"
+    },
+    "campaign_flag_titles": {
+      "grey_road_conditions_worsened": "Conditions worsened"
+    },
+    "campaign_flag_summaries": {
+      "grey_road_conditions_worsened": "Delay has made the Grey Road problem harder and more dangerous."
+    },
+    "knowledge_entries": [
+      {
+        "knowledge_type": "event",
+        "knowledge_key": "grey_road_conditions_worsened",
+        "title": "Conditions worsened on the road",
+        "summary": "A second lull in the investigation made it clear the Grey Road danger was escalating."
+      }
+    ],
+    "source_knowledge_title": "Delay worsened the road",
+    "source_knowledge_summary": "The Grey Road danger sharpened while the investigation paused."
+  },
+  "feedback": {
+    "sms": "Delay has consequences on the road.",
+    "summary": "The campaign now reflects worsening conditions from time pressure."
+  },
+  "priority": 15,
+  "is_active": true,
+  "metadata": {
+    "surface_focus_commit_ready": true
+  }
+}

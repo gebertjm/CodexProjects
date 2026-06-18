@@ -1,0 +1,35 @@
+{
+  "name": "dailyrpg-backend",
+  "version": "1.0.0",
+  "description": "DailyRPG starter backend",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "check": "node src/server.js",
+    "cli": "node src/cli/index.js",
+    "test": "node --test --test-concurrency=1 test/*.test.js",
+    "test:interaction-core": "node --test --test-concurrency=1 test/interaction-core-contracts.test.js test/interaction-core-lifecycle.test.js test/interaction-core-visibility-boundary.test.js test/interaction-core-output-pipeline.test.js test/interaction-core-resolution-pipeline.test.js test/interaction-core-preview-consistency.test.js test/interaction-core-outcome-quality.test.js test/interaction-core-mutation-safety.test.js test/interaction-core-transition-orchestration.test.js test/interaction-core-read-model-refresh.test.js test/interaction-core-resolution-trace.test.js test/stage6c-beat-resolution-regression.test.js test/interaction-core-path-harness.test.js test/dialogue-focus-commit-adapter.test.js test/stage6b5-action-composer-unit.test.js test/stage6b9-surface-focus-commit-unit.test.js",
+    "test:greyvale-full-loop": "npm run --silent cli -- validate-content --path ../content/worlds/greyvale && node --test --test-concurrency=1 test/stage6b15-slice-entry-start-resume.test.js test/stage6b15-exploration-playability.test.js test/stage6b15-dialogue-playability.test.js test/stage6b15-rusk-endpoint-boundary.test.js test/stage6b15-memory-recap-flow.test.js test/stage6b15-gm-dev-slice-inspector.test.js test/greyvale-full-loop-regression.test.js test/dialogue-greyvale-stage6b12-regression.test.js test/dialogue-greyvale-fixture-regression.test.js test/dialogue-greyvale-handoff-regression.test.js test/full-loop-action-lifecycle-regression.test.js test/full-loop-output-consistency-regression.test.js test/full-loop-gm-dev-visibility-regression.test.js test/exploration-greyvale-mechanics-regression.test.js test/exploration-mechanics-visibility-boundary.test.js",
+    "test:greyvale-vertical-slice": "npm run --silent cli -- validate-content --path ../content/worlds/greyvale && node --test --test-force-exit --test-concurrency=1 test/greyvale-vertical-slice-acceptance.test.js",
+    "test:stage:6c": "npm run test:interaction-core && npm run test:greyvale-vertical-slice",
+    "test:stage:6d": "node --test --test-concurrency=1 test/interaction-core-combat-adapter-contract.test.js test/stage6d2-combat-engine-verification.test.js test/stage6d2-combat-service-persistence-contract.test.js test/stage6d2-encounter-rusk-verification.test.js test/stage6d3-rules-resolution-foundation.test.js test/stage6d4-action-effect-resource-framework.test.js test/stage6d5-condition-concentration-zero-hp.test.js test/stage6d6-spatial-movement.test.js test/stage6d7-player-turn-runtime.test.js test/stage6d8-reaction-interrupt-runtime.test.js test/stage6d9-automatic-turn-runtime.test.js test/stage6d10-targeting-participant-dynamics.test.js test/stage6d11-combat-focus.test.js test/stage6d12-combat-persistence-runtime.test.js test/stage6d13-canonical-rusk-encounter.test.js test/stage6d14-encounter-resolution-aftermath.test.js test/stage6d15-combat-trace-visibility-inspector.test.js test/stage6d17-synthetic-combat-fixtures.test.js test/stage6d18-rusk-end-to-end-acceptance.test.js test/stage6d19-final-regression-gate.test.js",
+    "test:stage:6d:fixtures": "node --test --test-concurrency=1 test/stage6d17-synthetic-combat-fixtures.test.js",
+    "test:stage:6d:final": "node --test --test-concurrency=1 test/stage6d19-final-regression-gate.test.js",
+    "test:stage:6d:rusk-acceptance": "node --test --test-concurrency=1 test/stage6d18-rusk-end-to-end-acceptance.test.js",
+    "test:sms": "node --test test/stage6a-sms-templates.test.js",
+    "test:sms-simulator": "node --test test/stage6a-sms-simulator.test.js",
+    "test:sms-onboarding": "node --test test/stage6a-sms-onboarding.test.js",
+    "test:sms-character": "node --test test/stage6a-sms-character-creation.test.js",
+    "test:sms-campaign": "node --test test/stage6a-sms-campaign-assignment.test.js",
+    "test:sms-e2e": "node --test test/stage6a-sms-e2e.test.js",
+    "test:sms-exploration": "node --test test/stage6a-sms-exploration.test.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "firebase-admin": "^13.8.0",
+    "pg": "^8.13.1"
+  }
+}

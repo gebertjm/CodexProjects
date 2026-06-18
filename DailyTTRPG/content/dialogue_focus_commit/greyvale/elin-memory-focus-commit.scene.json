@@ -1,0 +1,799 @@
+{
+  "id": "greyvale_elin_memory_dialogue",
+  "slug": "greyvale-elin-memory-dialogue",
+  "title": "Elin Harrow and the Broken Memory",
+  "interaction_domain": "dialogue_focus_commit",
+  "scene_type": "dialogue",
+  "soft_target_max": 3,
+  "participants": [
+    {
+      "participant_id": "npc:elin_harrow",
+      "npc_key": "elin-harrow",
+      "unknown_label": "the shaken woman near the hearth",
+      "known_label": "Elin Harrow",
+      "relationship_defaults": {
+        "trust": 0,
+        "respect": 0,
+        "hostility": 0
+      },
+      "scene_posture_defaults": {
+        "openness": 0,
+        "fear": 1,
+        "pressure": 0,
+        "stability": 0
+      }
+    }
+  ],
+  "entry_behavior": {
+    "mode": "resume_or_start",
+    "opening_surface_id": "surface_elin_hearth_memory",
+    "entry_source": "grey_road_inn_common_room"
+  },
+  "conversation_surface": {
+    "surface_id": "surface_elin_hearth_memory",
+    "paragraphs": [
+      {
+        "kind": "opening",
+        "text": "Elin Harrow sits close to the Grey Road Inn hearth with a blanket drawn around her shoulders. Firelight warms the room, but it has not reached her hands.",
+        "source_visibility": "player_visible"
+      },
+      {
+        "kind": "posture",
+        "text": "She watches the door whenever the common room goes quiet. The torn green sash in her lap is twisted tight enough to leave marks in her fingers.",
+        "source_visibility": "player_visible"
+      },
+      {
+        "kind": "tension",
+        "text": "When the old shrine is mentioned, her answer thins into breath before it becomes words.",
+        "source_visibility": "player_visible"
+      }
+    ]
+  },
+  "passive_social_insight": [
+    {
+      "insight_id": "insight_elin_shrine_bell_avoidance",
+      "label": "Elin avoids the shrine bell",
+      "target_id": "npc:elin_harrow",
+      "requires_check": true,
+      "check": {
+        "mode": "passive",
+        "ability": "wisdom",
+        "skill": "insight",
+        "dc": 13,
+        "visibility": "narrative_only"
+      },
+      "on_success": {
+        "text": "Your read of frightened witnesses catches the shape of the omission: she is not avoiding the road. She is avoiding the moment the shrine bell sounded.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "elin_avoids_shrine_bell_memory",
+            "title": "Elin avoids the shrine bell",
+            "summary": "Elin's fear gathers around the moment the old shrine bell sounded during the attack."
+          }
+        ]
+      },
+      "on_failure": {
+        "text": null
+      }
+    }
+  ],
+  "relationship_state_definitions": [
+    {
+      "field": "trust",
+      "scope": "persistent_npc_state",
+      "type": "ladder",
+      "values": [-2, -1, 0, 1, 2],
+      "default": 0,
+      "allowed_write_scopes": ["persistent_npc_state"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "player_perceived",
+      "labels": {
+        "-2": "hostile",
+        "-1": "guarded",
+        "0": "uncertain",
+        "1": "warming",
+        "2": "trusting"
+      }
+    },
+    {
+      "field": "respect",
+      "scope": "persistent_npc_state",
+      "type": "ladder",
+      "values": [-2, -1, 0, 1, 2],
+      "default": 0,
+      "allowed_write_scopes": ["persistent_npc_state"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "player_perceived",
+      "labels": {
+        "-2": "dismissive",
+        "-1": "wary",
+        "0": "neutral",
+        "1": "respectful",
+        "2": "deferential"
+      }
+    },
+    {
+      "field": "hostility",
+      "scope": "persistent_npc_state",
+      "type": "ladder",
+      "values": [-2, -1, 0, 1, 2],
+      "default": 0,
+      "allowed_write_scopes": ["persistent_npc_state"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "player_perceived",
+      "labels": {
+        "-2": "protective",
+        "-1": "cool",
+        "0": "neutral",
+        "1": "resentful",
+        "2": "hostile"
+      }
+    },
+    {
+      "field": "openness",
+      "scope": "dialogue_scene_state",
+      "type": "number",
+      "default": 0,
+      "allowed_write_scopes": ["dialogue_scene_state", "dialogue_local", "temporary"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "gm_only"
+    },
+    {
+      "field": "fear",
+      "scope": "dialogue_scene_state",
+      "type": "number",
+      "default": 1,
+      "allowed_write_scopes": ["dialogue_scene_state", "dialogue_local", "temporary"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "gm_only"
+    },
+    {
+      "field": "pressure",
+      "scope": "dialogue_scene_state",
+      "type": "number",
+      "default": 0,
+      "allowed_write_scopes": ["dialogue_scene_state", "dialogue_local", "temporary"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "gm_only"
+    },
+    {
+      "field": "stability",
+      "scope": "dialogue_scene_state",
+      "type": "number",
+      "default": 0,
+      "allowed_write_scopes": ["dialogue_scene_state", "dialogue_local", "temporary"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "gm_only"
+    }
+  ],
+  "clarifying_questions": [
+    {
+      "question_id": "clarify_sound_first",
+      "label": "What sound came first?",
+      "aliases": ["sound first", "first memory", "what do you remember first"],
+      "keywords": ["sound", "wheel", "first"],
+      "target_id": "npc:elin_harrow",
+      "requires_check": false,
+      "result": {
+        "text": "Elin closes her eyes. \"The wheel,\" she says. \"I heard the wheel split before I understood anyone was shouting.\"",
+        "summary": "Elin remembers the wagon wheel cracking before the attackers reached the caravan.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "stability",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "A concrete first memory steadies the conversation."
+          }
+        ]
+      },
+      "canonical": false
+    },
+    {
+      "question_id": "clarify_torn_sash",
+      "label": "The torn green sash",
+      "aliases": ["sash", "green sash", "torn sash"],
+      "keywords": ["sash", "cloth", "green"],
+      "target_id": "npc:elin_harrow",
+      "requires_check": false,
+      "low_impact": true,
+      "result": {
+        "text": "The sash is hers, not a trophy. A roadward knot is still tied at one end, the kind Dunmere wagoners use so a child can find the right cart in market fog.",
+        "summary": "Elin's torn sash still bears a roadward knot from the attacked caravan.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "elin_sash_has_roadward_knot",
+            "title": "Elin's sash bears a roadward knot",
+            "summary": "The torn green sash Elin holds came from the caravan and still bears a roadward knot used by Dunmere wagoners."
+          }
+        ],
+        "unlocks": ["clarify_roadward_knot"]
+      },
+      "emit_canonical_event": true
+    },
+    {
+      "question_id": "clarify_read_her_fear",
+      "label": "Read what frightens her",
+      "aliases": ["read fear", "watch her fear", "what frightens her"],
+      "keywords": ["fear", "flinch", "frightened"],
+      "target_id": "npc:elin_harrow",
+      "requires_check": true,
+      "check": {
+        "mode": "standard",
+        "ability": "wisdom",
+        "skill": "insight",
+        "dc": 13,
+        "visibility": "visible"
+      },
+      "on_success": {
+        "text": "Her fear sharpens at the shrine, but not with recognition of a person. It is the memory of everyone stopping together, listening to something she could not hear.",
+        "summary": "Elin fears the shared pause more than any single attacker.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "elin_fears_shared_pause",
+            "title": "Elin fears the shared pause",
+            "summary": "Elin's fear centers on the attackers stopping together as if they heard the same unheard command."
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "openness",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The player reads the fear without cornering her."
+          }
+        ]
+      },
+      "on_failure": {
+        "text": "She is too frayed to read cleanly. The obvious part remains: shrine talk leaves her frightened and brittle.",
+        "summary": "Elin's fear remains hard to separate from shock.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "pressure",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The attempted read lands as scrutiny."
+          }
+        ]
+      },
+      "retry_policy": {
+        "immediate_retry": false
+      }
+    },
+    {
+      "question_id": "clarify_roadward_knot",
+      "label": "The roadward knot",
+      "aliases": ["roadward knot", "wagoner knot"],
+      "keywords": ["roadward", "knot", "wagoner"],
+      "target_id": "npc:elin_harrow",
+      "locked_by_default": true,
+      "requires_check": false,
+      "low_impact": true,
+      "result": {
+        "text": "Elin rubs the knot flat. \"My brother tied it. Said the road fog steals everything except a good knot.\" The name does not come with it; grief closes around that part.",
+        "summary": "The roadward knot belonged to Elin's family wagon, but she does not give a new name.",
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "trust",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player noticed a personal detail without exploiting it.",
+            "summary": "Elin softens a little when the knot is handled as memory rather than evidence."
+          }
+        ]
+      },
+      "canonical": false
+    }
+  ],
+  "committed_social_moves": [
+    {
+      "move_id": "move_reassure_elin",
+      "label": "Reassure Elin she can stop",
+      "aliases": ["reassure elin", "tell her she can stop", "let her rest"],
+      "social_move_type": "reassure",
+      "social_tags": ["gentle", "stabilizing"],
+      "tone": "gentle",
+      "target_id": "npc:elin_harrow",
+      "consumes_dialogue_beat": true,
+      "requires_check": false,
+      "preview": {
+        "text": "You spend the dialogue beat giving Elin permission to stop forcing the memory, trading immediate answers for trust."
+      },
+      "no_check_result": {
+        "text": "Elin lets out a breath that sounds almost borrowed. She adds no new clue, but she no longer looks ready to bolt from the hearth.",
+        "summary": "Elin steadies when not pushed for more.",
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "trust",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player chose reassurance over extraction.",
+            "summary": "Elin seems more willing to trust you."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "stability",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Reassurance steadies the scene."
+          }
+        ],
+        "unlocks": ["clarify_roadward_knot"]
+      }
+    },
+    {
+      "move_id": "move_press_shrine_warning",
+      "label": "Press gently about the shrine bell",
+      "aliases": ["press shrine", "shrine bell", "ask about the bell"],
+      "social_move_type": "press",
+      "social_tags": ["careful", "truth-seeking"],
+      "tone": "gentle",
+      "target_id": "npc:elin_harrow",
+      "consumes_dialogue_beat": true,
+      "requires_check": true,
+      "check": {
+        "mode": "standard",
+        "ability": "charisma",
+        "skill": "persuasion",
+        "dc": 14,
+        "visibility": "visible"
+      },
+      "preview": {
+        "text": "You spend the dialogue beat trying to bring Elin back to the shrine bell without making the memory feel like a trap."
+      },
+      "assistance": [
+        {
+          "source": "known_context",
+          "text": "If you learned about the roadward knot or the first sound, you can anchor the question in what she has already offered."
+        }
+      ],
+      "relationship_reads": [
+        {
+          "scope": "persistent_npc_state",
+          "target_id": "npc:elin_harrow",
+          "field": "hostility",
+          "operator": "lte",
+          "value": 1
+        }
+      ],
+      "on_success": {
+        "npc_response": "Elin's voice drops. \"The bell rang once. They all stopped. Not like men obeying a captain. Like hands leaving a string when the pluck is done.\"",
+        "result_summary": "Elin connects the attack to a single ring from the old shrine bell.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "shrine_bell_stopped_attack",
+            "title": "The shrine bell stopped the attack",
+            "summary": "Elin remembered the attackers stopping together after a single ring from the old shrine bell."
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "trust",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player pressed gently enough for Elin to stay with the memory.",
+            "summary": "Elin trusts you a little more with what she remembers."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "openness",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The shrine-bell memory opened after a careful approach."
+          }
+        ],
+        "unlocks": ["clarify_roadward_knot"]
+      },
+      "on_failure": {
+        "npc_response": "The word bell makes her fold inward. \"No. I do not have that part anymore.\" Her gaze fixes on the fire until the question dies there.",
+        "result_summary": "Elin withdraws from the shrine-bell memory.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "pressure",
+            "operation": "increment",
+            "value": 2,
+            "visibility": "gm_only",
+            "reason": "The shrine-bell question landed too sharply."
+          },
+          {
+            "scope": "persistent_npc_state",
+            "field": "trust",
+            "operation": "decrement",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The question made Elin feel cornered.",
+            "summary": "Elin grows more guarded around you."
+          }
+        ],
+        "locks": ["clarify_read_her_fear"]
+      }
+    },
+    {
+      "move_id": "move_follow_first_sound_deeper",
+      "label": "Spend time on the first sound",
+      "aliases": ["what do you remember first", "sound first", "wheel cracking"],
+      "social_move_type": "ask",
+      "social_tags": ["follow-up", "memory"],
+      "tone": "careful",
+      "target_id": "npc:elin_harrow",
+      "consumes_dialogue_beat": true,
+      "requires_check": true,
+      "check": {
+        "mode": "advantage",
+        "ability": "charisma",
+        "skill": "persuasion",
+        "dc": 13,
+        "visibility": "visible"
+      },
+      "preview": {
+        "text": "You spend the dialogue beat staying with the first sound long enough to draw the memory into a fuller shape."
+      },
+      "assistance": [
+        {
+          "source": "overlap_followup",
+          "text": "Because this continues from an available Clarifying Question, the authored follow-up uses advantage."
+        }
+      ],
+      "on_success": {
+        "npc_response": "\"The wheel split clean,\" Elin says. \"Then the quiet came all at once, before the bell.\"",
+        "result_summary": "Elin places the broken wheel before the unnatural quiet and the shrine bell.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "wheel_split_before_quiet",
+            "title": "The wheel split before the quiet",
+            "summary": "Elin placed the wagon wheel splitting before the unnatural quiet and the shrine bell."
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "stability",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The player spent time with a concrete sensory memory."
+          }
+        ]
+      },
+      "on_failure": {
+        "npc_response": "The memory breaks into pieces again. Elin can name the wheel, but not what followed it.",
+        "result_summary": "Elin cannot hold the first-sound memory long enough to deepen it.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "pressure",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Staying too long on the first sound strains the memory."
+          }
+        ]
+      }
+    },
+    {
+      "move_id": "move_accuse_concealment",
+      "label": "Accuse her of holding something back",
+      "aliases": ["accuse", "holding something back", "pressure her"],
+      "social_move_type": "challenge",
+      "social_tags": ["pressure", "risky"],
+      "tone": "hard",
+      "target_id": "npc:elin_harrow",
+      "consumes_dialogue_beat": true,
+      "requires_check": true,
+      "check": {
+        "mode": "standard",
+        "ability": "charisma",
+        "skill": "intimidation",
+        "dc": 15,
+        "visibility": "visible"
+      },
+      "preview": {
+        "text": "You spend the dialogue beat forcing the issue. This may produce a reaction, but it risks closing Elin down."
+      },
+      "on_success": {
+        "npc_response": "\"I am holding back panic,\" she snaps, then catches herself. \"The bell. The bell is the part I cannot keep buried.\"",
+        "result_summary": "A hard challenge shakes loose the shrine-bell thread, at a cost.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "shrine_bell_thread_forced",
+            "title": "Elin named the shrine bell under pressure",
+            "summary": "Under pressure, Elin admitted the shrine bell is the memory she has been avoiding."
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "respect",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The challenge was direct enough to cut through panic.",
+            "summary": "Elin recognizes that you will not let the dangerous part pass unnoticed."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "pressure",
+            "operation": "increment",
+            "value": 2,
+            "visibility": "gm_only",
+            "reason": "The challenge created immediate pressure."
+          }
+        ]
+      },
+      "on_failure": {
+        "npc_response": "Her face goes still. \"Then ask someone braver.\" The blanket rises to her chin, and the conversation narrows to the space between you.",
+        "result_summary": "Elin refuses to continue under accusation.",
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "hostility",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The accusation made Elin defensive.",
+            "summary": "Elin is visibly less willing to help after being accused."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "fear",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The hard approach increased fear."
+          }
+        ],
+        "locks": ["clarify_sound_first", "clarify_torn_sash", "clarify_read_her_fear"]
+      }
+    },
+    {
+      "move_id": "move_follow_memory_to_road",
+      "label": "Turn the memory toward the road",
+      "aliases": ["follow the memory", "turn toward the road", "roadward lead"],
+      "social_move_type": "ask",
+      "social_tags": ["transition", "investigation"],
+      "tone": "focused",
+      "target_id": "npc:elin_harrow",
+      "consumes_dialogue_beat": true,
+      "requires_check": false,
+      "preview": {
+        "text": "You spend the dialogue beat shaping the fragments into the next place to look rather than extracting another detail from her."
+      },
+      "relationship_reads": [
+        {
+          "scope": "dialogue_scene_state",
+          "target_id": "npc:elin_harrow",
+          "field": "pressure",
+          "operator": "lte",
+          "value": 2
+        }
+      ],
+      "no_check_result": {
+        "text": "Elin points not to the main road, but to the low path behind the inn. \"If the bell called them back, they would have taken the hollow way.\"",
+        "summary": "Elin points toward the hollow path behind the inn as the safer next lead.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "hollow_path_behind_inn",
+            "title": "The hollow path behind the inn",
+            "summary": "Elin believes the attackers would have returned by the hollow path behind the Grey Road Inn if the shrine bell called them back."
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "openness",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The player turned the memory toward actionable direction instead of another demand."
+          }
+        ],
+        "transition": {
+          "target_type": "exploration",
+          "target_id": "grey_road_inn_hollow_path"
+        }
+      }
+    }
+  ],
+  "generic_fallback": {
+    "enabled": true,
+    "usage_limit": 1,
+    "allowed_social_move_types": ["ask", "listen", "reassure"],
+    "excluded_social_move_types": ["force_confession", "reveal_hidden_truth", "transition_without_authoring"],
+    "result_scope_constraints": {
+      "may_grant_major_clue": false,
+      "may_transition": false,
+      "may_write_relationship_state": false
+    },
+    "success_behavior": {
+      "text": "Elin answers in a small, careful way, but the answer stays within what she has already given you.",
+      "summary": "The unauthored question receives a limited answer without adding a major discovery."
+    },
+    "failure_behavior": {
+      "text": "The question lands too far from what she can hold. Elin's attention returns to the fire, and the opening closes.",
+      "summary": "The constrained fallback attempt does not produce useful new ground."
+    },
+    "failed_fallback_consumes_slot": true
+  },
+  "dialogue_exits": [
+    {
+      "exit_id": "exit_let_elin_rest",
+      "label": "Let Elin rest",
+      "exit_type": "free",
+      "behavior": {
+        "text": "You let the fire and the inn's careful quiet take the conversation back from her."
+      }
+    },
+    {
+      "exit_id": "exit_return_to_common_room",
+      "label": "Return to the common room",
+      "exit_type": "transition",
+      "behavior": {
+        "text": "You leave Elin by the hearth and return to the Grey Road Inn common room with the memory fragments you chose to carry."
+      },
+      "transition": {
+        "target_type": "exploration",
+        "target_id": "grey_road_inn_common_room"
+      },
+      "relationship_writes": [
+        {
+          "scope": "dialogue_scene_state",
+          "field": "pressure",
+          "operation": "decrement",
+          "value": 1,
+          "visibility": "gm_only",
+          "reason": "Ending the conversation lowers immediate pressure."
+        }
+      ]
+    },
+    {
+      "exit_id": "exit_follow_hollow_path",
+      "label": "Follow the hollow path lead",
+      "exit_type": "transition",
+      "behavior": {
+        "text": "Elin's warning follows you out from the hearth: do not listen if the road listens back."
+      },
+      "transition": {
+        "target_type": "exploration",
+        "target_id": "grey_road_inn_hollow_path"
+      }
+    }
+  ],
+  "summary_behavior": {
+    "mode": "deterministic_authored",
+    "player_summary_template": "Elin shared memory fragments about the broken wheel, the old shrine bell, and the hollow path without exposing hidden-only notes.",
+    "sources": [
+      {
+        "source_id": "surface_elin_hearth_memory",
+        "visibility": "player_visible"
+      },
+      {
+        "source_id": "move_press_shrine_warning",
+        "visibility": "player_visible"
+      }
+    ]
+  },
+  "npc_profile_recap": {
+    "enabled": true,
+    "player_facing": true,
+    "visibility": "player_visible",
+    "apply_timing": "on_dialogue_finalization",
+    "text": "Elin Harrow is a survivor of the Grey Road attack whose memories gather around a broken wheel, a torn green sash, and the old shrine bell."
+  },
+  "dialogue_search_index": {
+    "player_facing": true,
+    "visibility": "player",
+    "topics": ["Elin Harrow", "Grey Road", "old shrine bell", "hollow path"]
+  },
+  "completed_dialogue_record": {
+    "record_id": "completed_greyvale_elin_memory_template",
+    "template": true,
+    "player_facing_sources": [
+      {
+        "source_id": "surface_elin_hearth_memory",
+        "visibility": "player_visible"
+      },
+      {
+        "source_id": "clarify_torn_sash",
+        "visibility": "character_known"
+      }
+    ],
+    "summary_sources": [
+      {
+        "source_id": "summary_behavior",
+        "visibility": "player_visible"
+      }
+    ]
+  },
+  "transcript_turns": [
+    {
+      "turn_id": "turn_surface_elin_hearth",
+      "turn_type": "conversation_surface",
+      "visibility": "player_visible",
+      "player_facing": true
+    },
+    {
+      "turn_id": "turn_summary_template",
+      "turn_type": "system_summary",
+      "visibility": "player_visible",
+      "player_facing": true
+    }
+  ],
+  "annotation_chains": [
+    {
+      "annotation_id": "ann_greyvale_elin_safe_summary",
+      "target_type": "completed_dialogue_record",
+      "target_id": "completed_greyvale_elin_memory_template",
+      "review_status": "approved",
+      "lifecycle_status": "active",
+      "source_visibility": "player_visible",
+      "player_facing": false
+    },
+    {
+      "annotation_id": "ann_greyvale_elin_pending_note",
+      "target_type": "completed_dialogue_record",
+      "target_id": "completed_greyvale_elin_memory_template",
+      "review_status": "pending_review",
+      "lifecycle_status": "draft",
+      "source_visibility": "player_visible",
+      "player_facing": false
+    }
+  ],
+  "correction_chains": [
+    {
+      "correction_id": "corr_greyvale_elin_wording",
+      "annotation_id": "ann_greyvale_elin_safe_summary",
+      "target_type": "completed_dialogue_record",
+      "target_id": "completed_greyvale_elin_memory_template",
+      "review_status": "approved",
+      "lifecycle_status": "active",
+      "source_visibility": "player_visible",
+      "player_facing": false
+    },
+    {
+      "correction_id": "corr_greyvale_elin_suppressed_duplicate",
+      "annotation_id": "ann_greyvale_elin_safe_summary",
+      "target_type": "completed_dialogue_record",
+      "target_id": "completed_greyvale_elin_memory_template",
+      "review_status": "suppressed",
+      "lifecycle_status": "inactive",
+      "source_visibility": "player_visible",
+      "suppression_scope": "exact_duplicate_only",
+      "player_facing": false
+    }
+  ],
+  "validation_metadata": {
+    "profile": "playtest_ready",
+    "fixture_id": "greyvale_elin_memory_dialogue",
+    "named_paths": [
+      "happy_path",
+      "failure_path",
+      "fallback_path",
+      "minimal_interaction_path",
+      "max_clarifying_question_path",
+      "relationship_state_edge_case",
+      "exit_transition_path"
+    ]
+  },
+  "debug_metadata": {
+    "owner": "dialogue-build-11",
+    "purpose": "Greyvale Dialogue Focus/Commit regression fixture",
+    "notes": [
+      "Authored content only; no generated clues or hidden-state prose.",
+      "Legacy node/option dialogue files remain in this folder for compatibility."
+    ]
+  }
+}

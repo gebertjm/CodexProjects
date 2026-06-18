@@ -1,0 +1,12 @@
+{
+  "required_session_flags": {
+    "met_mara_at_crossroads": true
+  },
+  "forbidden_session_flags": {
+    "mara_ended_conversation": true
+  },
+  "required_visited_node_keys": ["greeting"],
+  "forbidden_choice_keys": ["threaten_mara"],
+  "requires_success": true,
+  "minimum_margin": 3
+}

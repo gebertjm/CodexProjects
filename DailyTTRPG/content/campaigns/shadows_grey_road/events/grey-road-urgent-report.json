@@ -1,0 +1,59 @@
+{
+  "slug": "grey-road-urgent-report",
+  "name": "Another Report from the Grey Road",
+  "event_type": "urgency_report",
+  "text": {
+    "summary": "While you work, another frightened report reaches Dunmere: the road is not waiting for anyone to finish thinking.",
+    "full": "A messenger, a traveler, or just a breathless rumor reaches you with the same shape every time: the road has gone wrong again, and delay is starting to become part of the problem."
+  },
+  "prompt_text": "Another troubling report arrives from the Grey Road. How do you answer the mounting pressure?",
+  "is_active": true,
+  "options": [
+    {
+      "slug": "press-on-now",
+      "label": "Press on toward the likely source",
+      "description": "Treat the new report as confirmation that delay will only make the road worse.",
+      "sort_order": 1,
+      "resolution_kind": "apply_effects",
+      "resolution_payload": {
+        "character_flags": {
+          "investigation_pressed_forward": true
+        },
+        "knowledge_entries": [
+          {
+            "knowledge_type": "event",
+            "knowledge_key": "grey_road_urgent_report",
+            "title": "Another attack report came in",
+            "summary": "Fresh reports made it clear the Grey Road would keep worsening if no one pushed on."
+          }
+        ],
+        "source_knowledge_title": "You chose to press forward",
+        "source_knowledge_summary": "Another report from the road convinced you to move toward the likely source."
+      },
+      "is_active": true
+    },
+    {
+      "slug": "steady-the-village-first",
+      "label": "Pause long enough to steady the village",
+      "description": "Accept the pressure, but answer it carefully instead of rushing blind.",
+      "sort_order": 2,
+      "resolution_kind": "apply_effects",
+      "resolution_payload": {
+        "character_flags": {
+          "investigation_delayed_cautiously": true
+        },
+        "knowledge_entries": [
+          {
+            "knowledge_type": "event",
+            "knowledge_key": "grey_road_urgent_report",
+            "title": "Another attack report came in",
+            "summary": "Fresh reports raised the pressure around Dunmere, even as you chose not to rush blindly."
+          }
+        ],
+        "source_knowledge_title": "You answered urgency with caution",
+        "source_knowledge_summary": "The road worsened, but you chose not to let urgency decide everything for you."
+      },
+      "is_active": true
+    }
+  ]
+}

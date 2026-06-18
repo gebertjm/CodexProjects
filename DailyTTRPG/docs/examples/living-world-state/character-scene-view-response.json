@@ -1,0 +1,36 @@
+{
+  "state": "active",
+  "character_id": "123",
+  "world_instance_id": "greyvale-world-001",
+  "campaign_instance_id": "456",
+  "scene": {
+    "scene_id": "broken-caravan-site",
+    "key": "broken-caravan-site",
+    "title": "Broken Caravan",
+    "description": "A caravan leans broken in the mud. No voices answer the wind."
+  },
+  "visible_affordances": [
+    {
+      "affordance_id": "strange_tracks",
+      "label": "fresh tracks leaving the road",
+      "tags": ["trail", "clue", "trackable"],
+      "actions": ["track", "investigate"],
+      "state": "available"
+    }
+  ],
+  "known_facts": [
+    {
+      "knowledge_id": "caravan_irregularity",
+      "type": "clue",
+      "text": "The caravan was damaged, but much of the cargo was left behind."
+    }
+  ],
+  "current_objective": {
+    "objective_id": "investigate_caravan",
+    "title": "Learn what happened at the caravan"
+  },
+  "action_window": {
+    "status": "open",
+    "submitted_action": null
+  }
+}

@@ -1,0 +1,457 @@
+{
+  "fixture_id": "greyvale_6b15_vertical_slice_acceptance",
+  "stage": "6B.15.8",
+  "description": "Formal semantic acceptance path for the Greyvale playable vertical slice from web start/resume through the Rusk future-supported endpoint.",
+  "path_type": "vertical_slice_acceptance",
+  "expected_final_status": "endpoint_reached",
+  "expected_endpoint": {
+    "scene_key": "shrine-ruins",
+    "player_state": "endpoint_reached",
+    "player_action_status": "slice_endpoint_reached",
+    "gm_dev_handoff_kind": "combat_pending",
+    "gm_dev_future_supported_status": "future_supported_until_combat_system",
+    "target_encounter_id": "shrine-rusk-confrontation"
+  },
+  "preview_consistency_assertions": [
+    "previews_are_non_mutating",
+    "commits_match_preview_action_window_and_option_markers",
+    "exploration_preview_expectations_align_with_resolution_outputs",
+    "dialogue_preview_expectations_align_with_resolution_outputs",
+    "unavailable_or_stale_previews_return_safe_recovery",
+    "gm_dev_diagnostics_explain_preview_result_differences",
+    "player_preview_and_result_payloads_hide_gm_dev_markers"
+  ],
+  "outcome_quality_assertions": [
+    "committed_results_include_attempt_result_and_next_when_relevant",
+    "exploration_results_include_discovery_or_progress_when_outputs_exist",
+    "dialogue_results_include_response_social_consequence_or_discovery_when_outputs_exist",
+    "failure_partial_or_unavailable_results_include_safe_complication_or_recovery",
+    "endpoint_adjacent_results_include_player_safe_complication_and_review_status",
+    "gm_dev_diagnostics_report_missing_or_present_result_sections",
+    "player_result_bundles_hide_raw_output_writes_and_gm_dev_diagnostics"
+  ],
+  "mutation_safety_assertions": [
+    "committed_mutations_follow_canonical_write_group_order",
+    "duplicate_submits_do_not_duplicate_outputs_or_action_windows",
+    "stale_submits_are_rejected_without_mutation",
+    "output_writes_include_stable_dedupe_or_idempotency_markers",
+    "read_model_refresh_occurs_after_mutation_commit",
+    "endpoint_resolution_opens_no_unsupported_combat_action_window",
+    "gm_dev_diagnostics_include_mutation_plan_and_dedupe_decisions",
+    "player_payloads_hide_mutation_plan_dedupe_and_transaction_internals"
+  ],
+  "transition_orchestration_assertions": [
+    "committed_beats_select_one_post_resolution_state",
+    "scene_transitions_open_exploration_action_windows",
+    "dialogue_entry_opens_dialogue_action_windows",
+    "dialogue_exits_return_to_exploration_action_windows",
+    "endpoint_future_supported_is_review_only",
+    "recovery_and_unavailable_transitions_open_no_unsafe_window",
+    "transition_result_and_next_step_markers_align",
+    "gm_dev_diagnostics_include_transition_and_next_beat_decisions",
+    "player_payloads_hide_internal_transition_and_next_beat_routing"
+  ],
+  "read_model_refresh_assertions": [
+    "committed_result_bundle_aligns_with_refreshed_read_model",
+    "read_model_refresh_occurs_after_mutation_and_next_beat_selection",
+    "exploration_read_model_reflects_scene_actions_objectives_knowledge",
+    "dialogue_read_model_reflects_active_dialogue_options",
+    "endpoint_read_model_is_review_only_and_player_safe",
+    "recovery_stale_duplicate_read_models_hide_unsafe_next_actions",
+    "active_state_summary_identifies_current_state_goal_and_next_step",
+    "gm_dev_diagnostics_include_read_model_refresh_and_alignment",
+    "player_payloads_hide_read_model_refresh_internals"
+  ],
+  "resolution_trace_assertions": [
+    "canonical_exploration_beats_have_gm_dev_resolution_trace",
+    "canonical_dialogue_beats_have_gm_dev_resolution_trace",
+    "rusk_endpoint_has_future_supported_resolution_trace",
+    "traces_include_request_validation_outcome_output_mutation_transition_next_beat_and_read_model_sections",
+    "traces_include_output_provenance_and_projection_comparison",
+    "stale_duplicate_unavailable_and_recovery_cases_are_traceable",
+    "authorized_gm_dev_can_inspect_trace",
+    "normal_players_cannot_access_trace_or_inspector",
+    "player_payloads_hide_resolution_trace_and_gm_dev_diagnostics"
+  ],
+  "paths": [
+    {
+      "name": "canonical_happy_path",
+      "mode": "web_route_acceptance",
+      "expected_final_status": "endpoint_reached",
+      "steps": [
+        {
+          "id": "start_greyvale",
+          "type": "web_start_or_resume",
+          "expected_scene_key": "broken-caravan-site",
+          "expected_objective_key": "witness-the-aftermath",
+          "expected_read_model_state": "exploration_active",
+          "expected_active_state_summary": "exploration_active"
+        },
+        {
+          "id": "free_focus_broken_axle",
+          "type": "free_focus",
+          "interaction_id": "focus_broken_axle",
+          "non_committing": true
+        },
+        {
+          "id": "inspect_broken_caravan",
+          "type": "beat_action",
+          "interaction_id": "inspect-broken-caravan",
+          "preview_expectations": ["discovery"],
+          "expected_resolution_markers": ["knowledge"],
+          "expected_result_bundle_sections": ["attempted_action", "result", "discoveries", "progress", "next"],
+          "expected_mutation_write_groups": [
+            "objective_writes",
+            "knowledge_writes",
+            "history_latest_development_writes",
+            "action_window_close_open_writes",
+            "read_model_refresh_hook"
+          ],
+          "expected_transition_decision": "stay_in_current_scene",
+          "expected_next_beat_decision": "open_exploration_action_window",
+          "expected_read_model_state": "exploration_active",
+          "expected_trace_sections": [
+            "request",
+            "validation",
+            "outcome",
+            "output_bundle",
+            "mutation_plan",
+            "transition_decision",
+            "next_beat_decision",
+            "read_model_refresh",
+            "projection_comparison"
+          ],
+          "expected_read_model_contains": {
+            "scene_key": "broken-caravan-site",
+            "knowledge": ["clue_caravan_irregularity"],
+            "objectives": ["witness-the-aftermath", "gather-local-insight"]
+          },
+          "duplicate_submit_expected": "safe_no_duplicate_outputs",
+          "stale_submit_expected": "safe_no_mutation_recovery",
+          "expected_knowledge": ["clue_caravan_irregularity"],
+          "expected_objective_updates": ["witness-the-aftermath:completed", "gather-local-insight:active"]
+        },
+        {
+          "id": "to_grey_road_inn",
+          "type": "scene_transition",
+          "transition_id": "leave-broken-caravan-for-inn",
+          "expected_transition_decision": "scene_transition",
+          "expected_next_beat_decision": "open_exploration_action_window",
+          "expected_scene_key": "grey-road-inn",
+          "expected_read_model_state": "exploration_active",
+          "expected_read_model_contains": {
+            "scene_key": "grey-road-inn"
+          }
+        },
+        {
+          "id": "tomas_pattern",
+          "type": "dialogue_path",
+          "dialogue_scene_id": "greyvale_tomas_roadside_worries_dialogue",
+          "question_id": "clarify_bandit_pattern",
+          "move_id": "move_compare_caravan_pattern",
+          "preview_expectations": ["discovery", "social_consequence"],
+          "expected_resolution_markers": ["knowledge", "relationship_or_social_write"],
+          "expected_result_bundle_sections": ["attempted_action", "result", "consequences", "discoveries", "next"],
+          "expected_mutation_write_groups": [
+            "knowledge_writes",
+            "relationship_social_scene_dialogue_state_writes",
+            "completed_record_transcript_archive_search_writes",
+            "read_model_refresh_hook"
+          ],
+          "duplicate_submit_expected": "safe_no_duplicate_completed_record",
+          "exit_id": "exit_return_to_common_room",
+          "expected_transition_decision": "return_to_exploration",
+          "expected_next_beat_decision": "open_exploration_action_window",
+          "expected_read_model_state": "exploration_active",
+          "expected_trace_sections": [
+            "request",
+            "validation",
+            "outcome",
+            "output_bundle",
+            "relationship_social_writes",
+            "completed_record_transcript_archive_search",
+            "transition_decision",
+            "next_beat_decision",
+            "projection_comparison"
+          ],
+          "expected_read_model_contains": {
+            "knowledge": ["innkeeper_tracks_road_patterns"],
+            "completed_records": ["greyvale_tomas_roadside_worries_dialogue"]
+          },
+          "expected_knowledge": ["innkeeper_tracks_road_patterns"],
+          "expected_completed_record": true
+        },
+        {
+          "id": "elin_memory",
+          "type": "dialogue_path",
+          "dialogue_scene_id": "greyvale_elin_memory_dialogue",
+          "question_id": "clarify_torn_sash",
+          "move_id": "move_press_shrine_warning",
+          "exit_id": "exit_return_to_common_room",
+          "expected_transition_decision": "return_to_exploration",
+          "expected_next_beat_decision": "open_exploration_action_window",
+          "expected_read_model_state": "exploration_active",
+          "expected_trace_sections": [
+            "request",
+            "outcome",
+            "output_bundle",
+            "relationship_social_writes",
+            "completed_record_transcript_archive_search",
+            "transition_decision",
+            "next_beat_decision"
+          ],
+          "expected_read_model_contains": {
+            "knowledge": ["elin_sash_has_roadward_knot", "shrine_bell_stopped_attack"],
+            "completed_records": ["greyvale_elin_memory_dialogue"]
+          },
+          "expected_knowledge": ["elin_sash_has_roadward_knot", "shrine_bell_stopped_attack"],
+          "expected_completed_record": true
+        },
+        {
+          "id": "to_dunmere",
+          "type": "scene_transition",
+          "transition_id": "continue-to-dunmere",
+          "expected_transition_decision": "scene_transition",
+          "expected_next_beat_decision": "open_exploration_action_window",
+          "expected_scene_key": "dunmere-village",
+          "expected_read_model_state": "exploration_active",
+          "expected_read_model_contains": {
+            "scene_key": "dunmere-village"
+          }
+        },
+        {
+          "id": "mara_assumption",
+          "type": "dialogue_path",
+          "dialogue_scene_id": "greyvale_mara_dunmere_pressure_dialogue",
+          "question_id": "clarify_mara_bandit_explanation",
+          "move_id": "move_report_broken_caravan",
+          "exit_id": "exit_return_to_dunmere_village",
+          "expected_transition_decision": "return_to_exploration",
+          "expected_next_beat_decision": "open_exploration_action_window",
+          "expected_read_model_state": "exploration_active",
+          "expected_trace_sections": [
+            "request",
+            "outcome",
+            "output_bundle",
+            "relationship_social_writes",
+            "transition_decision",
+            "next_beat_decision"
+          ],
+          "expected_read_model_contains": {
+            "knowledge": ["dunmere_wants_simple_answer"]
+          },
+          "expected_knowledge": ["dunmere_wants_simple_answer"],
+          "expected_completed_record": true
+        },
+        {
+          "id": "lysa_suspicion",
+          "type": "dialogue_path",
+          "dialogue_scene_id": "greyvale_lysa_grief_suspicion_dialogue",
+          "question_id": "clarify_lysa_hidden_truth",
+          "move_id": "move_ground_lysa_suspicion",
+          "exit_id": "exit_return_to_dunmere_village",
+          "expected_transition_decision": "return_to_exploration",
+          "expected_next_beat_decision": "open_exploration_action_window",
+          "expected_read_model_state": "exploration_active",
+          "expected_trace_sections": [
+            "request",
+            "outcome",
+            "output_bundle",
+            "relationship_social_writes",
+            "transition_decision",
+            "next_beat_decision"
+          ],
+          "expected_read_model_contains": {
+            "knowledge": ["village_blames_hunter_and_road"]
+          },
+          "expected_knowledge": ["village_blames_hunter_and_road"],
+          "expected_completed_record": true
+        },
+        {
+          "id": "garren_shrine_route",
+          "type": "dialogue_path",
+          "dialogue_scene_id": "greyvale_garren_path_knowledge_dialogue",
+          "question_id": "clarify_garren_old_path_sighting",
+          "move_id": "move_ask_safest_way_to_approach_shrine",
+          "exit_id": "exit_return_to_dunmere_village",
+          "expected_transition_decision": "return_to_exploration",
+          "expected_next_beat_decision": "open_exploration_action_window",
+          "expected_read_model_state": "exploration_active",
+          "expected_trace_sections": [
+            "request",
+            "outcome",
+            "output_bundle",
+            "relationship_social_writes",
+            "completed_record_transcript_archive_search",
+            "transition_decision",
+            "next_beat_decision"
+          ],
+          "expected_read_model_contains": {
+            "knowledge": ["garren_knows_old_paths", "old_path_still_used", "tracks_converge_on_shrine"],
+            "objectives": ["gather-local-insight", "follow-the-leads"]
+          },
+          "expected_knowledge": ["garren_knows_old_paths", "old_path_still_used", "tracks_converge_on_shrine"],
+          "expected_objective_updates": ["gather-local-insight:completed", "follow-the-leads:active"],
+          "expected_completed_record": true
+        },
+        {
+          "id": "to_old_forest_path",
+          "type": "scene_transition",
+          "transition_id": "follow-the-old-path",
+          "expected_transition_decision": "scene_transition",
+          "expected_next_beat_decision": "open_exploration_action_window",
+          "expected_scene_key": "old-forest-path",
+          "expected_read_model_state": "exploration_active",
+          "expected_read_model_contains": {
+            "scene_key": "old-forest-path"
+          }
+        },
+        {
+          "id": "track_old_path",
+          "type": "beat_action",
+          "interaction_id": "track-the-old-path",
+          "expected_transition_decision": "stay_in_current_scene",
+          "expected_next_beat_decision": "open_exploration_action_window",
+          "expected_read_model_state": "exploration_active",
+          "expected_trace_sections": [
+            "request",
+            "outcome",
+            "output_bundle",
+            "mutation_plan",
+            "transition_decision",
+            "next_beat_decision",
+            "read_model_refresh"
+          ],
+          "expected_read_model_contains": {
+            "scene_key": "old-forest-path",
+            "knowledge": ["clue_shrine_activity"],
+            "objectives": ["follow-the-leads", "uncover-the-truth"]
+          },
+          "expected_knowledge": ["clue_shrine_activity"],
+          "expected_flags": ["shrine_path_known"],
+          "expected_objective_updates": ["follow-the-leads:completed", "uncover-the-truth:active"]
+        },
+        {
+          "id": "to_shrine_ruins",
+          "type": "scene_transition",
+          "transition_id": "follow-the-tracks-to-the-shrine",
+          "expected_transition_decision": "scene_transition",
+          "expected_next_beat_decision": "open_exploration_action_window",
+          "expected_scene_key": "shrine-ruins",
+          "expected_read_model_state": "exploration_active",
+          "expected_read_model_contains": {
+            "scene_key": "shrine-ruins"
+          }
+        },
+        {
+          "id": "rusk_confrontation",
+          "type": "dialogue_path",
+          "dialogue_scene_id": "greyvale_rusk_at_the_shrine_dialogue",
+          "question_id": "clarify_rusk_what_he_hears",
+          "move_ids": ["move_keep_rusk_talking", "move_push_rusk_to_name_source"],
+          "preview_expectations": ["social_consequence", "endpoint"],
+          "expected_resolution_markers": ["relationship_or_social_write", "endpoint"],
+          "expected_result_bundle_sections": ["attempted_action", "result", "consequences", "complications", "status"],
+          "expected_mutation_write_groups": [
+            "knowledge_writes",
+            "relationship_social_scene_dialogue_state_writes",
+            "completed_record_transcript_archive_search_writes",
+            "transition_endpoint_writes",
+            "action_window_close_open_writes",
+            "read_model_refresh_hook"
+          ],
+          "endpoint_idempotency_expected": "status_and_outputs_set_once",
+          "exit_id": "exit_rusk_confrontation",
+          "expected_transition_decision": "future_supported",
+          "expected_next_beat_decision": "future_supported_review_only",
+          "expected_read_model_state": "endpoint_review",
+          "expected_trace_sections": [
+            "request",
+            "outcome",
+            "output_bundle",
+            "relationship_social_writes",
+            "completed_record_transcript_archive_search",
+            "transition_endpoint_writes",
+            "transition_decision",
+            "next_beat_decision",
+            "read_model_refresh",
+            "projection_comparison"
+          ],
+          "expected_read_model_contains": {
+            "knowledge": [
+              "bandits_not_fully_self_directed",
+              "shrine_depth_unlocked",
+              "hollow_reaches_shrine_above"
+            ],
+            "objectives": ["uncover-the-truth", "resolve-the-threat"]
+          },
+          "expected_knowledge": [
+            "bandits_not_fully_self_directed",
+            "shrine_depth_unlocked",
+            "hollow_reaches_shrine_above"
+          ],
+          "expected_objective_updates": ["uncover-the-truth:completed", "resolve-the-threat:active"],
+          "expected_completed_record": true
+        },
+        {
+          "id": "endpoint_review",
+          "type": "endpoint_assertion",
+          "expected_player_state": "endpoint_reached",
+          "expected_action_status": "slice_endpoint_reached",
+          "expected_gm_dev_handoff": "combat_pending",
+          "expected_next_beat_decision": "endpoint_review_only",
+          "expected_read_model_state": "endpoint_review",
+          "expected_active_state_summary": "endpoint_review"
+        }
+      ],
+      "visibility_assertions": [
+        "player_payloads_hide_debug_envelope",
+        "player_payloads_hide_hidden_dc_raw_roll_branch_ids",
+        "player_payloads_hide_raw_relationship_social_state",
+        "player_payloads_hide_combat_pending_future_supported_internal_labels",
+        "player_payloads_hide_target_encounter_id",
+        "gm_dev_inspector_shows_endpoint_handoff"
+      ],
+      "memory_assertions": [
+        "objectives_progress",
+        "knowledge_entries_unique",
+        "history_order_stable",
+        "latest_development_present",
+        "completed_records_unique",
+        "archive_search_player_safe",
+        "resume_endpoint_stable"
+      ]
+    },
+    {
+      "name": "alternate_village_order_tolerance",
+      "mode": "alternate_route_tolerance",
+      "expected_final_status": "resumable_active",
+      "steps": [
+        {
+          "id": "lysa_before_mara",
+          "type": "dialogue_path",
+          "dialogue_scene_id": "greyvale_lysa_grief_suspicion_dialogue",
+          "question_id": "clarify_lysa_hidden_truth",
+          "exit_id": "exit_return_to_dunmere_village"
+        },
+        {
+          "id": "mara_after_lysa",
+          "type": "dialogue_path",
+          "dialogue_scene_id": "greyvale_mara_dunmere_pressure_dialogue",
+          "question_id": "clarify_mara_bandit_explanation",
+          "exit_id": "exit_return_to_dunmere_village"
+        }
+      ],
+      "visibility_assertions": [
+        "player_payloads_safe",
+        "no_final_truth_revealed"
+      ]
+    }
+  ],
+  "manual_qa_notes": [
+    "Run the automated acceptance command before manual playthrough.",
+    "Use the Flutter web app to verify the same route from a normal player perspective.",
+    "Use the GM/dev inspector only with an authorized account and confirm normal players are denied.",
+    "Do not expect combat UI after Rusk; the endpoint is intentionally awaiting future combat support."
+  ]
+}

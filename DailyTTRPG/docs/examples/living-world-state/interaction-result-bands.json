@@ -1,0 +1,40 @@
+{
+  "slug": "inspect-broken-caravan",
+  "scene_slug": "broken-caravan-site",
+  "label": "Inspect the broken caravan",
+  "interaction_type": "skill_check",
+  "skill_slug": "investigation",
+  "verb": "investigate",
+  "target_affordance_id": "caravan_wreck",
+  "difficulty_class": 10,
+  "result_bands": [
+    {
+      "band": "failure",
+      "max_total": 9,
+      "text": "The wreck is chaotic, but the reason stays hidden.",
+      "knowledge_grants": [],
+      "state_changes": []
+    },
+    {
+      "band": "success",
+      "min_total": 10,
+      "max_total": 16,
+      "text": "Cargo remains untouched, and one wheel appears cracked by force from outside.",
+      "knowledge_grants": ["caravan_irregularity"],
+      "state_changes": [
+        {
+          "target_type": "affordance",
+          "target_id": "caravan_wreck",
+          "field": "state",
+          "value": "resolved"
+        },
+        {
+          "target_type": "affordance",
+          "target_id": "strange_tracks",
+          "field": "state",
+          "value": "available"
+        }
+      ]
+    }
+  ]
+}
