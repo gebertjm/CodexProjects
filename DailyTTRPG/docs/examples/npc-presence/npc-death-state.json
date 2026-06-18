@@ -1,0 +1,10 @@
+{
+  "world_instance_id": "greyvale-world-001",
+  "entity_key": "tomas-rell",
+  "status": "dead",
+  "state_json": {
+    "alive": false,
+    "status_known_to_characters": false,
+    "updated_by_event_id": "event_123"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "affordance_id": "npc:tomas-rell",
+  "label": "the innkeeper",
+  "tags": ["npc"],
+  "actions": ["observe", "talk"],
+  "source": "npc_presence",
+  "npc_id": "tomas-rell"
+}

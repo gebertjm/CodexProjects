@@ -1,0 +1,11 @@
+{
+  "world_instance_id": 101,
+  "scope_type": "world",
+  "scope_id": "101",
+  "weather": "rain",
+  "time_of_day": "evening",
+  "season": "autumn",
+  "location_environment": "road",
+  "mood_or_tone": "uneasy",
+  "source": "progression"
+}

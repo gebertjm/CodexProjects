@@ -1,0 +1,50 @@
+{
+  "slug": "scene-entry-memory",
+  "hook_point": "scene_enter",
+  "scope_type": "scene",
+  "scene_slug": "sample-scene",
+  "campaign_slug": "sample-campaign",
+  "label": "Scene entry memory",
+  "text": {
+    "short": "Something changes as you arrive.",
+    "summary": "A scene entry hook records knowledge and updates state.",
+    "full": "Use content hooks when authored content should react to runtime lifecycle points.",
+    "sms": "Something changes as you arrive.",
+    "recap": "A content hook changed the adventure state."
+  },
+  "conditions": {
+    "forbidden_character_flags": {
+      "sample_scene_seen": true
+    }
+  },
+  "effects": {
+    "character_flags": {
+      "sample_scene_seen": true
+    },
+    "knowledge_entries": [
+      {
+        "knowledge_type": "scene",
+        "knowledge_key": "sample-scene",
+        "title": "Sample Scene",
+        "summary": "The character has discovered this scene."
+      }
+    ]
+  },
+  "event_triggers": [
+    {
+      "event_template_key": "roadside_cache",
+      "conditions": {},
+      "feedback": {
+        "sms": "A new choice opens.",
+        "summary": "A first-class event was created from a content hook."
+      },
+      "once_per_character": true
+    }
+  ],
+  "feedback": {
+    "sms": "Something changes as you arrive.",
+    "summary": "The hook executed and the runtime reevaluated the scene."
+  },
+  "priority": 10,
+  "is_active": true
+}

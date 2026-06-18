@@ -1,0 +1,16 @@
+{
+  "identity": {
+    "reveal_policy": "unknown_until_known",
+    "knowledge_id_for_true_name": "knows_elin_name",
+    "publicly_known": false,
+    "known_if_character_has_knowledge": ["knows_elin_name"]
+  },
+  "before_known": {
+    "display_name": "a shaken woman",
+    "true_name_known": false
+  },
+  "after_known": {
+    "display_name": "Elin Harrow",
+    "true_name_known": true
+  }
+}

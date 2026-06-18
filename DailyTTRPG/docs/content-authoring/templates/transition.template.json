@@ -1,0 +1,24 @@
+{
+  "slug": "follow-old-kiln-road",
+  "from_scene_slug": "ashford-crossroads",
+  "to_scene_slug": "old-kiln-road",
+  "label": "Follow the old kiln road",
+  "text": {
+    "short": "Follow the ash-streaked track east.",
+    "summary": "A newly noticed side road leads toward the old kiln.",
+    "full": "The old kiln road leaves the crossing under a canopy of ash-gray branches."
+  },
+  "sort_order": 10,
+  "is_default_path": false,
+  "conditions": {
+    "required_character_flags": {
+      "ember_sign_inspected": true
+    }
+  },
+  "recommendation": {
+    "priority": 20,
+    "suggestion_text": "The old kiln road seems like the most direct lead.",
+    "preferred_alignment_abbreviations": ["LG", "NG", "CG"]
+  },
+  "is_active": true
+}

@@ -1,0 +1,57 @@
+{
+  "slug": "grey-road-entry-starts-quest",
+  "hook_point": "scene_enter",
+  "scope_type": "scene",
+  "scene_slug": "broken-caravan-site",
+  "label": "Broken caravan entry begins the investigation",
+  "text": {
+    "short": "The attack site makes the Grey Road problem immediate.",
+    "summary": "Entering the broken caravan scene starts the Grey Road quest and frames the first objective.",
+    "full": "The broken caravan turns rumor into evidence. The Grey Road is no longer a story happening to someone else; the mud, cargo, and broken axle make it a scene that can be read.",
+    "sms": "A broken caravan turns rumor into a real investigation.",
+    "recap": "The investigation began at the broken caravan."
+  },
+  "conditions": {
+    "forbidden_character_flags": {
+      "grey_road_intro_seen": true
+    }
+  },
+  "effects": {
+    "character_flags": {
+      "grey_road_intro_seen": true
+    },
+    "quests": [
+      {
+        "quest_key": "shadows_grey_road",
+        "status": "active"
+      }
+    ],
+    "objectives": [
+      {
+        "quest_key": "shadows_grey_road",
+        "objective_key": "witness-the-aftermath",
+        "status": "active",
+        "progress_count": 0
+      }
+    ],
+    "knowledge_entries": [
+      {
+        "knowledge_type": "scene",
+        "knowledge_key": "broken-caravan-site",
+        "title": "The Broken Caravan",
+        "summary": "A roadside attack site made the Grey Road's danger immediate and undeniable."
+      }
+    ],
+    "source_knowledge_title": "The Grey Road investigation began",
+    "source_knowledge_summary": "The broken caravan turned rumor into a problem that could no longer be ignored."
+  },
+  "feedback": {
+    "sms": "A broken caravan turns rumor into a real investigation.",
+    "summary": "The main quest begins here."
+  },
+  "priority": 40,
+  "is_active": true,
+  "metadata": {
+    "surface_focus_commit_ready": true
+  }
+}

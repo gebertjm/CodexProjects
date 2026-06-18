@@ -1,0 +1,207 @@
+{
+  "slug": "tomas-roadside-worries",
+  "scene_slug": "grey-road-inn",
+  "npc_template_slug": "tomas-rell",
+  "name": "Tomas and the Road",
+  "text": {
+    "short": "Ask Tomas what the road has become.",
+    "summary": "Tomas Rell compares the road's recent violence with what ordinary bandit trouble used to look like.",
+    "full": "Tomas Rell keeps polishing the same cup instead of setting it away. He has the air of a man who wants to be useful, but only as far as fear will let him."
+  },
+  "trigger_type": "player",
+  "trigger_event": "npc_talk",
+  "sort_order": 1,
+  "availability_conditions": {},
+  "is_repeatable": true,
+  "is_active": true,
+  "nodes": [
+    {
+      "slug": "tomas-greeting",
+      "title": "A Quiet Warning",
+      "speaker_type": "npc",
+      "speaker_npc_template_slug": "tomas-rell",
+      "text": {
+        "full": "You look like you've already met the road's temper. Fewer people come through now, and fewer still leave it calm.",
+        "short": "Tomas studies you over the rim of a cup."
+      },
+      "sort_order": 1,
+      "is_entry_node": true,
+      "is_terminal": false,
+      "availability_conditions": {},
+      "entry_effects": {
+        "session_flags": {
+          "met_tomas_on_the_grey_road": true
+        }
+      },
+      "options": [
+        {
+          "slug": "ask-about-the-road",
+          "label": "Ask what has been happening on the road",
+          "sort_order": 1,
+          "availability_conditions": {},
+          "check_mode": "none",
+          "outcomes": [
+            {
+              "slug": "tomas-shares-pattern",
+              "next_node_slug": "tomas-pattern",
+              "label": "Tomas describes the pattern",
+              "sort_order": 1,
+              "conditions": {},
+              "effects": {
+                "character_flags": {
+                  "clue_pattern_of_attacks": true,
+                  "heard_tomas_account": true
+                },
+                "knowledge_entries": [
+                  {
+                    "knowledge_type": "lore",
+                    "knowledge_key": "clue_pattern_of_attacks",
+                    "title": "Pattern of Attacks",
+                    "summary": "The attacks along the Grey Road are inconsistent in a way Tomas does not believe ordinary bandits should be.",
+                    "metadata_json": {
+                      "clue_id": "pattern_of_attacks",
+                      "clue_tier": "core"
+                    }
+                  }
+                ],
+                "objectives": [
+                  {
+                    "quest_key": "shadows_grey_road",
+                    "objective_key": "gather-local-insight",
+                    "status": "active",
+                    "progress_count": 1
+                  }
+                ],
+                "source_knowledge_title": "Tomas described the road's pattern",
+                "source_knowledge_summary": "Tomas said the attacks are real, but not steady enough to feel like ordinary bandit work."
+              },
+              "result_text": "Tomas leans in and admits the pattern is wrong, not just cruel.",
+              "is_terminal": false,
+              "is_active": true
+            }
+          ]
+        },
+        {
+          "slug": "mention-the-caravan",
+          "label": "Tell him about the broken caravan",
+          "sort_order": 2,
+          "availability_conditions": {},
+          "check_mode": "none",
+          "outcomes": [
+            {
+              "slug": "tomas-responds-to-caravan",
+              "next_node_slug": "tomas-caravan",
+              "label": "Tomas reacts to the caravan",
+              "sort_order": 1,
+              "conditions": {},
+              "effects": {
+                "character_flags": {
+                  "told_tomas_about_caravan": true
+                }
+              },
+              "result_text": "Tomas closes his eyes for a breath before answering.",
+              "is_terminal": false,
+              "is_active": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tomas-pattern",
+      "title": "Too Uneven to Trust",
+      "speaker_type": "npc",
+      "speaker_npc_template_slug": "tomas-rell",
+      "text": {
+        "full": "Bandits take what they can and run. This isn't that. Sometimes they strike clean. Sometimes they stop dead, like someone turned them toward another thought.",
+        "short": "Tomas says the attacks feel wrong."
+      },
+      "sort_order": 2,
+      "is_entry_node": false,
+      "is_terminal": false,
+      "availability_conditions": {},
+      "entry_effects": {},
+      "options": [
+        {
+          "slug": "ask-about-survivors",
+          "label": "Ask whether anyone survived",
+          "sort_order": 1,
+          "availability_conditions": {},
+          "check_mode": "none",
+          "outcomes": [
+            {
+              "slug": "tomas-points-to-elin",
+              "next_node_slug": "tomas-farewell",
+              "label": "Tomas points you toward Elin",
+              "sort_order": 1,
+              "conditions": {},
+              "effects": {
+                "character_flags": {
+                  "elin_referred_by_tomas": true
+                },
+                "source_knowledge_title": "Tomas directed you to a survivor",
+                "source_knowledge_summary": "Tomas said a survivor at the inn might remember the attack, if treated gently."
+              },
+              "result_text": "He nods toward the quieter corner of the inn. \"One woman made it. Be patient with her.\"",
+              "is_terminal": false,
+              "is_active": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tomas-caravan",
+      "title": "Luck and Unease",
+      "speaker_type": "npc",
+      "speaker_npc_template_slug": "tomas-rell",
+      "text": {
+        "full": "Then you're luckier than most. That road's been taking people in pieces lately, and not always the same kind of pieces.",
+        "short": "Tomas says you were lucky to walk away."
+      },
+      "sort_order": 3,
+      "is_entry_node": false,
+      "is_terminal": false,
+      "availability_conditions": {},
+      "entry_effects": {},
+      "options": [
+        {
+          "slug": "ask-what-he-means",
+          "label": "Ask what he means",
+          "sort_order": 1,
+          "availability_conditions": {},
+          "check_mode": "none",
+          "outcomes": [
+            {
+              "slug": "tomas-folds-into-pattern",
+              "next_node_slug": "tomas-pattern",
+              "label": "He explains what feels wrong",
+              "sort_order": 1,
+              "conditions": {},
+              "effects": {},
+              "result_text": "Tomas sets the cup down at last and answers plainly.",
+              "is_terminal": false,
+              "is_active": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tomas-farewell",
+      "title": "Back to the Common Room",
+      "speaker_type": "npc",
+      "speaker_npc_template_slug": "tomas-rell",
+      "text": {
+        "full": "If you learn what's wrong with that road, tell Dunmere before fear tells them first.",
+        "short": "Tomas asks you to bring back something truer than rumor."
+      },
+      "sort_order": 4,
+      "is_entry_node": false,
+      "is_terminal": true,
+      "availability_conditions": {},
+      "entry_effects": {},
+      "options": []
+    }
+  ]
+}

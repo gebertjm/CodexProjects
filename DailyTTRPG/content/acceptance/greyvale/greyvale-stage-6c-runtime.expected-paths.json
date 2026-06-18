@@ -1,0 +1,214 @@
+{
+  "fixture_id": "greyvale_stage_6c_beat_resolution_regression",
+  "stage": "6C.8",
+  "description": "Capstone Stage 6C semantic regression fixture for the shared beat-resolution runtime and the Greyvale vertical-slice route.",
+  "suite_command": "npm run test:stage:6c",
+  "backend_suite_command": "npm --prefix backend run test:stage:6c",
+  "layers": [
+    {
+      "id": "shared_runtime_regression",
+      "description": "Pure shared-runtime tests that are not Greyvale-content-specific.",
+      "command": "npm run test:interaction-core",
+      "test_files": [
+        "backend/test/interaction-core-resolution-pipeline.test.js",
+        "backend/test/interaction-core-preview-consistency.test.js",
+        "backend/test/interaction-core-outcome-quality.test.js",
+        "backend/test/interaction-core-mutation-safety.test.js",
+        "backend/test/interaction-core-transition-orchestration.test.js",
+        "backend/test/interaction-core-read-model-refresh.test.js",
+        "backend/test/interaction-core-resolution-trace.test.js",
+        "backend/test/stage6c-beat-resolution-regression.test.js"
+      ]
+    },
+    {
+      "id": "greyvale_acceptance_extension",
+      "description": "DB-backed Greyvale route acceptance with Stage 6C semantic markers.",
+      "command": "npm run test:greyvale-vertical-slice",
+      "canonical_fixture": "content/acceptance/greyvale/greyvale-vertical-slice.acceptance.expected-paths.json"
+    },
+    {
+      "id": "frontend_rendered_output_limitation",
+      "description": "No new browser E2E harness is introduced in Stage 6C.8; frontend rendered-output coverage remains documented through existing Flutter/manual Greyvale checks.",
+      "status": "documented_limitation"
+    }
+  ],
+  "coverage_groups": [
+    {
+      "id": "shared_contracts",
+      "required_assertions": [
+        "resolution_request_shape",
+        "resolution_response_shape",
+        "adapter_boundary",
+        "output_bundle_contract",
+        "mutation_plan_contract",
+        "transition_decision_contract",
+        "next_beat_decision_contract",
+        "player_result_bundle_contract",
+        "gm_dev_trace_envelope",
+        "recovery_needed_envelope",
+        "player_projection_excludes_trace"
+      ]
+    },
+    {
+      "id": "preview_to_resolution",
+      "required_assertions": [
+        "preview_non_mutating",
+        "preview_writes_no_outputs",
+        "preview_does_not_close_or_open_action_windows",
+        "preview_does_not_apply_transitions",
+        "preview_commit_alignment",
+        "stale_preview_or_commit_safe",
+        "unavailable_preview_safe",
+        "exploration_and_dialogue_preview_coverage",
+        "player_preview_hidden_data_safe",
+        "gm_dev_preview_diagnostics"
+      ]
+    },
+    {
+      "id": "outcome_quality_result_bundle",
+      "required_assertions": [
+        "committed_result_sections_present_when_relevant",
+        "empty_sections_omitted_safely",
+        "authored_text_preserved",
+        "no_ai_generated_prose",
+        "exploration_result_has_consequence_discovery_progress_or_next",
+        "dialogue_result_has_response_social_consequence_discovery_or_next",
+        "failure_partial_unavailable_recovery_safe",
+        "result_bundle_hidden_data_safe"
+      ]
+    },
+    {
+      "id": "mutation_safety",
+      "required_assertions": [
+        "write_groups_ordered",
+        "objective_knowledge_history_completed_archive_dedupe",
+        "duplicate_submit_no_duplicate_outputs",
+        "stale_submit_no_mutation",
+        "successful_commit_closes_source_window",
+        "one_next_window_when_appropriate",
+        "endpoint_opens_no_unsupported_combat_window",
+        "read_model_refresh_after_writes",
+        "failure_rolls_back_or_marks_recovery_needed",
+        "player_hides_mutation_internals",
+        "gm_dev_shows_mutation_plan"
+      ]
+    },
+    {
+      "id": "transition_next_beat",
+      "required_assertions": [
+        "same_scene_transition",
+        "scene_to_scene_transition",
+        "exploration_to_dialogue_entry",
+        "dialogue_continuation",
+        "dialogue_exit_to_exploration",
+        "endpoint_future_supported_transition",
+        "recovery_unavailable_transition_safe",
+        "next_exploration_window_selection",
+        "next_dialogue_window_selection",
+        "endpoint_review_only_no_window",
+        "player_hides_internal_routing",
+        "gm_dev_shows_transition_and_next_beat"
+      ]
+    },
+    {
+      "id": "result_read_model_alignment",
+      "required_assertions": [
+        "result_grants_clue_read_model_includes_clue",
+        "result_progresses_objective_read_model_includes_progress",
+        "result_transitions_scene_read_model_shows_scene",
+        "result_enters_dialogue_read_model_shows_dialogue",
+        "result_exits_dialogue_read_model_shows_exploration",
+        "result_reaches_endpoint_read_model_review_only",
+        "recovery_result_hides_unsafe_next_actions",
+        "active_state_summary_safe",
+        "endpoint_read_model_hides_internal_future_combat_labels"
+      ]
+    },
+    {
+      "id": "gm_dev_trace_provenance",
+      "required_assertions": [
+        "committed_exploration_trace",
+        "committed_dialogue_trace",
+        "rusk_endpoint_trace",
+        "stale_duplicate_unavailable_recovery_trace",
+        "trace_includes_request_validation_outcome_output_mutation_transition_next_beat_read_model_projection",
+        "authorized_gm_dev_can_inspect_trace",
+        "normal_player_cannot_inspect_trace",
+        "player_payload_omits_trace",
+        "trace_serialization_redacts_secrets"
+      ]
+    },
+    {
+      "id": "player_visibility_security",
+      "required_assertions": [
+        "preview_response_denylist",
+        "committed_result_response_denylist",
+        "player_read_model_denylist",
+        "stale_duplicate_unavailable_recovery_denylist",
+        "endpoint_response_denylist",
+        "completed_archive_search_denylist",
+        "no_combat_pending_or_future_supported_internal_labels",
+        "no_mutation_or_trace_internals",
+        "no_final_mystery_truth"
+      ]
+    }
+  ],
+  "greyvale_route_requirements": {
+    "canonical_steps": [
+      "start_greyvale",
+      "free_focus_broken_axle",
+      "inspect_broken_caravan",
+      "to_grey_road_inn",
+      "tomas_pattern",
+      "elin_memory",
+      "to_dunmere",
+      "mara_assumption",
+      "lysa_suspicion",
+      "garren_shrine_route",
+      "to_old_forest_path",
+      "track_old_path",
+      "to_shrine_ruins",
+      "rusk_confrontation",
+      "endpoint_review"
+    ],
+    "required_stage_6c_step_markers": [
+      "preview_expectations",
+      "expected_result_bundle_sections",
+      "expected_mutation_write_groups",
+      "expected_transition_decision",
+      "expected_next_beat_decision",
+      "expected_read_model_state",
+      "expected_trace_sections",
+      "expected_read_model_contains"
+    ],
+    "stale_duplicate_endpoint_assertions": [
+      "duplicate_submit_safe_for_exploration",
+      "duplicate_submit_safe_for_dialogue",
+      "stale_submit_safe_for_exploration",
+      "endpoint_resume_idempotent",
+      "endpoint_submit_blocked_safely"
+    ]
+  },
+  "seed_strategy": {
+    "requires_test_database": true,
+    "required_environment": [
+      "DB_HOST=localhost",
+      "DATABASE_URL=postgresql://dailyrpg:dailyrpg_dev_password@localhost:5432/dailyrpg"
+    ],
+    "content_validation_command": "npm --prefix backend run --silent cli -- validate-content --path ../content/worlds/greyvale",
+    "auth_strategy": "test-firebase token convention in backend acceptance tests",
+    "isolation_strategy": "unique test users and active characters per DB-backed acceptance test",
+    "external_services": "none beyond local test database"
+  },
+  "non_goals_preserved": [
+    "no_combat",
+    "no_open_world_navigation",
+    "no_ai_narration",
+    "no_player_facing_rules_transparency_expansion",
+    "no_sms_requirement",
+    "no_major_content",
+    "no_player_ui_redesign",
+    "no_full_gm_campaign_inspector",
+    "no_database_schema_migration"
+  ]
+}

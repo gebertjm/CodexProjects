@@ -1,0 +1,117 @@
+{
+  "slug": "mara-crossroads",
+  "scene_slug": "ashford-crossroads",
+  "npc_template_slug": "mara-voss",
+  "name": "Mara at the Crossroads",
+  "text": {
+    "short": "Ask Mara Voss about the ember-sign.",
+    "summary": "A branching conversation with Mara Voss.",
+    "full": "Mara Voss watches the road with one hand on her signal whistle."
+  },
+  "trigger_type": "player",
+  "trigger_event": "npc_talk",
+  "availability_conditions": {},
+  "is_repeatable": true,
+  "is_active": true,
+  "nodes": [
+    {
+      "slug": "greeting",
+      "title": "Mara's Warning",
+      "speaker_type": "npc",
+      "speaker_npc_template_slug": "mara-voss",
+      "text": {
+        "short": "Mara warns you about the red motes.",
+        "full": "Keep your boots clear of the red motes. They have been moving against the wind."
+      },
+      "is_entry_node": true,
+      "is_terminal": false,
+      "availability_conditions": {},
+      "entry_effects": {
+        "session_flags": {
+          "met_mara_at_crossroads": true
+        }
+      },
+      "options": [
+        {
+          "slug": "ask_what_she_saw",
+          "label": "Ask what she saw",
+          "text": {
+            "full": "Ask Mara to describe exactly what happened at the crossing."
+          },
+          "check_mode": "none",
+          "outcomes": [
+            {
+              "slug": "shares_ember_sign",
+              "next_node_slug": "ember_sign_story",
+              "conditions": {},
+              "effects": {
+                "quests": [
+                  {
+                    "quest_key": "first-embers",
+                    "status": "active"
+                  }
+                ],
+                "knowledge_entries": [
+                  {
+                    "knowledge_type": "lore",
+                    "knowledge_key": "mara-saw-ember-sign",
+                    "title": "Mara saw the ember-sign",
+                    "summary": "Mara saw red motes move against the wind."
+                  }
+                ]
+              },
+              "result_text": "Mara points to the weeds where the red motes gather.",
+              "is_terminal": false
+            }
+          ]
+        },
+        {
+          "slug": "press_for_truth",
+          "label": "Press her for the whole truth",
+          "check_mode": "explicit",
+          "skill_slug": "persuasion",
+          "difficulty_class": 13,
+          "check_visibility": "visible",
+          "outcomes": [
+            {
+              "slug": "success_reveals_kiln_road",
+              "next_node_slug": "ember_sign_story",
+              "conditions": {
+                "requires_success": true
+              },
+              "effects": {
+                "character_flags": {
+                  "mara_trusts_character": true
+                }
+              },
+              "result_text": "Mara admits the old kiln road has been glowing after sunset."
+            },
+            {
+              "slug": "failure_annoys_mara",
+              "conditions": {
+                "requires_failure": true
+              },
+              "effects": {
+                "character_flags": {
+                  "mara_annoyed": true
+                }
+              },
+              "result_text": "Mara shuts down and tells you to earn the truth by looking."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ember_sign_story",
+      "speaker_type": "npc",
+      "speaker_npc_template_slug": "mara-voss",
+      "text": {
+        "short": "Mara says the motes looked like writing.",
+        "full": "It was not fire. Fire eats. This was writing, or trying to be."
+      },
+      "is_terminal": true,
+      "options": []
+    }
+  ]
+}

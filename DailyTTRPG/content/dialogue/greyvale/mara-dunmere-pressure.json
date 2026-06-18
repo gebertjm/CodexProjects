@@ -1,0 +1,145 @@
+{
+  "slug": "mara-dunmere-pressure",
+  "scene_slug": "dunmere-village",
+  "npc_template_slug": "mara-vellin",
+  "name": "Mara Under Pressure",
+  "text": {
+    "short": "Speak with Mara Vellin about Dunmere's fear.",
+    "summary": "Mara Vellin frames the threat in the clearest practical terms she can manage, even when that clarity is incomplete.",
+    "full": "Mara Vellin looks like someone who has not had the luxury of uncertainty for several bad days in a row."
+  },
+  "trigger_type": "player",
+  "trigger_event": "npc_talk",
+  "sort_order": 1,
+  "availability_conditions": {},
+  "is_repeatable": true,
+  "is_active": true,
+  "nodes": [
+    {
+      "slug": "mara-greeting",
+      "title": "Dunmere Needs Results",
+      "speaker_type": "npc",
+      "speaker_npc_template_slug": "mara-vellin",
+      "text": {
+        "full": "If you're here to help, help. We do not have room for panic dressed up as insight.",
+        "short": "Mara demands useful answers."
+      },
+      "sort_order": 1,
+      "is_entry_node": true,
+      "is_terminal": false,
+      "availability_conditions": {},
+      "entry_effects": {
+        "session_flags": {
+          "met_mara_vellin": true
+        }
+      },
+      "options": [
+        {
+          "slug": "report-the-caravan",
+          "label": "Tell her about the broken caravan",
+          "sort_order": 1,
+          "availability_conditions": {},
+          "check_mode": "none",
+          "outcomes": [
+            {
+              "slug": "mara-presses-for-bandits",
+              "next_node_slug": "mara-bandits",
+              "label": "Mara focuses on the bandits",
+              "sort_order": 1,
+              "conditions": {},
+              "effects": {
+                "character_flags": {
+                  "clue_mara_assumption": true
+                },
+                "knowledge_entries": [
+                  {
+                    "knowledge_type": "lore",
+                    "knowledge_key": "clue_mara_assumption",
+                    "title": "Mara's Assumption",
+                    "summary": "Mara insists the village needs an answer that looks like organized banditry, whether or not that answer is complete.",
+                    "metadata_json": {
+                      "clue_id": "mara_assumption",
+                      "clue_tier": "misleading"
+                    }
+                  }
+                ]
+              },
+              "result_text": "Mara hears the details and lands where pressure has already pushed her.",
+              "is_terminal": false,
+              "is_active": true
+            }
+          ]
+        },
+        {
+          "slug": "suggest-something-deeper",
+          "label": "Suggest the pattern may be more than banditry",
+          "sort_order": 2,
+          "availability_conditions": {},
+          "check_mode": "none",
+          "outcomes": [
+            {
+              "slug": "mara-demands-proof",
+              "next_node_slug": "mara-proof",
+              "label": "Mara demands proof",
+              "sort_order": 1,
+              "conditions": {},
+              "effects": {
+                "character_flags": {
+                  "mara_demanded_proof": true,
+                  "clue_mara_assumption": true
+                },
+                "knowledge_entries": [
+                  {
+                    "knowledge_type": "lore",
+                    "knowledge_key": "clue_mara_assumption",
+                    "title": "Mara's Assumption",
+                    "summary": "Mara can imagine deeper causes, but she refuses to act on them without proof the village can survive politically.",
+                    "metadata_json": {
+                      "clue_id": "mara_assumption",
+                      "clue_tier": "misleading"
+                    }
+                  }
+                ]
+              },
+              "result_text": "She does not dismiss you. She simply cannot afford to move on uncertainty.",
+              "is_terminal": false,
+              "is_active": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "mara-bandits",
+      "title": "An Actionable Answer",
+      "speaker_type": "npc",
+      "speaker_npc_template_slug": "mara-vellin",
+      "text": {
+        "full": "Then find who commands the violence and break it. Dunmere can live with danger. It cannot live with waiting.",
+        "short": "Mara wants the threat made simple and actionable."
+      },
+      "sort_order": 2,
+      "is_entry_node": false,
+      "is_terminal": true,
+      "availability_conditions": {},
+      "entry_effects": {},
+      "options": []
+    },
+    {
+      "slug": "mara-proof",
+      "title": "Proof Before Panic",
+      "speaker_type": "npc",
+      "speaker_npc_template_slug": "mara-vellin",
+      "text": {
+        "full": "Bring me proof before you bring me mysteries. I will not frighten the whole village on a feeling, however sharp yours is.",
+        "short": "Mara refuses to act on speculation alone."
+      },
+      "sort_order": 3,
+      "is_entry_node": false,
+      "is_terminal": true,
+      "availability_conditions": {},
+      "entry_effects": {},
+      "options": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "grey_road_inn_rain_evening_weather_001",
+  "slot": "weather_overlay",
+  "text": "Rain taps steadily against the inn windows.",
+  "tags": ["rain", "inn", "interior", "evening", "quiet"],
+  "valid_weather": ["rain", "heavy_rain"],
+  "valid_time_of_day": ["evening", "night"],
+  "valid_location_tags": ["grey_road_inn", "inn", "interior"],
+  "valid_scene_tags": ["grey_road_inn"],
+  "valid_location_environment": ["inn", "interior"],
+  "tone_or_mood": ["uneasy", "quiet", "tense"],
+  "priority": 25,
+  "weight": 2,
+  "reuse_cooldown": 3
+}

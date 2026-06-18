@@ -1,0 +1,811 @@
+{
+  "id": "greyvale_mara_dunmere_pressure_dialogue",
+  "slug": "greyvale-mara-dunmere-pressure-dialogue",
+  "title": "Mara Vellin Under Pressure",
+  "interaction_domain": "dialogue_focus_commit",
+  "scene_type": "dialogue",
+  "soft_target_max": 2,
+  "participants": [
+    {
+      "participant_id": "npc:mara_vellin",
+      "npc_key": "mara-vellin",
+      "unknown_label": "Dunmere's acting head",
+      "known_label": "Mara Vellin",
+      "relationship_defaults": {
+        "trust": 0,
+        "respect": 0,
+        "hostility": 0
+      },
+      "scene_posture_defaults": {
+        "pressure": 1,
+        "confidence": 0,
+        "openness": 0,
+        "patience": 0
+      }
+    }
+  ],
+  "entry_behavior": {
+    "mode": "resume_or_start",
+    "opening_surface_id": "surface_mara_dunmere_pressure",
+    "entry_source": "dunmere-village"
+  },
+  "conversation_surface": {
+    "surface_id": "surface_mara_dunmere_pressure",
+    "paragraphs": [
+      {
+        "kind": "opening",
+        "text": "Mara Vellin stands where every frightened voice in Dunmere seems to arrive sooner or later. She keeps her hands still, her answers clipped, and her eyes on the practical shape of the next disaster.",
+        "source_visibility": "player_visible"
+      },
+      {
+        "kind": "posture",
+        "text": "She does not have patience for dread without proof. The word bandits gives the village something it can act on, even if she does not look wholly convinced by it.",
+        "source_visibility": "player_visible"
+      },
+      {
+        "kind": "tension",
+        "text": "Mara wants useful facts, not a larger fear with no handle. If there is a deeper pattern, she will need it stated in terms the village can survive.",
+        "source_visibility": "player_visible"
+      }
+    ]
+  },
+  "passive_social_insight": [
+    {
+      "insight_id": "insight_mara_chooses_actionable_answer",
+      "label": "Mara is choosing the answer Dunmere can act on",
+      "target_id": "npc:mara_vellin",
+      "requires_check": true,
+      "check": {
+        "mode": "passive",
+        "ability": "wisdom",
+        "skill": "insight",
+        "dc": 13,
+        "visibility": "narrative_only"
+      },
+      "on_success": {
+        "text": "Mara's certainty has seams. She is not blind to the pattern; she is measuring whether any answer more frightening than bandits can be turned into action instead of panic.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "openness",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The player reads Mara's practical constraint rather than treating her as foolish."
+          }
+        ]
+      },
+      "on_failure": {
+        "text": null
+      }
+    }
+  ],
+  "relationship_state_definitions": [
+    {
+      "field": "trust",
+      "scope": "persistent_npc_state",
+      "type": "ladder",
+      "values": [-2, -1, 0, 1, 2],
+      "default": 0,
+      "allowed_write_scopes": ["persistent_npc_state"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "player_perceived",
+      "labels": {
+        "-2": "closed",
+        "-1": "guarded",
+        "0": "uncertain",
+        "1": "willing",
+        "2": "trusting"
+      }
+    },
+    {
+      "field": "respect",
+      "scope": "persistent_npc_state",
+      "type": "ladder",
+      "values": [-2, -1, 0, 1, 2],
+      "default": 0,
+      "allowed_write_scopes": ["persistent_npc_state"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "player_perceived",
+      "labels": {
+        "-2": "dismissive",
+        "-1": "strained",
+        "0": "measured",
+        "1": "respectful",
+        "2": "reliant"
+      }
+    },
+    {
+      "field": "hostility",
+      "scope": "persistent_npc_state",
+      "type": "ladder",
+      "values": [-2, -1, 0, 1, 2],
+      "default": 0,
+      "allowed_write_scopes": ["persistent_npc_state"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "player_perceived",
+      "labels": {
+        "-2": "protective",
+        "-1": "cool",
+        "0": "neutral",
+        "1": "irritated",
+        "2": "hostile"
+      }
+    },
+    {
+      "field": "pressure",
+      "scope": "dialogue_scene_state",
+      "type": "number",
+      "default": 1,
+      "allowed_write_scopes": ["dialogue_scene_state", "dialogue_local", "temporary"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "gm_only"
+    },
+    {
+      "field": "confidence",
+      "scope": "dialogue_scene_state",
+      "type": "number",
+      "default": 0,
+      "allowed_write_scopes": ["dialogue_scene_state", "dialogue_local", "temporary"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "gm_only"
+    },
+    {
+      "field": "openness",
+      "scope": "dialogue_scene_state",
+      "type": "number",
+      "default": 0,
+      "allowed_write_scopes": ["dialogue_scene_state", "dialogue_local", "temporary"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "gm_only"
+    },
+    {
+      "field": "patience",
+      "scope": "dialogue_scene_state",
+      "type": "number",
+      "default": 0,
+      "allowed_write_scopes": ["dialogue_scene_state", "dialogue_local", "temporary"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "gm_only"
+    }
+  ],
+  "clarifying_questions": [
+    {
+      "question_id": "clarify_mara_bandit_explanation",
+      "label": "Why do you keep returning to bandits?",
+      "aliases": ["why bandits", "bandit explanation", "why blame bandits"],
+      "keywords": ["bandits", "explanation", "blame"],
+      "target_id": "npc:mara_vellin",
+      "requires_check": false,
+      "result": {
+        "text": "\"Because bandits can be found, named, and stopped,\" Mara says. \"A village can survive that kind of fear. It cannot survive every shadow becoming a prophecy.\"",
+        "summary": "Mara favors the bandit explanation because it gives Dunmere an answer it can act on.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "dunmere_wants_simple_answer",
+            "title": "Mara's Assumption",
+            "summary": "Mara leans on the bandit explanation because Dunmere needs an answer it can act on, even if that answer is incomplete.",
+            "metadata_json": {
+              "legacy_clue_key": "clue_mara_assumption",
+              "clue_id": "mara_assumption",
+              "clue_tier": "misleading"
+            }
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "confidence",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Mara can explain the public utility of the bandit answer."
+          }
+        ]
+      },
+      "emit_canonical_event": true
+    },
+    {
+      "question_id": "clarify_mara_proof_standard",
+      "label": "What proof would change your mind?",
+      "aliases": ["what proof", "change your mind", "evidence"],
+      "keywords": ["proof", "evidence", "change"],
+      "target_id": "npc:mara_vellin",
+      "requires_check": false,
+      "result": {
+        "text": "\"Something I can put in front of frightened people without asking them to imagine the worst for me,\" Mara says. \"Tracks. Names. A place to send help. Not just dread.\"",
+        "summary": "Mara needs practical proof before she will move Dunmere beyond the bandit explanation.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "patience",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "A practical question gives Mara room to answer."
+          }
+        ]
+      },
+      "canonical": false
+    },
+    {
+      "question_id": "clarify_mara_public_pressure",
+      "label": "Who is pressuring you for answers?",
+      "aliases": ["who pressures you", "village pressure", "who wants answers"],
+      "keywords": ["pressure", "village", "answers"],
+      "target_id": "npc:mara_vellin",
+      "requires_check": false,
+      "result": {
+        "text": "\"Everyone,\" she says, and for a moment the word is tired instead of sharp. \"Parents, merchants, people who still need the road tomorrow. They do not want my uncertainty. They want my decision.\"",
+        "summary": "Mara is carrying Dunmere's public fear and demand for decisions.",
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "trust",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player asks about Mara's burden rather than only her certainty.",
+            "summary": "Mara lets you see more of the burden behind her hard line."
+          }
+        ]
+      },
+      "canonical": false
+    },
+    {
+      "question_id": "clarify_mara_cannot_afford",
+      "label": "What can Dunmere not afford right now?",
+      "aliases": ["what can Dunmere not afford", "what is at risk", "what cannot wait"],
+      "keywords": ["afford", "risk", "Dunmere"],
+      "target_id": "npc:mara_vellin",
+      "requires_check": false,
+      "result": {
+        "text": "\"A village that stops sending wagons starves slowly,\" Mara says. \"A village that chooses the wrong enemy may not get slowly.\"",
+        "summary": "Mara is balancing road survival against the danger of choosing the wrong explanation.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "pressure",
+            "operation": "decrement",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Naming practical stakes lowers abstract panic."
+          }
+        ]
+      },
+      "canonical": false
+    },
+    {
+      "question_id": "clarify_read_mara_certainty",
+      "label": "Read whether her certainty is genuine",
+      "aliases": ["read Mara", "is she certain", "what is she leaving unsaid"],
+      "keywords": ["certainty", "unsaid", "insight"],
+      "target_id": "npc:mara_vellin",
+      "requires_check": true,
+      "check": {
+        "mode": "standard",
+        "ability": "wisdom",
+        "skill": "insight",
+        "dc": 13,
+        "visibility": "visible"
+      },
+      "on_success": {
+        "text": "Mara believes bandits are involved. She does not believe they explain everything. The gap is where her responsibility is making her careful.",
+        "summary": "Mara's bandit explanation is useful but incomplete.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "dunmere_wants_simple_answer",
+            "title": "Mara's Assumption",
+            "summary": "Mara can imagine deeper causes, but she refuses to act on them without proof Dunmere can survive politically.",
+            "metadata_json": {
+              "legacy_clue_key": "clue_mara_assumption",
+              "clue_id": "mara_assumption",
+              "clue_tier": "misleading"
+            }
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "openness",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The player recognizes the difference between Mara's public line and private caution."
+          }
+        ]
+      },
+      "on_failure": {
+        "text": "Mara's certainty stays armored. Whether it is conviction or necessity, she is not offering the difference for free.",
+        "summary": "Mara's public confidence remains difficult to read.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "pressure",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The attempted read increases social pressure."
+          }
+        ]
+      },
+      "retry_policy": {
+        "immediate_retry": false
+      }
+    }
+  ],
+  "committed_social_moves": [
+    {
+      "move_id": "move_report_broken_caravan",
+      "label": "Report the broken caravan clearly",
+      "aliases": ["report caravan", "broken caravan", "tell her about the caravan"],
+      "social_move_type": "persuade",
+      "social_tags": ["evidence", "practical"],
+      "tone": "clear",
+      "target_id": "npc:mara_vellin",
+      "consumes_dialogue_beat": true,
+      "requires_check": false,
+      "preview": {
+        "text": "You spend the dialogue beat giving Mara the cleanest practical account of the broken caravan."
+      },
+      "no_check_result": {
+        "text": "Mara listens without interrupting. \"That is something I can use. Not enough to frighten everyone worse, but enough to stop pretending this is ordinary.\"",
+        "summary": "Mara accepts the caravan account as useful evidence while keeping the bandit explanation provisional.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "dunmere_wants_simple_answer",
+            "title": "Mara's Assumption",
+            "summary": "Mara insists Dunmere needs an answer that looks actionable, whether or not it explains everything.",
+            "metadata_json": {
+              "legacy_clue_key": "clue_mara_assumption",
+              "clue_id": "mara_assumption",
+              "clue_tier": "misleading"
+            }
+          }
+        ],
+        "objective_updates": [
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "gather-local-insight",
+            "status": "active",
+            "progress_count": 1
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "respect",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player reports evidence without theatrics.",
+            "summary": "Mara respects the practical report."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "patience",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Useful evidence gives Mara patience for the conversation."
+          }
+        ]
+      }
+    },
+    {
+      "move_id": "move_suggest_deeper_pattern",
+      "label": "Suggest the pattern is deeper than banditry",
+      "aliases": ["deeper than bandits", "not just bandits", "larger pattern"],
+      "social_move_type": "persuade",
+      "social_tags": ["evidence", "misleading-assumption"],
+      "tone": "measured",
+      "target_id": "npc:mara_vellin",
+      "consumes_dialogue_beat": true,
+      "requires_check": true,
+      "check": {
+        "mode": "standard",
+        "ability": "charisma",
+        "skill": "persuasion",
+        "dc": 13,
+        "visibility": "visible"
+      },
+      "preview": {
+        "text": "You spend the dialogue beat arguing that the bandit answer may be useful but too small."
+      },
+      "assistance": [
+        {
+          "source": "known_context",
+          "text": "Evidence from the broken caravan helps keep the claim practical."
+        }
+      ],
+      "on_success": {
+        "npc_response": "\"Then bring me the part that does not fit,\" Mara says. \"I will not call the village safe because a familiar word is easier.\"",
+        "result_summary": "Mara accepts that banditry may be an incomplete explanation if the player keeps the argument grounded.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "dunmere_wants_simple_answer",
+            "title": "Mara's Assumption",
+            "summary": "Mara can imagine deeper causes, but she refuses to act on them without proof the village can survive politically.",
+            "metadata_json": {
+              "legacy_clue_key": "clue_mara_assumption",
+              "clue_id": "mara_assumption",
+              "clue_tier": "misleading"
+            }
+          }
+        ],
+        "objective_updates": [
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "gather-local-insight",
+            "status": "active",
+            "progress_count": 1
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "respect",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player challenges her assumption with practical restraint.",
+            "summary": "Mara treats the warning as evidence rather than panic."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "openness",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Grounded pressure opens Mara to an incomplete answer."
+          }
+        ]
+      },
+      "on_failure": {
+        "npc_response": "\"Mysteries do not feed anyone,\" Mara says. \"Proof first. Fear after, if it must come.\"",
+        "result_summary": "Mara refuses to move beyond the bandit explanation without proof.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "pressure",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The broader warning lands as pressure without proof."
+          }
+        ]
+      }
+    },
+    {
+      "move_id": "move_present_local_insight",
+      "label": "Present gathered local insight",
+      "aliases": ["present local insight", "compare local accounts", "what people said"],
+      "social_move_type": "persuade",
+      "social_tags": ["local-insight", "objective"],
+      "tone": "practical",
+      "target_id": "npc:mara_vellin",
+      "consumes_dialogue_beat": true,
+      "requires_check": true,
+      "check": {
+        "mode": "standard",
+        "ability": "intelligence",
+        "skill": "investigation",
+        "dc": 12,
+        "visibility": "visible"
+      },
+      "preview": {
+        "text": "You spend the dialogue beat organizing local accounts into a practical report."
+      },
+      "on_success": {
+        "npc_response": "\"Good,\" Mara says. \"Not comforting. Useful.\" She marks the pattern as something that needs following, not merely naming.",
+        "result_summary": "Mara accepts the local accounts as enough to keep investigation moving.",
+        "objective_updates": [
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "gather-local-insight",
+            "status": "completed",
+            "progress_count": 2
+          },
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "follow-the-leads",
+            "status": "active",
+            "progress_count": 0
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "trust",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player turns accounts into a usable next step.",
+            "summary": "Mara trusts the report enough to let the investigation keep moving."
+          }
+        ]
+      },
+      "on_failure": {
+        "npc_response": "\"That is noise arranged in a line,\" Mara says. \"Bring me something that holds when frightened people repeat it.\"",
+        "result_summary": "Mara rejects the local accounts as too loose to guide village action.",
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "respect",
+            "operation": "decrement",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The report feels speculative rather than organized.",
+            "summary": "Mara is less impressed by the report than you hoped."
+          }
+        ]
+      }
+    },
+    {
+      "move_id": "move_challenge_mara_certainty",
+      "label": "Challenge her certainty",
+      "aliases": ["challenge Mara", "challenge certainty", "push back"],
+      "social_move_type": "challenge",
+      "social_tags": ["risky", "pressure"],
+      "tone": "firm",
+      "target_id": "npc:mara_vellin",
+      "consumes_dialogue_beat": true,
+      "requires_check": true,
+      "check": {
+        "mode": "standard",
+        "ability": "charisma",
+        "skill": "persuasion",
+        "dc": 14,
+        "visibility": "visible"
+      },
+      "preview": {
+        "text": "You spend the dialogue beat pushing Mara to admit the bandit answer is not enough."
+      },
+      "on_success": {
+        "npc_response": "Mara's jaw tightens. \"Fine. It may not be enough. But if you want me to move a village, you will give me something firmer than may.\"",
+        "result_summary": "Mara admits the bandit explanation may be incomplete while demanding stronger proof.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "dunmere_wants_simple_answer",
+            "title": "Mara's Assumption",
+            "summary": "Mara's bandit explanation is a public, incomplete answer rather than confirmed truth.",
+            "metadata_json": {
+              "legacy_clue_key": "clue_mara_assumption",
+              "clue_id": "mara_assumption",
+              "clue_tier": "misleading"
+            }
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "respect",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The challenge is firm but evidence-aware.",
+            "summary": "Mara respects the challenge, even if it costs her patience."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "pressure",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Admitting uncertainty raises public pressure."
+          }
+        ]
+      },
+      "on_failure": {
+        "npc_response": "\"Do not mistake my restraint for ignorance,\" Mara says. \"Bring proof or bring silence.\"",
+        "result_summary": "Mara hardens when challenged without enough grounding.",
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "hostility",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player challenged Mara's certainty without enough support.",
+            "summary": "Mara becomes colder toward further speculation."
+          }
+        ]
+      }
+    },
+    {
+      "move_id": "move_offer_practical_next_step",
+      "label": "Offer a practical next step",
+      "aliases": ["practical next step", "what can we do", "offer plan"],
+      "social_move_type": "reassure",
+      "social_tags": ["stabilizing", "actionable"],
+      "tone": "steady",
+      "target_id": "npc:mara_vellin",
+      "consumes_dialogue_beat": true,
+      "requires_check": false,
+      "preview": {
+        "text": "You spend the dialogue beat turning the conversation toward a step Dunmere can survive."
+      },
+      "no_check_result": {
+        "text": "\"Then do that,\" Mara says. \"Follow the part that does not fit. Bring me back something I can stand behind.\"",
+        "summary": "Mara accepts a practical plan to keep investigating without declaring the deeper threat proven.",
+        "objective_updates": [
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "follow-the-leads",
+            "status": "active",
+            "progress_count": 0
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "trust",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player offers action instead of panic.",
+            "summary": "Mara seems more willing to let you pursue the lead."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "pressure",
+            "operation": "decrement",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "A practical plan lowers the scene's immediate pressure."
+          }
+        ]
+      }
+    }
+  ],
+  "generic_fallback": {
+    "enabled": true,
+    "usage_limit": 1,
+    "allowed_social_move_types": ["ask", "listen", "reassure", "persuade"],
+    "excluded_social_move_types": ["force_confession", "unauthored_transition", "name_culprit"],
+    "result_scope_constraints": {
+      "may_grant_major_clue": false,
+      "may_transition": false,
+      "may_write_relationship_state": false
+    },
+    "success_behavior": {
+      "text": "Mara answers only in terms she can act on: proof, safety, and what Dunmere can survive hearing.",
+      "summary": "The unauthored exchange stays limited to Mara's practical stance."
+    },
+    "failure_behavior": {
+      "text": "The question gives Mara nothing she can use. Her attention returns to the next frightened villager waiting behind you.",
+      "summary": "The constrained fallback attempt does not produce useful new ground."
+    },
+    "failed_fallback_consumes_slot": true
+  },
+  "dialogue_exits": [
+    {
+      "exit_id": "exit_mara_end_report",
+      "label": "End the report",
+      "exit_type": "free",
+      "behavior": {
+        "text": "You let Mara return to the ugly arithmetic of keeping Dunmere moving."
+      }
+    },
+    {
+      "exit_id": "exit_return_to_dunmere_village",
+      "label": "Return to Dunmere village",
+      "exit_type": "transition",
+      "behavior": {
+        "text": "Dunmere's worried noise closes around the conversation again."
+      },
+      "transition": {
+        "target_type": "exploration",
+        "target_id": "dunmere-village"
+      }
+    },
+    {
+      "exit_id": "exit_continue_gathering_local_insight",
+      "label": "Continue gathering local insight",
+      "exit_type": "transition",
+      "behavior": {
+        "text": "Mara gives you no certainty, only permission to keep gathering what the village cannot yet name."
+      },
+      "transition": {
+        "target_type": "exploration",
+        "target_id": "dunmere-village"
+      }
+    }
+  ],
+  "summary_behavior": {
+    "mode": "deterministic_authored",
+    "player_summary_template": "Mara Vellin pressed for proof Dunmere can act on, leaned toward the bandit explanation as a survivable public answer, and left room for the possibility that the pattern is incomplete.",
+    "sources": [
+      {
+        "source_id": "surface_mara_dunmere_pressure",
+        "visibility": "player_visible"
+      },
+      {
+        "source_id": "clarify_mara_bandit_explanation",
+        "visibility": "character_known"
+      },
+      {
+        "source_id": "move_suggest_deeper_pattern",
+        "visibility": "character_known"
+      }
+    ]
+  },
+  "npc_profile_recap": {
+    "enabled": true,
+    "player_facing": true,
+    "visibility": "player_visible",
+    "apply_timing": "on_dialogue_finalization",
+    "text": "Mara Vellin is Dunmere's practical acting head, willing to hear evidence but unwilling to move the village on panic alone."
+  },
+  "dialogue_search_index": {
+    "player_facing": true,
+    "visibility": "player",
+    "topics": [
+      "Mara Vellin",
+      "Dunmere",
+      "proof",
+      "bandits",
+      "Mara's Assumption",
+      "public pressure"
+    ]
+  },
+  "completed_dialogue_record": {
+    "record_id": "completed_greyvale_mara_dunmere_pressure_template",
+    "template": true,
+    "player_facing_sources": [
+      {
+        "source_id": "surface_mara_dunmere_pressure",
+        "visibility": "player_visible"
+      },
+      {
+        "source_id": "clarify_mara_bandit_explanation",
+        "visibility": "character_known"
+      },
+      {
+        "source_id": "move_report_broken_caravan",
+        "visibility": "character_known"
+      }
+    ],
+    "summary_sources": [
+      {
+        "source_id": "summary_behavior",
+        "visibility": "player_visible"
+      }
+    ]
+  },
+  "transcript_turns": [
+    {
+      "turn_id": "turn_surface_mara_pressure",
+      "turn_type": "conversation_surface",
+      "visibility": "player_visible",
+      "player_facing": true
+    },
+    {
+      "turn_id": "turn_mara_summary_template",
+      "turn_type": "system_summary",
+      "visibility": "player_visible",
+      "player_facing": true
+    }
+  ],
+  "validation_metadata": {
+    "profile": "playtest_ready",
+    "fixture_id": "greyvale_mara_dunmere_pressure_dialogue",
+    "named_paths": [
+      "happy_path",
+      "refusal_or_failure_path",
+      "fallback_path",
+      "minimal_exit_path",
+      "relationship_state_path",
+      "max_clarifying_question_path"
+    ]
+  },
+  "debug_metadata": {
+    "owner": "dialogue-build-12-3",
+    "purpose": "Greyvale Mara Vellin Dialogue Focus/Commit conversion fixture",
+    "notes": [
+      "Converted from legacy node/option dialogue without replacing the legacy file.",
+      "Legacy Mara's Assumption maps to canonical knowledge id dunmere_wants_simple_answer.",
+      "The bandit explanation remains useful but incomplete and should not be treated as final truth."
+    ]
+  }
+}

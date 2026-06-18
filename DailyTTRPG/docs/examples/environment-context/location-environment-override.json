@@ -1,0 +1,12 @@
+{
+  "world_instance_id": 101,
+  "scope_type": "location",
+  "scope_id": "grey-road-inn",
+  "values": {
+    "location_environment": "inn",
+    "light_level": "firelit",
+    "mood_or_tone": "quiet"
+  },
+  "source": "gm_override",
+  "reason": "The inn has settled into a tense rainy evening."
+}

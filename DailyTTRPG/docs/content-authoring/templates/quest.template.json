@@ -1,0 +1,34 @@
+{
+  "slug": "first-embers",
+  "name": "First Embers",
+  "text": {
+    "short": "Learn why red motes are gathering at the crossroads.",
+    "summary": "Investigate the ember-sign and follow its first trail.",
+    "full": "Ashford locals whisper about red motes moving against the wind. Find out whether the sign is natural, magical, or a warning.",
+    "recap": "You began investigating the ember-sign."
+  },
+  "availability_conditions": {},
+  "discovery_summary": "Mara Voss asked you to investigate the ember-sign.",
+  "is_active": true,
+  "objectives": [
+    {
+      "slug": "inspect-ember-sign",
+      "title": "Inspect the ember-sign",
+      "text": {
+        "short": "Study the red motes.",
+        "summary": "Inspect the red motes at Ashford Crossroads.",
+        "full": "Examine the red motes and determine whether they form a pattern."
+      },
+      "sort_order": 1,
+      "activation_conditions": {},
+      "completion_conditions": {
+        "required_character_flags": {
+          "ember_sign_inspected": true
+        }
+      },
+      "failure_conditions": {},
+      "progress_target": 1,
+      "hard_gate": false
+    }
+  ]
+}

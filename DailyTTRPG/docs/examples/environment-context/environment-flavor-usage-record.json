@@ -1,0 +1,14 @@
+{
+  "flavor_key": "grey_road_inn_rain_evening_weather_001",
+  "world_instance_id": 101,
+  "campaign_id": 202,
+  "character_id": 303,
+  "scene_id": 404,
+  "location_id": 505,
+  "used_slot": "weather_overlay",
+  "used_at": "2026-05-05T20:00:00.000Z",
+  "metadata_json": {
+    "mode": "deterministic",
+    "reason": "weather_match_or_unrestricted,time_match_or_unrestricted"
+  }
+}

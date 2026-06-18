@@ -1,0 +1,10 @@
+{
+  "world_instance_id": "greyvale-world-001",
+  "campaign_instance_id": null,
+  "scene_id": "broken-caravan-site",
+  "affordance_id": "caravan_wreck",
+  "state": "resolved",
+  "times_used": 1,
+  "resolved_by_character_id": "123",
+  "source_event_id": "789"
+}

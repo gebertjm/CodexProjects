@@ -1,0 +1,21 @@
+{
+  "name": "dailyrpg-firebase-hosting",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Firebase Hosting setup for the DailyTTRPG public gateway and player web app.",
+  "scripts": {
+    "build": "npm run check:hosting",
+    "build:player": "node scripts/build-player-web.mjs",
+    "check:hosting": "node scripts/check-hosting-pages.mjs",
+    "test:interaction-core": "npm --prefix backend run test:interaction-core",
+    "test:greyvale-full-loop": "npm --prefix backend run test:greyvale-full-loop",
+    "test:greyvale-vertical-slice": "npm --prefix backend run test:greyvale-vertical-slice",
+    "test:stage:6c": "npm --prefix backend run test:stage:6c",
+    "test:stage:6d": "npm --prefix backend run test:stage:6d",
+    "serve:hosting": "npx firebase-tools emulators:start --only hosting",
+    "firebase:login": "npx firebase-tools login",
+    "firebase:projects": "npx firebase-tools projects:list",
+    "firebase:use": "npx firebase-tools use dailyrpg",
+    "deploy:hosting": "npx firebase-tools deploy --only hosting --project dailyrpg"
+  }
+}

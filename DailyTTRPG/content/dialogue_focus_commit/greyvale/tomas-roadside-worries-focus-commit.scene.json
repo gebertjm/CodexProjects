@@ -1,0 +1,796 @@
+{
+  "id": "greyvale_tomas_roadside_worries_dialogue",
+  "slug": "greyvale-tomas-roadside-worries-dialogue",
+  "title": "Tomas Rell and the Road's Pattern",
+  "interaction_domain": "dialogue_focus_commit",
+  "scene_type": "dialogue",
+  "soft_target_max": 2,
+  "participants": [
+    {
+      "participant_id": "npc:tomas_rell",
+      "npc_key": "tomas-rell",
+      "unknown_label": "the Grey Road innkeeper",
+      "known_label": "Tomas Rell",
+      "aliases": ["tomas", "tomas rell", "innkeeper", "the innkeeper", "barkeep", "tavern keeper"],
+      "relationship_defaults": {
+        "trust": 0,
+        "respect": 0,
+        "hostility": 0
+      },
+      "scene_posture_defaults": {
+        "caution": 1,
+        "helpfulness": 0,
+        "pressure": 0,
+        "stability": 0
+      }
+    }
+  ],
+  "entry_behavior": {
+    "mode": "resume_or_start",
+    "opening_surface_id": "surface_tomas_roadside_worries",
+    "entry_source": "grey-road-inn"
+  },
+  "conversation_surface": {
+    "surface_id": "surface_tomas_roadside_worries",
+    "paragraphs": [
+      {
+        "kind": "opening",
+        "text": "Tomas Rell keeps polishing the same cup instead of setting it away. The common room talks in low pockets around him, every road rumor arriving before the door fully shuts.",
+        "source_visibility": "player_visible"
+      },
+      {
+        "kind": "posture",
+        "text": "He wants to be useful, but only as far as fear will let him. When the broken caravan comes up, his eyes move toward the hearth before he answers.",
+        "source_visibility": "player_visible"
+      },
+      {
+        "kind": "tension",
+        "text": "Ordinary bandits, Tomas says, have habits. What has been happening on the Grey Road has a pattern he does not like and cannot comfortably name.",
+        "source_visibility": "player_visible"
+      }
+    ]
+  },
+  "passive_social_insight": [
+    {
+      "insight_id": "insight_tomas_fears_bad_rumor",
+      "label": "Tomas is guarding the room against panic",
+      "target_id": "npc:tomas_rell",
+      "requires_check": true,
+      "check": {
+        "mode": "passive",
+        "ability": "wisdom",
+        "skill": "insight",
+        "dc": 12,
+        "visibility": "narrative_only"
+      },
+      "on_success": {
+        "text": "Your read of anxious innkeepers catches the restraint in him: Tomas is not hiding a culprit. He is afraid that naming what he cannot prove will make fear do its own damage.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "stability",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The player recognizes that Tomas is careful rather than evasive."
+          }
+        ]
+      },
+      "on_failure": {
+        "text": null
+      }
+    }
+  ],
+  "relationship_state_definitions": [
+    {
+      "field": "trust",
+      "scope": "persistent_npc_state",
+      "type": "ladder",
+      "values": [-2, -1, 0, 1, 2],
+      "default": 0,
+      "allowed_write_scopes": ["persistent_npc_state"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "player_perceived",
+      "labels": {
+        "-2": "closed",
+        "-1": "guarded",
+        "0": "uncertain",
+        "1": "forthcoming",
+        "2": "trusting"
+      }
+    },
+    {
+      "field": "respect",
+      "scope": "persistent_npc_state",
+      "type": "ladder",
+      "values": [-2, -1, 0, 1, 2],
+      "default": 0,
+      "allowed_write_scopes": ["persistent_npc_state"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "player_perceived",
+      "labels": {
+        "-2": "dismissive",
+        "-1": "doubtful",
+        "0": "neutral",
+        "1": "respectful",
+        "2": "confiding"
+      }
+    },
+    {
+      "field": "hostility",
+      "scope": "persistent_npc_state",
+      "type": "ladder",
+      "values": [-2, -1, 0, 1, 2],
+      "default": 0,
+      "allowed_write_scopes": ["persistent_npc_state"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "player_perceived",
+      "labels": {
+        "-2": "protective",
+        "-1": "cool",
+        "0": "neutral",
+        "1": "resentful",
+        "2": "hostile"
+      }
+    },
+    {
+      "field": "caution",
+      "scope": "dialogue_scene_state",
+      "type": "number",
+      "default": 1,
+      "allowed_write_scopes": ["dialogue_scene_state", "dialogue_local", "temporary"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "gm_only"
+    },
+    {
+      "field": "helpfulness",
+      "scope": "dialogue_scene_state",
+      "type": "number",
+      "default": 0,
+      "allowed_write_scopes": ["dialogue_scene_state", "dialogue_local", "temporary"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "gm_only"
+    },
+    {
+      "field": "pressure",
+      "scope": "dialogue_scene_state",
+      "type": "number",
+      "default": 0,
+      "allowed_write_scopes": ["dialogue_scene_state", "dialogue_local", "temporary"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "gm_only"
+    },
+    {
+      "field": "stability",
+      "scope": "dialogue_scene_state",
+      "type": "number",
+      "default": 0,
+      "allowed_write_scopes": ["dialogue_scene_state", "dialogue_local", "temporary"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "gm_only"
+    }
+  ],
+  "clarifying_questions": [
+    {
+      "question_id": "clarify_bandit_pattern",
+      "label": "What makes this unlike bandits?",
+      "aliases": ["ordinary bandits", "bandit pattern", "why not bandits"],
+      "keywords": ["bandits", "pattern", "ordinary"],
+      "target_id": "npc:tomas_rell",
+      "requires_check": false,
+      "result": {
+        "text": "Tomas sets the cup down at last. \"Bandits take what they can and run. This is not that. Sometimes the violence is clean. Sometimes it stops dead, like someone turned them toward another thought.\"",
+        "summary": "Tomas says the Grey Road attacks do not behave like ordinary banditry.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "innkeeper_tracks_road_patterns",
+            "title": "Pattern of Attacks",
+            "summary": "Tomas has been comparing road reports and believes the attacks are inconsistent with ordinary banditry."
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "helpfulness",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Tomas can answer safely when asked for a pattern rather than certainty."
+          }
+        ]
+      },
+      "emit_canonical_event": true
+    },
+    {
+      "question_id": "clarify_survivor_by_hearth",
+      "label": "Who survived the caravan attack?",
+      "aliases": ["survivor", "who survived", "woman by the hearth", "elin"],
+      "keywords": ["survivor", "hearth", "elin"],
+      "target_id": "npc:tomas_rell",
+      "requires_check": false,
+      "low_impact": true,
+      "result": {
+        "text": "He nods toward the quieter side of the room. \"One woman made it. Elin Harrow. Be patient if you speak to her; memory has not been kind.\"",
+        "summary": "Tomas points toward Elin Harrow, a survivor of the Grey Road attack.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "woman_near_hearth_survived_road_attack",
+            "title": "The woman near the hearth survived the road attack",
+            "summary": "Tomas identified the shaken woman by the hearth as a survivor connected to the attack."
+          },
+          {
+            "knowledge_id": "knows_elin_name",
+            "title": "The survivor is Elin Harrow",
+            "summary": "Tomas named the shaken survivor as Elin Harrow."
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "caution",
+            "operation": "decrement",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Naming Elin lowers Tomas's immediate caution once the lead is asked for directly."
+          }
+        ]
+      },
+      "emit_canonical_event": true
+    },
+    {
+      "question_id": "clarify_road_traffic",
+      "label": "What changed about road traffic?",
+      "aliases": ["road traffic", "travelers", "fewer people"],
+      "keywords": ["travelers", "traffic", "road"],
+      "target_id": "npc:tomas_rell",
+      "requires_check": false,
+      "result": {
+        "text": "\"Fewer wagons. Shorter stops. People watching the door before they ask for rooms.\" Tomas glances across the common room. \"Fear travels faster than horses when it has a road to itself.\"",
+        "summary": "Tomas has seen fewer travelers and more fear moving through the inn.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "stability",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Ordinary inn details keep the conversation grounded."
+          }
+        ]
+      },
+      "canonical": false
+    },
+    {
+      "question_id": "clarify_roads_temper",
+      "label": "What do you mean by the road's temper?",
+      "aliases": ["road temper", "temper", "road feels wrong"],
+      "keywords": ["temper", "wrong", "road"],
+      "target_id": "npc:tomas_rell",
+      "requires_check": false,
+      "result": {
+        "text": "\"Roads have moods when you hear enough people come off them,\" Tomas says. \"This one has gone quiet in the wrong places.\"",
+        "summary": "Tomas describes the Grey Road's change as a practical innkeeper's instinct, not proof.",
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "trust",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player lets Tomas explain uncertainty in his own language.",
+            "summary": "Tomas seems a little more willing to explain what he means."
+          }
+        ]
+      },
+      "canonical": false
+    },
+    {
+      "question_id": "clarify_read_what_tomas_avoids",
+      "label": "Read what Tomas is avoiding",
+      "aliases": ["read Tomas", "what is he avoiding", "what scares him"],
+      "keywords": ["avoiding", "fear", "insight"],
+      "target_id": "npc:tomas_rell",
+      "requires_check": true,
+      "check": {
+        "mode": "standard",
+        "ability": "wisdom",
+        "skill": "insight",
+        "dc": 12,
+        "visibility": "visible"
+      },
+      "on_success": {
+        "text": "Tomas is not protecting a name. He is protecting the room from certainty he cannot earn. The more the attacks sound unlike bandits, the more dangerous rumor becomes.",
+        "summary": "Tomas is afraid of worsening fear with an unproven explanation.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "helpfulness",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The player reads his restraint accurately."
+          }
+        ]
+      },
+      "on_failure": {
+        "text": "The worry is plain, but the shape of it stays tangled in inn noise and road rumors.",
+        "summary": "Tomas's caution remains difficult to separate from ordinary fear.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "pressure",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The attempted read makes the exchange feel more scrutinized."
+          }
+        ]
+      },
+      "retry_policy": {
+        "immediate_retry": false
+      }
+    }
+  ],
+  "committed_social_moves": [
+    {
+      "move_id": "move_reassure_tomas",
+      "label": "Reassure Tomas that partial information helps",
+      "aliases": ["reassure Tomas", "partial information helps", "tell him it helps"],
+      "social_move_type": "reassure",
+      "social_tags": ["gentle", "stabilizing"],
+      "tone": "steady",
+      "target_id": "npc:tomas_rell",
+      "consumes_dialogue_beat": true,
+      "requires_check": false,
+      "preview": {
+        "text": "You spend the dialogue beat making it clear that Tomas does not need a perfect answer to be useful."
+      },
+      "no_check_result": {
+        "text": "Tomas lets himself give you the useful shape of it: the road violence is real, but the pattern is too uneven for ordinary bandit work.",
+        "summary": "Tomas gives a careful account of the attack pattern without claiming more certainty than he has.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "innkeeper_tracks_road_patterns",
+            "title": "Pattern of Attacks",
+            "summary": "Tomas has been comparing road reports and believes the attacks are inconsistent with ordinary banditry."
+          }
+        ],
+        "objective_updates": [
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "gather-local-insight",
+            "status": "active",
+            "progress_count": 1
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "trust",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player accepts partial information without demanding certainty.",
+            "summary": "Tomas seems more willing to be useful."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "helpfulness",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Reassurance makes Tomas more forthcoming."
+          }
+        ],
+        "unlocks": ["clarify_survivor_by_hearth"]
+      }
+    },
+    {
+      "move_id": "move_compare_caravan_pattern",
+      "label": "Compare the caravan evidence against his pattern",
+      "aliases": ["compare caravan", "broken caravan evidence", "does the caravan fit"],
+      "social_move_type": "persuade",
+      "social_tags": ["evidence", "road-pattern"],
+      "tone": "careful",
+      "target_id": "npc:tomas_rell",
+      "consumes_dialogue_beat": true,
+      "requires_check": true,
+      "check": {
+        "mode": "standard",
+        "ability": "charisma",
+        "skill": "persuasion",
+        "dc": 13,
+        "visibility": "visible"
+      },
+      "preview": {
+        "text": "You spend the dialogue beat testing the broken caravan against Tomas's road pattern instead of asking him for a guess."
+      },
+      "assistance": [
+        {
+          "source": "known_context",
+          "text": "Caravan evidence gives Tomas something practical to compare against road rumor."
+        }
+      ],
+      "on_success": {
+        "npc_response": "\"That fits the wrongness,\" Tomas says. \"Cargo left, folk scattered, fear doing half the work after. Bandits do not usually leave that kind of shape behind.\"",
+        "result_summary": "Tomas agrees the broken caravan fits the pattern of attacks unlike ordinary banditry.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "innkeeper_tracks_road_patterns",
+            "title": "Pattern of Attacks",
+            "summary": "Tomas has been comparing road reports and believes the attacks are inconsistent with ordinary banditry."
+          }
+        ],
+        "objective_updates": [
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "gather-local-insight",
+            "status": "active",
+            "progress_count": 1
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "respect",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player brings grounded evidence instead of panic.",
+            "summary": "Tomas respects the way you test the evidence."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "stability",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Evidence keeps the exchange from becoming rumor."
+          }
+        ],
+        "unlocks": ["clarify_survivor_by_hearth"]
+      },
+      "on_failure": {
+        "npc_response": "Tomas turns the cup once between his hands. \"Maybe. Or maybe fear is making us make patterns out of broken pieces.\"",
+        "result_summary": "Tomas is not convinced the caravan evidence proves the pattern.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "caution",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The comparison lands as more uncertainty."
+          }
+        ]
+      }
+    },
+    {
+      "move_id": "move_press_for_survivor",
+      "label": "Press him for the specific survivor",
+      "aliases": ["press for survivor", "who is Elin", "specific survivor"],
+      "social_move_type": "press",
+      "social_tags": ["lead", "survivor"],
+      "tone": "careful",
+      "target_id": "npc:tomas_rell",
+      "consumes_dialogue_beat": true,
+      "requires_check": true,
+      "check": {
+        "mode": "standard",
+        "ability": "charisma",
+        "skill": "persuasion",
+        "dc": 12,
+        "visibility": "visible"
+      },
+      "preview": {
+        "text": "You spend the dialogue beat asking Tomas to turn his warning into a specific lead."
+      },
+      "on_success": {
+        "npc_response": "He nods toward the hearth. \"Elin Harrow. She survived the road. If she talks, let her do it at her own pace.\"",
+        "result_summary": "Tomas points the player toward Elin Harrow as a survivor of the attack.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "woman_near_hearth_survived_road_attack",
+            "title": "The woman near the hearth survived the road attack",
+            "summary": "Tomas identified the shaken woman by the hearth as a survivor connected to the attack."
+          },
+          {
+            "knowledge_id": "knows_elin_name",
+            "title": "The survivor is Elin Harrow",
+            "summary": "Tomas named the shaken survivor as Elin Harrow."
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "trust",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player asks for the lead without exploiting Tomas's fear.",
+            "summary": "Tomas trusts you enough to name the survivor."
+          }
+        ]
+      },
+      "on_failure": {
+        "npc_response": "\"There is a survivor,\" he says, softer now, \"but she is not a thing to be dragged through the room for answers.\"",
+        "result_summary": "Tomas confirms there is a survivor but withholds the name under pressure.",
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "trust",
+            "operation": "decrement",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The request felt too extractive.",
+            "summary": "Tomas becomes more guarded about the survivor."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "pressure",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The survivor lead was pressed too hard."
+          }
+        ]
+      }
+    },
+    {
+      "move_id": "move_challenge_bandit_explanation",
+      "label": "Challenge the bandit explanation carefully",
+      "aliases": ["challenge bandits", "not bandits", "bandit explanation"],
+      "social_move_type": "challenge",
+      "social_tags": ["careful", "misleading-assumption"],
+      "tone": "measured",
+      "target_id": "npc:tomas_rell",
+      "consumes_dialogue_beat": true,
+      "requires_check": true,
+      "check": {
+        "mode": "standard",
+        "ability": "wisdom",
+        "skill": "insight",
+        "dc": 13,
+        "visibility": "visible"
+      },
+      "preview": {
+        "text": "You spend the dialogue beat challenging the easy bandit answer without forcing Tomas to name what he cannot prove."
+      },
+      "on_success": {
+        "npc_response": "\"Bandits are the word people can carry,\" Tomas says. \"Does not mean the word is big enough.\"",
+        "result_summary": "Tomas admits the bandit explanation is useful but too small for what he has seen.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "innkeeper_tracks_road_patterns",
+            "title": "Pattern of Attacks",
+            "summary": "Tomas has been comparing road reports and believes the attacks are inconsistent with ordinary banditry."
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "respect",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player challenged the explanation without using Tomas as proof.",
+            "summary": "Tomas respects the careful challenge."
+          }
+        ]
+      },
+      "on_failure": {
+        "npc_response": "\"Maybe it is bandits, then,\" Tomas says, and the answer is flatter than belief. \"That is at least a word a room can survive.\"",
+        "result_summary": "Tomas retreats toward the ordinary bandit explanation when challenged too sharply.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "caution",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The challenge made Tomas more careful."
+          }
+        ]
+      }
+    },
+    {
+      "move_id": "move_dismiss_tomas_fear",
+      "label": "Dismiss his fear as tavern rumor",
+      "aliases": ["dismiss fear", "just rumor", "push too hard"],
+      "social_move_type": "provoke",
+      "social_tags": ["risky", "withdrawal"],
+      "tone": "hard",
+      "target_id": "npc:tomas_rell",
+      "consumes_dialogue_beat": true,
+      "requires_check": false,
+      "preview": {
+        "text": "You spend the dialogue beat pushing past Tomas's caution, risking the lead for a harder answer."
+      },
+      "no_check_result": {
+        "text": "Tomas's face closes. \"Then call it rumor and be done with me.\" The cup goes back under the cloth, and so does the rest of what he might have said.",
+        "summary": "Tomas withdraws when his fear is dismissed.",
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "hostility",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player dismissed Tomas's road fear as rumor.",
+            "summary": "Tomas closes off from you."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "pressure",
+            "operation": "increment",
+            "value": 2,
+            "visibility": "gm_only",
+            "reason": "Dismissal spikes social pressure and ends useful candor."
+          }
+        ],
+        "locks": ["clarify_survivor_by_hearth", "clarify_read_what_tomas_avoids"]
+      }
+    }
+  ],
+  "generic_fallback": {
+    "enabled": true,
+    "usage_limit": 1,
+    "allowed_social_move_types": ["ask", "listen", "reassure"],
+    "excluded_social_move_types": ["force_confession", "unauthored_transition", "name_culprit"],
+    "result_scope_constraints": {
+      "may_grant_major_clue": false,
+      "may_transition": false,
+      "may_write_relationship_state": false
+    },
+    "success_behavior": {
+      "text": "Tomas answers carefully, keeping to road talk and what travelers have already made plain.",
+      "summary": "The unauthored question receives a limited answer without adding a major discovery."
+    },
+    "failure_behavior": {
+      "text": "The question wanders beyond what Tomas can safely answer. He returns to polishing the cup and lets the room cover the silence.",
+      "summary": "The constrained fallback attempt does not produce useful new ground."
+    },
+    "failed_fallback_consumes_slot": true
+  },
+  "dialogue_exits": [
+    {
+      "exit_id": "exit_tomas_return_to_work",
+      "label": "Let Tomas return to work",
+      "exit_type": "free",
+      "behavior": {
+        "text": "You let Tomas return to the small rituals of the inn, carrying whatever shape of the road he was willing to give."
+      }
+    },
+    {
+      "exit_id": "exit_return_to_common_room",
+      "label": "Return to the common room",
+      "exit_type": "transition",
+      "behavior": {
+        "text": "The common room takes the conversation back into its low, watchful noise."
+      },
+      "transition": {
+        "target_type": "exploration",
+        "target_id": "grey-road-inn"
+      },
+      "relationship_writes": [
+        {
+          "scope": "dialogue_scene_state",
+          "field": "pressure",
+          "operation": "decrement",
+          "value": 1,
+          "visibility": "gm_only",
+          "reason": "Ending the conversation lowers immediate pressure."
+        }
+      ]
+    },
+    {
+      "exit_id": "exit_follow_elin_lead",
+      "label": "Ask to speak with Elin",
+      "exit_type": "transition",
+      "behavior": {
+        "text": "Tomas tips his chin toward the hearth. If the road left anyone with a memory worth asking after, it is the shaken survivor sitting apart from the room."
+      },
+      "transition": {
+        "target_type": "exploration",
+        "target_id": "elin-memory-fragments"
+      }
+    }
+  ],
+  "summary_behavior": {
+    "mode": "deterministic_authored",
+    "player_summary_template": "Tomas compared the Grey Road attacks to ordinary banditry, identified a pattern that felt wrong, and pointed toward the survivor by the hearth when that lead surfaced.",
+    "sources": [
+      {
+        "source_id": "surface_tomas_roadside_worries",
+        "visibility": "player_visible"
+      },
+      {
+        "source_id": "clarify_bandit_pattern",
+        "visibility": "character_known"
+      },
+      {
+        "source_id": "move_press_for_survivor",
+        "visibility": "character_known"
+      }
+    ]
+  },
+  "npc_profile_recap": {
+    "enabled": true,
+    "player_facing": true,
+    "visibility": "player_visible",
+    "apply_timing": "on_dialogue_finalization",
+    "text": "Tomas Rell is the Grey Road innkeeper, careful with rumor but convinced the recent attacks do not fit ordinary bandit trouble."
+  },
+  "dialogue_search_index": {
+    "player_facing": true,
+    "visibility": "player",
+    "topics": [
+      "Tomas Rell",
+      "Grey Road",
+      "Pattern of Attacks",
+      "ordinary bandits",
+      "Elin Harrow",
+      "survivor"
+    ]
+  },
+  "completed_dialogue_record": {
+    "record_id": "completed_greyvale_tomas_roadside_worries_template",
+    "template": true,
+    "player_facing_sources": [
+      {
+        "source_id": "surface_tomas_roadside_worries",
+        "visibility": "player_visible"
+      },
+      {
+        "source_id": "clarify_bandit_pattern",
+        "visibility": "character_known"
+      },
+      {
+        "source_id": "clarify_survivor_by_hearth",
+        "visibility": "character_known"
+      }
+    ],
+    "summary_sources": [
+      {
+        "source_id": "summary_behavior",
+        "visibility": "player_visible"
+      }
+    ]
+  },
+  "transcript_turns": [
+    {
+      "turn_id": "turn_surface_tomas_roadside",
+      "turn_type": "conversation_surface",
+      "visibility": "player_visible",
+      "player_facing": true
+    },
+    {
+      "turn_id": "turn_tomas_summary_template",
+      "turn_type": "system_summary",
+      "visibility": "player_visible",
+      "player_facing": true
+    }
+  ],
+  "validation_metadata": {
+    "profile": "playtest_ready",
+    "fixture_id": "greyvale_tomas_roadside_worries_dialogue",
+    "named_paths": [
+      "happy_path",
+      "refusal_or_failure_path",
+      "fallback_path",
+      "minimal_exit_path",
+      "transition_path",
+      "max_clarifying_question_path",
+      "relationship_state_path"
+    ]
+  },
+  "debug_metadata": {
+    "owner": "dialogue-build-12-2",
+    "purpose": "Greyvale Tomas Rell Dialogue Focus/Commit conversion fixture",
+    "notes": [
+      "Converted from legacy node/option dialogue without replacing the legacy file.",
+      "Pattern of Attacks maps to canonical knowledge id innkeeper_tracks_road_patterns.",
+      "Elin direction maps to existing exploration scene elin-memory-fragments rather than direct dialogue-to-dialogue routing."
+    ]
+  }
+}

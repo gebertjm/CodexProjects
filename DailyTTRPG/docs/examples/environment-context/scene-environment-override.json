@@ -1,0 +1,13 @@
+{
+  "world_instance_id": 101,
+  "scope_type": "scene",
+  "scope_id": "broken-caravan-site",
+  "values": {
+    "weather": "fog",
+    "time_of_day": "morning",
+    "visibility": "obscured",
+    "mood_or_tone": "watchful"
+  },
+  "source": "content_default",
+  "reason": "Opening proof scene for a foggy caravan investigation."
+}

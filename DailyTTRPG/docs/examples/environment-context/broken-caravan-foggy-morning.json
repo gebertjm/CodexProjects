@@ -1,0 +1,17 @@
+{
+  "scene_key": "broken-caravan-site",
+  "effective_environment": {
+    "weather": "fog",
+    "time_of_day": "morning",
+    "season": "autumn",
+    "light_level": "dim",
+    "visibility": "obscured",
+    "location_environment": "road",
+    "mood_or_tone": "uneasy"
+  },
+  "selected_flavors": [
+    "broken_caravan_fog_morning_weather_001",
+    "greyvale_autumn_season_001"
+  ],
+  "assembled_description": "Fog hangs low over the broken caravan, turning the Grey Road into a pale ribbon of mud. Autumn has left the lowlands damp, brown-edged, and slow to give up warmth. You come upon a broken caravan beside the Grey Road. The danger is gone for the moment, but the scene still feels unstable."
+}

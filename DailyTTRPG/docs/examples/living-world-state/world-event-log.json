@@ -1,0 +1,21 @@
+{
+  "event_id": "789",
+  "world_instance_id": "greyvale-world-001",
+  "campaign_instance_id": "456",
+  "actor_character_id": "123",
+  "event_type": "interaction_resolved",
+  "scene_id": "broken-caravan-site",
+  "interaction_id": "inspect-broken-caravan",
+  "event_payload": {
+    "result_band": "success",
+    "check_total": 14
+  },
+  "state_changes": [
+    {
+      "target_type": "affordance",
+      "target_id": "caravan_wreck",
+      "to": "resolved"
+    }
+  ],
+  "knowledge_granted": ["caravan_irregularity"]
+}

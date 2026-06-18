@@ -1,0 +1,10 @@
+{
+  "state_change": {
+    "target_type": "entity",
+    "target_id": "elin-harrow",
+    "field": "current_scene_id",
+    "value": "grey-road-inn"
+  },
+  "knowledge_grants": ["knows_elin_name"],
+  "event_type": "interaction_resolved"
+}

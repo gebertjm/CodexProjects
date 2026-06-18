@@ -1,0 +1,4 @@
+{$API_HOSTNAME:159-223-175-17.nip.io} {
+  encode gzip
+  reverse_proxy backend:3000
+}

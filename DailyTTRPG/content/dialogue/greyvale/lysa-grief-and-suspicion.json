@@ -1,0 +1,156 @@
+{
+  "slug": "lysa-grief-and-suspicion",
+  "scene_slug": "dunmere-village",
+  "npc_template_slug": "lysa-fen",
+  "name": "Lysa's Suspicion",
+  "text": {
+    "short": "Speak with Lysa Fen about the missing.",
+    "summary": "Lysa Fen turns grief into certainty faster than evidence can keep up with it, but her instincts still point toward real concealment.",
+    "full": "Lysa Fen looks at every answer like it might be the one that finally stops being polite and starts being honest."
+  },
+  "trigger_type": "player",
+  "trigger_event": "npc_talk",
+  "sort_order": 2,
+  "availability_conditions": {},
+  "is_repeatable": true,
+  "is_active": true,
+  "nodes": [
+    {
+      "slug": "lysa-greeting",
+      "title": "Grief Without Patience",
+      "speaker_type": "npc",
+      "speaker_npc_template_slug": "lysa-fen",
+      "text": {
+        "full": "My brother did not walk off the road by accident. Someone knows something. They always do.",
+        "short": "Lysa is certain someone is hiding something."
+      },
+      "sort_order": 1,
+      "is_entry_node": true,
+      "is_terminal": false,
+      "availability_conditions": {},
+      "entry_effects": {
+        "session_flags": {
+          "met_lysa_fen": true
+        }
+      },
+      "options": [
+        {
+          "slug": "take-her-seriously",
+          "label": "Tell her you will take her fear seriously",
+          "sort_order": 1,
+          "availability_conditions": {},
+          "check_mode": "none",
+          "outcomes": [
+            {
+              "slug": "lysa-opens-up",
+              "next_node_slug": "lysa-open",
+              "label": "Lysa softens a little",
+              "sort_order": 1,
+              "conditions": {},
+              "effects": {
+                "character_flags": {
+                  "lysa_trusts_you": true
+                },
+                "npc_states": [
+                  {
+                    "npc_key": "lysa-fen",
+                    "disposition": "friendly",
+                    "notes": "The character took Lysa's grief seriously."
+                  }
+                ]
+              },
+              "result_text": "Some of the tension goes out of her shoulders, though not out of her voice.",
+              "is_terminal": false,
+              "is_active": true
+            }
+          ]
+        },
+        {
+          "slug": "ask-why-she-suspects-concealment",
+          "label": "Ask why she thinks someone is concealing the truth",
+          "sort_order": 2,
+          "availability_conditions": {},
+          "check_mode": "none",
+          "outcomes": [
+            {
+              "slug": "lysa-shares-suspicion",
+              "next_node_slug": "lysa-suspicion",
+              "label": "Lysa gives you her suspicion",
+              "sort_order": 1,
+              "conditions": {},
+              "effects": {
+                "character_flags": {
+                  "clue_lysa_suspicion": true,
+                  "heard_lysa_suspicion": true
+                },
+                "knowledge_entries": [
+                  {
+                    "knowledge_type": "lore",
+                    "knowledge_key": "clue_lysa_suspicion",
+                    "title": "Lysa's Suspicion",
+                    "summary": "Lysa is convinced that fear is making people simplify, hide, or misdirect the truth around Dunmere.",
+                    "metadata_json": {
+                      "clue_id": "lysa_suspicion",
+                      "clue_tier": "misleading"
+                    }
+                  }
+                ],
+                "objectives": [
+                  {
+                    "quest_key": "shadows_grey_road",
+                    "objective_key": "gather-local-insight",
+                    "status": "completed",
+                    "progress_count": 2
+                  },
+                  {
+                    "quest_key": "shadows_grey_road",
+                    "objective_key": "follow-the-leads",
+                    "status": "active",
+                    "progress_count": 0
+                  }
+                ],
+                "source_knowledge_title": "Lysa sharpened the sense of concealment",
+                "source_knowledge_summary": "Lysa believes fear is making people look away from details that do not fit the simplest explanation."
+              },
+              "result_text": "Lysa's certainty is raw, but not wholly empty.",
+              "is_terminal": false,
+              "is_active": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lysa-open",
+      "title": "A Plea to Keep Moving",
+      "speaker_type": "npc",
+      "speaker_npc_template_slug": "lysa-fen",
+      "text": {
+        "full": "Then do not let them turn my brother into a story people are already tired of hearing.",
+        "short": "Lysa begs you not to let the missing become routine."
+      },
+      "sort_order": 2,
+      "is_entry_node": false,
+      "is_terminal": true,
+      "availability_conditions": {},
+      "entry_effects": {},
+      "options": []
+    },
+    {
+      "slug": "lysa-suspicion",
+      "title": "Fear Makes Liars",
+      "speaker_type": "npc",
+      "speaker_npc_template_slug": "lysa-fen",
+      "text": {
+        "full": "People say 'bandits' too quickly. Not because they're sure. Because the word is easier to carry than not knowing.",
+        "short": "Lysa says the village is simplifying out of fear."
+      },
+      "sort_order": 3,
+      "is_entry_node": false,
+      "is_terminal": true,
+      "availability_conditions": {},
+      "entry_effects": {},
+      "options": []
+    }
+  ]
+}

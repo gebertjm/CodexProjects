@@ -1,0 +1,303 @@
+[
+  {
+    "slug": "mara-vellin",
+    "name": "Mara Vellin",
+    "npc_type": "humanoid",
+    "disposition": "neutral",
+    "role": "authority",
+    "text": {
+      "summary": "Dunmere's acting head, practical and overburdened.",
+      "full": "The acting head of Dunmere. Practical, tired, and under too much pressure to entertain theories that do not quickly become useful."
+    },
+    "is_active": true
+  },
+  {
+    "slug": "tomas-rell",
+    "name": "Tomas Rell",
+    "npc_type": "humanoid",
+    "disposition": "friendly",
+    "role": "informant",
+    "true_name": "Tomas Rell",
+    "public_role_label": "the innkeeper",
+    "unknown_label": "the innkeeper",
+    "aliases": [
+      "tomas",
+      "tomas rell",
+      "innkeeper",
+      "barkeep",
+      "tavern keeper"
+    ],
+    "default_location_id": "grey-road-inn",
+    "default_scene_id": "grey-road-inn",
+    "default_visibility": "visible",
+    "default_availability": "available",
+    "default_actions": [
+      "observe",
+      "talk"
+    ],
+    "identity": {
+      "reveal_policy": "role_until_known",
+      "knowledge_id_for_true_name": "knows_tomas_name",
+      "publicly_known": false
+    },
+    "schedule": [
+      {
+        "time_block": "morning",
+        "location_id": "grey-road-inn",
+        "scene_id": "grey-road-inn",
+        "activity": "preparing the common room",
+        "activity_text": "The innkeeper wipes down tables near the hearth before road traffic gathers.",
+        "availability": "available",
+        "visibility": "visible",
+        "priority": 1
+      },
+      {
+        "time_block": "afternoon",
+        "location_id": "grey-road-inn",
+        "scene_id": "grey-road-inn",
+        "activity": "serving travelers",
+        "activity_text": "The innkeeper moves between tables, keeping one eye on the door.",
+        "availability": "available",
+        "visibility": "visible",
+        "priority": 1
+      },
+      {
+        "time_block": "evening",
+        "location_id": "grey-road-inn",
+        "scene_id": "grey-road-inn",
+        "activity": "serving travelers",
+        "activity_text": "The innkeeper moves between tables, keeping one eye on the door.",
+        "availability": "available",
+        "visibility": "visible",
+        "priority": 1
+      },
+      {
+        "time_block": "night",
+        "location_id": "grey-road-inn",
+        "activity": "resting upstairs",
+        "activity_text": "The innkeeper has withdrawn from the common room for the night.",
+        "availability": "limited",
+        "visibility": "not_visible",
+        "priority": 1
+      }
+    ],
+    "text": {
+      "summary": "The innkeeper, observant and more worried than he wants to sound.",
+      "full": "Owner of the Grey Road Inn. Friendly enough to talk, observant enough to notice patterns, and worried enough to measure every rumor against the next one."
+    },
+    "is_active": true
+  },
+  {
+    "slug": "elin-harrow",
+    "name": "Elin Harrow",
+    "npc_type": "humanoid",
+    "disposition": "neutral",
+    "role": "survivor",
+    "true_name": "Elin Harrow",
+    "public_role_label": "the survivor",
+    "unknown_label": "a shaken woman",
+    "aliases": [
+      "elin",
+      "elin harrow",
+      "elira",
+      "shaken woman",
+      "survivor",
+      "woman by the hearth"
+    ],
+    "default_location_id": "grey-road-inn",
+    "default_scene_id": "grey-road-inn",
+    "default_visibility": "visible",
+    "default_availability": "available",
+    "default_actions": [
+      "observe",
+      "talk"
+    ],
+    "identity": {
+      "reveal_policy": "unknown_until_known",
+      "knowledge_id_for_true_name": "knows_elin_name",
+      "publicly_known": false
+    },
+    "schedule": [
+      {
+        "time_block": "afternoon",
+        "location_id": "grey-road-inn",
+        "scene_id": "grey-road-inn",
+        "activity": "sitting near the hearth",
+        "activity_text": "A shaken woman sits near the hearth, both hands tight around a torn caravan sash.",
+        "availability": "limited",
+        "visibility": "visible",
+        "priority": 1
+      },
+      {
+        "time_block": "evening",
+        "location_id": "grey-road-inn",
+        "scene_id": "grey-road-inn",
+        "activity": "gripping a torn caravan sash",
+        "activity_text": "A shaken woman grips a torn caravan sash near the fire and watches every door too quickly.",
+        "availability": "available",
+        "visibility": "visible",
+        "priority": 1
+      },
+      {
+        "time_block": "night",
+        "location_id": "grey-road-inn",
+        "scene_id": "elin-memory-fragments",
+        "activity": "trying to remember",
+        "activity_text": "A shaken survivor sits apart from the common room, trying to hold a memory still long enough to speak it.",
+        "availability": "limited",
+        "visibility": "visible",
+        "priority": 1
+      }
+    ],
+    "metadata": {
+      "relevant_to_current_objective": true,
+      "relevance": "survivor of the caravan attack"
+    },
+    "text": {
+      "summary": "A shaken traveler whose memory keeps slipping at the worst moments.",
+      "full": "A survivor of one of the Grey Road attacks. She remembers enough to know something was wrong, but not enough to trust memory without help."
+    },
+    "is_active": true
+  },
+  {
+    "slug": "grey-road-travelers",
+    "name": "Grey Road Travelers",
+    "npc_type": "group",
+    "disposition": "neutral",
+    "role": "patrons",
+    "true_name": "Grey Road Travelers",
+    "public_role_label": "travelers",
+    "unknown_label": "travelers",
+    "aliases": [
+      "travelers",
+      "patrons",
+      "locals",
+      "common room"
+    ],
+    "default_location_id": "grey-road-inn",
+    "default_scene_id": "grey-road-inn",
+    "default_visibility": "visible",
+    "default_availability": "available",
+    "default_actions": [
+      "observe",
+      "talk"
+    ],
+    "identity": {
+      "reveal_policy": "role_until_known",
+      "publicly_known": false
+    },
+    "schedule": [
+      {
+        "time_block": "afternoon",
+        "location_id": "grey-road-inn",
+        "scene_id": "grey-road-inn",
+        "activity": "trading low road rumors",
+        "activity_text": "Travelers keep their voices low, watching each new arrival before returning to their cups.",
+        "availability": "available",
+        "visibility": "visible",
+        "priority": 1
+      },
+      {
+        "time_block": "evening",
+        "location_id": "grey-road-inn",
+        "scene_id": "grey-road-inn",
+        "activity": "speaking in guarded murmurs",
+        "activity_text": "Travelers gather in small knots, their conversations dropping whenever the road outside creaks.",
+        "availability": "available",
+        "visibility": "visible",
+        "priority": 1
+      },
+      {
+        "time_block": "night",
+        "location_id": "grey-road-inn",
+        "scene_id": "grey-road-inn",
+        "activity": "thinning toward silence",
+        "activity_text": "Only a few travelers remain awake, speaking quietly near the last warm coals.",
+        "availability": "limited",
+        "visibility": "visible",
+        "priority": 1
+      }
+    ],
+    "text": {
+      "summary": "Travelers and patrons who carry rumor, caution, and half-finished stories.",
+      "full": "A shifting group of road-worn travelers and local patrons. None of them owns the mystery, but many have brushed against its consequences."
+    },
+    "is_active": true
+  },
+  {
+    "slug": "garren-holt",
+    "name": "Garren Holt",
+    "npc_type": "humanoid",
+    "disposition": "neutral",
+    "role": "ambiguous",
+    "text": {
+      "summary": "A reclusive hunter who knows the old paths better than most people in Dunmere.",
+      "full": "A quiet, defensive hunter who knows the forest paths and resents being treated like a suspect simply because he sees more than others do."
+    },
+    "is_active": true
+  },
+  {
+    "slug": "rusk-bandit",
+    "name": "Rusk",
+    "npc_type": "humanoid",
+    "disposition": "hostile",
+    "role": "surface_antagonist",
+    "text": {
+      "summary": "Leader of the bandits near the shrine, volatile and visibly strained.",
+      "full": "Leader of a small bandit group using the ruined shrine as a base. He is dangerous in his own right, but also reacting to pressure he does not understand."
+    },
+    "is_active": true
+  },
+  {
+    "slug": "bandit-lackey",
+    "name": "Bandit Lackey",
+    "npc_type": "humanoid",
+    "disposition": "hostile",
+    "role": "encounter_support",
+    "text": {
+      "summary": "A nervous bandit who makes the shrine more dangerous only when scaling explicitly permits it.",
+      "full": "A lesser bandit drawn into Rusk's orbit. They add pressure for a larger party, but are not important enough to change the story's center of gravity."
+    },
+    "is_active": true
+  },
+  {
+    "slug": "lysa-fen",
+    "name": "Lysa Fen",
+    "npc_type": "humanoid",
+    "disposition": "neutral",
+    "role": "emotional_anchor",
+    "text": {
+      "summary": "A villager whose brother is missing and whose fear is turning into certainty.",
+      "full": "A determined villager whose missing brother has left her desperate for answers and increasingly suspicious of everyone around her."
+    },
+    "is_active": true
+  },
+  {
+    "slug": "whispering-presence",
+    "name": "The Whispering Presence",
+    "npc_type": "presence",
+    "disposition": "hostile",
+    "role": "hidden_influence",
+    "true_name": "The Whispering Presence",
+    "public_role_label": null,
+    "unknown_label": "an unseen pressure",
+    "aliases": [],
+    "default_location_id": "subterranean-hollow",
+    "default_scene_id": "subterranean-hollow",
+    "default_visibility": "hidden",
+    "default_availability": "unavailable",
+    "default_actions": [
+      "observe"
+    ],
+    "identity": {
+      "reveal_policy": "unknown_until_known",
+      "knowledge_id_for_true_name": "knows_whispering_presence_name",
+      "publicly_known": false
+    },
+    "text": {
+      "summary": "An unseen influence beneath the shrine that presses on thought instead of flesh.",
+      "full": "A subtle, persuasive influence anchored beneath the ruined shrine. It does not command in words so much as bend attention, coordination, and certainty."
+    },
+    "is_active": true
+  }
+]

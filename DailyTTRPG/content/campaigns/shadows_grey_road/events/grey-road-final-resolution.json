@@ -1,0 +1,304 @@
+{
+  "slug": "grey-road-final-resolution",
+  "name": "The Truth Below",
+  "event_type": "final_resolution",
+  "text": {
+    "summary": "The hollow has stopped pretending to be only a mood. What you do here will decide whether the Grey Road truly changes or merely learns a new way to stay wrong.",
+    "full": "Below the shrine, the violence of the road finally resolves into something you can answer. Not safely. Only clearly enough to choose."
+  },
+  "prompt_text": "Now that you have found the influence beneath the shrine, how do you answer it?",
+  "is_active": true,
+  "options": [
+    {
+      "slug": "disrupt-the-anchor",
+      "label": "Disrupt the anchor and break the influence",
+      "description": "Act on what you learned and sever the thing beneath the shrine from the road above it.",
+      "sort_order": 1,
+      "resolution_kind": "apply_effects",
+      "resolution_payload": {
+        "campaign_flags": {
+          "grey_road_resolution_recorded": true,
+          "grey_road_full_resolution": true
+        },
+        "campaign_flag_categories": {
+          "grey_road_resolution_recorded": "campaign_outcome",
+          "grey_road_full_resolution": "campaign_outcome"
+        },
+        "character_flags": {
+          "ending_a_full_resolution": true,
+          "grey_road_campaign_resolved": true
+        },
+        "quests": [
+          {
+            "quest_key": "shadows_grey_road",
+            "status": "completed"
+          }
+        ],
+        "objectives": [
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "uncover-the-truth",
+            "status": "completed",
+            "progress_count": 1
+          },
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "resolve-the-threat",
+            "status": "completed",
+            "progress_count": 1
+          }
+        ],
+        "npc_states": [
+          {
+            "npc_key": "mara-vellin",
+            "disposition": "friendly"
+          },
+          {
+            "npc_key": "tomas-rell",
+            "disposition": "friendly"
+          },
+          {
+            "npc_key": "lysa-fen",
+            "disposition": "friendly"
+          }
+        ],
+        "knowledge_entries": [
+          {
+            "knowledge_type": "event",
+            "knowledge_key": "ending_a_full_resolution",
+            "title": "Full Resolution",
+            "summary": "You broke the surface threat and disrupted the hidden influence beneath the shrine, giving Dunmere a real chance to recover."
+          }
+        ],
+        "world_changes": [
+          {
+            "change_key": "grey_road_full_resolution",
+            "change_type": "campaign_outcome_full_resolution",
+            "propagation_scope": "regional",
+            "region_slug": "greyvale-lowlands",
+            "title": "The Grey Road finally steadies",
+            "summary": "The danger around the shrine breaks cleanly enough for the Grey Road and Dunmere to begin stabilizing.",
+            "narrative_text": "The road feels lighter after the shrine's deeper disturbance is finally broken.",
+            "truth_delta": {
+              "world_flags": {
+                "grey_road_full_resolution": true,
+                "grey_road_region_stabilized": true
+              },
+              "world_flag_categories": {
+                "grey_road_full_resolution": "regional_outcome",
+                "grey_road_region_stabilized": "regional_stability"
+              },
+              "entity_updates": [
+                {
+                  "entity_slug": "rusk-bandit",
+                  "status": "defeated",
+                  "state": {
+                    "fate": "defeated_at_shrine",
+                    "ending": "ending_a_full_resolution"
+                  },
+                  "summary": "Rusk's threat ended with the shrine confrontation."
+                },
+                {
+                  "entity_slug": "whispering-presence",
+                  "status": "inactive",
+                  "state": {
+                    "strength": "broken",
+                    "ending": "ending_a_full_resolution"
+                  },
+                  "summary": "The hidden influence beneath the shrine was broken."
+                }
+              ]
+            },
+            "knowledge_policy": {
+              "regional_channel": "proximity",
+              "regional_initial_status": "available",
+              "regional_delay_minutes": 20,
+              "global_channel": "rumor",
+              "global_initial_status": "available",
+              "global_delay_minutes": 180
+            }
+          }
+        ],
+        "source_knowledge_title": "You broke the hidden influence",
+        "source_knowledge_summary": "The deeper thing beneath the shrine was not merely found. It was answered."
+      },
+      "is_active": true
+    },
+    {
+      "slug": "misread-the-whispers",
+      "label": "Mistake the influence for something you can safely leave bound",
+      "description": "Choose the wrong reading of the hollow and leave the deeper force intact under a false conclusion.",
+      "sort_order": 2,
+      "resolution_kind": "apply_effects",
+      "resolution_payload": {
+        "campaign_flags": {
+          "grey_road_resolution_recorded": true,
+          "grey_road_misresolution": true
+        },
+        "campaign_flag_categories": {
+          "grey_road_resolution_recorded": "campaign_outcome",
+          "grey_road_misresolution": "campaign_outcome"
+        },
+        "character_flags": {
+          "ending_c_misresolution": true,
+          "grey_road_campaign_resolved": true
+        },
+        "quests": [
+          {
+            "quest_key": "shadows_grey_road",
+            "status": "completed"
+          }
+        ],
+        "objectives": [
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "uncover-the-truth",
+            "status": "completed",
+            "progress_count": 1
+          },
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "resolve-the-threat",
+            "status": "completed",
+            "progress_count": 1
+          }
+        ],
+        "knowledge_entries": [
+          {
+            "knowledge_type": "event",
+            "knowledge_key": "ending_c_misresolution",
+            "title": "Misresolution",
+            "summary": "You looked directly at the truth and still answered it wrongly, leaving the deeper influence stronger than before."
+          }
+        ],
+        "world_changes": [
+          {
+            "change_key": "grey_road_hollow_misresolution",
+            "change_type": "campaign_outcome_hollow_misresolution",
+            "propagation_scope": "regional",
+            "region_slug": "greyvale-lowlands",
+            "title": "A false calm settles over the Grey Road",
+            "summary": "The danger beneath the shrine remains unbroken, and the region's unease begins to deepen instead of lifting.",
+            "narrative_text": "The hollow accepted the wrong answer and kept its hold on the road for it.",
+            "truth_delta": {
+              "world_flags": {
+                "grey_road_misresolved": true,
+                "grey_road_regional_risk_increased": true
+              },
+              "world_flag_categories": {
+                "grey_road_misresolved": "regional_outcome",
+                "grey_road_regional_risk_increased": "regional_risk"
+              },
+              "entity_updates": [
+                {
+                  "entity_slug": "whispering-presence",
+                  "state": {
+                    "strength": "strengthened",
+                    "ending": "ending_c_misresolution"
+                  },
+                  "summary": "The hidden influence beneath the shrine strengthened after being misread."
+                }
+              ]
+            },
+            "knowledge_policy": {
+              "regional_channel": "proximity",
+              "regional_initial_status": "available",
+              "regional_delay_minutes": 30,
+              "global_channel": "rumor",
+              "global_initial_status": "available",
+              "global_delay_minutes": 180
+            }
+          }
+        ],
+        "source_knowledge_title": "You saw the truth and answered it wrongly",
+        "source_knowledge_summary": "The hollow was real, and the answer you gave it left the region more vulnerable than before."
+      },
+      "is_active": true
+    },
+    {
+      "slug": "retreat-from-the-hollow",
+      "label": "Retreat and let the danger expand",
+      "description": "Leave the hollow unresolved and accept that the road will worsen in the aftermath.",
+      "sort_order": 3,
+      "resolution_kind": "apply_effects",
+      "resolution_payload": {
+        "campaign_flags": {
+          "grey_road_resolution_recorded": true,
+          "grey_road_escalation": true
+        },
+        "campaign_flag_categories": {
+          "grey_road_resolution_recorded": "campaign_outcome",
+          "grey_road_escalation": "campaign_outcome"
+        },
+        "character_flags": {
+          "ending_d_escalation": true,
+          "grey_road_campaign_resolved": true
+        },
+        "quests": [
+          {
+            "quest_key": "shadows_grey_road",
+            "status": "completed"
+          }
+        ],
+        "objectives": [
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "resolve-the-threat",
+            "status": "completed",
+            "progress_count": 1
+          }
+        ],
+        "knowledge_entries": [
+          {
+            "knowledge_type": "event",
+            "knowledge_key": "ending_d_escalation",
+            "title": "Escalation",
+            "summary": "You left the hollow unresolved, and the danger along the Grey Road widened instead of narrowing."
+          }
+        ],
+        "world_changes": [
+          {
+            "change_key": "grey_road_hollow_escalation",
+            "change_type": "campaign_outcome_hollow_escalation",
+            "propagation_scope": "regional",
+            "region_slug": "greyvale-lowlands",
+            "title": "The Grey Road worsens",
+            "summary": "The shrine's hidden danger spreads outward into fresh attacks, sharper fear, and growing instability.",
+            "narrative_text": "Leaving the hollow unresolved lets the region's danger stop hiding behind the bandits entirely.",
+            "truth_delta": {
+              "world_flags": {
+                "grey_road_escalated": true,
+                "grey_road_attacks_worsened": true
+              },
+              "world_flag_categories": {
+                "grey_road_escalated": "regional_outcome",
+                "grey_road_attacks_worsened": "regional_risk"
+              },
+              "entity_updates": [
+                {
+                  "entity_slug": "whispering-presence",
+                  "state": {
+                    "strength": "expanding",
+                    "ending": "ending_d_escalation"
+                  },
+                  "summary": "The hidden influence beneath the shrine expanded after being left unresolved."
+                }
+              ]
+            },
+            "knowledge_policy": {
+              "regional_channel": "proximity",
+              "regional_initial_status": "available",
+              "regional_delay_minutes": 10,
+              "global_channel": "rumor",
+              "global_initial_status": "available",
+              "global_delay_minutes": 120
+            }
+          }
+        ],
+        "source_knowledge_title": "You left the hollow unresolved",
+        "source_knowledge_summary": "The road's deeper danger began to spread once nothing held it in place beneath the shrine."
+      },
+      "is_active": true
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+[
+  {
+    "slug": "mara-vellin",
+    "entity_type": "npc",
+    "template_slug": "mara-vellin",
+    "current_region_slug": "greyvale-lowlands",
+    "current_location_slug": "dunmere-village",
+    "current_scene_slug": "dunmere-village",
+    "status": "active",
+    "disposition": "neutral",
+    "faction": "dunmere",
+    "state": {
+      "village_confidence_state": "strained",
+      "knows_bandit_explanation_only": true
+    },
+    "notes": "Acting head of Dunmere and the village authority anchor.",
+    "sync_scene_presence": true
+  },
+  {
+    "slug": "tomas-rell",
+    "entity_type": "npc",
+    "template_slug": "tomas-rell",
+    "current_region_slug": "greyvale-lowlands",
+    "current_location_slug": "grey-road-inn",
+    "current_scene_slug": "grey-road-inn",
+    "status": "active",
+    "disposition": "friendly",
+    "faction": "grey-road-inn",
+    "state": {
+      "knowledge_anchor": true
+    },
+    "notes": "Innkeeper and rumor source for the road.",
+    "sync_scene_presence": true
+  },
+  {
+    "slug": "elin-harrow",
+    "entity_type": "npc",
+    "template_slug": "elin-harrow",
+    "current_region_slug": "greyvale-lowlands",
+    "current_location_slug": "grey-road-inn",
+    "current_scene_slug": "elin-memory-fragments",
+    "status": "active",
+    "disposition": "neutral",
+    "faction": "travelers",
+    "state": {
+      "traumatized": true
+    },
+    "notes": "Survivor whose testimony can sharpen or blur the investigation.",
+    "sync_scene_presence": true
+  },
+  {
+    "slug": "grey-road-travelers",
+    "entity_type": "npc",
+    "template_slug": "grey-road-travelers",
+    "current_region_slug": "greyvale-lowlands",
+    "current_location_slug": "grey-road-inn",
+    "current_scene_slug": "grey-road-inn",
+    "status": "active",
+    "disposition": "neutral",
+    "faction": "travelers",
+    "state": {
+      "group": true,
+      "road_rumors": true
+    },
+    "notes": "Road patrons and travelers in the Grey Road Inn common room.",
+    "sync_scene_presence": true
+  },
+  {
+    "slug": "garren-holt",
+    "entity_type": "npc",
+    "template_slug": "garren-holt",
+    "current_region_slug": "greyvale-lowlands",
+    "current_location_slug": "dunmere-village",
+    "current_scene_slug": "dunmere-village",
+    "status": "active",
+    "disposition": "neutral",
+    "faction": "hunters",
+    "state": {
+      "wary_of_authority": true
+    },
+    "notes": "Reclusive hunter and lead toward the shrine.",
+    "sync_scene_presence": true
+  },
+  {
+    "slug": "rusk-bandit",
+    "entity_type": "npc",
+    "template_slug": "rusk-bandit",
+    "current_region_slug": "greyvale-lowlands",
+    "current_location_slug": "shrine-ruins",
+    "current_scene_slug": "shrine-ruins",
+    "status": "active",
+    "disposition": "hostile",
+    "faction": "bandits",
+    "state": {
+      "hears_the_whispers": true
+    },
+    "notes": "Surface antagonist at the ruined shrine.",
+    "sync_scene_presence": true
+  },
+  {
+    "slug": "lysa-fen",
+    "entity_type": "npc",
+    "template_slug": "lysa-fen",
+    "current_region_slug": "greyvale-lowlands",
+    "current_location_slug": "dunmere-village",
+    "current_scene_slug": "dunmere-village",
+    "status": "active",
+    "disposition": "neutral",
+    "faction": "dunmere",
+    "state": {
+      "brother_missing": true
+    },
+    "notes": "Emotional anchor and source of a plausible misread.",
+    "sync_scene_presence": true
+  },
+  {
+    "slug": "whispering-presence",
+    "entity_type": "npc",
+    "template_slug": "whispering-presence",
+    "current_region_slug": "greyvale-lowlands",
+    "current_location_slug": "subterranean-hollow",
+    "current_scene_slug": "subterranean-hollow",
+    "status": "active",
+    "disposition": "hostile",
+    "faction": "unknown",
+    "state": {
+      "strength": "active",
+      "influence_modes": [
+        "hesitation",
+        "confusion",
+        "suggestion"
+      ]
+    },
+    "notes": "The hidden influence beneath the shrine.",
+    "sync_scene_presence": true
+  }
+]

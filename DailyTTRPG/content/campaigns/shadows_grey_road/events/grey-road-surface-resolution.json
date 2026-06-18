@@ -1,0 +1,312 @@
+{
+  "slug": "grey-road-surface-resolution",
+  "name": "After the Shrine Fight",
+  "event_type": "surface_resolution",
+  "text": {
+    "summary": "Rusk is down and the shrine is quiet for the first time in days, but quiet is not the same thing as certainty.",
+    "full": "With the surface threat broken, Dunmere will want an answer right away. Whether that answer is complete is another matter."
+  },
+  "prompt_text": "Rusk's band is broken. What conclusion do you carry back from the shrine?",
+  "is_active": true,
+  "options": [
+    {
+      "slug": "declare-the-road-safer-for-now",
+      "label": "Declare the road safer for now",
+      "description": "Treat the immediate threat as solved, while admitting a deeper unease remains unresolved.",
+      "sort_order": 1,
+      "resolution_kind": "apply_effects",
+      "resolution_payload": {
+        "campaign_flags": {
+          "grey_road_resolution_recorded": true,
+          "grey_road_surface_victory": true
+        },
+        "campaign_flag_categories": {
+          "grey_road_resolution_recorded": "campaign_outcome",
+          "grey_road_surface_victory": "campaign_outcome"
+        },
+        "character_flags": {
+          "ending_b_surface_victory": true,
+          "grey_road_campaign_resolved": true
+        },
+        "quests": [
+          {
+            "quest_key": "shadows_grey_road",
+            "status": "completed"
+          }
+        ],
+        "objectives": [
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "uncover-the-truth",
+            "status": "completed",
+            "progress_count": 1
+          },
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "resolve-the-threat",
+            "status": "completed",
+            "progress_count": 1
+          }
+        ],
+        "npc_states": [
+          {
+            "npc_key": "mara-vellin",
+            "disposition": "friendly"
+          },
+          {
+            "npc_key": "tomas-rell",
+            "disposition": "friendly"
+          },
+          {
+            "npc_key": "lysa-fen",
+            "disposition": "neutral"
+          }
+        ],
+        "knowledge_entries": [
+          {
+            "knowledge_type": "event",
+            "knowledge_key": "ending_b_surface_victory",
+            "title": "Surface Victory",
+            "summary": "You broke the shrine bandits and made the Grey Road safer, but the deeper wrongness beneath the place remains unresolved."
+          }
+        ],
+        "world_changes": [
+          {
+            "change_key": "grey_road_surface_victory",
+            "change_type": "campaign_outcome_surface_victory",
+            "propagation_scope": "regional",
+            "region_slug": "greyvale-lowlands",
+            "title": "The Grey Road steadies uneasily",
+            "summary": "Traffic along the Grey Road becomes safer for a time after violence at the ruined shrine is broken.",
+            "narrative_text": "The bandit camp at the shrine is broken, and the road grows safer, though not fully clean of unease.",
+            "truth_delta": {
+              "world_flags": {
+                "grey_road_surface_victory": true,
+                "grey_road_hidden_influence_persists": true
+              },
+              "world_flag_categories": {
+                "grey_road_surface_victory": "regional_outcome",
+                "grey_road_hidden_influence_persists": "hidden_truth"
+              },
+              "entity_updates": [
+                {
+                  "entity_slug": "rusk-bandit",
+                  "status": "defeated",
+                  "state": {
+                    "fate": "defeated_at_shrine",
+                    "ending": "ending_b_surface_victory"
+                  },
+                  "summary": "Rusk's bandit threat was broken at the shrine."
+                },
+                {
+                  "entity_slug": "whispering-presence",
+                  "state": {
+                    "strength": "hidden_active",
+                    "ending": "ending_b_surface_victory"
+                  },
+                  "summary": "The deeper influence beneath the shrine remained hidden and active."
+                }
+              ]
+            },
+            "knowledge_policy": {
+              "regional_channel": "proximity",
+              "regional_initial_status": "available",
+              "regional_delay_minutes": 30,
+              "global_channel": "rumor",
+              "global_initial_status": "available",
+              "global_delay_minutes": 180
+            }
+          }
+        ],
+        "source_knowledge_title": "You secured the road, but not the whole truth",
+        "source_knowledge_summary": "The immediate threat ended at the shrine, but you left with the sense that something deeper still remained."
+      },
+      "is_active": true
+    },
+    {
+      "slug": "blame-the-bandits-alone",
+      "label": "Blame the bandits and leave it at that",
+      "description": "Accept the simplest explanation and let the deeper pattern stay buried.",
+      "sort_order": 2,
+      "resolution_kind": "apply_effects",
+      "resolution_payload": {
+        "campaign_flags": {
+          "grey_road_resolution_recorded": true,
+          "grey_road_misresolution": true
+        },
+        "campaign_flag_categories": {
+          "grey_road_resolution_recorded": "campaign_outcome",
+          "grey_road_misresolution": "campaign_outcome"
+        },
+        "character_flags": {
+          "ending_c_misresolution": true,
+          "grey_road_campaign_resolved": true
+        },
+        "quests": [
+          {
+            "quest_key": "shadows_grey_road",
+            "status": "completed"
+          }
+        ],
+        "objectives": [
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "uncover-the-truth",
+            "status": "completed",
+            "progress_count": 1
+          },
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "resolve-the-threat",
+            "status": "completed",
+            "progress_count": 1
+          }
+        ],
+        "knowledge_entries": [
+          {
+            "knowledge_type": "event",
+            "knowledge_key": "ending_c_misresolution",
+            "title": "Misresolution",
+            "summary": "You carried back the cleanest explanation instead of the truest one, leaving the deeper influence room to strengthen."
+          }
+        ],
+        "world_changes": [
+          {
+            "change_key": "grey_road_misresolved",
+            "change_type": "campaign_outcome_misresolved",
+            "propagation_scope": "regional",
+            "region_slug": "greyvale-lowlands",
+            "title": "A false calm settles over the Grey Road",
+            "summary": "The shrine violence appears broken, but the road's deeper unease does not lift.",
+            "narrative_text": "The village receives a clean answer, and the road receives no true relief for it.",
+            "truth_delta": {
+              "world_flags": {
+                "grey_road_misresolved": true,
+                "grey_road_regional_risk_increased": true
+              },
+              "world_flag_categories": {
+                "grey_road_misresolved": "regional_outcome",
+                "grey_road_regional_risk_increased": "regional_risk"
+              },
+              "entity_updates": [
+                {
+                  "entity_slug": "rusk-bandit",
+                  "status": "defeated",
+                  "state": {
+                    "fate": "defeated_at_shrine",
+                    "ending": "ending_c_misresolution"
+                  },
+                  "summary": "Rusk fell, but his defeat did not end the deeper problem."
+                },
+                {
+                  "entity_slug": "whispering-presence",
+                  "state": {
+                    "strength": "strengthened",
+                    "ending": "ending_c_misresolution"
+                  },
+                  "summary": "The hidden influence beneath the shrine strengthened under a false conclusion."
+                }
+              ]
+            },
+            "knowledge_policy": {
+              "regional_channel": "proximity",
+              "regional_initial_status": "available",
+              "regional_delay_minutes": 45,
+              "global_channel": "rumor",
+              "global_initial_status": "available",
+              "global_delay_minutes": 240
+            }
+          }
+        ],
+        "source_knowledge_title": "You left the wrong answer standing",
+        "source_knowledge_summary": "The fight at the shrine ended, but the deeper pattern remained unbroken behind the explanation you carried home."
+      },
+      "is_active": true
+    },
+    {
+      "slug": "withdraw-and-let-fear-grow",
+      "label": "Withdraw and let fear grow around the road",
+      "description": "Break contact, carry no clear answer back, and let the danger worsen in the vacuum.",
+      "sort_order": 3,
+      "resolution_kind": "apply_effects",
+      "resolution_payload": {
+        "campaign_flags": {
+          "grey_road_resolution_recorded": true,
+          "grey_road_escalation": true
+        },
+        "campaign_flag_categories": {
+          "grey_road_resolution_recorded": "campaign_outcome",
+          "grey_road_escalation": "campaign_outcome"
+        },
+        "character_flags": {
+          "ending_d_escalation": true,
+          "grey_road_campaign_resolved": true
+        },
+        "quests": [
+          {
+            "quest_key": "shadows_grey_road",
+            "status": "completed"
+          }
+        ],
+        "objectives": [
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "resolve-the-threat",
+            "status": "completed",
+            "progress_count": 1
+          }
+        ],
+        "knowledge_entries": [
+          {
+            "knowledge_type": "event",
+            "knowledge_key": "ending_d_escalation",
+            "title": "Escalation",
+            "summary": "You left the shrine without a stable answer, and the road's fear had room to become something worse."
+          }
+        ],
+        "world_changes": [
+          {
+            "change_key": "grey_road_escalation",
+            "change_type": "campaign_outcome_escalation",
+            "propagation_scope": "regional",
+            "region_slug": "greyvale-lowlands",
+            "title": "The Grey Road worsens",
+            "summary": "Fresh attacks, fear, and displacement spread outward from the shrine paths instead of receding.",
+            "narrative_text": "The shrine remains a wound in the region, and the road begins teaching harsher lessons than before.",
+            "truth_delta": {
+              "world_flags": {
+                "grey_road_escalated": true,
+                "grey_road_attacks_worsened": true
+              },
+              "world_flag_categories": {
+                "grey_road_escalated": "regional_outcome",
+                "grey_road_attacks_worsened": "regional_risk"
+              },
+              "entity_updates": [
+                {
+                  "entity_slug": "whispering-presence",
+                  "state": {
+                    "strength": "expanding",
+                    "ending": "ending_d_escalation"
+                  },
+                  "summary": "The influence beneath the shrine expanded while no stable answer replaced fear."
+                }
+              ]
+            },
+            "knowledge_policy": {
+              "regional_channel": "proximity",
+              "regional_initial_status": "available",
+              "regional_delay_minutes": 15,
+              "global_channel": "rumor",
+              "global_initial_status": "available",
+              "global_delay_minutes": 120
+            }
+          }
+        ],
+        "source_knowledge_title": "You left the road to worsen",
+        "source_knowledge_summary": "Without a stable resolution, the shrine's danger spread outward into the lowlands."
+      },
+      "is_active": true
+    }
+  ]
+}

@@ -1,0 +1,341 @@
+[
+  {
+    "knowledge_id": "grey_road_connects_dunmere",
+    "type": "fact",
+    "public_label": "The Grey Road connects Dunmere to nearby trade stops",
+    "canonical_text": "The Grey Road connects Dunmere to other villages and trade stops in the Greyvale Lowlands.",
+    "hidden_until_discovered": false,
+    "tags": [
+      "grey_road",
+      "dunmere",
+      "travel"
+    ]
+  },
+  {
+    "knowledge_id": "dunmere_nearby",
+    "type": "fact",
+    "public_label": "Dunmere is nearby",
+    "canonical_text": "Dunmere is a nearby village along the Grey Road.",
+    "hidden_until_discovered": false,
+    "tags": [
+      "dunmere",
+      "location"
+    ]
+  },
+  {
+    "knowledge_id": "caravan_irregularity",
+    "type": "clue",
+    "public_label": "The caravan attack seems unusual",
+    "canonical_text": "The caravan was damaged, but much of the cargo was left behind.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "caravan",
+      "mystery",
+      "grey_road"
+    ]
+  },
+  {
+    "knowledge_id": "attack_staged",
+    "type": "clue",
+    "public_label": "The attack may have been staged",
+    "canonical_text": "The scene aligns too neatly: untouched cargo, a cracked wheel, and too few bodies. The attack was made to look like simple robbery.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "caravan",
+      "mystery",
+      "staged_attack"
+    ]
+  },
+  {
+    "knowledge_id": "strange_tracks_leave_road",
+    "type": "clue",
+    "public_label": "Fresh tracks leave the road",
+    "canonical_text": "Fresh tracks pull away from the broken caravan and leave the Grey Road.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "tracks",
+      "grey_road",
+      "lead"
+    ]
+  },
+  {
+    "knowledge_id": "knows_tomas_name",
+    "type": "entity_knowledge",
+    "public_label": "The innkeeper is Tomas Rell",
+    "canonical_text": "The Grey Road Inn's innkeeper is Tomas Rell.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "npc",
+      "tomas",
+      "grey_road_inn"
+    ]
+  },
+  {
+    "knowledge_id": "knows_elin_name",
+    "type": "entity_knowledge",
+    "public_label": "The shaken survivor is Elin Harrow",
+    "canonical_text": "The shaken survivor near the hearth is Elin Harrow.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "npc",
+      "elin",
+      "survivor",
+      "grey_road_inn"
+    ]
+  },
+  {
+    "knowledge_id": "knows_whispering_presence_name",
+    "type": "entity_knowledge",
+    "public_label": "The unseen influence has a name",
+    "canonical_text": "The influence beneath the shrine is known as the Whispering Presence.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "npc",
+      "hidden_influence",
+      "shrine"
+    ]
+  },
+  {
+    "knowledge_id": "heavy_load_carried_toward_trees",
+    "type": "clue",
+    "public_label": "A heavy load left the road",
+    "canonical_text": "One set of tracks near the caravan is deeper than the others, as if someone carried a heavy load away from the road.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "tracks",
+      "caravan",
+      "grey_road"
+    ]
+  },
+  {
+    "knowledge_id": "attackers_not_primarily_looting",
+    "type": "clue",
+    "public_label": "Loot was not the main purpose",
+    "canonical_text": "The caravan attack left enough portable goods behind to suggest the attackers wanted something other than simple robbery.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "caravan",
+      "mystery"
+    ]
+  },
+  {
+    "knowledge_id": "caravan_axle_was_sabotaged",
+    "type": "clue",
+    "public_label": "The caravan axle was sabotaged",
+    "canonical_text": "The caravan axle appears deliberately split rather than merely damaged by the road.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "caravan",
+      "sabotage"
+    ]
+  },
+  {
+    "knowledge_id": "not_all_travelers_fell_at_wreck",
+    "type": "clue",
+    "public_label": "Not everyone fell at the wreck",
+    "canonical_text": "The attack site suggests some caravan travelers left the road after the wagon was disabled.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "missing_travelers",
+      "caravan"
+    ]
+  },
+  {
+    "knowledge_id": "survivor_fears_more_than_bandits",
+    "type": "clue",
+    "public_label": "The survivor fears more than bandits",
+    "canonical_text": "The shaken survivor reacts as though bandits are not the whole explanation for what happened on the road.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "survivor",
+      "grey_road_inn"
+    ]
+  },
+  {
+    "knowledge_id": "woman_near_hearth_survived_road_attack",
+    "type": "clue",
+    "public_label": "The woman near the hearth survived the road attack",
+    "canonical_text": "The shaken woman by the hearth appears directly connected to the caravan attack.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "survivor",
+      "grey_road_inn"
+    ]
+  },
+  {
+    "knowledge_id": "innkeeper_tracks_road_patterns",
+    "type": "clue",
+    "public_label": "The innkeeper tracks the road pattern",
+    "canonical_text": "The innkeeper has been comparing road reports and may know more than common rumor.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "innkeeper",
+      "rumor"
+    ]
+  },
+  {
+    "knowledge_id": "travelers_mention_old_shrine",
+    "type": "clue",
+    "public_label": "Travelers mention the old shrine",
+    "canonical_text": "Travelers at the inn connect the road trouble to the old shrine, though not openly.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "shrine",
+      "rumor"
+    ]
+  },
+  {
+    "knowledge_id": "dunmere_wants_simple_answer",
+    "type": "clue",
+    "public_label": "Dunmere wants a simple answer",
+    "canonical_text": "Fear in Dunmere is making people ready to accept a clean explanation before the truth is known.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "dunmere",
+      "social_pressure"
+    ]
+  },
+  {
+    "knowledge_id": "garren_knows_old_paths",
+    "type": "clue",
+    "public_label": "Garren knows the old paths",
+    "canonical_text": "A reclusive hunter named Garren Holt is repeatedly tied to knowledge of the old forest path.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "garren",
+      "old_path"
+    ]
+  },
+  {
+    "knowledge_id": "village_blames_hunter_and_road",
+    "type": "clue",
+    "public_label": "The village blames the hunter and the road",
+    "canonical_text": "Dunmere fear keeps circling back to Garren Holt, the old path, and the road attacks.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "dunmere",
+      "garren"
+    ]
+  },
+  {
+    "knowledge_id": "old_path_still_used",
+    "type": "clue",
+    "public_label": "The old path is still used",
+    "canonical_text": "The forest path beyond Dunmere is still seeing traffic despite local unease.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "old_path",
+      "tracks"
+    ]
+  },
+  {
+    "knowledge_id": "forest_path_watched",
+    "type": "clue",
+    "public_label": "Someone watched the forest path",
+    "canonical_text": "Signs along the old path suggest someone has been watching movement through the trees.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "old_path",
+      "watcher"
+    ]
+  },
+  {
+    "knowledge_id": "tracks_converge_on_shrine",
+    "type": "clue",
+    "public_label": "Tracks converge on the shrine",
+    "canonical_text": "The movement along the old forest path repeatedly bends toward the ruined shrine.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "tracks",
+      "shrine"
+    ]
+  },
+  {
+    "knowledge_id": "bandits_not_fully_self_directed",
+    "type": "clue",
+    "public_label": "The bandits were under pressure",
+    "canonical_text": "The shrine camp suggests dangerous people under a pressure they did not fully control.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "bandits",
+      "shrine"
+    ]
+  },
+  {
+    "knowledge_id": "shrine_was_mercy_marker",
+    "type": "lore",
+    "public_label": "The shrine was a mercy marker",
+    "canonical_text": "The ruined shrine was once a roadside mercy shrine meant to steady travelers on lonely roads.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "shrine",
+      "history"
+    ]
+  },
+  {
+    "knowledge_id": "clue_unusual_markings",
+    "type": "clue",
+    "public_label": "Unusual shrine markings",
+    "canonical_text": "The signs around the shrine suggest repeated contact with something the bandits did not fully control.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "shrine",
+      "markings"
+    ]
+  },
+  {
+    "knowledge_id": "shrine_depth_unlocked",
+    "type": "clue",
+    "public_label": "A way beneath the shrine",
+    "canonical_text": "The ruined shrine contains signs of a hidden descent below the surface stones.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "shrine",
+      "hollow"
+    ]
+  },
+  {
+    "knowledge_id": "presence_bends_attention",
+    "type": "clue",
+    "public_label": "The presence bends attention",
+    "canonical_text": "The hidden influence beneath the shrine does not command directly; it bends attention, hesitation, and certainty.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "hollow",
+      "presence"
+    ]
+  },
+  {
+    "knowledge_id": "anchor_spreads_influence",
+    "type": "clue",
+    "public_label": "The anchor spreads influence",
+    "canonical_text": "The hollow anchor lets the hidden influence travel upward through fear and repeated suggestion.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "hollow",
+      "anchor"
+    ]
+  },
+  {
+    "knowledge_id": "presence_encourages_false_certainty",
+    "type": "clue",
+    "public_label": "The presence encourages false certainty",
+    "canonical_text": "The hidden influence pushes people toward simple answers and premature certainty.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "hollow",
+      "presence"
+    ]
+  },
+  {
+    "knowledge_id": "hollow_reaches_shrine_above",
+    "type": "clue",
+    "public_label": "The hollow reaches the shrine above",
+    "canonical_text": "The hollow is connected to the shrine above by more than stairs; its influence moves upward.",
+    "hidden_until_discovered": true,
+    "tags": [
+      "hollow",
+      "shrine"
+    ]
+  }
+]

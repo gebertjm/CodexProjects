@@ -1,0 +1,11 @@
+{
+  "known_relevant_npcs": [
+    {
+      "npc_id": "elin-harrow",
+      "display_name": "Elin Harrow",
+      "presence": "absent",
+      "last_known_location_label": "Grey Road Inn",
+      "relevance": "survivor of the caravan attack"
+    }
+  ]
+}

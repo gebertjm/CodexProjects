@@ -1,0 +1,18 @@
+{
+  "scene_key": "grey-road-inn",
+  "effective_environment": {
+    "weather": "rain",
+    "time_of_day": "evening",
+    "season": "autumn",
+    "light_level": "firelit",
+    "visibility": "dim",
+    "location_environment": "inn",
+    "mood_or_tone": "quiet"
+  },
+  "selected_flavors": [
+    "grey_road_inn_rain_evening_weather_001",
+    "grey_road_inn_evening_time_001",
+    "greyvale_autumn_season_001"
+  ],
+  "assembled_description": "Rain taps steadily against the inn windows. Evening has drawn travelers close to the hearth, but conversation still keeps its distance. Autumn has left the lowlands damp, brown-edged, and slow to give up warmth. You enter the Grey Road Inn and feel the room listening before it speaks."
+}

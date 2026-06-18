@@ -1,0 +1,10 @@
+{
+  "custom_time_label": "festival_night",
+  "location_id": "dunmere-village",
+  "scene_id": "dunmere-village",
+  "activity": "watching the festival crowd",
+  "activity_text": "The village head watches the festival crowd with more concern than celebration.",
+  "availability": "limited",
+  "visibility": "visible",
+  "priority": 10
+}

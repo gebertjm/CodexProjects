@@ -1,0 +1,71 @@
+{
+  "slug": "grey-road-urgency-after-local-insight",
+  "hook_point": "time_beat",
+  "scope_type": "world",
+  "scope_key": "grey-road-urgency",
+  "label": "Fresh reports raise the pressure",
+  "text": {
+    "short": "Another troubling report arrives from the road.",
+    "summary": "Once local insight has been gathered, a time beat can turn unease into explicit urgency.",
+    "full": "The Grey Road does not wait for perfect certainty. Another troubling report arrives while clues are still being sorted, turning hesitation itself into part of the pressure.",
+    "sms": "Another troubling report arrives from the Grey Road.",
+    "recap": "A time beat increased the pressure around the investigation."
+  },
+  "conditions": {
+    "required_objective_states": [
+      {
+        "quest_key": "shadows_grey_road",
+        "objective_key": "gather-local-insight",
+        "statuses": [
+          "completed"
+        ]
+      }
+    ],
+    "forbidden_campaign_flags": {
+      "grey_road_urgency_reported": true
+    },
+    "forbidden_character_flags": {
+      "grey_road_campaign_resolved": true
+    }
+  },
+  "effects": {
+    "campaign_flags": {
+      "grey_road_urgency_reported": true
+    },
+    "campaign_flag_categories": {
+      "grey_road_urgency_reported": "time_pressure"
+    },
+    "campaign_flag_titles": {
+      "grey_road_urgency_reported": "Another report raised the pressure"
+    },
+    "campaign_flag_summaries": {
+      "grey_road_urgency_reported": "Fresh reports from the Grey Road made delay feel more dangerous."
+    },
+    "source_knowledge_title": "The road worsened while you worked",
+    "source_knowledge_summary": "Another troubling report made it clear the Grey Road would not stay still while you investigated."
+  },
+  "event_triggers": [
+    {
+      "event_template_key": "grey-road-urgent-report",
+      "conditions": {
+        "forbidden_character_flags": {
+          "grey_road_campaign_resolved": true
+        }
+      },
+      "feedback": {
+        "sms": "A pressure event opens.",
+        "summary": "The urgency around the road has become an explicit choice."
+      },
+      "once_per_character": true
+    }
+  ],
+  "feedback": {
+    "sms": "The road grows harder to ignore.",
+    "summary": "A time beat turned general unease into actionable pressure."
+  },
+  "priority": 20,
+  "is_active": true,
+  "metadata": {
+    "surface_focus_commit_ready": true
+  }
+}

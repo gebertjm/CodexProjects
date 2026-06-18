@@ -1,0 +1,25 @@
+{
+  "name": "Example World Package",
+  "version": "0.1.0",
+  "description": "Package metadata plus optional load-order controls.",
+  "load_order": [
+    "world",
+    "regionTemplates",
+    "locationTemplates",
+    "sceneTemplates",
+    "campaigns",
+    "regions",
+    "locations",
+    "scenes",
+    "sceneTransitions",
+    "npcTemplates",
+    "worldEntities",
+    "quests",
+    "interactions",
+    "dialogues",
+    "campaignLocationStates",
+    "campaignSceneStates"
+  ],
+  "include_sections": null,
+  "exclude_sections": []
+}

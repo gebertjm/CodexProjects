@@ -1,0 +1,104 @@
+{
+  "name": "Greyvale Seed Package",
+  "version": "1.1.0-6B.9-exploration-content",
+  "description": "Greyvale seed campaign package updated for Stage 6B.8 narrative scenes and Stage 6B.9 Surface / Focus / Commit exploration content.",
+  "load_order": [
+    "world",
+    "regionTemplates",
+    "locationTemplates",
+    "sceneTemplates",
+    "campaigns",
+    "regions",
+    "locations",
+    "scenes",
+    "sceneTransitions",
+    "npcTemplates",
+    "worldEntities",
+    "encounterTemplates",
+    "knowledgeDefinitions",
+    "environmentFlavorEntries",
+    "environmentModifiers",
+    "quests",
+    "interactions",
+    "sceneAffordances",
+    "dialogues",
+    "eventTemplates",
+    "contentHooks",
+    "campaignLocationStates",
+    "campaignSceneStates"
+  ],
+  "section_paths": {
+    "regionTemplates": [
+      "../../regions/greyvale/greyvale-lowlands-template.json"
+    ],
+    "locationTemplates": [
+      "../../locations/greyvale/location-templates.json"
+    ],
+    "sceneTemplates": [
+      "../../scenes/greyvale/scene-templates.json"
+    ],
+    "campaigns": [
+      "../../campaigns/shadows_grey_road/campaigns"
+    ],
+    "regions": [
+      "../../regions/greyvale/greyvale-lowlands.json"
+    ],
+    "locations": [
+      "../../locations/greyvale/locations.json"
+    ],
+    "scenes": [
+      "../../scenes/greyvale/scenes.json"
+    ],
+    "sceneTransitions": [
+      "../../scenes/greyvale/transitions"
+    ],
+    "npcTemplates": [
+      "../../entities/greyvale/npcs"
+    ],
+    "worldEntities": [
+      "../../entities/greyvale/world_entities"
+    ],
+    "encounterTemplates": [
+      "../../campaigns/shadows_grey_road/encounters"
+    ],
+    "knowledgeDefinitions": [
+      "../../campaigns/shadows_grey_road/knowledge"
+    ],
+    "environmentFlavorEntries": [
+      "../../campaigns/shadows_grey_road/environment_flavors"
+    ],
+    "environmentModifiers": [
+      "../../campaigns/shadows_grey_road/environment_modifiers"
+    ],
+    "quests": [
+      "../../campaigns/shadows_grey_road/quests"
+    ],
+    "interactions": [
+      "../../campaigns/shadows_grey_road/interactions"
+    ],
+    "sceneAffordances": [
+      "../../campaigns/shadows_grey_road/affordances"
+    ],
+    "dialogues": [
+      "../../dialogue/greyvale"
+    ],
+    "eventTemplates": [
+      "../../campaigns/shadows_grey_road/events"
+    ],
+    "contentHooks": [
+      "../../campaigns/shadows_grey_road/hooks"
+    ],
+    "campaignLocationStates": [
+      "../../campaigns/shadows_grey_road/campaign_overlays/locations"
+    ],
+    "campaignSceneStates": [
+      "../../campaigns/shadows_grey_road/campaign_overlays/scenes"
+    ]
+  },
+  "metadata": {
+    "world": "greyvale",
+    "campaign": "shadows_grey_road",
+    "stage": "6B.9 — Exploration Interaction Layer: Surface, Focus, Commit",
+    "dialogue_status": "Dialogue files intentionally remain on the existing dialogue model; dialogue-specific beat design is future work."
+  }
+}

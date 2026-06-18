@@ -1,0 +1,52 @@
+{
+  "slug": "grey-road-shrine-combat-resolution",
+  "hook_point": "combat_end",
+  "scope_type": "scene",
+  "scene_slug": "shrine-ruins",
+  "label": "Shrine combat resolves the surface threat",
+  "text": {
+    "short": "Rusk's fall resolves the surface threat at the shrine.",
+    "summary": "Ending combat at the shrine records that the surface bandit threat has been broken, and may trigger a surface-only resolution event.",
+    "full": "When the shrine fight ends, the most immediate answer to the Grey Road violence has either been broken or escaped. What remains is the harder question: whether the surface threat was the whole truth.",
+    "sms": "The shrine fight ends. Now you must decide what it means.",
+    "recap": "The shrine combat resolved the surface threat."
+  },
+  "conditions": {
+    "forbidden_character_flags": {
+      "surface_threat_resolved": true,
+      "grey_road_campaign_resolved": true
+    }
+  },
+  "effects": {
+    "character_flags": {
+      "surface_threat_resolved": true
+    },
+    "source_knowledge_title": "The shrine fight ended",
+    "source_knowledge_summary": "The surface threat at the shrine was broken, but its meaning still had to be decided."
+  },
+  "event_triggers": [
+    {
+      "event_template_key": "grey-road-surface-resolution",
+      "conditions": {
+        "forbidden_character_flags": {
+          "shrine_depth_unlocked": true,
+          "grey_road_campaign_resolved": true
+        }
+      },
+      "feedback": {
+        "sms": "A resolution choice opens at the shrine.",
+        "summary": "Because no deeper route was unlocked, the campaign presents a surface-resolution choice now."
+      },
+      "once_per_character": true
+    }
+  ],
+  "feedback": {
+    "sms": "The surface threat is broken.",
+    "summary": "The shrine fight changed the campaign state and may now force an interpretation."
+  },
+  "priority": 35,
+  "is_active": true,
+  "metadata": {
+    "surface_focus_commit_ready": true
+  }
+}

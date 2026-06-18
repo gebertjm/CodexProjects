@@ -1,0 +1,1041 @@
+{
+  "id": "greyvale_garren_path_knowledge_dialogue",
+  "slug": "greyvale-garren-path-knowledge-dialogue",
+  "title": "Garren Holt and the Old Paths",
+  "interaction_domain": "dialogue_focus_commit",
+  "scene_type": "dialogue",
+  "soft_target_max": 3,
+  "participants": [
+    {
+      "participant_id": "npc:garren_holt",
+      "npc_key": "garren-holt",
+      "unknown_label": "a wary hunter",
+      "known_label": "Garren Holt",
+      "relationship_defaults": {
+        "trust": 0,
+        "respect": 0,
+        "hostility": 0
+      },
+      "scene_posture_defaults": {
+        "guardedness": 1,
+        "pressure": 0,
+        "openness": 0,
+        "caution": 1
+      }
+    }
+  ],
+  "entry_behavior": {
+    "mode": "resume_or_start",
+    "opening_surface_id": "surface_garren_old_paths",
+    "entry_source": "dunmere-village"
+  },
+  "conversation_surface": {
+    "surface_id": "surface_garren_old_paths",
+    "paragraphs": [
+      {
+        "kind": "opening",
+        "text": "Garren Holt keeps his back near a wall and his eyes on every exit from the village green. He looks like a man who learned long ago that silence is safer than being understood badly.",
+        "source_visibility": "player_visible"
+      },
+      {
+        "kind": "posture",
+        "text": "When the old paths or the shrine come up, his expression goes colder rather than guilty. \"Stay off the old paths if you value your skin,\" he says. \"They have been busier than they have any right to be.\"",
+        "source_visibility": "player_visible"
+      },
+      {
+        "kind": "tension",
+        "text": "Garren has useful route knowledge, but he is measuring whether you came for a witness or an easy culprit. Respect may get you farther than accusation.",
+        "source_visibility": "player_visible"
+      }
+    ]
+  },
+  "passive_social_insight": [
+    {
+      "insight_id": "insight_garren_defensive_not_guilty",
+      "label": "Garren's hostility is defensive, not proof",
+      "target_id": "npc:garren_holt",
+      "requires_check": true,
+      "check": {
+        "mode": "passive",
+        "ability": "wisdom",
+        "skill": "insight",
+        "dc": 13,
+        "visibility": "narrative_only"
+      },
+      "on_success": {
+        "text": "Garren is watching for accusation, not hiding triumph. His warning has the hard edge of someone who believes the old paths are dangerous and does not want his caution turned into gossip.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "openness",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The player reads Garren as defensive rather than confirmed guilty."
+          }
+        ]
+      },
+      "on_failure": {
+        "text": null
+      }
+    }
+  ],
+  "relationship_state_definitions": [
+    {
+      "field": "trust",
+      "scope": "persistent_npc_state",
+      "type": "ladder",
+      "values": [-2, -1, 0, 1, 2],
+      "default": 0,
+      "allowed_write_scopes": ["persistent_npc_state"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "player_perceived",
+      "labels": {
+        "-2": "closed",
+        "-1": "wary",
+        "0": "uncertain",
+        "1": "trusting",
+        "2": "confiding"
+      }
+    },
+    {
+      "field": "respect",
+      "scope": "persistent_npc_state",
+      "type": "ladder",
+      "values": [-2, -1, 0, 1, 2],
+      "default": 0,
+      "allowed_write_scopes": ["persistent_npc_state"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "player_perceived",
+      "labels": {
+        "-2": "insulted",
+        "-1": "strained",
+        "0": "unproven",
+        "1": "respected",
+        "2": "trusted with the trail"
+      }
+    },
+    {
+      "field": "hostility",
+      "scope": "persistent_npc_state",
+      "type": "ladder",
+      "values": [-2, -1, 0, 1, 2],
+      "default": 0,
+      "allowed_write_scopes": ["persistent_npc_state"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "player_perceived",
+      "labels": {
+        "-2": "protective",
+        "-1": "cool",
+        "0": "neutral",
+        "1": "bristling",
+        "2": "hostile"
+      }
+    },
+    {
+      "field": "guardedness",
+      "scope": "dialogue_scene_state",
+      "type": "number",
+      "default": 1,
+      "allowed_write_scopes": ["dialogue_scene_state", "dialogue_local", "temporary"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "gm_only"
+    },
+    {
+      "field": "pressure",
+      "scope": "dialogue_scene_state",
+      "type": "number",
+      "default": 0,
+      "allowed_write_scopes": ["dialogue_scene_state", "dialogue_local", "temporary"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "gm_only"
+    },
+    {
+      "field": "openness",
+      "scope": "dialogue_scene_state",
+      "type": "number",
+      "default": 0,
+      "allowed_write_scopes": ["dialogue_scene_state", "dialogue_local", "temporary"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "gm_only"
+    },
+    {
+      "field": "caution",
+      "scope": "dialogue_scene_state",
+      "type": "number",
+      "default": 1,
+      "allowed_write_scopes": ["dialogue_scene_state", "dialogue_local", "temporary"],
+      "shorthand_behavior": "allow_unambiguous",
+      "player_visibility": "gm_only"
+    }
+  ],
+  "clarifying_questions": [
+    {
+      "question_id": "clarify_garren_old_path_sighting",
+      "label": "What did you actually see on the old paths?",
+      "aliases": ["what did you see", "old path sighting", "what happened on the path"],
+      "keywords": ["saw", "old paths", "tracks"],
+      "target_id": "npc:garren_holt",
+      "requires_check": false,
+      "result": {
+        "text": "\"Too many boots for a path people claim to avoid,\" Garren says. \"Not villagers out for firewood. Not hunters moving careful. People moving like something had already decided where they would end up.\"",
+        "summary": "Garren saw unusual traffic on the old paths before the attacks worsened.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "garren_knows_old_paths",
+            "title": "Garren Knows the Old Paths",
+            "summary": "Garren knows the old paths well enough to recognize when their traffic changes."
+          },
+          {
+            "knowledge_id": "old_path_still_used",
+            "title": "The Old Path Is Still Used",
+            "summary": "The old paths near Dunmere have seen recent traffic despite villagers warning each other away."
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "openness",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The player asks for witnessed detail instead of accusation."
+          }
+        ]
+      },
+      "emit_canonical_event": true
+    },
+    {
+      "question_id": "clarify_garren_warning",
+      "label": "Why warn people away?",
+      "aliases": ["why warn people", "why stay off the paths", "why warn us"],
+      "keywords": ["warn", "away", "danger"],
+      "target_id": "npc:garren_holt",
+      "requires_check": false,
+      "result": {
+        "text": "\"Because frightened people walk toward answers that feel like traps,\" he says. \"And because I know how fast the old paths stop being old when enough fools decide to test them.\"",
+        "summary": "Garren warns people away because the old paths have become dangerous and crowded with bad decisions.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "caution",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Garren doubles down on caution rather than route detail."
+          }
+        ]
+      },
+      "canonical": false
+    },
+    {
+      "question_id": "clarify_garren_shrine_change",
+      "label": "What changed near the shrine?",
+      "aliases": ["what changed at the shrine", "near the shrine", "shrine change"],
+      "keywords": ["shrine", "changed", "ruins"],
+      "target_id": "npc:garren_holt",
+      "requires_check": false,
+      "result": {
+        "text": "Garren looks past you toward the old trees. \"Tracks started bending that way. Not all at once. Enough that a man who knows the ground starts asking why everyone else forgot how to see it.\"",
+        "summary": "Traffic on the old paths began bending toward the shrine before the road trouble worsened.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "tracks_converge_on_shrine",
+            "title": "Garren's Observation",
+            "summary": "Garren saw traffic near the shrine increase before the attacks worsened, as if people were being drawn there.",
+            "metadata_json": {
+              "legacy_clue_key": "clue_garren_observation",
+              "clue_id": "garren_observation",
+              "legacy_flag": "clue_garren_observation"
+            }
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "guardedness",
+            "operation": "decrement",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Specific route questions move Garren away from defensive posture."
+          }
+        ]
+      },
+      "emit_canonical_event": true
+    },
+    {
+      "question_id": "clarify_garren_who_uses_paths",
+      "label": "Who else uses those paths?",
+      "aliases": ["who uses the paths", "who travels there", "path traffic"],
+      "keywords": ["who", "uses", "paths"],
+      "target_id": "npc:garren_holt",
+      "requires_check": false,
+      "result": {
+        "text": "\"People who know better. People who do not. People who think being desperate makes them quiet.\" His mouth twists. \"That is not a list of names. It is a warning.\"",
+        "summary": "Garren cannot name every traveler on the old paths, but he knows the traffic is broader than ordinary hunting or woodcutting.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "pressure",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Asking for names increases pressure without yielding a culprit."
+          }
+        ]
+      },
+      "canonical": false
+    },
+    {
+      "question_id": "clarify_garren_suspicion_danger",
+      "label": "Why does being suspected make this more dangerous?",
+      "aliases": ["why is suspicion dangerous", "why do people suspect you", "village suspicion"],
+      "keywords": ["suspected", "suspicion", "dangerous"],
+      "target_id": "npc:garren_holt",
+      "requires_check": false,
+      "result": {
+        "text": "\"Because once a village decides a man is the shape of its fear, it stops looking at the ground,\" Garren says. \"And the ground is where the truth keeps leaving marks.\"",
+        "summary": "Garren worries that village suspicion is making people miss useful evidence.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "village_blames_hunter_and_road",
+            "title": "Village Suspicion",
+            "summary": "Dunmere's fear is making it easier to blame Garren and the road than to keep following evidence."
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "trust",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player asks about the cost of suspicion instead of using it as proof.",
+            "summary": "Garren seems slightly more willing to trust your questions."
+          }
+        ]
+      },
+      "canonical": false
+    },
+    {
+      "question_id": "clarify_read_garren_warning",
+      "label": "Read whether his warning is fear or self-protection",
+      "aliases": ["read Garren", "is he afraid", "is he protecting himself"],
+      "keywords": ["read", "warning", "insight"],
+      "target_id": "npc:garren_holt",
+      "requires_check": true,
+      "check": {
+        "mode": "standard",
+        "ability": "wisdom",
+        "skill": "insight",
+        "dc": 13,
+        "visibility": "visible"
+      },
+      "on_success": {
+        "text": "It is both. Garren is protecting himself from village blame, but the fear underneath is for the path, not only for his name.",
+        "summary": "Garren's warning is genuine even though his defensiveness is personal.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "guardedness",
+            "operation": "decrement",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The player reads the defensive layer without treating it as guilt."
+          },
+          {
+            "scope": "persistent_npc_state",
+            "field": "respect",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "A careful read recognizes Garren's warning as genuine.",
+            "summary": "Garren notices that you are listening for more than blame."
+          }
+        ]
+      },
+      "on_failure": {
+        "text": "Garren's warning stays tangled in suspicion and pride. He offers no clean difference between fear for the path and fear for himself.",
+        "summary": "Garren's defensiveness remains difficult to read.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "pressure",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The attempted read adds scrutiny."
+          }
+        ]
+      },
+      "retry_policy": {
+        "immediate_retry": false
+      }
+    }
+  ],
+  "committed_social_moves": [
+    {
+      "move_id": "move_ask_what_garren_saw_without_accusation",
+      "label": "Ask what he actually saw without accusation",
+      "aliases": ["ask without accusation", "what did you see", "ask as witness"],
+      "social_move_type": "ask",
+      "social_tags": ["respectful", "witness"],
+      "tone": "direct",
+      "target_id": "npc:garren_holt",
+      "consumes_dialogue_beat": true,
+      "requires_check": false,
+      "preview": {
+        "text": "You spend the dialogue beat treating Garren as a witness rather than a culprit."
+      },
+      "no_check_result": {
+        "text": "Garren studies you for a long breath, then gives the answer as if setting down a loaded blade. \"The old path is being used. More than it should. Enough tracks bend shrineward that ignoring them would be its own kind of lie.\"",
+        "summary": "Garren gives a useful route observation when approached as a witness.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "garren_knows_old_paths",
+            "title": "Garren Knows the Old Paths",
+            "summary": "Garren knows the old paths well enough to recognize when their traffic changes."
+          },
+          {
+            "knowledge_id": "old_path_still_used",
+            "title": "The Old Path Is Still Used",
+            "summary": "The old path from Dunmere is still seeing enough traffic to matter."
+          },
+          {
+            "knowledge_id": "tracks_converge_on_shrine",
+            "title": "Garren's Observation",
+            "summary": "Garren saw the traffic near the shrine increase before the attacks worsened, as if people were being drawn there.",
+            "metadata_json": {
+              "legacy_clue_key": "clue_garren_observation",
+              "clue_id": "garren_observation",
+              "legacy_flag": "clue_garren_observation"
+            }
+          }
+        ],
+        "objective_updates": [
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "gather-local-insight",
+            "status": "completed",
+            "progress_count": 2
+          },
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "follow-the-leads",
+            "status": "active",
+            "progress_count": 0
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "respect",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player treats Garren as a witness.",
+            "summary": "Garren respects the direct question more than suspicion."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "openness",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Respectful questioning opens the route conversation."
+          }
+        ]
+      }
+    },
+    {
+      "move_id": "move_show_respect_for_caution",
+      "label": "Show respect for his caution",
+      "aliases": ["respect his caution", "you know the paths", "respect Garren"],
+      "social_move_type": "persuade",
+      "social_tags": ["respect", "stabilizing"],
+      "tone": "measured",
+      "target_id": "npc:garren_holt",
+      "consumes_dialogue_beat": true,
+      "requires_check": false,
+      "preview": {
+        "text": "You spend the dialogue beat making it clear that caution is not the same thing as guilt."
+      },
+      "no_check_result": {
+        "text": "The set of Garren's shoulders changes by the smallest amount. \"Good. Then maybe you will live long enough to learn something useful.\"",
+        "summary": "Garren becomes more open when his caution is treated as earned knowledge.",
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "trust",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player respects Garren's caution.",
+            "summary": "Garren trusts you a little more with path knowledge."
+          },
+          {
+            "scope": "persistent_npc_state",
+            "field": "respect",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player treats Garren's experience as valuable.",
+            "summary": "Garren seems more willing to speak plainly."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "guardedness",
+            "operation": "decrement",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Respect lowers Garren's defensive posture."
+          }
+        ]
+      }
+    },
+    {
+      "move_id": "move_press_for_whole_trail",
+      "label": "Ask for the whole trail",
+      "aliases": ["whole trail", "full route", "tell me the whole path"],
+      "social_move_type": "persuade",
+      "social_tags": ["gated", "route", "respect"],
+      "tone": "steady",
+      "target_id": "npc:garren_holt",
+      "consumes_dialogue_beat": true,
+      "requires_check": true,
+      "availability": {
+        "player_locked_text": "Garren will not give the whole trail while he thinks you are only looking for someone to blame.",
+        "relationship_reads": [
+          {
+            "scope": "persistent_npc_state",
+            "target_id": "npc:garren_holt",
+            "field": "respect",
+            "operator": ">=",
+            "value": 1,
+            "player_facing": false
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "target_id": "npc:garren_holt",
+            "field": "openness",
+            "operator": ">=",
+            "value": 1,
+            "player_facing": false
+          }
+        ]
+      },
+      "check": {
+        "mode": "standard",
+        "ability": "charisma",
+        "skill": "persuasion",
+        "dc": 14,
+        "visibility": "visible"
+      },
+      "preview": {
+        "text": "You spend the dialogue beat pressing Garren for the whole trail without turning him into the village's scapegoat."
+      },
+      "assistance": [
+        {
+          "source": "relationship_state",
+          "text": "Respectful questions make this route easier to ask for."
+        }
+      ],
+      "on_success": {
+        "npc_response": "\"Fine,\" Garren says. \"Take the old forest path from Dunmere. Watch where the ground narrows before the stones. If the tracks keep bending shrineward, do not pretend they chose the shrine by accident.\"",
+        "result_summary": "Garren gives the safest old-path approach and connects the route to the shrine traffic.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "tracks_converge_on_shrine",
+            "title": "Garren's Observation",
+            "summary": "Garren saw the traffic near the shrine increase before the attacks worsened, as if people were being drawn there.",
+            "metadata_json": {
+              "legacy_clue_key": "clue_garren_observation",
+              "clue_id": "garren_observation",
+              "legacy_flag": "clue_garren_observation"
+            }
+          },
+          {
+            "knowledge_id": "old_path_still_used",
+            "title": "The Old Path Is Still Used",
+            "summary": "The old forest path from Dunmere is still active and can lead toward the shrine route."
+          }
+        ],
+        "character_flags": [
+          "clue_garren_observation",
+          "shrine_path_known",
+          "understanding_medium"
+        ],
+        "objective_updates": [
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "gather-local-insight",
+            "status": "completed",
+            "progress_count": 2
+          },
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "follow-the-leads",
+            "status": "active",
+            "progress_count": 0
+          }
+        ],
+        "rewards": [
+          {
+            "reward_type": "scene_unlock",
+            "scene_slug": "shrine-ruins",
+            "metadata_json": {
+              "legacy_reward_type": "scene_unlock",
+              "route_knowledge_flag": "shrine_path_known",
+              "handoff_transition": "follow-the-tracks-to-the-shrine"
+            }
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "trust",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player earns the route without scapegoating Garren.",
+            "summary": "Garren trusts you with the old-path approach."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "caution",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The route lead comes with a safety warning."
+          }
+        ]
+      },
+      "on_failure": {
+        "npc_response": "\"No,\" Garren says. \"You want a map so you can say I drew it. Find another way to be certain.\"",
+        "result_summary": "Garren refuses to give the whole trail when the pressure feels like blame.",
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "hostility",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The route request landed as pressure without enough trust.",
+            "summary": "Garren becomes colder and less willing to help."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "guardedness",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Failed pressure tightens Garren's defensive posture."
+          }
+        ]
+      }
+    },
+    {
+      "move_id": "move_accuse_garren_hiding_something",
+      "label": "Accuse him of hiding something",
+      "aliases": ["accuse him", "you are hiding something", "blame Garren"],
+      "social_move_type": "challenge",
+      "social_tags": ["risky", "accusation"],
+      "tone": "hard",
+      "target_id": "npc:garren_holt",
+      "consumes_dialogue_beat": true,
+      "requires_check": false,
+      "preview": {
+        "text": "You spend the dialogue beat accusing Garren of knowing more than he is saying."
+      },
+      "no_check_result": {
+        "text": "Garren's face shuts like a door. \"There it is. The village needed a shape for its fear, and you brought it one.\"",
+        "summary": "Accusing Garren closes off his help without resolving the old-path lead.",
+        "character_flags": [
+          "garren_accused"
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "hostility",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player accuses Garren outright.",
+            "summary": "Garren becomes openly hostile to the accusation."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "guardedness",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Accusation confirms Garren's fear of being scapegoated."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "pressure",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The conversation becomes sharper and less useful."
+          }
+        ]
+      }
+    },
+    {
+      "move_id": "move_keep_name_out_of_gossip",
+      "label": "Offer to keep his name out of village gossip",
+      "aliases": ["keep your name out", "protect his name", "avoid gossip"],
+      "social_move_type": "persuade",
+      "social_tags": ["trust", "reputation"],
+      "tone": "quiet",
+      "target_id": "npc:garren_holt",
+      "consumes_dialogue_beat": true,
+      "requires_check": true,
+      "check": {
+        "mode": "standard",
+        "ability": "charisma",
+        "skill": "persuasion",
+        "dc": 12,
+        "visibility": "visible"
+      },
+      "preview": {
+        "text": "You spend the dialogue beat offering to use the information without turning Garren into Dunmere's story."
+      },
+      "on_success": {
+        "npc_response": "\"Then use the tracks, not my name,\" Garren says. \"The old forest path. Shrineward if the ground keeps telling the same story.\"",
+        "result_summary": "Garren offers route direction after the player promises not to feed village suspicion.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "old_path_still_used",
+            "title": "The Old Path Is Still Used",
+            "summary": "The old forest path from Dunmere remains the practical way to follow the shrineward traffic."
+          },
+          {
+            "knowledge_id": "tracks_converge_on_shrine",
+            "title": "Garren's Observation",
+            "summary": "Garren saw traffic near the shrine increase before the attacks worsened, as if people were being drawn there.",
+            "metadata_json": {
+              "legacy_clue_key": "clue_garren_observation",
+              "clue_id": "garren_observation",
+              "legacy_flag": "clue_garren_observation"
+            }
+          }
+        ],
+        "character_flags": [
+          "garren_respected",
+          "shrine_path_known"
+        ],
+        "objective_updates": [
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "follow-the-leads",
+            "status": "active",
+            "progress_count": 0
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "trust",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player protects Garren from village gossip.",
+            "summary": "Garren trusts you enough to give route direction."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "guardedness",
+            "operation": "decrement",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "Keeping his name out of gossip lowers his defensive posture."
+          }
+        ]
+      },
+      "on_failure": {
+        "npc_response": "\"Promises are cheap when everyone is frightened,\" Garren says. \"Keep your word first. Ask me for trust after.\"",
+        "result_summary": "Garren does not believe the promise is enough yet.",
+        "relationship_writes": [
+          {
+            "scope": "dialogue_scene_state",
+            "field": "pressure",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The promise increases pressure because Garren doubts it."
+          }
+        ]
+      }
+    },
+    {
+      "move_id": "move_ask_safest_way_to_approach_shrine",
+      "label": "Ask for the safest way to approach the shrine",
+      "aliases": ["safest way to shrine", "approach shrine", "route to shrine"],
+      "social_move_type": "ask",
+      "social_tags": ["route", "safety", "shrine"],
+      "tone": "practical",
+      "target_id": "npc:garren_holt",
+      "consumes_dialogue_beat": true,
+      "requires_check": true,
+      "check": {
+        "mode": "standard",
+        "ability": "wisdom",
+        "skill": "survival",
+        "dc": 13,
+        "visibility": "visible"
+      },
+      "preview": {
+        "text": "You spend the dialogue beat turning Garren's warning into practical route advice."
+      },
+      "on_success": {
+        "npc_response": "\"Do not take the straight line,\" Garren says. \"Take the old forest path and let the tracks tell you when to turn shrineward. If the path goes quiet all at once, you have already missed the warning.\"",
+        "result_summary": "Garren gives a safe approach toward the shrine through the old forest path.",
+        "knowledge_grants": [
+          {
+            "knowledge_id": "old_path_still_used",
+            "title": "The Old Path Is Still Used",
+            "summary": "The old forest path from Dunmere remains a usable approach toward the shrine route."
+          },
+          {
+            "knowledge_id": "tracks_converge_on_shrine",
+            "title": "Garren's Observation",
+            "summary": "The tracks near the shrine increased before the attacks worsened, making the shrine route a lead worth following.",
+            "metadata_json": {
+              "legacy_clue_key": "clue_garren_observation",
+              "clue_id": "garren_observation",
+              "legacy_flag": "clue_garren_observation"
+            }
+          }
+        ],
+        "character_flags": [
+          "shrine_path_known",
+          "understanding_medium"
+        ],
+        "objective_updates": [
+          {
+            "quest_key": "shadows_grey_road",
+            "objective_key": "follow-the-leads",
+            "status": "active",
+            "progress_count": 0
+          }
+        ],
+        "rewards": [
+          {
+            "reward_type": "scene_unlock",
+            "scene_slug": "shrine-ruins",
+            "metadata_json": {
+              "legacy_reward_type": "scene_unlock",
+              "route_knowledge_flag": "shrine_path_known",
+              "handoff_transition": "follow-the-tracks-to-the-shrine"
+            }
+          }
+        ],
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "respect",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The player asks for practical safety instead of a culprit.",
+            "summary": "Garren respects the practical approach."
+          },
+          {
+            "scope": "dialogue_scene_state",
+            "field": "caution",
+            "operation": "increment",
+            "value": 1,
+            "visibility": "gm_only",
+            "reason": "The route answer emphasizes caution."
+          }
+        ]
+      },
+      "on_failure": {
+        "npc_response": "\"If you need me to make danger simple, you should not walk that path,\" Garren says.",
+        "result_summary": "Garren refuses to simplify the shrine route into easy instructions.",
+        "relationship_writes": [
+          {
+            "scope": "persistent_npc_state",
+            "field": "respect",
+            "operation": "decrement",
+            "value": 1,
+            "visibility": "player_perceived",
+            "reason": "The practical route question failed to show enough care for the danger.",
+            "summary": "Garren seems less confident in your judgment."
+          }
+        ]
+      }
+    }
+  ],
+  "generic_fallback": {
+    "enabled": true,
+    "usage_limit": 1,
+    "allowed_social_move_types": ["ask", "listen", "reassure", "persuade"],
+    "excluded_social_move_types": ["force_confession", "unauthored_transition", "name_culprit"],
+    "result_scope_constraints": {
+      "may_grant_major_clue": false,
+      "may_transition": false,
+      "may_write_relationship_state": false
+    },
+    "success_behavior": {
+      "text": "Garren gives only a narrow answer: the old paths are dangerous, and careless certainty will get someone hurt.",
+      "summary": "The unauthored exchange stays limited to Garren's caution."
+    },
+    "failure_behavior": {
+      "text": "The question gives Garren no reason to trust your judgment. He lets the silence do most of the answering.",
+      "summary": "The constrained fallback attempt does not produce useful route knowledge."
+    },
+    "failed_fallback_consumes_slot": true
+  },
+  "dialogue_exits": [
+    {
+      "exit_id": "exit_garren_end_conversation",
+      "label": "End the conversation",
+      "exit_type": "free",
+      "behavior": {
+        "text": "You leave Garren with his warning and the uneasy sense that the old paths still matter."
+      }
+    },
+    {
+      "exit_id": "exit_return_to_dunmere_village",
+      "label": "Return to Dunmere village",
+      "exit_type": "transition",
+      "behavior": {
+        "text": "Dunmere's fear feels less useful after Garren's warning, but the village still waits around you."
+      },
+      "transition": {
+        "target_type": "exploration",
+        "target_id": "dunmere-village"
+      }
+    },
+    {
+      "exit_id": "exit_follow_old_path_lead",
+      "label": "Follow the old path lead",
+      "exit_type": "transition",
+      "behavior": {
+        "text": "You leave Dunmere with Garren's route warning in mind and the old forest path ahead."
+      },
+      "transition": {
+        "target_type": "exploration",
+        "target_id": "old-forest-path"
+      },
+      "metadata_json": {
+        "canonical_transition": "follow-the-old-path",
+        "shrine_handoff": "follow-the-tracks-to-the-shrine",
+        "requires_or_benefits_from": "shrine_path_known"
+      }
+    },
+    {
+      "exit_id": "exit_continue_gathering_local_insight",
+      "label": "Continue gathering local insight",
+      "exit_type": "transition",
+      "behavior": {
+        "text": "Garren gives you enough to keep investigating without letting the village's suspicion become the answer."
+      },
+      "transition": {
+        "target_type": "exploration",
+        "target_id": "dunmere-village"
+      }
+    }
+  ],
+  "summary_behavior": {
+    "mode": "deterministic_authored",
+    "player_summary_template": "Garren Holt warned that the old paths have become too busy, connected the shrineward traffic to worsening attacks, and gave route direction only when treated as a witness rather than a culprit.",
+    "sources": [
+      {
+        "source_id": "surface_garren_old_paths",
+        "visibility": "player_visible"
+      },
+      {
+        "source_id": "clarify_garren_old_path_sighting",
+        "visibility": "character_known"
+      },
+      {
+        "source_id": "move_press_for_whole_trail",
+        "visibility": "character_known"
+      }
+    ]
+  },
+  "npc_profile_recap": {
+    "enabled": true,
+    "player_facing": true,
+    "visibility": "player_visible",
+    "apply_timing": "on_dialogue_finalization",
+    "text": "Garren Holt is a guarded hunter who knows the old paths and resists being made into Dunmere's easy culprit."
+  },
+  "dialogue_search_index": {
+    "player_facing": true,
+    "visibility": "player",
+    "topics": [
+      "Garren Holt",
+      "Dunmere",
+      "old paths",
+      "shrine route",
+      "Garren's Observation",
+      "village suspicion"
+    ]
+  },
+  "completed_dialogue_record": {
+    "record_id": "completed_greyvale_garren_path_knowledge_template",
+    "template": true,
+    "player_facing_sources": [
+      {
+        "source_id": "surface_garren_old_paths",
+        "visibility": "player_visible"
+      },
+      {
+        "source_id": "clarify_garren_old_path_sighting",
+        "visibility": "character_known"
+      },
+      {
+        "source_id": "move_press_for_whole_trail",
+        "visibility": "character_known"
+      }
+    ],
+    "summary_sources": [
+      {
+        "source_id": "summary_behavior",
+        "visibility": "player_visible"
+      }
+    ]
+  },
+  "transcript_turns": [
+    {
+      "turn_id": "turn_surface_garren_old_paths",
+      "turn_type": "conversation_surface",
+      "visibility": "player_visible",
+      "player_facing": true
+    },
+    {
+      "turn_id": "turn_garren_summary_template",
+      "turn_type": "system_summary",
+      "visibility": "player_visible",
+      "player_facing": true
+    }
+  ],
+  "validation_metadata": {
+    "profile": "playtest_ready",
+    "fixture_id": "greyvale_garren_path_knowledge_dialogue",
+    "named_paths": [
+      "happy_path",
+      "refusal_or_failure_path",
+      "fallback_path",
+      "minimal_exit_path",
+      "relationship_state_path",
+      "transition_path",
+      "max_clarifying_question_path"
+    ]
+  },
+  "debug_metadata": {
+    "owner": "dialogue-build-12-4",
+    "purpose": "Greyvale Garren Holt Dialogue Focus/Commit conversion fixture",
+    "notes": [
+      "Converted from legacy node/option dialogue without replacing the legacy file.",
+      "Legacy Garren's Observation maps to canonical knowledge id tracks_converge_on_shrine.",
+      "Legacy shrine_path_known is preserved as a character flag and route reward metadata.",
+      "The live dialogue exit points to old-forest-path; the shrine ruins handoff remains represented through route knowledge and the existing follow-the-tracks-to-the-shrine transition."
+    ]
+  }
+}

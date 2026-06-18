@@ -1,0 +1,177 @@
+[
+  {
+    "slug": "leave-broken-caravan-for-inn",
+    "from_scene_slug": "broken-caravan-site",
+    "to_scene_slug": "grey-road-inn",
+    "label": "Head to the Grey Road Inn",
+    "text": {
+      "summary": "Leave the incident site and look for witnesses at the inn.",
+      "full": "The inn is the nearest place where survivors, travelers, or rumors might still be gathered."
+    },
+    "sort_order": 10,
+    "is_default_path": true,
+    "recommendation": {
+      "soft_suggestion": "If the road is changing, the inn will have heard it first."
+    },
+    "conditions": {},
+    "is_active": true
+  },
+  {
+    "slug": "speak-with-elin",
+    "from_scene_slug": "grey-road-inn",
+    "to_scene_slug": "elin-memory-fragments",
+    "label": "Speak with the survivor",
+    "text": {
+      "summary": "Step away from the common room and speak with the shaken survivor.",
+      "full": "The innkeeper points you toward the traveler sitting apart from the others."
+    },
+    "sort_order": 20,
+    "is_default_path": false,
+    "conditions": {},
+    "is_active": true
+  },
+  {
+    "slug": "return-to-common-room",
+    "from_scene_slug": "elin-memory-fragments",
+    "to_scene_slug": "grey-road-inn",
+    "label": "Return to the common room",
+    "text": {
+      "summary": "Step back into the inn proper.",
+      "full": "The common room's low voices and watchful silence take over again."
+    },
+    "sort_order": 10,
+    "is_default_path": true,
+    "conditions": {},
+    "is_active": true
+  },
+  {
+    "slug": "continue-to-dunmere",
+    "from_scene_slug": "grey-road-inn",
+    "to_scene_slug": "dunmere-village",
+    "label": "Continue to Dunmere",
+    "text": {
+      "summary": "Take the road from the inn into the village.",
+      "full": "If answers are going to matter, you will need the village as much as the road."
+    },
+    "sort_order": 30,
+    "is_default_path": true,
+    "conditions": {},
+    "is_active": true
+  },
+  {
+    "slug": "return-to-inn",
+    "from_scene_slug": "dunmere-village",
+    "to_scene_slug": "grey-road-inn",
+    "label": "Return to the Grey Road Inn",
+    "text": {
+      "summary": "Go back to the inn and its travelers.",
+      "full": "The inn remains the road-facing edge of Dunmere's fear."
+    },
+    "sort_order": 30,
+    "is_default_path": false,
+    "conditions": {},
+    "is_active": true
+  },
+  {
+    "slug": "follow-the-old-path",
+    "from_scene_slug": "dunmere-village",
+    "to_scene_slug": "old-forest-path",
+    "label": "Take the old forest path",
+    "text": {
+      "summary": "Leave Dunmere and follow the old path into the woods.",
+      "full": "The old path is still passable, even if the village would rather pretend no one uses it anymore."
+    },
+    "sort_order": 10,
+    "is_default_path": true,
+    "recommendation": {
+      "soft_suggestion": "The forest path is the clearest place to test the stories against the ground."
+    },
+    "conditions": {},
+    "is_active": true
+  },
+  {
+    "slug": "return-to-dunmere",
+    "from_scene_slug": "old-forest-path",
+    "to_scene_slug": "dunmere-village",
+    "label": "Return to Dunmere",
+    "text": {
+      "summary": "Head back to the village.",
+      "full": "If the path is not enough, the people of Dunmere still have pieces you can test."
+    },
+    "sort_order": 30,
+    "is_default_path": false,
+    "conditions": {},
+    "is_active": true
+  },
+  {
+    "slug": "follow-the-tracks-to-the-shrine",
+    "from_scene_slug": "old-forest-path",
+    "to_scene_slug": "shrine-ruins",
+    "label": "Follow the signs toward the shrine",
+    "text": {
+      "summary": "Track the movement patterns toward the ruined shrine.",
+      "full": "The trail toward the shrine only makes sense once you know what to look for."
+    },
+    "sort_order": 10,
+    "is_default_path": true,
+    "recommendation": {
+      "soft_suggestion": "The shrine is where the scattered movement finally begins to align."
+    },
+    "conditions": {
+      "required_character_flags": {
+        "shrine_path_known": true
+      }
+    },
+    "is_active": true
+  },
+  {
+    "slug": "withdraw-from-the-shrine",
+    "from_scene_slug": "shrine-ruins",
+    "to_scene_slug": "old-forest-path",
+    "label": "Withdraw from the shrine",
+    "text": {
+      "summary": "Back away from the ruined shrine and return to the forest path.",
+      "full": "If the shrine is too dangerous for now, the path offers distance and time to think."
+    },
+    "sort_order": 30,
+    "is_default_path": false,
+    "conditions": {},
+    "is_active": true
+  },
+  {
+    "slug": "descend-beneath-the-shrine",
+    "from_scene_slug": "shrine-ruins",
+    "to_scene_slug": "subterranean-hollow",
+    "label": "Descend into the hollow below",
+    "text": {
+      "summary": "Follow the deeper trail beneath the ruined shrine.",
+      "full": "Only once the surface threat is broken and the hidden way is revealed can you safely descend."
+    },
+    "sort_order": 10,
+    "is_default_path": true,
+    "recommendation": {
+      "soft_suggestion": "If you believe the shrine is not the end of the problem, the hollow is the only honest next step."
+    },
+    "conditions": {
+      "required_character_flags": {
+        "surface_threat_resolved": true,
+        "shrine_depth_unlocked": true
+      }
+    },
+    "is_active": true
+  },
+  {
+    "slug": "climb-back-to-the-ruins",
+    "from_scene_slug": "subterranean-hollow",
+    "to_scene_slug": "shrine-ruins",
+    "label": "Climb back to the shrine ruins",
+    "text": {
+      "summary": "Retreat from the chamber below.",
+      "full": "The way back remains open, even if clarity does not."
+    },
+    "sort_order": 30,
+    "is_default_path": false,
+    "conditions": {},
+    "is_active": true
+  }
+]

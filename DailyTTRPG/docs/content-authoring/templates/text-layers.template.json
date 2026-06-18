@@ -1,0 +1,22 @@
+{
+  "title": "Ashford Crossroads",
+  "short": "A wind-scoured road crossing marked by red motes.",
+  "summary": "Ashford Crossroads is quiet except for red motes drifting against the wind.",
+  "full": "The road splits around an old mile marker blackened by heatless ash. Red motes gather in the ditch and move in patterns too regular to be weather.",
+  "entry": "You arrive at Ashford Crossroads as the red motes brighten in the weeds.",
+  "sms": "Ashford Crossroads. Red motes drift against the wind.",
+  "recap": "You reached Ashford Crossroads and noticed the ember-sign.",
+  "success": "You recognize a rune-like pattern in the motes.",
+  "failure": "The motes scatter before you can read the pattern.",
+  "gm_notes": "Use this scene to introduce the first clue.",
+  "variants": [
+    {
+      "conditions": {
+        "required_character_flags": {
+          "ember_sign_inspected": true
+        }
+      },
+      "text": "The ember-sign still glows faintly where you read its first pattern."
+    }
+  ]
+}
