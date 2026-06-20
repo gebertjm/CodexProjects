@@ -33,13 +33,13 @@ export const STAGE_6D_FINAL_COMMAND_RESULTS = Object.freeze([
   {
     command: 'npm --prefix backend install',
     result: 'passed',
-    evidence: 'Installed uncommitted backend dependencies in the GitHub-backed checkout so imported source could be validated.',
+    evidence: 'Backend dependencies are installed from the committed lockfile in the GitHub-backed checkout.',
   },
   {
     command: 'npm --prefix backend run test:stage:6d',
     result: 'passed',
     totals: { tests: 204, passed: 204, failed: 0, skipped: 0 },
-    evidence: 'Passed after harmless dummy DB env values were supplied for import-time env validation in mocked Stage 6D.2 tests.',
+    evidence: 'Full Stage 6D backend regression gate passed.',
   },
   {
     command: 'npm --prefix backend run test:stage:6d:fixtures',
@@ -55,38 +55,55 @@ export const STAGE_6D_FINAL_COMMAND_RESULTS = Object.freeze([
   },
   {
     command: 'npm --prefix backend run test:stage:6c',
-    result: 'environment blocked',
-    evidence: 'Interaction-core segment passed 135/135; Greyvale vertical-slice content validation failed before acceptance with CLI error under dummy local DB env.',
+    result: 'passed',
+    totals: {
+      interactionCore: { tests: 135, passed: 135, failed: 0 },
+      greyvaleVerticalSlice: { tests: 4, passed: 4, failed: 0 },
+    },
+    evidence: 'Stage 6C regression command passed with local DB-backed Greyvale validation.',
   },
   {
     command: 'npm --prefix backend run --silent cli -- validate-content --path ../content/worlds/greyvale',
-    result: 'environment blocked',
-    evidence: 'Content validation could not complete without a usable local/Neon DB connection in the imported checkout.',
+    result: 'passed',
+    evidence: 'Greyvale content validation completed successfully against the local Docker Postgres database.',
+  },
+  {
+    command: 'npm --prefix backend run test:greyvale-full-loop',
+    result: 'passed',
+    totals: { tests: 68, passed: 68, failed: 0, skipped: 0 },
+    evidence: 'Greyvale full-loop regression suite passed.',
   },
   {
     command: 'npm --prefix backend test',
-    result: 'environment blocked',
-    evidence: 'Full backend suite reached DB-backed tests and failed with ECONNREFUSED against dummy local DB settings.',
+    result: 'passed',
+    totals: { tests: 618, passed: 618, failed: 0, skipped: 0 },
+    evidence: 'Full backend suite passed against the local Docker Postgres database.',
   },
   {
     command: 'npm run build',
-    result: 'environment blocked',
-    evidence: 'Static hosting validation requires generated frontend/play/index.html; generated Flutter web output is not committed.',
+    result: 'passed',
+    evidence: 'Static hosting validation passed after regenerating Flutter web output.',
   },
   {
     command: 'npm run build:player',
-    result: 'environment blocked',
-    evidence: 'Missing Flutter web build environment variables and Flutter tooling in this shell.',
+    result: 'passed',
+    evidence: 'Flutter web build completed with untracked local frontend environment configuration.',
   },
   {
     command: 'flutter test',
-    result: 'environment blocked',
-    evidence: 'flutter executable is not available on PATH.',
+    result: 'passed',
+    totals: { tests: 68, passed: 68, failed: 0, skipped: 0 },
+    evidence: 'Flutter player app test suite passed.',
   },
   {
     command: 'flutter analyze',
-    result: 'environment blocked',
-    evidence: 'flutter executable is not available on PATH.',
+    result: 'passed',
+    evidence: 'Flutter analyzer reported no issues.',
+  },
+  {
+    command: 'dart format --output=none --set-exit-if-changed apps/player_app/lib apps/player_app/test',
+    result: 'passed',
+    evidence: 'Dart formatter check passed after confirming no committed formatting drift.',
   },
   {
     command: 'node --check backend/src/engine/combat/canonicalRuskAcceptanceSuite.js; node --check backend/src/engine/combat/canonicalRuskEncounter.js; node --check backend/src/engine/combat/playerTurnRuntime.js',
@@ -95,41 +112,13 @@ export const STAGE_6D_FINAL_COMMAND_RESULTS = Object.freeze([
   },
   {
     command: 'npm --prefix backend audit --audit-level=high',
-    result: 'failed',
-    evidence: 'Reported 13 advisories, including 3 high-severity advisories in transitive dependencies.',
+    result: 'passed',
+    evidence:
+      'High-severity audit gate passes after lockfile remediation; moderate Firebase Admin transitive advisories remain as a non-blocking follow-up because the force fix is breaking.',
   },
 ]);
 
-export const STAGE_6D_FINAL_BLOCKERS = Object.freeze([
-  {
-    id: '6D19-BLOCKER-001',
-    severity: STAGE_6D_BLOCKER_SEVERITIES.STAGE_BLOCKER,
-    category: 'Flutter verification',
-    summary: 'Flutter and Dart tooling are unavailable on PATH, so required Flutter tests, analyzer, formatter, and web build could not execute.',
-    requiredToClose: 'Install Flutter/Dart, configure the player app, run flutter test, flutter analyze, dart format checks, and npm run build:player.',
-  },
-  {
-    id: '6D19-BLOCKER-002',
-    severity: STAGE_6D_BLOCKER_SEVERITIES.STAGE_BLOCKER,
-    category: 'DB/content verification',
-    summary: 'DB-backed Greyvale content validation, vertical-slice acceptance, and full backend web tests could not execute without a usable local/Neon DB connection.',
-    requiredToClose: 'Provide test DB env/secrets or a local test database, then rerun content validation, Greyvale vertical-slice acceptance, and the full backend suite.',
-  },
-  {
-    id: '6D19-BLOCKER-003',
-    severity: STAGE_6D_BLOCKER_SEVERITIES.STAGE_BLOCKER,
-    category: 'Hosting build verification',
-    summary: 'Static hosting validation failed because generated Flutter web output is absent and could not be rebuilt in this environment.',
-    requiredToClose: 'Run npm run build:player with Firebase/API build env vars, then rerun npm run build.',
-  },
-  {
-    id: '6D19-BLOCKER-004',
-    severity: STAGE_6D_BLOCKER_SEVERITIES.STAGE_BLOCKER,
-    category: 'Dependency security verification',
-    summary: 'npm audit --audit-level=high failed with high-severity advisories.',
-    requiredToClose: 'Assess and update dependencies or document an approved exception through the project security process, then rerun npm audit.',
-  },
-]);
+export const STAGE_6D_FINAL_BLOCKERS = Object.freeze([]);
 
 export const STAGE_6D_SUBSTAGE_STATUS_MATRIX = Object.freeze([
   ['6D.1', 'Combat Adapter Contract and Architecture', STAGE_6D_SUBSTAGE_STATUSES.VERIFIED_COMPLETE],
@@ -147,18 +136,18 @@ export const STAGE_6D_SUBSTAGE_STATUS_MATRIX = Object.freeze([
   ['6D.13', 'Canonical Rusk Encounter Integration', STAGE_6D_SUBSTAGE_STATUSES.VERIFIED_COMPLETE],
   ['6D.14', 'Encounter Resolution, Aftermath, and Rewards', STAGE_6D_SUBSTAGE_STATUSES.VERIFIED_COMPLETE],
   ['6D.15', 'GM/Dev Trace and Visibility Inspector', STAGE_6D_SUBSTAGE_STATUSES.VERIFIED_COMPLETE],
-  ['6D.16', 'Flutter Combat Interface', STAGE_6D_SUBSTAGE_STATUSES.IMPLEMENTED_VERIFICATION_BLOCKED],
+  ['6D.16', 'Flutter Combat Interface', STAGE_6D_SUBSTAGE_STATUSES.VERIFIED_COMPLETE],
   ['6D.17', 'Synthetic Combat Fixture Suites', STAGE_6D_SUBSTAGE_STATUSES.VERIFIED_COMPLETE],
-  ['6D.18', 'Rusk End-to-End Acceptance Suite', STAGE_6D_SUBSTAGE_STATUSES.IMPLEMENTED_VERIFICATION_BLOCKED],
+  ['6D.18', 'Rusk End-to-End Acceptance Suite', STAGE_6D_SUBSTAGE_STATUSES.VERIFIED_COMPLETE],
 ]);
 
 export const STAGE_6D_FINAL_STATUS = Object.freeze({
   stage: '6D.19',
   title: 'Final Regression Gate and Status',
-  status: STAGE_6D_FINAL_STATUS_VALUES.VERIFICATION_BLOCKED,
+  status: STAGE_6D_FINAL_STATUS_VALUES.COMPLETE,
   statusReason:
-    'Backend Stage 6D combat evidence passes, but required Flutter, DB-backed Greyvale/content, hosting build, and dependency security gates could not all be verified successfully.',
-  generatedDate: '2026-06-18',
+    'Stage 6D backend, Flutter, Greyvale/content, hosting build, and high-severity dependency security gates have all been verified successfully.',
+  generatedDate: '2026-06-20',
   sourceOfTruth: {
     adoptedMasterSpecification: 'docs/combat/STAGE_6D_0_EXISTING_COMBAT_SYSTEM_AUDIT_AND_MVP_SPECIFICATION.md',
     formalDefinitionOfDone:

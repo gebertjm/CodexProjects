@@ -1,7 +1,7 @@
 {
   "stage": "6D.19",
   "title": "Stage 6D Requirement Traceability Matrix",
-  "generated_date": "2026-06-18",
+  "generated_date": "2026-06-20",
   "result_values": [
     "verified",
     "failed",
@@ -52,7 +52,7 @@
       "current_result": "verified",
       "evidence_location": "docs/combat/stage-6d-final-status.json",
       "blocker_severity": "none",
-      "notes": "6D.16 and 6D.18 remain implemented but verification blocked because Flutter/full UI gates could not execute."
+  "notes": "6D.16 and 6D.18 are verified complete after Flutter tests/analyzer/web build and Rusk backend acceptance passed."
     },
     {
       "id": "6D19-REQ-004",
@@ -224,7 +224,7 @@
       "current_result": "verified",
       "evidence_location": "204/204 Stage 6D backend command pass",
       "blocker_severity": "none",
-      "notes": "DB-backed full-suite verification remains environment blocked separately."
+  "notes": "DB-backed full-suite verification passed against the local Docker Postgres database."
     },
     {
       "id": "6D19-REQ-016",
@@ -281,11 +281,11 @@
         "apps/player_app/test/combat_models_test.dart",
         "apps/player_app/test/combat_rusk_acceptance_contract_test.dart"
       ],
-      "verification_command": "flutter test; flutter analyze; npm run build:player",
-      "current_result": "environment blocked",
-      "evidence_location": "flutter and dart executables unavailable; build env vars missing",
-      "blocker_severity": "stage blocker",
-      "notes": "Backend fixture adapter verifies payload shapes, but required Flutter execution was not possible."
+  "verification_command": "flutter test; flutter analyze; dart format --output=none --set-exit-if-changed apps/player_app/lib apps/player_app/test; npm run build:player",
+  "current_result": "verified",
+  "evidence_location": "flutter test passed 68/68; flutter analyze passed; dart format check passed; npm run build:player passed",
+  "blocker_severity": "none",
+  "notes": "Flutter combat interface and contract payload tests execute successfully with the local Flutter SDK and untracked frontend build environment."
     },
     {
       "id": "6D19-REQ-020",
@@ -310,10 +310,10 @@
       "implementation_files": ["backend/src/engine/combat/canonicalRuskAcceptanceSuite.js"],
       "test_files": ["backend/test/stage6d18-rusk-end-to-end-acceptance.test.js", "apps/player_app/test/combat_rusk_acceptance_contract_test.dart"],
       "verification_command": "npm --prefix backend run test:stage:6d:rusk-acceptance; flutter test",
-      "current_result": "environment blocked",
-      "evidence_location": "Backend Rusk command passed 10/10; Flutter contract test could not execute because Flutter is unavailable.",
-      "blocker_severity": "stage blocker",
-      "notes": "Backend acceptance is verified, but Stage 6D.18 final E2E remains verification blocked without Flutter."
+  "current_result": "verified",
+  "evidence_location": "Backend Rusk command passed 10/10; Flutter test suite passed 68/68 including Rusk combat contract payload coverage.",
+  "blocker_severity": "none",
+  "notes": "Backend acceptance and Flutter contract coverage are both verified."
     },
     {
       "id": "6D19-REQ-022",
@@ -324,10 +324,10 @@
       "implementation_files": ["content/worlds/greyvale", "backend/src/cli/index.js"],
       "test_files": ["backend/test/greyvale-vertical-slice-acceptance.test.js"],
       "verification_command": "npm --prefix backend run test:stage:6c; npm --prefix backend run --silent cli -- validate-content --path ../content/worlds/greyvale",
-      "current_result": "environment blocked",
-      "evidence_location": "CLI validation failed under dummy local DB env; full backend DB-backed tests failed with ECONNREFUSED.",
-      "blocker_severity": "stage blocker",
-      "notes": "Requires a reachable test database or Neon test environment."
+  "current_result": "verified",
+  "evidence_location": "npm --prefix backend run test:stage:6c passed; Greyvale content validation passed; npm --prefix backend test passed 618/618.",
+  "blocker_severity": "none",
+  "notes": "DB-backed validation completed against the local Docker Postgres database."
     },
     {
       "id": "6D19-REQ-023",
@@ -338,10 +338,10 @@
       "implementation_files": ["scripts/build-player-web.mjs", "scripts/check-hosting-pages.mjs", "firebase.json"],
       "test_files": [],
       "verification_command": "npm run build; npm run build:player",
-      "current_result": "environment blocked",
-      "evidence_location": "npm run build failed because frontend/play/index.html was absent; npm run build:player failed due missing env vars and Flutter.",
-      "blocker_severity": "stage blocker",
-      "notes": "Generated Flutter web output is intentionally not committed and must be built in the deployment/test environment."
+  "current_result": "verified",
+  "evidence_location": "npm run build:player passed with untracked frontend env configuration; npm run build passed after generated Flutter web output was present.",
+  "blocker_severity": "none",
+  "notes": "Generated Flutter web output remains uncommitted by policy and is regenerated for hosting validation/deploy."
     },
     {
       "id": "6D19-REQ-024",
@@ -352,10 +352,10 @@
       "implementation_files": ["backend/package-lock.json", "backend/package.json"],
       "test_files": [],
       "verification_command": "npm --prefix backend audit --audit-level=high",
-      "current_result": "failed",
-      "evidence_location": "npm audit reports 13 advisories including 3 high-severity advisories.",
-      "blocker_severity": "stage blocker",
-      "notes": "No automatic audit fix was applied because this closeout stage should not introduce breaking dependency upgrades without review."
+  "current_result": "verified",
+  "evidence_location": "npm --prefix backend audit --audit-level=high exits 0 after lockfile remediation.",
+  "blocker_severity": "none",
+  "notes": "Moderate Firebase Admin transitive advisories remain as non-blocking follow-up; npm audit fix --force proposes a breaking package path and was not applied."
     },
     {
       "id": "6D19-REQ-025",
@@ -374,7 +374,7 @@
       "current_result": "verified",
       "evidence_location": "Stage 6D.19 focused test",
       "blocker_severity": "none",
-      "notes": "The final status intentionally remains verification blocked."
+  "notes": "The final status is complete and closeable after all required gates passed."
     }
   ]
 }

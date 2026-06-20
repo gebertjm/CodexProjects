@@ -101,7 +101,8 @@ class CombatScreenBody extends StatelessWidget {
       _CombatOverviewCard(view: view),
       if (controller.errorMessage?.isNotEmpty == true)
         _InlineAlert(message: controller.errorMessage!),
-      if (view.recovery != null) _RecoveryPanel(controller: controller, view: view),
+      if (view.recovery != null)
+        _RecoveryPanel(controller: controller, view: view),
       if (view.isReaction) _ReactionPanel(controller: controller, view: view),
       if (view.isAutomatic)
         _AutomaticPlaybackPanel(controller: controller, view: view),
@@ -273,7 +274,8 @@ class _LatestCombatResultCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final result = view.latestResult;
-    final latestEvent = view.latestEvents.isNotEmpty ? view.latestEvents.first : null;
+    final latestEvent =
+        view.latestEvents.isNotEmpty ? view.latestEvents.first : null;
     if (result == null && latestEvent == null) {
       return const InfoCard(
         title: 'Latest Result',
@@ -348,10 +350,13 @@ class _ResourcesAndPositionCard extends StatelessWidget {
               spacing: 12,
               runSpacing: 8,
               children: [
-                _FactPill(label: 'Movement left', value: '${movement.remaining} ft'),
-                _FactPill(label: 'Movement spent', value: '${movement.spent} ft'),
+                _FactPill(
+                    label: 'Movement left', value: '${movement.remaining} ft'),
+                _FactPill(
+                    label: 'Movement spent', value: '${movement.spent} ft'),
                 if (movement.dashAdded > 0)
-                  _FactPill(label: 'Dash added', value: '${movement.dashAdded} ft'),
+                  _FactPill(
+                      label: 'Dash added', value: '${movement.dashAdded} ft'),
               ],
             )
           else
@@ -396,7 +401,8 @@ class _ParticipantsCard extends StatelessWidget {
               children: [
                 for (final participant in view.participants)
                   ConstrainedBox(
-                    constraints: const BoxConstraints(minWidth: 220, maxWidth: 320),
+                    constraints:
+                        const BoxConstraints(minWidth: 220, maxWidth: 320),
                     child: Card(
                       child: Padding(
                         padding: const EdgeInsets.all(14),
@@ -505,8 +511,9 @@ class _DecisionPanelState extends State<_DecisionPanel> {
                     ChoiceChip(
                       label: Text(_safe(action.label, 'Action')),
                       selected: _selectedAction?.actionId == action.actionId,
-                      onSelected:
-                          action.available ? (_) => _selectAction(action) : null,
+                      onSelected: action.available
+                          ? (_) => _selectAction(action)
+                          : null,
                     ),
                 ],
               ),
@@ -525,7 +532,8 @@ class _DecisionPanelState extends State<_DecisionPanel> {
                       setState(() => _confirmAllyRisk = value ?? false);
                       _publishActionIntent();
                     },
-                    title: const Text('I understand this may affect an ally or non-hostile target.'),
+                    title: const Text(
+                        'I understand this may affect an ally or non-hostile target.'),
                   ),
                 if (_selectedAction!.supportsNonlethalIntent)
                   CheckboxListTile(
@@ -535,7 +543,8 @@ class _DecisionPanelState extends State<_DecisionPanel> {
                       setState(() => _nonlethalIntent = value ?? false);
                       _publishActionIntent();
                     },
-                    title: const Text('Use nonlethal intent if this resolves the target.'),
+                    title: const Text(
+                        'Use nonlethal intent if this resolves the target.'),
                   ),
               ],
               const SizedBox(height: 16),
@@ -584,7 +593,8 @@ class _DecisionPanelState extends State<_DecisionPanel> {
       operationType: 'movement',
       destinationZoneId: destination.destinationZoneId,
       selectedTransitionIds: [
-        if (_safe(destination.transitionId).isNotEmpty) destination.transitionId!,
+        if (_safe(destination.transitionId).isNotEmpty)
+          destination.transitionId!,
       ],
     ));
   }
@@ -750,7 +760,8 @@ class _PreviewSubmitControls extends StatelessWidget {
                   if (preview.confirmation?.message?.isNotEmpty == true)
                     Text(_safe(preview.confirmation!.message)),
                   const SizedBox(height: 4),
-                  const Text('Preview is not final. Commit resolves the choice.'),
+                  const Text(
+                      'Preview is not final. Commit resolves the choice.'),
                 ],
               ),
             ),
@@ -790,7 +801,8 @@ class _EndTurnPanel extends StatelessWidget {
             ),
             const SizedBox(height: 8),
           ] else
-            const Text('End your turn when you are finished with combat choices.'),
+            const Text(
+                'End your turn when you are finished with combat choices.'),
           FilledButton.icon(
             onPressed: available && !controller.submitting
                 ? () => controller.submitEndTurn(
@@ -884,7 +896,8 @@ class _AutomaticPlaybackPanel extends StatelessWidget {
           ],
           const SizedBox(height: 12),
           OutlinedButton.icon(
-            onPressed: controller.playbackSkipped ? null : controller.skipPlayback,
+            onPressed:
+                controller.playbackSkipped ? null : controller.skipPlayback,
             icon: const Icon(Icons.fast_forward),
             label: Text(controller.playbackSkipped
                 ? 'Playback skipped'
@@ -1099,8 +1112,7 @@ class _CombatLogPanel extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: Text('No visible events are available yet.'),
             ),
-          for (final event in view.latestEvents)
-            _LogEventRow(event: event),
+          for (final event in view.latestEvents) _LogEventRow(event: event),
           for (final group in reviewLog) ...[
             Align(
               alignment: Alignment.centerLeft,
@@ -1262,6 +1274,6 @@ bool _waitAvailable(CombatView view) {
 
 bool _categoryAvailable(CombatView view, String category) {
   final normalized = category.toLowerCase();
-  return view.decisionCategories.any((entry) =>
-      entry.category.toLowerCase() == normalized && entry.available);
+  return view.decisionCategories.any(
+      (entry) => entry.category.toLowerCase() == normalized && entry.available);
 }

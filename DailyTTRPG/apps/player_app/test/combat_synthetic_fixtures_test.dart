@@ -94,7 +94,10 @@ Map<String, dynamic> _syntheticCombatState(String stateKind) {
       'reaction_state': 'waiting_for_player',
       'trigger': {'summary': 'Training Adversary leaves your reach.'},
       'legal_reaction_options': [
-        {'reaction_id': 'synthetic-opportunity-strike', 'label': 'Opportunity Strike'},
+        {
+          'reaction_id': 'synthetic-opportunity-strike',
+          'label': 'Opportunity Strike'
+        },
       ],
       'decline_option': {'label': 'Let it pass'},
       'ordinary_controls_available': false,
@@ -103,7 +106,8 @@ Map<String, dynamic> _syntheticCombatState(String stateKind) {
   if (stateKind == 'recovery') {
     return {
       ...base,
-      'recovery_needed_message': 'Combat needs a safe review before continuing.',
+      'recovery_needed_message':
+          'Combat needs a safe review before continuing.',
       'ordinary_controls_available': false,
       'combat_controls_available': false,
     };
@@ -145,7 +149,8 @@ Map<String, dynamic> _syntheticCombatState(String stateKind) {
 
 void _expectPlayerSafe(CombatView view) {
   final visibleText = view.playerVisibleText;
-  final serialized = jsonEncode(_syntheticCombatState('active_turn')).toLowerCase();
+  final serialized =
+      jsonEncode(_syntheticCombatState('active_turn')).toLowerCase();
   for (final fragment in _hiddenFragments) {
     expect(visibleText, isNot(contains(fragment)));
     expect(serialized, isNot(contains(fragment)));
@@ -164,7 +169,9 @@ void main() {
     _expectPlayerSafe(view);
   });
 
-  test('synthetic reaction, recovery, focus, and resolution states parse safely', () {
+  test(
+      'synthetic reaction, recovery, focus, and resolution states parse safely',
+      () {
     final reaction = CombatView.fromJson(_syntheticCombatState('reaction'));
     expect(reaction.isReaction, true);
     expect(reaction.canUseOrdinaryControls, false);
@@ -186,4 +193,3 @@ void main() {
     _expectPlayerSafe(resolution);
   });
 }
-

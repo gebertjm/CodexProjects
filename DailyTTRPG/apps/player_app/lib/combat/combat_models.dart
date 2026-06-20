@@ -304,8 +304,7 @@ class CombatParticipant {
       healthBand: _text(json['health_band']),
       defeated: _bool(json['defeated']),
       surrendered: _bool(json['surrendered']),
-      conditions:
-          _stringList(json['visible_conditions'] ?? json['conditions']),
+      conditions: _stringList(json['visible_conditions'] ?? json['conditions']),
       zone: _text(json['current_zone'] ?? json['current_zone_id']),
       cover: _text(json['cover']),
     );
@@ -489,7 +488,8 @@ class CombatDecisionCategory {
   final String? reason;
 
   String get label => humanizeCombatText(category);
-  String get playerVisibleText => _playerSafeVisibleText([label, status, reason]);
+  String get playerVisibleText =>
+      _playerSafeVisibleText([label, status, reason]);
 }
 
 class CombatActionOption {
@@ -516,8 +516,8 @@ class CombatActionOption {
           .toList(),
       minTargets: _int(json['min_targets'] ?? json['minimum_targets']),
       maxTargets: _int(json['max_targets'] ?? json['maximum_targets']),
-      requiresAllyConfirmation:
-          _bool(json['requires_ally_confirmation'] ?? json['ally_confirmation_required']),
+      requiresAllyConfirmation: _bool(json['requires_ally_confirmation'] ??
+          json['ally_confirmation_required']),
       supportsNonlethalIntent: _bool(json['supports_nonlethal_intent']),
     );
   }
@@ -550,7 +550,8 @@ class CombatTargetCandidate {
 
   factory CombatTargetCandidate.fromJson(Map<String, dynamic> json) {
     return CombatTargetCandidate(
-      targetId: _text(json['target_id'] ?? json['participant_id'] ?? json['id']),
+      targetId:
+          _text(json['target_id'] ?? json['participant_id'] ?? json['id']),
       label: _text(json['label'] ?? json['display_name'], 'Target'),
       faction: _text(json['faction']),
       relation: _text(json['relation']),
@@ -786,7 +787,8 @@ class CombatFocusState {
       return const CombatFocusState();
     }
     return CombatFocusState(
-      status: _text(focus['status'], json['focus_available'] == true ? 'available' : ''),
+      status: _text(
+          focus['status'], json['focus_available'] == true ? 'available' : ''),
       suggestions: _mapList(focus['suggestions'])
           .map((entry) => CombatFocusSuggestion(
                 templateId: _text(entry['template_id'] ?? entry['id']),
@@ -852,8 +854,9 @@ class CombatResolutionState {
     final review = _map(json['review']).isNotEmpty
         ? CombatReview.fromJson(_map(json['review']))
         : null;
-    final rewards =
-        _map(json['rewards']).isNotEmpty ? CombatRewards.fromJson(_map(json['rewards'])) : null;
+    final rewards = _map(json['rewards']).isNotEmpty
+        ? CombatRewards.fromJson(_map(json['rewards']))
+        : null;
     return CombatResolutionState(
       status: _text(json['status'] ?? outcome['status']),
       summary: _text(
@@ -1115,7 +1118,8 @@ class CombatOperationIntent {
       if (confirmEndTurn) 'confirm_end_turn': true,
       if (focusText != null) 'focus_text': focusText,
       if (reactionId != null) 'reaction_id': reactionId,
-      if (resolutionChoiceId != null) 'resolution_choice_id': resolutionChoiceId,
+      if (resolutionChoiceId != null)
+        'resolution_choice_id': resolutionChoiceId,
       if (idempotencyKey != null) 'idempotency_key': idempotencyKey,
       if (sourceStateVersion != null)
         'source_state_version': sourceStateVersion,
@@ -1197,7 +1201,8 @@ class CombatSubmitResult {
       result: _map(json['player_result_bundle']).isNotEmpty
           ? CombatResultBundle.fromJson(_map(json['player_result_bundle']))
           : null,
-      currentView: viewSource.isNotEmpty ? CombatView.fromJson(viewSource) : null,
+      currentView:
+          viewSource.isNotEmpty ? CombatView.fromJson(viewSource) : null,
       duplicateHandled: _bool(json['duplicate_handled'] ?? json['duplicate']),
       stale: _text(json['status']).toLowerCase() == 'stale',
     );

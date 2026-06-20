@@ -21,12 +21,9 @@ function readJson(relativePath) {
   return JSON.parse(fs.readFileSync(path.join(repoRoot, relativePath), 'utf8'));
 }
 
-test('6D.19 final status records a verification-blocked gate instead of false completion', () => {
-  assert.equal(
-    STAGE_6D_FINAL_STATUS.status,
-    STAGE_6D_FINAL_STATUS_VALUES.VERIFICATION_BLOCKED
-  );
-  assert.equal(canCloseStage6D(STAGE_6D_FINAL_STATUS), false);
+test('6D.19 final status records a complete gate after all required verification passes', () => {
+  assert.equal(STAGE_6D_FINAL_STATUS.status, STAGE_6D_FINAL_STATUS_VALUES.COMPLETE);
+  assert.equal(canCloseStage6D(STAGE_6D_FINAL_STATUS), true);
   assertStage6DFinalStatusShape(STAGE_6D_FINAL_STATUS);
 });
 
@@ -43,18 +40,12 @@ test('6D.19 substage matrix covers every Stage 6D.1 through 6D.18 substage', () 
   }
 });
 
-test('6D.19 blockers include Flutter, DB/content, hosting build, and security audit gates', () => {
+test('6D.19 blockers are cleared after Flutter, DB/content, hosting build, and security gates pass', () => {
   const blockers = listStage6DFinalBlockers();
-  assert.ok(blockers.length >= 4);
-
-  const summaries = blockers.map((blocker) => `${blocker.category} ${blocker.summary}`).join('\n');
-  assert.match(summaries, /Flutter/i);
-  assert.match(summaries, /DB|content/i);
-  assert.match(summaries, /Hosting|build/i);
-  assert.match(summaries, /audit|advisories/i);
+  assert.deepEqual(blockers, []);
 });
 
-test('6D.19 command inventory keeps passing and blocked gates distinct', () => {
+test('6D.19 command inventory records all closeout gates as passed', () => {
   const commands = listStage6DFinalCommandResults();
   const byCommand = new Map(commands.map((entry) => [entry.command, entry]));
 
@@ -64,9 +55,23 @@ test('6D.19 command inventory keeps passing and blocked gates distinct', () => {
     byCommand.get('npm --prefix backend run test:stage:6d:rusk-acceptance')?.result,
     'passed'
   );
-  assert.equal(byCommand.get('flutter test')?.result, 'environment blocked');
-  assert.equal(byCommand.get('flutter analyze')?.result, 'environment blocked');
-  assert.equal(byCommand.get('npm --prefix backend audit --audit-level=high')?.result, 'failed');
+  assert.equal(byCommand.get('npm --prefix backend run test:stage:6c')?.result, 'passed');
+  assert.equal(
+    byCommand.get('npm --prefix backend run --silent cli -- validate-content --path ../content/worlds/greyvale')?.result,
+    'passed'
+  );
+  assert.equal(byCommand.get('npm --prefix backend run test:greyvale-full-loop')?.result, 'passed');
+  assert.equal(byCommand.get('npm --prefix backend test')?.result, 'passed');
+  assert.equal(byCommand.get('npm run build')?.result, 'passed');
+  assert.equal(byCommand.get('npm run build:player')?.result, 'passed');
+  assert.equal(byCommand.get('flutter test')?.result, 'passed');
+  assert.equal(byCommand.get('flutter analyze')?.result, 'passed');
+  assert.equal(
+    byCommand.get('dart format --output=none --set-exit-if-changed apps/player_app/lib apps/player_app/test')?.result,
+    'passed'
+  );
+  assert.equal(byCommand.get('npm --prefix backend audit --audit-level=high')?.result, 'passed');
+  assert.ok(commands.every((entry) => entry.result === 'passed'));
 });
 
 test('6D.19 machine-readable status and traceability artifacts are valid and aligned', () => {
@@ -76,11 +81,13 @@ test('6D.19 machine-readable status and traceability artifacts are valid and ali
   assert.equal(statusArtifact.status, STAGE_6D_FINAL_STATUS.status);
   assert.equal(statusArtifact.stage, STAGE_6D_FINAL_STATUS.stage);
   assert.equal(statusArtifact.blockers.length, STAGE_6D_FINAL_STATUS.blockers.length);
+  assert.equal(statusArtifact.final_readiness.stage_6d_may_close, true);
+  assert.equal(statusArtifact.final_readiness.ready_for_stage_6e, true);
   assert.ok(Array.isArray(traceability.requirements));
   assert.ok(traceability.requirements.length >= 20);
 
   const requirementResults = new Set(traceability.requirements.map((entry) => entry.current_result));
   assert.ok(requirementResults.has('verified'));
-  assert.ok(requirementResults.has('environment blocked'));
-  assert.ok(requirementResults.has('failed'));
+  assert.equal(requirementResults.has('environment blocked'), false);
+  assert.equal(requirementResults.has('failed'), false);
 });

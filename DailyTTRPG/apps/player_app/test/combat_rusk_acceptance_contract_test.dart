@@ -63,7 +63,10 @@ Map<String, dynamic> _reviewPayload(String outcomeId, String summary) {
           'round': 1,
           'turn': 'Player Turn',
           'events': [
-            {'event_type': 'combat_start', 'summary': 'The shrine fight begins.'},
+            {
+              'event_type': 'combat_start',
+              'summary': 'The shrine fight begins.'
+            },
             {'event_type': 'resolution', 'summary': summary},
           ],
         },
@@ -86,7 +89,8 @@ Map<String, dynamic> _reviewPayload(String outcomeId, String summary) {
     ],
     'ordinary_controls_available': false,
     'combat_controls_available': false,
-    'next_step': 'Review the aftermath and continue from the Shrine Ruins aftermath state.',
+    'next_step':
+        'Review the aftermath and continue from the Shrine Ruins aftermath state.',
   };
 }
 
@@ -98,7 +102,10 @@ Map<String, dynamic> _reactionPayload() {
     'reaction_state': 'waiting_for_player',
     'trigger': {'summary': 'Rusk leaves your reach.'},
     'legal_reaction_options': [
-      {'reaction_id': 'greyvale-player-opportunity-strike', 'label': 'Opportunity Strike'},
+      {
+        'reaction_id': 'greyvale-player-opportunity-strike',
+        'label': 'Opportunity Strike'
+      },
     ],
     'decline_option': {'label': 'Let it pass'},
     'ordinary_controls_available': false,
@@ -109,7 +116,8 @@ Map<String, dynamic> _recoveryPayload() {
   return {
     'encounter_title': 'Rusk at the Shrine',
     'combat_status': 'recovery_needed',
-    'recovery_needed_message': 'Combat needs a safe refresh before more choices are available.',
+    'recovery_needed_message':
+        'Combat needs a safe refresh before more choices are available.',
     'ordinary_controls_available': false,
     'combat_controls_available': false,
   };
@@ -129,7 +137,8 @@ void _expectPlayerSafe(CombatView view) {
 }
 
 void main() {
-  test('Rusk acceptance review payloads parse for all five canonical outcomes', () {
+  test('Rusk acceptance review payloads parse for all five canonical outcomes',
+      () {
     for (final entry in _outcomes.entries) {
       final view = CombatView.fromJson(_reviewPayload(entry.key, entry.value));
       expect(view.encounterTitle, 'Rusk at the Shrine');
@@ -157,4 +166,3 @@ void main() {
     _expectPlayerSafe(recovery);
   });
 }
-

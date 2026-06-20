@@ -59,7 +59,12 @@ void main() {
         },
       ],
       'visible_player_resources': [
-        {'resource_id': 'second_wind', 'label': 'Second Wind', 'current': 1, 'max': 1},
+        {
+          'resource_id': 'second_wind',
+          'label': 'Second Wind',
+          'current': 1,
+          'max': 1
+        },
       ],
       'movement': {
         'base_movement': 30,
