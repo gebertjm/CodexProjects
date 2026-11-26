@@ -1,0 +1,86 @@
+name: DailyTTRPG CI
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dailyttrpg-ci-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  backend-build:
+    name: DailyTTRPG / Backend build and syntax
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: DailyTTRPG/backend
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - name: Check backend and test JavaScript syntax
+        run: |
+          docker run --rm --network none \
+            --mount "type=bind,src=$PWD,dst=/backend,readonly" \
+            --workdir /backend node:20-alpine \
+            sh -ec 'find src test -type f -name "*.js" -print0 | xargs -0 -n 1 node --check'
+      - name: Build backend runtime image
+        run: docker build --tag dailyttrpg-backend:ci .
+
+  backend-tests:
+    name: DailyTTRPG / Backend tests and regressions
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - name: Run Greyvale validation and the full backend test suite
+        run: bash DailyTTRPG/scripts/ci-backend-test.sh
+
+  player:
+    name: DailyTTRPG / Flutter and hosting checks
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: DailyTTRPG/apps/player_app
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
+        with:
+          flutter-version: '3.44.0'
+          channel: stable
+          pub-cache: false
+      - name: Resolve locked Dart dependencies
+        id: dependencies
+        run: flutter pub get --enforce-lockfile
+      - name: Analyze Dart code
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: flutter analyze --no-pub
+      - name: Run Flutter unit, widget and regression tests
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: flutter test --no-pub
+      - name: Build release Flutter web app
+        id: web-build
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: |
+          flutter build web --release --no-pub --base-href /play/ \
+            --dart-define=FIREBASE_PROJECT_ID=dailyttrpg-ci \
+            --dart-define=FIREBASE_AUTH_DOMAIN=ci.invalid \
+            --dart-define=FIREBASE_STORAGE_BUCKET=ci.invalid \
+            --dart-define=DAILY_TTRPG_API_BASE_URL=http://127.0.0.1:3000
+      - name: Validate local Firebase Hosting pages
+        if: ${{ !cancelled() && steps.web-build.outcome == 'success' }}
+        working-directory: DailyTTRPG
+        run: |
+          mkdir -p frontend/play
+          cp -a apps/player_app/build/web/. frontend/play/
+          npm run build
