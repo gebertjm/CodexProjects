@@ -61,13 +61,24 @@ jobs:
           pub-cache: false
       - name: Resolve locked Dart dependencies
         id: dependencies
-        run: flutter pub get --enforce-lockfile
+        run: |
+          flutter precache --linux
+          flutter pub get --enforce-lockfile
       - name: Analyze Dart code
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: flutter analyze --no-pub
       - name: Run Flutter unit, widget and regression tests
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        run: flutter test --no-pub
+        run: |
+          # Bring up loopback for Flutter's test sockets and drop back to the runner user.
+          sudo --preserve-env=HOME,PUB_CACHE,FLUTTER_ROOT,CI unshare --net -- bash -ec '
+            ip link set dev lo up
+            exec setpriv --reuid "$SUDO_UID" --regid "$SUDO_GID" --init-groups -- "$@"
+          ' bash "$(command -v flutter)" test --no-pub \
+            --dart-define=FIREBASE_PROJECT_ID=dailyttrpg-ci \
+            --dart-define=FIREBASE_AUTH_DOMAIN=ci.invalid \
+            --dart-define=FIREBASE_STORAGE_BUCKET=ci.invalid \
+            --dart-define=DAILY_TTRPG_API_BASE_URL=http://127.0.0.1:3000
       - name: Build release Flutter web app
         id: web-build
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
